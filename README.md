@@ -1,1 +1,1 @@
-# Hash-Calculator
+# Hash計算機
