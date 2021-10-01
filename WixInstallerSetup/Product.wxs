@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="C7DD9BD7-0A18-4B96-87CC-94ED12456AAF" Name="Hash計算機" Language="1041" Version="0.1.1" Manufacturer="Hibi_10000" UpgradeCode="A0095842-1829-4499-8997-838DB99CE3F8" Codepage="932">
+        <Package Comments="Hash計算機 Ver.0.1.1 Installer" InstallerVersion="200" Compressed="yes" SummaryCodepage="932" Platform="x64" />
+        <Media Id="1" Cabinet="simple.cab" EmbedCab="yes" />
+		<MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="[ProductName]の新しいバージョンが既にインストールされています。" />
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <Directory Id="ProgramFiles64Folder" Name="PFiles">
+                <Directory Id="HASHCALCULATOR" Name="HashCalculator">
+                    <Component Id="HASH.EXE" DiskId="1" Guid="B0B89934-3D7F-49CC-A8BE-DB6CEDF489CC" Win64="yes">
+                        <File Id="HASH.EXE" Name="Hash.exe" Source="..\Hash\bin\x64\Release\Hash.exe" KeyPath="yes" ReadOnly="yes">
+                            <Shortcut Id="HashDesktopLnk" Name="Hash計算機" Directory="DesktopFolder" Icon="DesktopIcon.exe" IconIndex="0" WorkingDirectory="INSTALLDIR" Advertise="yes" />
+                            <Shortcut Id="HashPMFLnk" Name="Hash計算機" Directory="ProgramMenuFolder" Icon="ProgramMenuIcon.exe" IconIndex="0" Advertise="yes" />
+                        </File>
+                    </Component>
+                    <Component Id="HASHFORCONTEXT.EXE" DiskId="1" Guid="74531E7A-0D07-4C68-BB83-0DFF3F486AA8" Win64="yes">
+                        <File Id="HASHFORCONTEXT.EXE" Name="HashForContext.exe" Source="..\HashForContext\bin\x64\Release\HashForContext.exe" KeyPath="yes" ReadOnly="yes" />
+                    </Component>
+                    <Component Guid="671CCB3C-65C5-460C-9C73-158662C1E451" Id="REGISTRY" Win64="yes" DiskId="1">
+                        <RegistryKey Root="HKCR" Key="*\shell\HashForContext" />
+                        <RegistryKey Key="*\shell\HashForContext\shell" Root="HKCR" />
+                        <RegistryKey Key="*\shell\HashForContext\shell\*\" Root="HKCR" />
+                        <RegistryKey Key="*\shell\HashForContext\shell\*\command" Root="HKCR" />
+                        <RegistryKey Key="*\shell\HashForContext\shell\MD5" Root="HKCR" />
+                        <RegistryKey Key="*\shell\HashForContext\shell\MD5\command" Root="HKCR" />
+                        <RegistryKey Key="*\shell\HashForContext\shell\SHA1" Root="HKCR" />
+                        <RegistryKey Key="*\shell\HashForContext\shell\SHA1\command" Root="HKCR" />
+                        <RegistryKey Key="*\shell\HashForContext\shell\SHA256" Root="HKCR" />
+                        <RegistryKey Key="*\shell\HashForContext\shell\SHA256\command" Root="HKCR" />
+                        <RegistryKey Key="*\shell\HashForContext\shell\SHA384" Root="HKCR" />
+                        <RegistryKey Key="*\shell\HashForContext\shell\SHA384\command" Root="HKCR" />
+                        <RegistryKey Key="*\shell\HashForContext\shell\SHA512" Root="HKCR" />
+                        <RegistryKey Key="*\shell\HashForContext\shell\SHA512\command" Root="HKCR" />
+                        <RegistryValue Key="*\shell\HashForContext\shell\MD5\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\HashForContext.exe&quot; /f &quot;%1&quot; /h MD5" />
+                        <RegistryValue Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\HashForContext.exe&quot; /f &quot;%1&quot; /h SHA1" Key="*\shell\HashForContext\shell\SHA1\command" />
+                        <RegistryValue Key="*\shell\HashForContext\shell\SHA256\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\HashForContext.exe&quot; /f &quot;%1&quot; /h SHA256" />
+                        <RegistryValue Key="*\shell\HashForContext\shell\SHA384\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\HashForContext.exe&quot; /f &quot;%1&quot; /h SHA384" />
+                        <RegistryValue Key="*\shell\HashForContext\shell\SHA512\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\HashForContext.exe&quot; /f &quot;%1&quot; /h SHA512" />
+                        <RegistryValue Key="*\shell\HashForContext" Name="MUIVerb" Root="HKCR" Type="string" Value="Hash for ContextMenu(&amp;F)" />
+                        <RegistryValue Key="*\shell\HashForContext" Name="SubCommands" Root="HKCR" Type="string" Value="" />
+                        <RegistryValue Key="*\shell\HashForContext\shell\*\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\HashForContext.exe&quot; /f &quot;%1&quot;" />
+                    </Component>
+                </Directory>
+            </Directory>
+            <Directory Id="DesktopFolder" />
+            <Directory Id="ProgramMenuFolder">
+            </Directory>
+        </Directory>
+        <Feature Id="DefaultFeature" Title="Main Feature" Level="1">
+            <ComponentRef Id="HASHFORCONTEXT.EXE" />
+            <ComponentRef Id="HASH.EXE" />
+            <ComponentRef Id="REGISTRY" />
+        </Feature>
+        <UI>
+			<Dialog Id="ReadmeDlg" Width="370" Height="270" Title="[ProductName] セットアップ">
+                <Control Id="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" TabSkip="no" Text="!(loc.LicenseAgreementDlgBannerBitmap)" />
+                <Control Id="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" />
+                <Control Id="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" />
+                <Control Id="Description" Type="Text" X="25" Y="23" Width="340" Height="15" Transparent="yes" NoPrefix="yes" Text="以下のReadmeをお読みください。" />
+                <Control Id="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Transparent="yes" NoPrefix="yes" Text="{\WixUI_Font_Title}Readme" />
+                <Control Id="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Text="!(loc.WixUIBack)" />
+                <Control Id="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Default="yes" Text="!(loc.WixUINext)">
+                    <Publish Event="SpawnWaitDialog" Value="WaitForCostingDlg">!(wix.WixUICostingPopupOptOut) OR CostingComplete = 1</Publish>
+                </Control>
+                <Control Id="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Cancel="yes" Text="!(loc.WixUICancel)">
+                    <Publish Event="SpawnDialog" Value="CancelDlg">1</Publish>
+                </Control>
+                <Control Id="ReadmeText" Type="ScrollableText" X="20" Y="60" Width="330" Height="163" Sunken="yes" TabSkip="no">
+                    <Text SourceFile="Readme.rtf" />
+                </Control>
+            </Dialog>
+        </UI>
+        <UIRef Id="NormalUI" />
+        <Icon Id="DesktopIcon.exe" SourceFile="..\Hash\bin\x64\Release\Hash.exe" />
+        <Icon Id="ProgramMenuIcon.exe" SourceFile="..\Hash\bin\x64\Release\Hash.exe" />
+	    <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
+        <WixVariable Id="WixUIBannerBmp" Value="banner.bmp" />
+        <WixVariable Id="WixUIDialogBmp" Value="dialog.bmp" />
+    </Product>
+</Wix>
