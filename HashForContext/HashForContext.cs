@@ -14,6 +14,10 @@ namespace HashForContext
 {
     public partial class HashForContext : Form
     {
+        public static string Major = "β0";
+        public static string Minor = "3";
+        public static string Build = "0";
+
         public HashForContext()
         {
             InitializeComponent();
@@ -54,6 +58,10 @@ namespace HashForContext
                     HashSelect.Text = Commands[hashtypeno];
                 }
             }
+
+            Text = "Hash for ContextMenu Ver." + Major + "." + Minor + "." + Build;
+            Title.Text = "Hash for ContextMenu Ver." + Major + "." + Minor;
+            Copyright.Text = "Copyright © " + DateTime.Now.Year.ToString() + " Hibi_10000 All rights reserved.";
         }
 
         private void HashReset_Click(object sender, EventArgs e)
