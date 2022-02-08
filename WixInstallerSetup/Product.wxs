@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="C7DD9BD7-0A18-4B96-87CC-94ED12456AAF" Name="Hash計算機" Language="1041" Version="0.1.1" Manufacturer="Hibi_10000" UpgradeCode="A0095842-1829-4499-8997-838DB99CE3F8" Codepage="932">
-        <Package Comments="Hash計算機 Ver.0.1.1 Installer" InstallerVersion="200" Compressed="yes" SummaryCodepage="932" Platform="x64" />
+	<Product Id="C7DD9BD7-0A18-4B96-87CC-94ED12456AAF" Name="HashCalculator" Language="1041" Version="0.3.0" Manufacturer="Hibi_10000" UpgradeCode="A0095842-1829-4499-8997-838DB99CE3F8" Codepage="932">
+        <Package Comments="HashCalculator Ver.0.3.0 Installer" InstallerVersion="200" Compressed="yes" SummaryCodepage="932" Platform="x64" />
         <Media Id="1" Cabinet="simple.cab" EmbedCab="yes" />
-		<MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="[ProductName]の新しいバージョンが既にインストールされています。" />
+		<MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="A new version of [ProductName] is already installed." />
         <Directory Id="TARGETDIR" Name="SourceDir">
             <Directory Id="ProgramFiles64Folder" Name="PFiles">
                 <Directory Id="HASHCALCULATOR" Name="HashCalculator">
                     <Component Id="HASH.EXE" DiskId="1" Guid="B0B89934-3D7F-49CC-A8BE-DB6CEDF489CC" Win64="yes">
                         <File Id="HASH.EXE" Name="Hash.exe" Source="..\Hash\bin\x64\Release\Hash.exe" KeyPath="yes" ReadOnly="yes">
-                            <Shortcut Id="HashDesktopLnk" Name="Hash計算機" Directory="DesktopFolder" Icon="DesktopIcon.exe" IconIndex="0" WorkingDirectory="INSTALLDIR" Advertise="yes" />
-                            <Shortcut Id="HashPMFLnk" Name="Hash計算機" Directory="ProgramMenuFolder" Icon="ProgramMenuIcon.exe" IconIndex="0" Advertise="yes" />
+							<!-- -><Shortcut Id="HashDesktopLnk" Name="Hash計算機" Directory="DesktopFolder" Icon="DesktopIcon.exe" IconIndex="0" WorkingDirectory="INSTALLDIR" Advertise="yes" />
+                            <Shortcut Id="HashPMFLnk" Name="Hash計算機" Directory="ProgramMenuFolder" Icon="ProgramMenuIcon.exe" IconIndex="0" Advertise="yes" /><!- -->
                         </File>
                     </Component>
                     <Component Id="HASHFORCONTEXT.EXE" DiskId="1" Guid="74531E7A-0D07-4C68-BB83-0DFF3F486AA8" Win64="yes">
@@ -42,21 +42,32 @@
                     </Component>
                 </Directory>
             </Directory>
-            <Directory Id="DesktopFolder" />
+            <Directory Id="DesktopFolder">
+				<Component Id="HASHCALCULATOR.LNK.DF" DiskId="1" Guid="92B1091C-2E0F-45EF-A5C3-22D76FD66BD8" Win64="yes">
+					<RegistryValue Root='HKCU' Key='Software\Hibi_10000\HashCalculator' Name='InstallFolder' Value='[INSTALLFOLDER]' Type='string' KeyPath='yes' />
+					<File Id="HASHCALCULATOR.LNK.DF" Name="HashCalculator.lnk" ReadOnly="yes" Source=".\HashCalculator.lnk" />
+				</Component>
+			</Directory>
             <Directory Id="ProgramMenuFolder">
+				<Component Id="HASHCALCULATOR.LNK.PMF" DiskId="1" Guid="DCC6F1D4-B1E8-4C47-AC9F-B5F7362614FD" Win64="yes">
+					<RegistryValue Root='HKCU' Key='Software\Hibi_10000\HashCalculator' Name='InstallFolder' Value='[INSTALLFOLDER]' Type='string' KeyPath='yes' />
+					<File Id="HASHCALCULATOR.LNK.PMF" Name="HashCalculator.lnk" ReadOnly="yes" Source=".\HashCalculator.lnk" />
+				</Component>
             </Directory>
         </Directory>
         <Feature Id="DefaultFeature" Title="Main Feature" Level="1">
             <ComponentRef Id="HASHFORCONTEXT.EXE" />
             <ComponentRef Id="HASH.EXE" />
             <ComponentRef Id="REGISTRY" />
+			<ComponentRef Id="HASHCALCULATOR.LNK.DF" />
+			<ComponentRef Id="HASHCALCULATOR.LNK.PMF" />
         </Feature>
         <UI>
 			<Dialog Id="ReadmeDlg" Width="370" Height="270" Title="[ProductName] セットアップ">
                 <Control Id="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" TabSkip="no" Text="!(loc.LicenseAgreementDlgBannerBitmap)" />
                 <Control Id="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" />
                 <Control Id="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" />
-                <Control Id="Description" Type="Text" X="25" Y="23" Width="340" Height="15" Transparent="yes" NoPrefix="yes" Text="以下のReadmeをお読みください。" />
+                <Control Id="Description" Type="Text" X="25" Y="23" Width="340" Height="15" Transparent="yes" NoPrefix="yes" Text="Please read the Readme below." />
                 <Control Id="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Transparent="yes" NoPrefix="yes" Text="{\WixUI_Font_Title}Readme" />
                 <Control Id="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Text="!(loc.WixUIBack)" />
                 <Control Id="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Default="yes" Text="!(loc.WixUINext)">
@@ -71,8 +82,10 @@
             </Dialog>
         </UI>
         <UIRef Id="NormalUI" />
+		<!-- ->
         <Icon Id="DesktopIcon.exe" SourceFile="..\Hash\bin\x64\Release\Hash.exe" />
         <Icon Id="ProgramMenuIcon.exe" SourceFile="..\Hash\bin\x64\Release\Hash.exe" />
+		<!- -->
 	    <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
         <WixVariable Id="WixUIBannerBmp" Value="banner.bmp" />
         <WixVariable Id="WixUIDialogBmp" Value="dialog.bmp" />
