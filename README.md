@@ -1,7 +1,7 @@
 # HashCalculator [v0.4.0-alpha]  
   
 Hash計算機でHashを計算できます。  
-また、ファイルのを右クリックしてHash for ContextMenu(F)をクリックし、  
+また、ファイルを右クリックしてHash for ContextMenu(F)をクリックし、  
 Hashを選択または*をクリックするとそのファイルのHashを計算できます。  
   
 対応Hashアルゴリズム  
