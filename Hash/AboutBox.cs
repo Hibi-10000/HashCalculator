@@ -19,8 +19,8 @@ namespace Hash
 
         private void AboutBox_Load(object sender, EventArgs e)
         {
-            hashandver.Text = "HashCalculator Ver." + Hash.Major + "." + Hash.Minor;
-            Version.Text = "Version: Ver." + Hash.Major + "." + Hash.Minor + "." + Hash.Build;
+            hashandver.Text = "HashCalculator v" + HashCalculator.Major + "." + HashCalculator.Minor;
+            Version.Text = "Version: v" + HashCalculator.Major + "." + HashCalculator.Minor + "." + HashCalculator.Build;
             Copyright.Text = "Copyright © " + DateTime.Now.Year.ToString() + " Hibi_10000 All rights reserved.";
         }
     }

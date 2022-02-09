@@ -25,7 +25,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>0.3.0.%2a</ApplicationVersion>
+    <ApplicationVersion>0.4.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -72,19 +72,29 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Hash.cs">
+    <Compile Include="HashCalculate.cs" />
+    <Compile Include="HashCalculator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Hash.Designer.cs">
-      <DependentUpon>Hash.cs</DependentUpon>
+    <Compile Include="HashCalculator.Designer.cs">
+      <DependentUpon>HashCalculator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HashForContext.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HashForContext.Designer.cs">
+      <DependentUpon>HashForContext.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Hash.resx">
-      <DependentUpon>Hash.cs</DependentUpon>
+    <EmbeddedResource Include="HashCalculator.resx">
+      <DependentUpon>HashCalculator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HashForContext.resx">
+      <DependentUpon>HashForContext.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -110,9 +120,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 および x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 および x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

@@ -10,4 +10,7 @@
     <FallbackCulture>ja-JP</FallbackCulture>
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <StartArguments>/ctm /f "C:\Windows\System32\cmd.exe" /h MD5</StartArguments>
+  </PropertyGroup>
 </Project>

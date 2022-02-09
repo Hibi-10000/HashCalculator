@@ -1,7 +1,7 @@
 ﻿
 namespace Hash
 {
-    partial class Hash
+    partial class HashCalculator
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,19 +29,21 @@ namespace Hash
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Hash));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HashCalculator));
             this.CopyRight = new System.Windows.Forms.Label();
             this.CreatedBy = new System.Windows.Forms.Label();
             this.DL = new System.Windows.Forms.Label();
             this.DLLink1 = new System.Windows.Forms.LinkLabel();
             this.DropPanel = new System.Windows.Forms.Panel();
             this.DropText = new System.Windows.Forms.Label();
-            this.FileFolderURLBox = new System.Windows.Forms.TextBox();
+            this.HashFileURL = new System.Windows.Forms.TextBox();
             this.SelectFileButton = new System.Windows.Forms.Button();
             this.SelectFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.hashandver = new System.Windows.Forms.Label();
             this.Tab = new System.Windows.Forms.TabControl();
             this.TabHash = new System.Windows.Forms.TabPage();
+            this.oomojicheck = new System.Windows.Forms.CheckBox();
+            this.hyhuncheck = new System.Windows.Forms.CheckBox();
             this.hikaku2copy = new System.Windows.Forms.Button();
             this.hikaku1copy = new System.Windows.Forms.Button();
             this.AllReset = new System.Windows.Forms.Button();
@@ -100,7 +102,7 @@ namespace Hash
             // 
             this.CreatedBy.AutoSize = true;
             this.CreatedBy.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.CreatedBy.Location = new System.Drawing.Point(423, 22);
+            this.CreatedBy.Location = new System.Drawing.Point(423, 24);
             this.CreatedBy.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CreatedBy.Name = "CreatedBy";
             this.CreatedBy.Size = new System.Drawing.Size(126, 15);
@@ -157,18 +159,18 @@ namespace Hash
             this.DropText.TabIndex = 9;
             this.DropText.Text = "①  ここにファイルをドロップ";
             // 
-            // FileFolderURLBox
+            // HashFileURL
             // 
-            this.FileFolderURLBox.Cursor = System.Windows.Forms.Cursors.No;
-            this.FileFolderURLBox.Font = new System.Drawing.Font("Yu Gothic UI", 10F);
-            this.FileFolderURLBox.Location = new System.Drawing.Point(5, 4);
-            this.FileFolderURLBox.Margin = new System.Windows.Forms.Padding(2);
-            this.FileFolderURLBox.Multiline = true;
-            this.FileFolderURLBox.Name = "FileFolderURLBox";
-            this.FileFolderURLBox.ReadOnly = true;
-            this.FileFolderURLBox.Size = new System.Drawing.Size(358, 39);
-            this.FileFolderURLBox.TabIndex = 9;
-            this.FileFolderURLBox.Text = "ファイルのパス";
+            this.HashFileURL.Cursor = System.Windows.Forms.Cursors.No;
+            this.HashFileURL.Font = new System.Drawing.Font("Yu Gothic UI", 10F);
+            this.HashFileURL.Location = new System.Drawing.Point(5, 4);
+            this.HashFileURL.Margin = new System.Windows.Forms.Padding(2);
+            this.HashFileURL.Multiline = true;
+            this.HashFileURL.Name = "HashFileURL";
+            this.HashFileURL.ReadOnly = true;
+            this.HashFileURL.Size = new System.Drawing.Size(358, 39);
+            this.HashFileURL.TabIndex = 9;
+            this.HashFileURL.Text = "ファイルのパス";
             // 
             // SelectFileButton
             // 
@@ -221,6 +223,8 @@ namespace Hash
             // 
             this.TabHash.BackColor = System.Drawing.SystemColors.Window;
             this.TabHash.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.TabHash.Controls.Add(this.oomojicheck);
+            this.TabHash.Controls.Add(this.hyhuncheck);
             this.TabHash.Controls.Add(this.hikaku2copy);
             this.TabHash.Controls.Add(this.hikaku1copy);
             this.TabHash.Controls.Add(this.AllReset);
@@ -229,7 +233,7 @@ namespace Hash
             this.TabHash.Controls.Add(this.HashSelectBox);
             this.TabHash.Controls.Add(this.SelectFileButton);
             this.TabHash.Controls.Add(this.DropPanel);
-            this.TabHash.Controls.Add(this.FileFolderURLBox);
+            this.TabHash.Controls.Add(this.HashFileURL);
             this.TabHash.Cursor = System.Windows.Forms.Cursors.Default;
             this.TabHash.Location = new System.Drawing.Point(4, 24);
             this.TabHash.Margin = new System.Windows.Forms.Padding(2);
@@ -238,6 +242,28 @@ namespace Hash
             this.TabHash.Size = new System.Drawing.Size(548, 279);
             this.TabHash.TabIndex = 0;
             this.TabHash.Text = "Hash計算機";
+            // 
+            // oomojicheck
+            // 
+            this.oomojicheck.AutoSize = true;
+            this.oomojicheck.Location = new System.Drawing.Point(247, 181);
+            this.oomojicheck.Name = "oomojicheck";
+            this.oomojicheck.Size = new System.Drawing.Size(62, 19);
+            this.oomojicheck.TabIndex = 19;
+            this.oomojicheck.Text = "大文字";
+            this.oomojicheck.UseVisualStyleBackColor = true;
+            this.oomojicheck.Visible = false;
+            // 
+            // hyhuncheck
+            // 
+            this.hyhuncheck.AutoSize = true;
+            this.hyhuncheck.Location = new System.Drawing.Point(170, 181);
+            this.hyhuncheck.Name = "hyhuncheck";
+            this.hyhuncheck.Size = new System.Drawing.Size(61, 19);
+            this.hyhuncheck.TabIndex = 18;
+            this.hyhuncheck.Text = "ハイフン";
+            this.hyhuncheck.UseVisualStyleBackColor = true;
+            this.hyhuncheck.Visible = false;
             // 
             // hikaku2copy
             // 
@@ -657,7 +683,7 @@ namespace Hash
             this.richTextBox3.Text = "_________________________________________________________________________________" +
     "____________________________";
             // 
-            // Hash
+            // HashCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -673,11 +699,12 @@ namespace Hash
             this.Controls.Add(this.menu);
             this.Controls.Add(this.richTextBox3);
             this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menu;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
-            this.Name = "Hash";
+            this.Name = "HashCalculator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "HashCalculator Ver.";
             this.Load += new System.EventHandler(this.Hash_Load);
@@ -706,7 +733,7 @@ namespace Hash
         private System.Windows.Forms.LinkLabel DLLink1;
         private System.Windows.Forms.Panel DropPanel;
         private System.Windows.Forms.Label DropText;
-        private System.Windows.Forms.TextBox FileFolderURLBox;
+        private System.Windows.Forms.TextBox HashFileURL;
         private System.Windows.Forms.Button SelectFileButton;
         private System.Windows.Forms.OpenFileDialog SelectFileDialog;
         private System.Windows.Forms.Label hashandver;
@@ -745,6 +772,8 @@ namespace Hash
         private System.Windows.Forms.Label settingslabel;
         private System.Windows.Forms.CheckBox HashForContextEnable;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.CheckBox oomojicheck;
+        private System.Windows.Forms.CheckBox hyhuncheck;
     }
 }
 

@@ -60,9 +60,9 @@ namespace Hash
             this.hashandver.Location = new System.Drawing.Point(11, 8);
             this.hashandver.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.hashandver.Name = "hashandver";
-            this.hashandver.Size = new System.Drawing.Size(370, 48);
+            this.hashandver.Size = new System.Drawing.Size(314, 48);
             this.hashandver.TabIndex = 25;
-            this.hashandver.Text = "HashCalculator Ver.β0.2";
+            this.hashandver.Text = "HashCalculator v0.4";
             // 
             // Version
             // 
@@ -70,9 +70,9 @@ namespace Hash
             this.Version.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
             this.Version.Location = new System.Drawing.Point(8, 71);
             this.Version.Name = "Version";
-            this.Version.Size = new System.Drawing.Size(100, 15);
+            this.Version.Size = new System.Drawing.Size(115, 15);
             this.Version.TabIndex = 27;
-            this.Version.Text = "Version: Ver.β0.2.0";
+            this.Version.Text = "Version: v0.4.0-alpha";
             // 
             // Copyright
             // 
@@ -98,7 +98,7 @@ namespace Hash
             // 
             this.dl.AutoSize = true;
             this.dl.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
-            this.dl.Location = new System.Drawing.Point(12, 125);
+            this.dl.Location = new System.Drawing.Point(8, 125);
             this.dl.Name = "dl";
             this.dl.Size = new System.Drawing.Size(58, 15);
             this.dl.TabIndex = 30;
@@ -138,7 +138,7 @@ namespace Hash
             this.Padding = new System.Windows.Forms.Padding(9, 8, 9, 8);
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Hash計算機について";
+            this.Text = "HashCalculatorについて";
             this.Load += new System.EventHandler(this.AboutBox_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

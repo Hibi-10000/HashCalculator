@@ -6,46 +6,58 @@ using Microsoft.Win32;
 
 namespace Hash
 {
-    public partial class Hash : Form
+    public partial class HashCalculator : Form
     {
 
-        public static string Major = "β0";
-        public static string Minor = "3";
-        public static string Build = "0";
+        public static string Major = "0";
+        public static string Minor = "4";
+        public static string Build = "0-alpha";
 
-        public Hash()
+        public HashCalculator()
         {
             InitializeComponent();
         }
 
         private void Hash_Load(object sender, EventArgs e)
         {
-            string[] Commands = System.Environment.GetCommandLineArgs();
+            string[] Commands = Environment.GetCommandLineArgs();
             for (int i = 0; i < Commands.Length; i++) {
-
+                if (Commands[i] == "/f")
+                {
+                    //File (/f "{FileURL}")
+                    int urlno = i + 1;
+                    HashFileURL.Text = Commands[urlno];
+                }
+                else if (Commands[i] == "/h")
+                {
+                    //HashType (/h MD5)
+                    int hashtypeno = i + 1;
+                    HashSelectBox.Text = Commands[hashtypeno];
+                }
+                else if (Commands[i] == "/d")
+                {
+                    //Debug (/d)
+                    HashFileURL.ReadOnly = false;
+                }
             }
 
             RegistryKey root = RegistryKey.OpenBaseKey(RegistryHive.ClassesRoot, RegistryView.Registry64);
             String regPath = @"*\shell\HashForContext";
             RegistryKey regKey = null;
-            try
-            {
+            try {
                 regKey = root.OpenSubKey(regPath);
-                if (regKey != null)
-                {
+                if (regKey != null) {
                     HashForContextEnable.Checked = true;
-                }
-                else
-                {
+                } else {
                     HashForContextEnable.Checked = false;
                 }
             }
             catch (Exception) { HashForContextEnable.Checked = false; }
             finally { if (regKey != null) { regKey.Close(); } }
 
-            Text = "HashCalculator Ver." + Major + "." + Minor + "." + Build;
-            hashandver.Text = "HashCalculator Ver." + Major + "." + Minor;
-            HashVer.Text = "HashCalculator Ver." + Major + "." + Minor + "." + Build;
+            Text = "HashCalculator v" + Major + "." + Minor + "." + Build;
+            hashandver.Text = "HashCalculator v" + Major + "." + Minor;
+            HashVer.Text = "HashCalculator v" + Major + "." + Minor + "." + Build;
             CopyRight.Text = "Copyright © " + DateTime.Now.Year.ToString() + " Hibi_10000 All rights reserved.";
         }
 
@@ -58,12 +70,12 @@ namespace Hash
 
         private void DropPanel_DragDrop(object sender, DragEventArgs e)
         {
-            FileFolderURLBox.Text = null;
+            HashFileURL.Text = null;
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             for (int i = 0; i < files.Length; i++)
             {
                 string fileName = files[i];
-                FileFolderURLBox.Text += fileName;
+                HashFileURL.Text += fileName;
             }
         }
 
@@ -84,8 +96,8 @@ namespace Hash
             DialogResult dr = SelectFileDialog.ShowDialog();
             if (dr == System.Windows.Forms.DialogResult.OK)
             {
-                FileFolderURLBox.Text = null;
-                FileFolderURLBox.Text = SelectFileDialog.FileName;
+                HashFileURL.Text = null;
+                HashFileURL.Text = SelectFileDialog.FileName;
             }
         }
 
@@ -113,7 +125,7 @@ namespace Hash
         private void AllReset_Click(object sender, EventArgs e)
         {
             HashABox.Text = "ここにHash値が表示されます";
-            FileFolderURLBox.Text = "ファイルのパス";
+            HashFileURL.Text = "ファイルのパス";
             HashSelectBox.Text = "②Hashを選択";
         }
 
@@ -126,73 +138,31 @@ namespace Hash
 
         private void HashSelectBox_Set(object sender, EventArgs e)
         {
-            if (FileFolderURLBox.Text == "ファイルのパス")
-            {
+            if (HashFileURL.Text == "ファイルのパス" || HashFileURL.Text == "") {
                 HashABox.Text = "ここにHash値が表示されます";
-                goto switchend;
+            } else {
+                string filePath = HashFileURL.Text;
+                switch (HashSelectBox.SelectedIndex) {
+                    case 1:
+                        HashABox.Text = HashCalculate.GetHashMD5(filePath);
+                        break;
+                    case 2:
+                        HashABox.Text = HashCalculate.GetHashSHA1(filePath);
+                        break;
+                    case 3:
+                        HashABox.Text = HashCalculate.GetHashSHA256(filePath);
+                        break;
+                    case 4:
+                        HashABox.Text = HashCalculate.GetHashSHA384(filePath);
+                        break;
+                    case 5:
+                        HashABox.Text = HashCalculate.GetHashSHA512(filePath);
+                        break;
+                    default:
+                        HashABox.Text = "ここにHash値が表示されます";
+                        break;
+                }
             }
-            string filePath = FileFolderURLBox.Text;
-            HashABox.Text = null;
-            switch (HashSelectBox.SelectedIndex)
-            {
-                case 1:
-                    HashABox.Text = GetHashMD5(filePath);
-                    goto switchend;
-                case 2:
-                    HashABox.Text = GetHashSHA1(filePath);
-                    goto switchend;
-                case 3:
-                    HashABox.Text = GetHashSHA256(filePath);
-                    goto switchend;
-                case 4:
-                    HashABox.Text = GetHashSHA384(filePath);
-                    goto switchend;
-                case 5:
-                    HashABox.Text = GetHashSHA512(filePath);
-                    goto switchend;
-                default:
-                    HashABox.Text = "ここにHash値が表示されます";
-                    goto switchend;
-            }
-        switchend:;
-
-        }
-
-        public static string GetHashSHA256(string filePath)
-        {
-            HashAlgorithm hashProvider = new SHA256CryptoServiceProvider();
-            var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-            var bs = hashProvider.ComputeHash(fs);
-            return BitConverter.ToString(bs).ToLower().Replace("-", "");
-        }
-
-        public static string GetHashSHA1(string filePath)
-        {
-            HashAlgorithm hashProvider = new SHA1CryptoServiceProvider();
-            var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-            var bs = hashProvider.ComputeHash(fs);
-            return BitConverter.ToString(bs).ToLower().Replace("-", "");
-        }
-        public static string GetHashMD5(string filePath)
-        {
-            HashAlgorithm hashProvider = new MD5CryptoServiceProvider();
-            var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-            var bs = hashProvider.ComputeHash(fs);
-            return BitConverter.ToString(bs).ToLower().Replace("-", "");
-        }
-        public static string GetHashSHA384(string filePath)
-        {
-            HashAlgorithm hashProvider = new SHA384CryptoServiceProvider();
-            var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-            var bs = hashProvider.ComputeHash(fs);
-            return BitConverter.ToString(bs).ToLower().Replace("-", "");
-        }
-        public static string GetHashSHA512(string filePath)
-        {
-            HashAlgorithm hashProvider = new SHA512CryptoServiceProvider();
-            var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-            var bs = hashProvider.ComputeHash(fs);
-            return BitConverter.ToString(bs).ToLower().Replace("-", "");
         }
 
         private void hikaku1copy_Click(object sender, EventArgs e)
@@ -252,12 +222,12 @@ namespace Hash
 
         private void menuHelpReadme_Click(object sender, EventArgs e)
         {
-            Tab.SelectedIndex = 3;
+            Tab.SelectedIndex = 2;
         }
 
         private void menuFileSettings_Click(object sender, EventArgs e)
         {
-            Tab.SelectedIndex = 4;
+            Tab.SelectedIndex = 3;
         }
 
         private void HashForContextEnable_CheckedChanged(object sender, EventArgs e)
