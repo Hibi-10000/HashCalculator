@@ -32,7 +32,7 @@ namespace Hash
                 {
                     //HashType (/h MD5)
                     int hashtypeno = i + 1;
-                    HashSelect.Text = Commands[hashtypeno];
+                    HashSelecter.Text = Commands[hashtypeno];
                 }
                 else if (Commands[i] == "/d")
                 {
@@ -49,16 +49,16 @@ namespace Hash
 
         private void HashReset_Click(object sender, EventArgs e)
         {
-            HashTextBox.Text = "ここにHash値が表示されます";
-            HashSelect.Text = "Hashを選択してください";
+            HashOutputBox.Text = "ここにHash値が表示されます";
+            HashSelecter.Text = "Hashを選択してください";
         }
 
         private void HashCopy_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(HashSelect.Text);
-            Clipboard.SetText(HashTextBox.Text);
-            HashTextBox.Focus();
-            HashTextBox.SelectAll();
+            Clipboard.SetText(HashSelecter.Text);
+            Clipboard.SetText(HashOutputBox.Text);
+            HashOutputBox.Focus();
+            HashOutputBox.SelectAll();
         }
 
         private void DLGithub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -68,34 +68,55 @@ namespace Hash
             System.Diagnostics.Process.Start(startInfo);
         }
 
-        private void HashSelect_SelectedIndexChanged(object sender, EventArgs e)
+        private void HashSelecter_Set(object sender, EventArgs e)
         {
             if (HashFileURL.Text != "ファイルのパス(※これが表示されている場合はバグまたは起動方法が間違っています)" && HashFileURL.Text != "")
             {
                 string filePath = HashFileURL.Text;
-                switch (HashSelect.SelectedIndex)
+                switch (HashSelecter.Text)
                 {
-                    case 1:
-                        HashTextBox.Text = HashCalculate.GetHashMD5(filePath);
+                    case "MD5":
+                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.MD5, filePath, UpperCheck.Checked, HihunCheck.Checked);
                         break;
-                    case 2:
-                        HashTextBox.Text = HashCalculate.GetHashSHA1(filePath);
+                    case "SHA1":
+                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.SHA1, filePath, UpperCheck.Checked, HihunCheck.Checked);
                         break;
-                    case 3:
-                        HashTextBox.Text = HashCalculate.GetHashSHA256(filePath);
+                    case "SHA256":
+                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.SHA256, filePath, UpperCheck.Checked, HihunCheck.Checked);
                         break;
-                    case 4:
-                        HashTextBox.Text = HashCalculate.GetHashSHA384(filePath);
+                    case "SHA384":
+                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.SHA384, filePath, UpperCheck.Checked, HihunCheck.Checked);
                         break;
-                    case 5:
-                        HashTextBox.Text = HashCalculate.GetHashSHA512(filePath);
+                    case "SHA512":
+                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.SHA512, filePath, UpperCheck.Checked, HihunCheck.Checked);
+                        break;
+                    case "CRC16-IBM":
+                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC16_IBM, filePath, UpperCheck.Checked, HihunCheck.Checked);
+                        break;
+                    case "CRC16-CCITT":
+                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC16_CCITT, filePath, UpperCheck.Checked, HihunCheck.Checked);
+                        break;
+                    case "CRC32":
+                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC32, filePath, UpperCheck.Checked, HihunCheck.Checked);
+                        break;
+                    case "CRC64-ECMA-182":
+                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC64_ECMA_182, filePath, UpperCheck.Checked, HihunCheck.Checked);
+                        break;
+                    case "CRC64-ISO":
+                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC64_ISO, filePath, UpperCheck.Checked, HihunCheck.Checked);
+                        break;
+                    case "MACTripleDES":
+                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.MACTripleDES, filePath, UpperCheck.Checked, HihunCheck.Checked);
+                        break;
+                    case "RIPEMD160":
+                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.RIPEMD160, filePath, UpperCheck.Checked, HihunCheck.Checked);
                         break;
                     default:
-                        HashTextBox.Text = "ここにHash値が表示されます";
+                        HashOutputBox.Text = "ここにHash値が表示されます";
                         break;
                 }
             } else {
-                HashTextBox.Text = "ここにHash値が表示されます";
+                HashOutputBox.Text = "ここにHash値が表示されます";
             }
         }
 
@@ -104,8 +125,8 @@ namespace Hash
             var startInfo = new System.Diagnostics.ProcessStartInfo(System.Reflection.Assembly.GetExecutingAssembly().Location);
             startInfo.UseShellExecute = true;
             string option = "";
-            if (HashFileURL.Text != "ファイルのパス(※これが表示されている場合はバグまたは起動方法が間違っています)") option = option + "/f " + HashFileURL.Text + " ";
-            if (HashSelect.Text != "Hashを選択してください") option = option + "/h " + HashSelect.Text + " ";
+            if (HashFileURL.Text != "ファイルのパス(※これが表示されている場合はバグまたは起動方法が間違っています)") option = option + "/f \"" + HashFileURL.Text + "\" ";
+            if (HashSelecter.Text != "Hashを選択してください") option = option + "/h " + HashSelecter.Text + " ";
             if (DebugUse.Visible == true) option = option + "/d";
             startInfo.Arguments = option;
             System.Diagnostics.Process.Start(startInfo);

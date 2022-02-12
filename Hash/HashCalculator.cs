@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Security.Cryptography;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
@@ -10,7 +9,7 @@ namespace Hash
     {
 
         public static string Major = "0";
-        public static string Minor = "4";
+        public static string Minor = "5";
         public static string Build = "0-alpha";
 
         public HashCalculator()
@@ -32,12 +31,12 @@ namespace Hash
                 {
                     //HashType (/h MD5)
                     int hashtypeno = i + 1;
-                    HashSelectBox.Text = Commands[hashtypeno];
+                    HashSelecter.Text = Commands[hashtypeno];
                 }
                 else if (Commands[i] == "/d")
                 {
                     //Debug (/d)
-                    HashFileURL.ReadOnly = false;
+                    //HashFileURL.ReadOnly = false;
                 }
             }
 
@@ -99,6 +98,7 @@ namespace Hash
                 HashFileURL.Text = null;
                 HashFileURL.Text = SelectFileDialog.FileName;
             }
+            HashSelecter_Set(sender, e);
         }
 
         /*
@@ -124,42 +124,63 @@ namespace Hash
 
         private void AllReset_Click(object sender, EventArgs e)
         {
-            HashABox.Text = "ここにHash値が表示されます";
+            HashOutputBox.Text = "ここにHash値が表示されます";
             HashFileURL.Text = "ファイルのパス";
-            HashSelectBox.Text = "②Hashを選択";
+            HashSelecter.Text = "②Hashを選択";
         }
 
         private void HashCopy_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(HashABox.Text);
-            HashABox.Focus();
-            HashABox.SelectAll();
+            Clipboard.SetText(HashOutputBox.Text);
+            HashOutputBox.Focus();
+            HashOutputBox.SelectAll();
         }
 
-        private void HashSelectBox_Set(object sender, EventArgs e)
+        private void HashSelecter_Set(object sender, EventArgs e)
         {
             if (HashFileURL.Text == "ファイルのパス" || HashFileURL.Text == "") {
-                HashABox.Text = "ここにHash値が表示されます";
+                HashOutputBox.Text = "ここにHash値が表示されます";
             } else {
                 string filePath = HashFileURL.Text;
-                switch (HashSelectBox.SelectedIndex) {
-                    case 1:
-                        HashABox.Text = HashCalculate.GetHashMD5(filePath);
+                switch (HashSelecter.Text) {
+                    case "MD5":
+                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.MD5, filePath, UpperCheck.Checked, HihunCheck.Checked);
                         break;
-                    case 2:
-                        HashABox.Text = HashCalculate.GetHashSHA1(filePath);
+                    case "SHA1":
+                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.SHA1, filePath, UpperCheck.Checked, HihunCheck.Checked);
                         break;
-                    case 3:
-                        HashABox.Text = HashCalculate.GetHashSHA256(filePath);
+                    case "SHA256":
+                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.SHA256, filePath, UpperCheck.Checked, HihunCheck.Checked);
                         break;
-                    case 4:
-                        HashABox.Text = HashCalculate.GetHashSHA384(filePath);
+                    case "SHA384":
+                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.SHA384, filePath, UpperCheck.Checked, HihunCheck.Checked);
                         break;
-                    case 5:
-                        HashABox.Text = HashCalculate.GetHashSHA512(filePath);
+                    case "SHA512":
+                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.SHA512, filePath, UpperCheck.Checked, HihunCheck.Checked);
+                        break;
+                    case "CRC16-IBM":
+                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC16_IBM, filePath, UpperCheck.Checked, HihunCheck.Checked);
+                        break;
+                    case "CRC16-CCITT":
+                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC16_CCITT, filePath, UpperCheck.Checked, HihunCheck.Checked);
+                        break;
+                    case "CRC32":
+                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC32, filePath, UpperCheck.Checked, HihunCheck.Checked);
+                        break;
+                    case "CRC64-ECMA-182":
+                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC64_ECMA_182, filePath, UpperCheck.Checked, HihunCheck.Checked);
+                        break;
+                    case "CRC64-ISO":
+                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC64_ISO, filePath, UpperCheck.Checked, HihunCheck.Checked);
+                        break;
+                    case "MACTripleDES":
+                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.MACTripleDES, filePath, UpperCheck.Checked, HihunCheck.Checked);
+                        break;
+                    case "RIPEMD160":
+                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.RIPEMD160, filePath, UpperCheck.Checked, HihunCheck.Checked);
                         break;
                     default:
-                        HashABox.Text = "ここにHash値が表示されます";
+                        HashOutputBox.Text = "ここにHash値が表示されます";
                         break;
                 }
             }
@@ -167,14 +188,14 @@ namespace Hash
 
         private void hikaku1copy_Click(object sender, EventArgs e)
         {
-            hikaku1hash.Text = HashABox.Text;
-            hikaku1hashtype.Text = HashSelectBox.Text;
+            hikaku1hash.Text = HashOutputBox.Text;
+            hikaku1hashtype.Text = HashSelecter.Text;
         }
 
         private void hikaku2copy_Click(object sender, EventArgs e)
         {
-            hikaku2hash.Text = HashABox.Text;
-            hikaku2hashtype.Text = HashSelectBox.Text;
+            hikaku2hash.Text = HashOutputBox.Text;
+            hikaku2hashtype.Text = HashSelecter.Text;
         }
 
         private void hikakub_Click(object sender, EventArgs e)
@@ -232,34 +253,37 @@ namespace Hash
 
         private void HashForContextEnable_CheckedChanged(object sender, EventArgs e)
         {
-            if (HashForContextEnable.Checked == false)
+            if (Tab.SelectedIndex == 3)
             {
-                var startInfo = new System.Diagnostics.ProcessStartInfo("C:\\Program Files\\HashCalculator\\Hash.exe");
-                startInfo.UseShellExecute = true;
-                startInfo.Verb = "runas";
-                startInfo.Arguments = "/rd";
-                if (File.Exists("C:\\Program Files\\HashCalculator\\Hash.exe"))
+                if (HashForContextEnable.Checked == false)
                 {
-                    System.Diagnostics.Process.Start(startInfo);
+                    var startInfo = new System.Diagnostics.ProcessStartInfo("C:\\Program Files\\HashCalculator\\Hash.exe");
+                    startInfo.UseShellExecute = true;
+                    startInfo.Verb = "runas";
+                    startInfo.Arguments = "/rd";
+                    if (File.Exists("C:\\Program Files\\HashCalculator\\Hash.exe"))
+                    {
+                        System.Diagnostics.Process.Start(startInfo);
+                    }
+                    else
+                    {
+                        HashForContextEnable.Checked = true;
+                    }
                 }
                 else
                 {
-                    HashForContextEnable.Checked = true;
-                }
-            }
-            else
-            {
-                var startInfo = new System.Diagnostics.ProcessStartInfo("C:\\Program Files\\HashCalculator\\Hash.exe");
-                startInfo.UseShellExecute = true;
-                startInfo.Verb = "runas";
-                startInfo.Arguments = "/rc";
-                if (File.Exists("C:\\Program Files\\HashCalculator\\Hash.exe"))
-                {
-                    System.Diagnostics.Process.Start(startInfo);
-                }
-                else
-                {
-                    HashForContextEnable.Checked = false;
+                    var startInfo = new System.Diagnostics.ProcessStartInfo("C:\\Program Files\\HashCalculator\\Hash.exe");
+                    startInfo.UseShellExecute = true;
+                    startInfo.Verb = "runas";
+                    startInfo.Arguments = "/rc";
+                    if (File.Exists("C:\\Program Files\\HashCalculator\\Hash.exe"))
+                    {
+                        System.Diagnostics.Process.Start(startInfo);
+                    }
+                    else
+                    {
+                        HashForContextEnable.Checked = false;
+                    }
                 }
             }
         }

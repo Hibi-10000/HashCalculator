@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="C7DD9BD7-0A18-4B96-87CC-94ED12456AAF" Name="HashCalculator" Language="1041" Version="0.4.0" Manufacturer="Hibi_10000" UpgradeCode="94DC48E7-3507-4E74-BD75-1D3EB0D9232E" Codepage="932">
-        <Package Comments="HashCalculator v0.4.0-alpha Installer" InstallerVersion="200" Compressed="yes" SummaryCodepage="932" Platform="x64" />
+	<Product Id="C7DD9BD7-0A18-4B96-87CC-94ED12456AAF" Name="HashCalculator" Language="1033" Version="0.5.0" Manufacturer="Hibi_10000" UpgradeCode="5819D880-FA18-4BFC-A330-EF383512EC3A" Codepage="932">
+        <Package Comments="HashCalculator v0.5.0-alpha Installer" InstallerVersion="200" Compressed="yes" SummaryCodepage="932" Platform="x64" />
         <Media Id="1" Cabinet="simple.cab" EmbedCab="yes" />
 		<MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="A new version of [ProductName] is already installed." />
         <Directory Id="TARGETDIR" Name="SourceDir">
@@ -33,11 +33,20 @@
                         <RegistryKey Key="*\shell\HashForContext\shell\SHA384\command" Root="HKCR" />
                         <RegistryKey Key="*\shell\HashForContext\shell\SHA512" Root="HKCR" />
                         <RegistryKey Key="*\shell\HashForContext\shell\SHA512\command" Root="HKCR" />
+						<RegistryKey Key="*\shell\HashForContext\shell\CRC16-IBM" Root="HKCR" />
+						<RegistryKey Key="*\shell\HashForContext\shell\CRC16-IBM\command" Root="HKCR" />
+						<RegistryKey Key="*\shell\HashForContext\shell\CRC32" Root="HKCR" />
+						<RegistryKey Key="*\shell\HashForContext\shell\CRC32\command" Root="HKCR" />
+						<RegistryKey Key="*\shell\HashForContext\shell\CRC64-ECMA-182" Root="HKCR" />
+						<RegistryKey Key="*\shell\HashForContext\shell\CRC64-ECMA-182\command" Root="HKCR" />
                         <RegistryValue Key="*\shell\HashForContext\shell\MD5\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\Hash.exe&quot; /ctm /f &quot;%1&quot; /h MD5" />
                         <RegistryValue Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\Hash.exe&quot; /ctm /f &quot;%1&quot; /h SHA1" Key="*\shell\HashForContext\shell\SHA1\command" />
                         <RegistryValue Key="*\shell\HashForContext\shell\SHA256\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\Hash.exe&quot; /ctm /f &quot;%1&quot; /h SHA256" />
                         <RegistryValue Key="*\shell\HashForContext\shell\SHA384\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\Hash.exe&quot; /ctm /f &quot;%1&quot; /h SHA384" />
                         <RegistryValue Key="*\shell\HashForContext\shell\SHA512\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\Hash.exe&quot; /ctm /f &quot;%1&quot; /h SHA512" />
+						<RegistryValue Key="*\shell\HashForContext\shell\CRC16-IBM\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\Hash.exe&quot; /ctm /f &quot;%1&quot; /h CRC16-IBM" />
+						<RegistryValue Key="*\shell\HashForContext\shell\CRC32\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\Hash.exe&quot; /ctm /f &quot;%1&quot; /h CRC32" />
+						<RegistryValue Key="*\shell\HashForContext\shell\CRC64-ECMA-182\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\Hash.exe&quot; /ctm /f &quot;%1&quot; /h CRC64-ECMA-182" />
                         <RegistryValue Key="*\shell\HashForContext" Name="MUIVerb" Root="HKCR" Type="string" Value="Hash for ContextMenu(&amp;F)" />
                         <RegistryValue Key="*\shell\HashForContext" Name="SubCommands" Root="HKCR" Type="string" Value="" />
                         <RegistryValue Key="*\shell\HashForContext\shell\*\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\Hash.exe&quot; /ctm /f &quot;%1&quot;" />
@@ -67,7 +76,7 @@
 			<ComponentRef Id="HASHCALCULATOR.LNK.PMF" />
         </Feature>
         <UI>
-			<Dialog Id="ReadmeDlg" Width="370" Height="270" Title="[ProductName] Setup">
+			<Dialog Id="ReadmeDlg" Width="370" Height="270" Title="!(loc.CustomizeDlg_Title)">
                 <Control Id="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" TabSkip="no" Text="!(loc.LicenseAgreementDlgBannerBitmap)" />
                 <Control Id="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" />
                 <Control Id="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" />
