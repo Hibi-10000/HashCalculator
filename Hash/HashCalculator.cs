@@ -10,7 +10,7 @@ namespace Hash
 
         public static string Major = "0";
         public static string Minor = "5";
-        public static string Build = "0-alpha";
+        public static string Build = "1-alpha";
 
         public HashCalculator()
         {
@@ -257,7 +257,7 @@ namespace Hash
             {
                 if (HashForContextEnable.Checked == false)
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo("C:\\Program Files\\HashCalculator\\Hash.exe");
+                    var startInfo = new System.Diagnostics.ProcessStartInfo(Application.ExecutablePath);
                     startInfo.UseShellExecute = true;
                     startInfo.Verb = "runas";
                     startInfo.Arguments = "/rd";
@@ -272,7 +272,9 @@ namespace Hash
                 }
                 else
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo("C:\\Program Files\\HashCalculator\\Hash.exe");
+
+                    //var startInfo = new System.Diagnostics.ProcessStartInfo("C:\\Program Files\\HashCalculator\\Hash.exe");
+                    var startInfo = new System.Diagnostics.ProcessStartInfo(Application.ExecutablePath);
                     startInfo.UseShellExecute = true;
                     startInfo.Verb = "runas";
                     startInfo.Arguments = "/rc";

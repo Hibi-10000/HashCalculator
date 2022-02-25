@@ -121,7 +121,7 @@
     <value>17, 17</value>
   </metadata>
   <data name="Readme.Text" xml:space="preserve">
-    <value>HashCalculator[v0.5.0-alpha]
+    <value>HashCalculator[v0.5.1-alpha]
 
 Hash計算機でHashを計算できます。
 また、ファイルを右クリックしてHash for ContextMenu(F)をクリックし、
@@ -164,6 +164,7 @@ Ver.β0.3.0 .NET Framework 4.7.2 -&gt; 4.8  + メンテナンス
 v0.4.0-alpha バージョン表記を変更 + Hash.exeとHashForContext.exeを統一 + バグ修正
 v0.5.0-alpha Hashアルゴリズムを追加(CRC系統・MACTripleDES・RIPEMD160)
                       + 大文字・ハイフンオプションを追加 + バグ修正 + メンテナンス
+v0.5.1-alpha バグ修正
 
 Copyright © 2022 Hibi_10000 All rights reserved.</value>
   </data>

@@ -31,9 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HashCalculator));
             this.menu = new System.Windows.Forms.MenuStrip();
             this.fileFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.readmeRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
@@ -46,7 +46,7 @@
             this.helpHToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
-            this.menu.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menu.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.menu.Size = new System.Drawing.Size(800, 24);
             this.menu.TabIndex = 0;
             this.menu.Text = "menu";
@@ -60,6 +60,18 @@
             this.fileFToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.fileFToolStripMenuItem.Text = "File(&F)";
             // 
+            // settingToolStripMenuItem
+            // 
+            this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
+            this.settingToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.settingToolStripMenuItem.Text = "Setting(&S)";
+            // 
+            // exitEToolStripMenuItem
+            // 
+            this.exitEToolStripMenuItem.Name = "exitEToolStripMenuItem";
+            this.exitEToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.exitEToolStripMenuItem.Text = "Exit(&E)";
+            // 
             // helpHToolStripMenuItem
             // 
             this.helpHToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -69,28 +81,16 @@
             this.helpHToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.helpHToolStripMenuItem.Text = "Help(&H)";
             // 
-            // settingToolStripMenuItem
-            // 
-            this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
-            this.settingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.settingToolStripMenuItem.Text = "Setting(&S)";
-            // 
-            // exitEToolStripMenuItem
-            // 
-            this.exitEToolStripMenuItem.Name = "exitEToolStripMenuItem";
-            this.exitEToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exitEToolStripMenuItem.Text = "Exit(&E)";
-            // 
             // readmeRToolStripMenuItem
             // 
             this.readmeRToolStripMenuItem.Name = "readmeRToolStripMenuItem";
-            this.readmeRToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.readmeRToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.readmeRToolStripMenuItem.Text = "Readme(&R)";
             // 
             // aboutAToolStripMenuItem
             // 
             this.aboutAToolStripMenuItem.Name = "aboutAToolStripMenuItem";
-            this.aboutAToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutAToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.aboutAToolStripMenuItem.Text = "About(&A)";
             // 
             // HashCalculator

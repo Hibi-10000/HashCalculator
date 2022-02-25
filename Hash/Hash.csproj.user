@@ -11,6 +11,6 @@
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <StartArguments>/ctm /d /f "C:\Windows\System32\cmd.exe" /h MD5</StartArguments>
+    <StartArguments>/d /f "C:\Windows\System32\cmd.exe" /h MD5</StartArguments>
   </PropertyGroup>
 </Project>

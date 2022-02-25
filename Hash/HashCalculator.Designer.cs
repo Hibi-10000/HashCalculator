@@ -618,7 +618,7 @@ namespace Hash
             this.menuFileSettings.Name = "menuFileSettings";
             this.menuFileSettings.ShortcutKeyDisplayString = "S";
             this.menuFileSettings.ShowShortcutKeys = false;
-            this.menuFileSettings.Size = new System.Drawing.Size(180, 22);
+            this.menuFileSettings.Size = new System.Drawing.Size(106, 22);
             this.menuFileSettings.Text = "設定(&S)";
             this.menuFileSettings.Click += new System.EventHandler(this.menuFileSettings_Click);
             // 
@@ -651,7 +651,7 @@ namespace Hash
             this.menuHelpReadme.Name = "menuHelpReadme";
             this.menuHelpReadme.ShortcutKeyDisplayString = "R";
             this.menuHelpReadme.ShowShortcutKeys = false;
-            this.menuHelpReadme.Size = new System.Drawing.Size(180, 22);
+            this.menuHelpReadme.Size = new System.Drawing.Size(150, 22);
             this.menuHelpReadme.Text = "Readme(&R)";
             this.menuHelpReadme.Click += new System.EventHandler(this.menuHelpReadme_Click);
             // 
@@ -661,7 +661,7 @@ namespace Hash
             this.menuHelpVer.Name = "menuHelpVer";
             this.menuHelpVer.ShortcutKeyDisplayString = "V";
             this.menuHelpVer.ShowShortcutKeys = false;
-            this.menuHelpVer.Size = new System.Drawing.Size(180, 22);
+            this.menuHelpVer.Size = new System.Drawing.Size(150, 22);
             this.menuHelpVer.Text = "バーション情報(&V)";
             this.menuHelpVer.Click += new System.EventHandler(this.menuHelpVer_Click);
             // 

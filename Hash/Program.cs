@@ -36,55 +36,55 @@ namespace Hash
                         regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\*");
                         regkey.Close();
                         regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\*\command");
-                        regkey.SetValue("@", "\"C:\\Program Files\\HashCalculator\\Hash.exe\" /ctm /f \"%1\"", Microsoft.Win32.RegistryValueKind.String);
+                        regkey.SetValue("", "\"C:\\Program Files\\HashCalculator\\Hash.exe\" /ctm /f \"%1\"", Microsoft.Win32.RegistryValueKind.String);
                         regkey.Close();
 
                         regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\MD5");
                         regkey.Close();
                         regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\MD5\command");
-                        regkey.SetValue("@", "\"C:\\Program Files\\HashCalculator\\Hash.exe\" /ctm /f \"%1\" /h MD5", Microsoft.Win32.RegistryValueKind.String);
+                        regkey.SetValue("", "\"C:\\Program Files\\HashCalculator\\Hash.exe\" /ctm /f \"%1\" /h MD5", Microsoft.Win32.RegistryValueKind.String);
                         regkey.Close();
 
                         regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\SHA1");
                         regkey.Close();
                         regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\SHA1\command");
-                        regkey.SetValue("@", "\"C:\\Program Files\\HashCalculator\\Hash.exe\" /ctm /f \"%1\" /h SHA1", Microsoft.Win32.RegistryValueKind.String);
+                        regkey.SetValue("", "\"C:\\Program Files\\HashCalculator\\Hash.exe\" /ctm /f \"%1\" /h SHA1", Microsoft.Win32.RegistryValueKind.String);
                         regkey.Close();
 
                         regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\SHA256");
                         regkey.Close();
                         regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\SHA256\command");
-                        regkey.SetValue("@", "\"C:\\Program Files\\HashCalculator\\Hash.exe\" /ctm /f \"%1\" /h SHA256", Microsoft.Win32.RegistryValueKind.String);
+                        regkey.SetValue("", "\"C:\\Program Files\\HashCalculator\\Hash.exe\" /ctm /f \"%1\" /h SHA256", Microsoft.Win32.RegistryValueKind.String);
                         regkey.Close();
 
                         regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\SHA384");
                         regkey.Close();
                         regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\SHA384\command");
-                        regkey.SetValue("@", "\"C:\\Program Files\\HashCalculator\\Hash.exe\" /ctm /f \"%1\" /h SHA384", Microsoft.Win32.RegistryValueKind.String);
+                        regkey.SetValue("", "\"C:\\Program Files\\HashCalculator\\Hash.exe\" /ctm /f \"%1\" /h SHA384", Microsoft.Win32.RegistryValueKind.String);
                         regkey.Close();
 
                         regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\SHA512");
                         regkey.Close();
                         regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\SHA512\command");
-                        regkey.SetValue("@", "\"C:\\Program Files\\HashCalculator\\Hash.exe\" /ctm /f \"%1\" /h SHA512", Microsoft.Win32.RegistryValueKind.String);
+                        regkey.SetValue("", "\"C:\\Program Files\\HashCalculator\\Hash.exe\" /ctm /f \"%1\" /h SHA512", Microsoft.Win32.RegistryValueKind.String);
                         regkey.Close();
 
                         regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\CRC16-IBM");
                         regkey.Close();
                         regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\CRC16-IBM\command");
-                        regkey.SetValue("@", "\"C:\\Program Files\\HashCalculator\\Hash.exe\" /ctm /f \"%1\" /h CRC16-IBM", Microsoft.Win32.RegistryValueKind.String);
+                        regkey.SetValue("", "\"C:\\Program Files\\HashCalculator\\Hash.exe\" /ctm /f \"%1\" /h CRC16-IBM", Microsoft.Win32.RegistryValueKind.String);
                         regkey.Close();
 
                         regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\CRC32");
                         regkey.Close();
                         regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\CRC32\command");
-                        regkey.SetValue("@", "\"C:\\Program Files\\HashCalculator\\Hash.exe\" /ctm /f \"%1\" /h CRC32", Microsoft.Win32.RegistryValueKind.String);
+                        regkey.SetValue("", "\"C:\\Program Files\\HashCalculator\\Hash.exe\" /ctm /f \"%1\" /h CRC32", Microsoft.Win32.RegistryValueKind.String);
                         regkey.Close();
 
                         regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\CRC64-ECMA-182");
                         regkey.Close();
                         regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\CRC64-ECMA-182\command");
-                        regkey.SetValue("@", "\"C:\\Program Files\\HashCalculator\\Hash.exe\" /ctm /f \"%1\" /h CRC64-ECMA-182", Microsoft.Win32.RegistryValueKind.String);
+                        regkey.SetValue("", "\"C:\\Program Files\\HashCalculator\\Hash.exe\" /ctm /f \"%1\" /h CRC64-ECMA-182", Microsoft.Win32.RegistryValueKind.String);
                         regkey.Close();
 
                         Environment.ExitCode = 0;

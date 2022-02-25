@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="C7DD9BD7-0A18-4B96-87CC-94ED12456AAF" Name="HashCalculator" Language="1033" Version="0.5.0" Manufacturer="Hibi_10000" UpgradeCode="5819D880-FA18-4BFC-A330-EF383512EC3A" Codepage="932">
-        <Package Comments="HashCalculator v0.5.0-alpha Installer" InstallerVersion="200" Compressed="yes" SummaryCodepage="932" Platform="x64" />
+	<Product Id="C7DD9BD7-0A18-4B96-87CC-94ED12456AAF" Name="HashCalculator" Language="1033" Version="0.5.1" Manufacturer="Hibi_10000" UpgradeCode="B0C53B72-7CDE-4EF9-A3F8-0838292E7197" Codepage="932">
+        <Package Comments="HashCalculator v0.5.1-alpha Installer" InstallerVersion="200" Compressed="yes" SummaryCodepage="932" Platform="x64" />
         <Media Id="1" Cabinet="simple.cab" EmbedCab="yes" />
 		<MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="A new version of [ProductName] is already installed." />
         <Directory Id="TARGETDIR" Name="SourceDir">
