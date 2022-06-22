@@ -42,4 +42,4 @@ v0.4.0-alpha バージョン表記を変更 + Hash.exeとHashForContext.exeを�
 v0.5.0-alpha Hashアルゴリズムを追加(CRC系統・MACTripleDES・RIPEMD160)  
              + 大文字・ハイフンオプションを追加 + バグ修正 + メンテナンス  
   
-Copyright © 2022 Hibi_10000 All rights reserved.  
+Copyright © 2021-2022 Hibi_10000
