@@ -1,4 +1,4 @@
-# HashCalculator [v0.5.1-alpha]  
+# HashCalculator [v0.5.2-alpha]  
   
 Hash計算機でHashを計算できます。  
 また、ファイルを右クリックしてHash for ContextMenu(F)をクリックし、  
@@ -43,4 +43,5 @@ v0.4.0-alpha バージョン表記を変更 + Hash.exeとHashForContext.exeを�
 v0.5.0-alpha Hashアルゴリズムを追加(CRC系統・MACTripleDES・RIPEMD160)  
              + 大文字・ハイフンオプションを追加 + バグ修正 + メンテナンス  
 v0.5.1-alpha 設定の"HashForContextを有効にする"が正常に動作しない問題を修正
+v0.5.2-alpha ライセンスの表示を修正 Githubへのリンクを更新
 

@@ -10,7 +10,7 @@ namespace Hash
 
         public static string Major = "0";
         public static string Minor = "5";
-        public static string Build = "1";
+        public static string Build = "2";
         public static string Ch = "-alpha";
 
         public HashCalculator()
