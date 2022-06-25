@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CA5351: 破られた暗号アルゴリズムを使用しない
+dotnet_diagnostic.CA5351.severity = none

@@ -1,4 +1,5 @@
-﻿namespace Hash_NET6
+﻿
+namespace Hash_NET6
 {
     partial class HashCalculator
     {
@@ -29,81 +30,721 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HashCalculator));
+            this.CopyRight = new System.Windows.Forms.Label();
+            this.CreatedBy = new System.Windows.Forms.Label();
+            this.DL = new System.Windows.Forms.Label();
+            this.DLLink1 = new System.Windows.Forms.LinkLabel();
+            this.DropPanel = new System.Windows.Forms.Panel();
+            this.DropText = new System.Windows.Forms.Label();
+            this.SelectFileButton = new System.Windows.Forms.Button();
+            this.HashFileURL = new System.Windows.Forms.TextBox();
+            this.SelectFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.hashandver = new System.Windows.Forms.Label();
+            this.Tab = new System.Windows.Forms.TabControl();
+            this.TabHash = new System.Windows.Forms.TabPage();
+            this.UpperCheck = new System.Windows.Forms.CheckBox();
+            this.AllReset = new System.Windows.Forms.Button();
+            this.HihunCheck = new System.Windows.Forms.CheckBox();
+            this.hikaku2copy = new System.Windows.Forms.Button();
+            this.hikaku1copy = new System.Windows.Forms.Button();
+            this.HashCopy = new System.Windows.Forms.Button();
+            this.HashOutputBox = new System.Windows.Forms.TextBox();
+            this.HashSelecter = new System.Windows.Forms.ComboBox();
+            this.TabHashhikaku = new System.Windows.Forms.TabPage();
+            this.hikakureset = new System.Windows.Forms.Button();
+            this.hikakukekka = new System.Windows.Forms.Label();
+            this.hikakub = new System.Windows.Forms.Button();
+            this.paste1cb = new System.Windows.Forms.Button();
+            this.paste2cb = new System.Windows.Forms.Button();
+            this.hikaku2t = new System.Windows.Forms.Label();
+            this.hikaku1t = new System.Windows.Forms.Label();
+            this.hikaku2hashtype = new System.Windows.Forms.ComboBox();
+            this.hikaku1hashtype = new System.Windows.Forms.ComboBox();
+            this.hikaku2hash = new System.Windows.Forms.TextBox();
+            this.hikaku1hash = new System.Windows.Forms.TextBox();
+            this.TabReadme = new System.Windows.Forms.TabPage();
+            this.Readme = new System.Windows.Forms.RichTextBox();
+            this.TabSettings = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.HashForContextEnable = new System.Windows.Forms.CheckBox();
+            this.settingslabel = new System.Windows.Forms.Label();
+            this.HashVer = new System.Windows.Forms.Label();
+            this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuFileSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuFIleExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuHelpReadme = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuHelpVer = new System.Windows.Forms.ToolStripMenuItem();
             this.menu = new System.Windows.Forms.MenuStrip();
-            this.fileFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.readmeRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.DropPanel.SuspendLayout();
+            this.Tab.SuspendLayout();
+            this.TabHash.SuspendLayout();
+            this.TabHashhikaku.SuspendLayout();
+            this.TabReadme.SuspendLayout();
+            this.TabSettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
+            // CopyRight
+            // 
+            this.CopyRight.AutoSize = true;
+            this.CopyRight.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CopyRight.Location = new System.Drawing.Point(382, 482);
+            this.CopyRight.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.CopyRight.Name = "CopyRight";
+            this.CopyRight.Size = new System.Drawing.Size(228, 15);
+            this.CopyRight.TabIndex = 3;
+            this.CopyRight.Text = "Copyright © 2021-2022 Hibi_10000  GPLv3";
+            // 
+            // CreatedBy
+            // 
+            this.CreatedBy.AutoSize = true;
+            this.CreatedBy.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CreatedBy.Location = new System.Drawing.Point(493, 30);
+            this.CreatedBy.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.CreatedBy.Name = "CreatedBy";
+            this.CreatedBy.Size = new System.Drawing.Size(126, 15);
+            this.CreatedBy.TabIndex = 5;
+            this.CreatedBy.Text = "CreatedBy : Hibi_10000";
+            // 
+            // DL
+            // 
+            this.DL.AutoSize = true;
+            this.DL.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DL.Location = new System.Drawing.Point(553, 49);
+            this.DL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.DL.Name = "DL";
+            this.DL.Size = new System.Drawing.Size(27, 15);
+            this.DL.TabIndex = 6;
+            this.DL.Text = "DL :";
+            // 
+            // DLLink1
+            // 
+            this.DLLink1.AutoSize = true;
+            this.DLLink1.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DLLink1.Location = new System.Drawing.Point(587, 49);
+            this.DLLink1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.DLLink1.Name = "DLLink1";
+            this.DLLink1.Size = new System.Drawing.Size(45, 15);
+            this.DLLink1.TabIndex = 7;
+            this.DLLink1.TabStop = true;
+            this.DLLink1.Text = "GitHub";
+            this.DLLink1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.DLLink1_LinkClicked);
+            // 
+            // DropPanel
+            // 
+            this.DropPanel.AllowDrop = true;
+            this.DropPanel.BackColor = System.Drawing.SystemColors.Window;
+            this.DropPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DropPanel.Controls.Add(this.DropText);
+            this.DropPanel.Controls.Add(this.SelectFileButton);
+            this.DropPanel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.DropPanel.Location = new System.Drawing.Point(6, 59);
+            this.DropPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.DropPanel.Name = "DropPanel";
+            this.DropPanel.Size = new System.Drawing.Size(623, 133);
+            this.DropPanel.TabIndex = 8;
+            this.DropPanel.DragDrop += new System.Windows.Forms.DragEventHandler(this.DropPanel_DragDrop);
+            this.DropPanel.DragEnter += new System.Windows.Forms.DragEventHandler(this.DropPanel_DragEnter);
+            // 
+            // DropText
+            // 
+            this.DropText.AutoSize = true;
+            this.DropText.Font = new System.Drawing.Font("Yu Gothic UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DropText.Location = new System.Drawing.Point(30, 36);
+            this.DropText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.DropText.Name = "DropText";
+            this.DropText.Size = new System.Drawing.Size(289, 37);
+            this.DropText.TabIndex = 9;
+            this.DropText.Text = "①  ここにファイルをドロップ";
+            // 
+            // SelectFileButton
+            // 
+            this.SelectFileButton.Font = new System.Drawing.Font("游ゴシック Medium", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SelectFileButton.Location = new System.Drawing.Point(372, 36);
+            this.SelectFileButton.Margin = new System.Windows.Forms.Padding(2);
+            this.SelectFileButton.Name = "SelectFileButton";
+            this.SelectFileButton.Size = new System.Drawing.Size(202, 49);
+            this.SelectFileButton.TabIndex = 10;
+            this.SelectFileButton.Text = " ①  Select File    ";
+            this.SelectFileButton.UseVisualStyleBackColor = true;
+            this.SelectFileButton.Click += new System.EventHandler(this.SelectFileButton_Click);
+            // 
+            // HashFileURL
+            // 
+            this.HashFileURL.Cursor = System.Windows.Forms.Cursors.No;
+            this.HashFileURL.Font = new System.Drawing.Font("Yu Gothic UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.HashFileURL.Location = new System.Drawing.Point(6, 5);
+            this.HashFileURL.Margin = new System.Windows.Forms.Padding(2);
+            this.HashFileURL.Multiline = true;
+            this.HashFileURL.Name = "HashFileURL";
+            this.HashFileURL.ReadOnly = true;
+            this.HashFileURL.Size = new System.Drawing.Size(622, 48);
+            this.HashFileURL.TabIndex = 9;
+            this.HashFileURL.Text = "ファイルのパス";
+            // 
+            // SelectFileDialog
+            // 
+            this.SelectFileDialog.InitialDirectory = "@C:\\";
+            this.SelectFileDialog.SupportMultiDottedExtensions = true;
+            this.SelectFileDialog.Title = "ファイルを選択";
+            // 
+            // hashandver
+            // 
+            this.hashandver.AutoSize = true;
+            this.hashandver.BackColor = System.Drawing.SystemColors.Window;
+            this.hashandver.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.hashandver.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.hashandver.ForeColor = System.Drawing.Color.Lime;
+            this.hashandver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.hashandver.Location = new System.Drawing.Point(8, 34);
+            this.hashandver.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.hashandver.Name = "hashandver";
+            this.hashandver.Size = new System.Drawing.Size(274, 47);
+            this.hashandver.TabIndex = 12;
+            this.hashandver.Text = "HashCalculator v";
+            // 
+            // Tab
+            // 
+            this.Tab.Controls.Add(this.TabHash);
+            this.Tab.Controls.Add(this.TabHashhikaku);
+            this.Tab.Controls.Add(this.TabReadme);
+            this.Tab.Controls.Add(this.TabSettings);
+            this.Tab.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Tab.Location = new System.Drawing.Point(4, 96);
+            this.Tab.Margin = new System.Windows.Forms.Padding(2);
+            this.Tab.Name = "Tab";
+            this.Tab.SelectedIndex = 0;
+            this.Tab.Size = new System.Drawing.Size(649, 384);
+            this.Tab.TabIndex = 13;
+            // 
+            // TabHash
+            // 
+            this.TabHash.BackColor = System.Drawing.SystemColors.Window;
+            this.TabHash.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.TabHash.Controls.Add(this.UpperCheck);
+            this.TabHash.Controls.Add(this.AllReset);
+            this.TabHash.Controls.Add(this.HihunCheck);
+            this.TabHash.Controls.Add(this.hikaku2copy);
+            this.TabHash.Controls.Add(this.hikaku1copy);
+            this.TabHash.Controls.Add(this.HashCopy);
+            this.TabHash.Controls.Add(this.HashOutputBox);
+            this.TabHash.Controls.Add(this.HashSelecter);
+            this.TabHash.Controls.Add(this.DropPanel);
+            this.TabHash.Controls.Add(this.HashFileURL);
+            this.TabHash.Location = new System.Drawing.Point(4, 24);
+            this.TabHash.Margin = new System.Windows.Forms.Padding(2);
+            this.TabHash.Name = "TabHash";
+            this.TabHash.Padding = new System.Windows.Forms.Padding(2);
+            this.TabHash.Size = new System.Drawing.Size(641, 356);
+            this.TabHash.TabIndex = 0;
+            this.TabHash.Text = "Hash計算機";
+            // 
+            // UpperCheck
+            // 
+            this.UpperCheck.AutoSize = true;
+            this.UpperCheck.Location = new System.Drawing.Point(169, 201);
+            this.UpperCheck.Margin = new System.Windows.Forms.Padding(4);
+            this.UpperCheck.Name = "UpperCheck";
+            this.UpperCheck.Size = new System.Drawing.Size(62, 19);
+            this.UpperCheck.TabIndex = 19;
+            this.UpperCheck.Text = "大文字";
+            this.UpperCheck.UseVisualStyleBackColor = true;
+            this.UpperCheck.CheckedChanged += new System.EventHandler(this.HashSelecter_Set);
+            // 
+            // AllReset
+            // 
+            this.AllReset.Font = new System.Drawing.Font("游ゴシック Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.AllReset.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.AllReset.Location = new System.Drawing.Point(426, 198);
+            this.AllReset.Margin = new System.Windows.Forms.Padding(2);
+            this.AllReset.Name = "AllReset";
+            this.AllReset.Size = new System.Drawing.Size(203, 31);
+            this.AllReset.TabIndex = 15;
+            this.AllReset.Text = "値をリセット";
+            this.AllReset.UseVisualStyleBackColor = true;
+            this.AllReset.Click += new System.EventHandler(this.AllReset_Click);
+            // 
+            // HihunCheck
+            // 
+            this.HihunCheck.AutoSize = true;
+            this.HihunCheck.Location = new System.Drawing.Point(248, 201);
+            this.HihunCheck.Margin = new System.Windows.Forms.Padding(4);
+            this.HihunCheck.Name = "HihunCheck";
+            this.HihunCheck.Size = new System.Drawing.Size(61, 19);
+            this.HihunCheck.TabIndex = 18;
+            this.HihunCheck.Text = "ハイフン";
+            this.HihunCheck.UseVisualStyleBackColor = true;
+            this.HihunCheck.CheckedChanged += new System.EventHandler(this.HashSelecter_Set);
+            // 
+            // hikaku2copy
+            // 
+            this.hikaku2copy.Location = new System.Drawing.Point(427, 314);
+            this.hikaku2copy.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.hikaku2copy.Name = "hikaku2copy";
+            this.hikaku2copy.Size = new System.Drawing.Size(202, 29);
+            this.hikaku2copy.TabIndex = 17;
+            this.hikaku2copy.Text = "比較②にコピー";
+            this.hikaku2copy.UseVisualStyleBackColor = true;
+            this.hikaku2copy.Click += new System.EventHandler(this.hikaku2copy_Click);
+            // 
+            // hikaku1copy
+            // 
+            this.hikaku1copy.Location = new System.Drawing.Point(215, 314);
+            this.hikaku1copy.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.hikaku1copy.Name = "hikaku1copy";
+            this.hikaku1copy.Size = new System.Drawing.Size(205, 29);
+            this.hikaku1copy.TabIndex = 16;
+            this.hikaku1copy.Text = "比較①にコピー";
+            this.hikaku1copy.UseVisualStyleBackColor = true;
+            this.hikaku1copy.Click += new System.EventHandler(this.hikaku1copy_Click);
+            // 
+            // HashCopy
+            // 
+            this.HashCopy.Font = new System.Drawing.Font("游ゴシック Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.HashCopy.Location = new System.Drawing.Point(6, 314);
+            this.HashCopy.Margin = new System.Windows.Forms.Padding(2);
+            this.HashCopy.Name = "HashCopy";
+            this.HashCopy.Size = new System.Drawing.Size(203, 29);
+            this.HashCopy.TabIndex = 14;
+            this.HashCopy.Text = "Hash値をコピー";
+            this.HashCopy.UseVisualStyleBackColor = true;
+            this.HashCopy.Click += new System.EventHandler(this.HashCopy_Click);
+            // 
+            // HashOutputBox
+            // 
+            this.HashOutputBox.Font = new System.Drawing.Font("Yu Gothic UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.HashOutputBox.Location = new System.Drawing.Point(7, 234);
+            this.HashOutputBox.Margin = new System.Windows.Forms.Padding(2);
+            this.HashOutputBox.Multiline = true;
+            this.HashOutputBox.Name = "HashOutputBox";
+            this.HashOutputBox.ReadOnly = true;
+            this.HashOutputBox.Size = new System.Drawing.Size(622, 74);
+            this.HashOutputBox.TabIndex = 13;
+            this.HashOutputBox.Text = "ここにHash値が表示されます";
+            // 
+            // HashSelecter
+            // 
+            this.HashSelecter.Font = new System.Drawing.Font("游ゴシック", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.HashSelecter.FormattingEnabled = true;
+            this.HashSelecter.Items.AddRange(new object[] {
+            "②Hashを選択",
+            "MD5",
+            "SHA1",
+            "SHA256",
+            "SHA384",
+            "SHA512",
+            "CRC16-IBM",
+            "CRC32",
+            "CRC64-ECMA-182"});
+            this.HashSelecter.Location = new System.Drawing.Point(6, 198);
+            this.HashSelecter.Margin = new System.Windows.Forms.Padding(2);
+            this.HashSelecter.Name = "HashSelecter";
+            this.HashSelecter.Size = new System.Drawing.Size(157, 25);
+            this.HashSelecter.TabIndex = 12;
+            this.HashSelecter.Text = "②Hashを選択";
+            this.HashSelecter.SelectedIndexChanged += new System.EventHandler(this.HashSelecter_Set);
+            this.HashSelecter.TextChanged += new System.EventHandler(this.HashSelecter_Set);
+            // 
+            // TabHashhikaku
+            // 
+            this.TabHashhikaku.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.TabHashhikaku.Controls.Add(this.hikakureset);
+            this.TabHashhikaku.Controls.Add(this.hikakukekka);
+            this.TabHashhikaku.Controls.Add(this.hikakub);
+            this.TabHashhikaku.Controls.Add(this.paste1cb);
+            this.TabHashhikaku.Controls.Add(this.paste2cb);
+            this.TabHashhikaku.Controls.Add(this.hikaku2t);
+            this.TabHashhikaku.Controls.Add(this.hikaku1t);
+            this.TabHashhikaku.Controls.Add(this.hikaku2hashtype);
+            this.TabHashhikaku.Controls.Add(this.hikaku1hashtype);
+            this.TabHashhikaku.Controls.Add(this.hikaku2hash);
+            this.TabHashhikaku.Controls.Add(this.hikaku1hash);
+            this.TabHashhikaku.Font = new System.Drawing.Font("游ゴシック Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TabHashhikaku.Location = new System.Drawing.Point(4, 24);
+            this.TabHashhikaku.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.TabHashhikaku.Name = "TabHashhikaku";
+            this.TabHashhikaku.Size = new System.Drawing.Size(641, 356);
+            this.TabHashhikaku.TabIndex = 3;
+            this.TabHashhikaku.Text = "Hash比較";
+            this.TabHashhikaku.UseVisualStyleBackColor = true;
+            // 
+            // hikakureset
+            // 
+            this.hikakureset.Font = new System.Drawing.Font("游ゴシック Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.hikakureset.ForeColor = System.Drawing.Color.Red;
+            this.hikakureset.Location = new System.Drawing.Point(546, 2);
+            this.hikakureset.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.hikakureset.Name = "hikakureset";
+            this.hikakureset.Size = new System.Drawing.Size(83, 29);
+            this.hikakureset.TabIndex = 10;
+            this.hikakureset.Text = "リセット";
+            this.hikakureset.UseVisualStyleBackColor = true;
+            this.hikakureset.Click += new System.EventHandler(this.hikakureset_Click);
+            // 
+            // hikakukekka
+            // 
+            this.hikakukekka.AutoSize = true;
+            this.hikakukekka.Font = new System.Drawing.Font("Yu Gothic UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.hikakukekka.Location = new System.Drawing.Point(121, 252);
+            this.hikakukekka.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.hikakukekka.Name = "hikakukekka";
+            this.hikakukekka.Size = new System.Drawing.Size(145, 37);
+            this.hikakukekka.TabIndex = 9;
+            this.hikakukekka.Text = "比較 : 結果";
+            // 
+            // hikakub
+            // 
+            this.hikakub.Font = new System.Drawing.Font("游ゴシック Medium", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.hikakub.Location = new System.Drawing.Point(430, 229);
+            this.hikakub.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.hikakub.Name = "hikakub";
+            this.hikakub.Size = new System.Drawing.Size(198, 112);
+            this.hikakub.TabIndex = 8;
+            this.hikakub.Text = "比較";
+            this.hikakub.UseVisualStyleBackColor = true;
+            this.hikakub.Click += new System.EventHandler(this.hikakub_Click);
+            // 
+            // paste1cb
+            // 
+            this.paste1cb.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.paste1cb.Location = new System.Drawing.Point(132, 59);
+            this.paste1cb.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.paste1cb.Name = "paste1cb";
+            this.paste1cb.Size = new System.Drawing.Size(241, 30);
+            this.paste1cb.TabIndex = 7;
+            this.paste1cb.Text = "クリップボードから①へ貼り付け";
+            this.paste1cb.UseVisualStyleBackColor = true;
+            this.paste1cb.Click += new System.EventHandler(this.paste1cb_Click);
+            // 
+            // paste2cb
+            // 
+            this.paste2cb.Location = new System.Drawing.Point(132, 155);
+            this.paste2cb.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.paste2cb.Name = "paste2cb";
+            this.paste2cb.Size = new System.Drawing.Size(241, 30);
+            this.paste2cb.TabIndex = 6;
+            this.paste2cb.Text = "クリップボードから②へ貼り付け";
+            this.paste2cb.UseVisualStyleBackColor = true;
+            this.paste2cb.Click += new System.EventHandler(this.paste2cb_Click);
+            // 
+            // hikaku2t
+            // 
+            this.hikaku2t.AutoSize = true;
+            this.hikaku2t.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.hikaku2t.Location = new System.Drawing.Point(4, 130);
+            this.hikaku2t.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.hikaku2t.Name = "hikaku2t";
+            this.hikaku2t.Size = new System.Drawing.Size(45, 18);
+            this.hikaku2t.TabIndex = 5;
+            this.hikaku2t.Text = "比較②";
+            // 
+            // hikaku1t
+            // 
+            this.hikaku1t.AutoSize = true;
+            this.hikaku1t.BackColor = System.Drawing.SystemColors.Window;
+            this.hikaku1t.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.hikaku1t.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.hikaku1t.Location = new System.Drawing.Point(4, 34);
+            this.hikaku1t.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.hikaku1t.Name = "hikaku1t";
+            this.hikaku1t.Size = new System.Drawing.Size(45, 18);
+            this.hikaku1t.TabIndex = 4;
+            this.hikaku1t.Text = "比較①";
+            // 
+            // hikaku2hashtype
+            // 
+            this.hikaku2hashtype.AutoCompleteCustomSource.AddRange(new string[] {
+            "比較②",
+            "MD5",
+            "SHA1",
+            "SHA256",
+            "SHA384",
+            "SHA512"});
+            this.hikaku2hashtype.Font = new System.Drawing.Font("游ゴシック Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.hikaku2hashtype.FormattingEnabled = true;
+            this.hikaku2hashtype.Items.AddRange(new object[] {
+            "比較②",
+            "MD5",
+            "SHA1",
+            "SHA256",
+            "SHA384",
+            "SHA512"});
+            this.hikaku2hashtype.Location = new System.Drawing.Point(4, 155);
+            this.hikaku2hashtype.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.hikaku2hashtype.Name = "hikaku2hashtype";
+            this.hikaku2hashtype.Size = new System.Drawing.Size(121, 24);
+            this.hikaku2hashtype.TabIndex = 3;
+            this.hikaku2hashtype.Text = "比較②";
+            // 
+            // hikaku1hashtype
+            // 
+            this.hikaku1hashtype.Font = new System.Drawing.Font("游ゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.hikaku1hashtype.FormattingEnabled = true;
+            this.hikaku1hashtype.Items.AddRange(new object[] {
+            "比較①",
+            "MD5",
+            "SHA1",
+            "SHA256",
+            "SHA384",
+            "SHA512"});
+            this.hikaku1hashtype.Location = new System.Drawing.Point(4, 59);
+            this.hikaku1hashtype.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.hikaku1hashtype.Name = "hikaku1hashtype";
+            this.hikaku1hashtype.Size = new System.Drawing.Size(121, 24);
+            this.hikaku1hashtype.TabIndex = 2;
+            this.hikaku1hashtype.Text = "比較①";
+            // 
+            // hikaku2hash
+            // 
+            this.hikaku2hash.Location = new System.Drawing.Point(4, 190);
+            this.hikaku2hash.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.hikaku2hash.Name = "hikaku2hash";
+            this.hikaku2hash.Size = new System.Drawing.Size(625, 27);
+            this.hikaku2hash.TabIndex = 1;
+            // 
+            // hikaku1hash
+            // 
+            this.hikaku1hash.Location = new System.Drawing.Point(4, 94);
+            this.hikaku1hash.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.hikaku1hash.Name = "hikaku1hash";
+            this.hikaku1hash.Size = new System.Drawing.Size(625, 27);
+            this.hikaku1hash.TabIndex = 0;
+            // 
+            // TabReadme
+            // 
+            this.TabReadme.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.TabReadme.Controls.Add(this.Readme);
+            this.TabReadme.Location = new System.Drawing.Point(4, 24);
+            this.TabReadme.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.TabReadme.Name = "TabReadme";
+            this.TabReadme.Size = new System.Drawing.Size(641, 356);
+            this.TabReadme.TabIndex = 4;
+            this.TabReadme.Text = "Readme";
+            this.TabReadme.UseVisualStyleBackColor = true;
+            // 
+            // Readme
+            // 
+            this.Readme.BackColor = System.Drawing.SystemColors.Window;
+            this.Readme.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Readme.Font = new System.Drawing.Font("Yu Gothic UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Readme.Location = new System.Drawing.Point(1, 1);
+            this.Readme.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.Readme.Name = "Readme";
+            this.Readme.ReadOnly = true;
+            this.Readme.Size = new System.Drawing.Size(632, 340);
+            this.Readme.TabIndex = 0;
+            this.Readme.Text = resources.GetString("Readme.Text");
+            // 
+            // TabSettings
+            // 
+            this.TabSettings.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.TabSettings.Controls.Add(this.pictureBox1);
+            this.TabSettings.Controls.Add(this.HashForContextEnable);
+            this.TabSettings.Controls.Add(this.settingslabel);
+            this.TabSettings.Location = new System.Drawing.Point(4, 24);
+            this.TabSettings.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.TabSettings.Name = "TabSettings";
+            this.TabSettings.Size = new System.Drawing.Size(641, 356);
+            this.TabSettings.TabIndex = 5;
+            this.TabSettings.Text = "設定";
+            this.TabSettings.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox1.ErrorImage = null;
+            this.pictureBox1.Image = global::Hash.Properties.Resources.UAC;
+            this.pictureBox1.InitialImage = null;
+            this.pictureBox1.Location = new System.Drawing.Point(85, 75);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(19, 20);
+            this.pictureBox1.TabIndex = 19;
+            this.pictureBox1.TabStop = false;
+            // 
+            // HashForContextEnable
+            // 
+            this.HashForContextEnable.AutoSize = true;
+            this.HashForContextEnable.Checked = true;
+            this.HashForContextEnable.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.HashForContextEnable.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.HashForContextEnable.Location = new System.Drawing.Point(69, 75);
+            this.HashForContextEnable.Margin = new System.Windows.Forms.Padding(4);
+            this.HashForContextEnable.Name = "HashForContextEnable";
+            this.HashForContextEnable.Size = new System.Drawing.Size(191, 19);
+            this.HashForContextEnable.TabIndex = 18;
+            this.HashForContextEnable.Text = "    Hash for Context を有効にする";
+            this.HashForContextEnable.UseVisualStyleBackColor = true;
+            this.HashForContextEnable.CheckedChanged += new System.EventHandler(this.HashForContextEnable_CheckedChanged);
+            // 
+            // settingslabel
+            // 
+            this.settingslabel.AutoSize = true;
+            this.settingslabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.settingslabel.Font = new System.Drawing.Font("Yu Gothic UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.settingslabel.Location = new System.Drawing.Point(0, 0);
+            this.settingslabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.settingslabel.Name = "settingslabel";
+            this.settingslabel.Size = new System.Drawing.Size(73, 39);
+            this.settingslabel.TabIndex = 17;
+            this.settingslabel.Text = "設定";
+            // 
+            // HashVer
+            // 
+            this.HashVer.AutoSize = true;
+            this.HashVer.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.HashVer.Location = new System.Drawing.Point(0, 482);
+            this.HashVer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.HashVer.Name = "HashVer";
+            this.HashVer.Size = new System.Drawing.Size(96, 15);
+            this.HashVer.TabIndex = 14;
+            this.HashVer.Text = "HashCalculator v";
+            // 
+            // menuFile
+            // 
+            this.menuFile.AutoSize = false;
+            this.menuFile.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.menuFile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.menuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuFileSettings,
+            this.menuFIleExit});
+            this.menuFile.Name = "menuFile";
+            this.menuFile.ShortcutKeyDisplayString = "";
+            this.menuFile.ShowShortcutKeys = false;
+            this.menuFile.Size = new System.Drawing.Size(65, 20);
+            this.menuFile.Text = "ファイル(&F)";
+            // 
+            // menuFileSettings
+            // 
+            this.menuFileSettings.BackColor = System.Drawing.SystemColors.Window;
+            this.menuFileSettings.Name = "menuFileSettings";
+            this.menuFileSettings.ShortcutKeyDisplayString = "S";
+            this.menuFileSettings.ShowShortcutKeys = false;
+            this.menuFileSettings.Size = new System.Drawing.Size(106, 22);
+            this.menuFileSettings.Text = "設定(&S)";
+            this.menuFileSettings.Click += new System.EventHandler(this.menuFileSettings_Click);
+            // 
+            // menuFIleExit
+            // 
+            this.menuFIleExit.AutoSize = false;
+            this.menuFIleExit.BackColor = System.Drawing.SystemColors.Window;
+            this.menuFIleExit.Name = "menuFIleExit";
+            this.menuFIleExit.ShortcutKeyDisplayString = "X";
+            this.menuFIleExit.ShowShortcutKeys = false;
+            this.menuFIleExit.Size = new System.Drawing.Size(180, 22);
+            this.menuFIleExit.Text = "終了(&X)";
+            this.menuFIleExit.Click += new System.EventHandler(this.menuFIleExit_Click);
+            // 
+            // menuHelp
+            // 
+            this.menuHelp.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.menuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuHelpReadme,
+            this.menuHelpVer});
+            this.menuHelp.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.menuHelp.Name = "menuHelp";
+            this.menuHelp.ShortcutKeyDisplayString = "H";
+            this.menuHelp.Size = new System.Drawing.Size(65, 20);
+            this.menuHelp.Text = "ヘルプ(&H)";
+            // 
+            // menuHelpReadme
+            // 
+            this.menuHelpReadme.BackColor = System.Drawing.SystemColors.Window;
+            this.menuHelpReadme.Name = "menuHelpReadme";
+            this.menuHelpReadme.ShortcutKeyDisplayString = "R";
+            this.menuHelpReadme.ShowShortcutKeys = false;
+            this.menuHelpReadme.Size = new System.Drawing.Size(150, 22);
+            this.menuHelpReadme.Text = "Readme(&R)";
+            this.menuHelpReadme.Click += new System.EventHandler(this.menuHelpReadme_Click);
+            // 
+            // menuHelpVer
+            // 
+            this.menuHelpVer.BackColor = System.Drawing.SystemColors.Window;
+            this.menuHelpVer.Name = "menuHelpVer";
+            this.menuHelpVer.ShortcutKeyDisplayString = "V";
+            this.menuHelpVer.ShowShortcutKeys = false;
+            this.menuHelpVer.Size = new System.Drawing.Size(150, 22);
+            this.menuHelpVer.Text = "バーション情報(&V)";
+            this.menuHelpVer.Click += new System.EventHandler(this.menuHelpVer_Click);
+            // 
             // menu
             // 
+            this.menu.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.menu.Dock = System.Windows.Forms.DockStyle.None;
+            this.menu.GripMargin = new System.Windows.Forms.Padding(2);
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileFToolStripMenuItem,
-            this.helpHToolStripMenuItem});
-            this.menu.Location = new System.Drawing.Point(0, 0);
+            this.menuFile,
+            this.menuHelp});
+            this.menu.Location = new System.Drawing.Point(-6, -2);
             this.menu.Name = "menu";
-            this.menu.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.menu.Size = new System.Drawing.Size(800, 24);
-            this.menu.TabIndex = 0;
+            this.menu.Size = new System.Drawing.Size(138, 24);
+            this.menu.TabIndex = 15;
             this.menu.Text = "menu";
             // 
-            // fileFToolStripMenuItem
+            // richTextBox3
             // 
-            this.fileFToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.settingToolStripMenuItem,
-            this.exitEToolStripMenuItem});
-            this.fileFToolStripMenuItem.Name = "fileFToolStripMenuItem";
-            this.fileFToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
-            this.fileFToolStripMenuItem.Text = "File(&F)";
+            this.richTextBox3.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.richTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox3.Font = new System.Drawing.Font("Yu Gothic UI", 1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.richTextBox3.Location = new System.Drawing.Point(0, 0);
+            this.richTextBox3.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.Size = new System.Drawing.Size(707, 25);
+            this.richTextBox3.TabIndex = 16;
+            this.richTextBox3.Text = "_________________________________________________________________________________" +
+    "____________________________";
             // 
-            // settingToolStripMenuItem
+            // richTextBox1
             // 
-            this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
-            this.settingToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.settingToolStripMenuItem.Text = "Setting(&S)";
-            // 
-            // exitEToolStripMenuItem
-            // 
-            this.exitEToolStripMenuItem.Name = "exitEToolStripMenuItem";
-            this.exitEToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.exitEToolStripMenuItem.Text = "Exit(&E)";
-            // 
-            // helpHToolStripMenuItem
-            // 
-            this.helpHToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.readmeRToolStripMenuItem,
-            this.aboutAToolStripMenuItem});
-            this.helpHToolStripMenuItem.Name = "helpHToolStripMenuItem";
-            this.helpHToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.helpHToolStripMenuItem.Text = "Help(&H)";
-            // 
-            // readmeRToolStripMenuItem
-            // 
-            this.readmeRToolStripMenuItem.Name = "readmeRToolStripMenuItem";
-            this.readmeRToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
-            this.readmeRToolStripMenuItem.Text = "Readme(&R)";
-            // 
-            // aboutAToolStripMenuItem
-            // 
-            this.aboutAToolStripMenuItem.Name = "aboutAToolStripMenuItem";
-            this.aboutAToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
-            this.aboutAToolStripMenuItem.Text = "About(&A)";
+            this.richTextBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Location = new System.Drawing.Point(0, 25);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(204, 42);
+            this.richTextBox1.TabIndex = 17;
+            this.richTextBox1.Text = "";
             // 
             // HashCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(653, 504);
+            this.Controls.Add(this.hashandver);
+            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.HashVer);
+            this.Controls.Add(this.DL);
+            this.Controls.Add(this.DLLink1);
+            this.Controls.Add(this.CreatedBy);
+            this.Controls.Add(this.CopyRight);
+            this.Controls.Add(this.Tab);
             this.Controls.Add(this.menu);
+            this.Controls.Add(this.richTextBox3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menu;
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
             this.Name = "HashCalculator";
-            this.Text = "HashCalculator";
-            this.Load += new System.EventHandler(this.HashCalculator_Load);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Text = "HashCalculator v";
+            this.Load += new System.EventHandler(this.Hash_Load);
+            this.DropPanel.ResumeLayout(false);
+            this.DropPanel.PerformLayout();
+            this.Tab.ResumeLayout(false);
+            this.TabHash.ResumeLayout(false);
+            this.TabHash.PerformLayout();
+            this.TabHashhikaku.ResumeLayout(false);
+            this.TabHashhikaku.PerformLayout();
+            this.TabReadme.ResumeLayout(false);
+            this.TabSettings.ResumeLayout(false);
+            this.TabSettings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             this.ResumeLayout(false);
@@ -112,13 +753,54 @@
         }
 
         #endregion
-
-        private MenuStrip menu;
-        private ToolStripMenuItem fileFToolStripMenuItem;
-        private ToolStripMenuItem helpHToolStripMenuItem;
-        private ToolStripMenuItem settingToolStripMenuItem;
-        private ToolStripMenuItem exitEToolStripMenuItem;
-        private ToolStripMenuItem readmeRToolStripMenuItem;
-        private ToolStripMenuItem aboutAToolStripMenuItem;
+        private System.Windows.Forms.Label CopyRight;
+        private System.Windows.Forms.Label CreatedBy;
+        private System.Windows.Forms.Label DL;
+        private System.Windows.Forms.LinkLabel DLLink1;
+        private System.Windows.Forms.Panel DropPanel;
+        private System.Windows.Forms.Label DropText;
+        private System.Windows.Forms.TextBox HashFileURL;
+        private System.Windows.Forms.Button SelectFileButton;
+        private System.Windows.Forms.OpenFileDialog SelectFileDialog;
+        private System.Windows.Forms.Label hashandver;
+        private System.Windows.Forms.TabControl Tab;
+        private System.Windows.Forms.TabPage TabHash;
+        private System.Windows.Forms.Label HashVer;
+        private System.Windows.Forms.ComboBox HashSelecter;
+        private System.Windows.Forms.Button AllReset;
+        private System.Windows.Forms.Button HashCopy;
+        private System.Windows.Forms.TextBox HashOutputBox;
+        private System.Windows.Forms.TabPage TabHashhikaku;
+        private System.Windows.Forms.Button hikaku2copy;
+        private System.Windows.Forms.Button hikaku1copy;
+        private System.Windows.Forms.Label hikaku2t;
+        private System.Windows.Forms.Label hikaku1t;
+        private System.Windows.Forms.ComboBox hikaku2hashtype;
+        private System.Windows.Forms.ComboBox hikaku1hashtype;
+        private System.Windows.Forms.TextBox hikaku2hash;
+        private System.Windows.Forms.TextBox hikaku1hash;
+        private System.Windows.Forms.Label hikakukekka;
+        private System.Windows.Forms.Button hikakub;
+        private System.Windows.Forms.Button paste1cb;
+        private System.Windows.Forms.Button paste2cb;
+        private System.Windows.Forms.Button hikakureset;
+        private System.Windows.Forms.TabPage TabReadme;
+        private System.Windows.Forms.TabPage TabSettings;
+        private System.Windows.Forms.RichTextBox Readme;
+        private System.Windows.Forms.ToolStripMenuItem menuFile;
+        private System.Windows.Forms.ToolStripMenuItem menuHelp;
+        private System.Windows.Forms.MenuStrip menu;
+        private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.ToolStripMenuItem menuFIleExit;
+        private System.Windows.Forms.ToolStripMenuItem menuHelpVer;
+        private System.Windows.Forms.ToolStripMenuItem menuHelpReadme;
+        private System.Windows.Forms.ToolStripMenuItem menuFileSettings;
+        private System.Windows.Forms.Label settingslabel;
+        private System.Windows.Forms.CheckBox HashForContextEnable;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.CheckBox UpperCheck;
+        private System.Windows.Forms.CheckBox HihunCheck;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
+
