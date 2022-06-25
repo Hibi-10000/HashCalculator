@@ -1,4 +1,4 @@
-# HashCalculator [v0.5.0-alpha]  
+# HashCalculator [v0.5.1-alpha]  
   
 Hash計算機でHashを計算できます。  
 また、ファイルを右クリックしてHash for ContextMenu(F)をクリックし、  
@@ -41,5 +41,6 @@ Ver.β0.3.0 .NET Framework 4.7.2 -> 4.8  + メンテナンス
 v0.4.0-alpha バージョン表記を変更 + Hash.exeとHashForContext.exeを統一 + バグ修正  
 v0.5.0-alpha Hashアルゴリズムを追加(CRC系統・MACTripleDES・RIPEMD160)  
              + 大文字・ハイフンオプションを追加 + バグ修正 + メンテナンス  
+v0.5.1-alpha 設定の"HashForContextを有効にする"が正常に動作しない問題を修正
   
 Copyright © 2021-2022 Hibi_10000
