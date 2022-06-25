@@ -13,6 +13,7 @@ namespace Hash
             SHA256,
             SHA384,
             SHA512,
+            CRC8,
             CRC16_IBM,
             CRC16_CCITT,
             CRC32,
@@ -42,6 +43,9 @@ namespace Hash
                 case HashType.SHA512:
                     hashProvider = new SHA512CryptoServiceProvider();
                     break;
+                //case HashType.CRC8:
+                //    hashProvider = new CRC(CRC.Polynomial.CRC8);
+                //    break;
                 case HashType.CRC16_IBM:
                     hashProvider = new CRC(CRC.Polynomial.CRC16_IBM);
                     break;
@@ -66,6 +70,7 @@ namespace Hash
             }
 
             var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            //var fs = new MemoryStream(System.Text.Encoding.ASCII.GetBytes("123456789"));
             var bs = hashProvider.ComputeHash(fs);
 
             string return_str = BitConverter.ToString(bs);

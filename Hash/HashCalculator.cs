@@ -159,6 +159,9 @@ namespace Hash
                     case "SHA512":
                         HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.SHA512, filePath, UpperCheck.Checked, HihunCheck.Checked);
                         break;
+                    //case "CRC8":
+                    //    HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC8, filePath, UpperCheck.Checked, HihunCheck.Checked);
+                    //    break;
                     case "CRC16-IBM":
                         HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC16_IBM, filePath, UpperCheck.Checked, HihunCheck.Checked);
                         break;
