@@ -63,7 +63,7 @@ namespace Hash
 
         private void DLGithub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new System.Diagnostics.ProcessStartInfo("https://github.com/Hibi-10000/Hash-Calculator/releases/");
+            var startInfo = new System.Diagnostics.ProcessStartInfo("https://github.com/Hibi-10000/HashCalculator-GUI/releases/");
             startInfo.UseShellExecute = true;
             System.Diagnostics.Process.Start(startInfo);
         }

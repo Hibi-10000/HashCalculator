@@ -12,7 +12,7 @@ namespace Hash
 
         private void dlgithub_Click(object sender, EventArgs e)
         {
-            var startInfo = new System.Diagnostics.ProcessStartInfo("https://github.com/Hibi-10000/Hash-Calculator/releases/");
+            var startInfo = new System.Diagnostics.ProcessStartInfo("https://github.com/Hibi-10000/HashCalculator-GUI/releases/");
             startInfo.UseShellExecute = true;
             System.Diagnostics.Process.Start(startInfo);
         }
