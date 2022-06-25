@@ -10,7 +10,8 @@ namespace Hash
 
         public static string Major = "0";
         public static string Minor = "5";
-        public static string Build = "1-alpha";
+        public static string Build = "1";
+        public static string Ch = "-alpha";
 
         public HashCalculator()
         {
@@ -54,10 +55,10 @@ namespace Hash
             catch (Exception) { HashForContextEnable.Checked = false; }
             finally { if (regKey != null) { regKey.Close(); } }
 
-            Text = "HashCalculator v" + Major + "." + Minor + "." + Build;
-            hashandver.Text = "HashCalculator v" + Major + "." + Minor;
-            HashVer.Text = "HashCalculator v" + Major + "." + Minor + "." + Build;
-            CopyRight.Text = "Copyright © " + DateTime.Now.Year.ToString() + " Hibi_10000 All rights reserved.";
+            Text = "HashCalculator v" + Major + "." + Minor + "." + Build + Ch;
+            hashandver.Text = "HashCalculator v" + Major + "." + Minor + "." + Build;
+            HashVer.Text = "HashCalculator v" + Major + "." + Minor + "." + Build + Ch;
+            CopyRight.Text = "Copyright © 2021-" + DateTime.Now.Year.ToString() + " Hibi_10000 GPLv3";
         }
 
         private void DLLink1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

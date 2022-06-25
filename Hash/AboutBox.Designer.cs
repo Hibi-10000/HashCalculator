@@ -42,7 +42,7 @@ namespace Hash
             // 
             this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.okButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.okButton.Location = new System.Drawing.Point(306, 161);
+            this.okButton.Location = new System.Drawing.Point(306, 133);
             this.okButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 22);
@@ -60,35 +60,35 @@ namespace Hash
             this.hashandver.Location = new System.Drawing.Point(11, 8);
             this.hashandver.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.hashandver.Name = "hashandver";
-            this.hashandver.Size = new System.Drawing.Size(314, 48);
+            this.hashandver.Size = new System.Drawing.Size(271, 48);
             this.hashandver.TabIndex = 25;
-            this.hashandver.Text = "HashCalculator v0.4";
+            this.hashandver.Text = "HashCalculator v";
             // 
             // Version
             // 
             this.Version.AutoSize = true;
             this.Version.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
-            this.Version.Location = new System.Drawing.Point(8, 71);
+            this.Version.Location = new System.Drawing.Point(8, 89);
             this.Version.Name = "Version";
-            this.Version.Size = new System.Drawing.Size(115, 15);
+            this.Version.Size = new System.Drawing.Size(57, 15);
             this.Version.TabIndex = 27;
-            this.Version.Text = "Version: v0.4.0-alpha";
+            this.Version.Text = "Version: v";
             // 
             // Copyright
             // 
             this.Copyright.AutoSize = true;
             this.Copyright.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
-            this.Copyright.Location = new System.Drawing.Point(8, 161);
+            this.Copyright.Location = new System.Drawing.Point(8, 137);
             this.Copyright.Name = "Copyright";
-            this.Copyright.Size = new System.Drawing.Size(260, 15);
+            this.Copyright.Size = new System.Drawing.Size(225, 15);
             this.Copyright.TabIndex = 28;
-            this.Copyright.Text = "Copyright © 2022 Hibi_10000 All rights reserved.";
+            this.Copyright.Text = "Copyright © 2021-2022 Hibi_10000 GPLv3";
             // 
             // Created
             // 
             this.Created.AutoSize = true;
             this.Created.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
-            this.Created.Location = new System.Drawing.Point(8, 96);
+            this.Created.Location = new System.Drawing.Point(8, 65);
             this.Created.Name = "Created";
             this.Created.Size = new System.Drawing.Size(123, 15);
             this.Created.TabIndex = 29;
@@ -98,7 +98,7 @@ namespace Hash
             // 
             this.dl.AutoSize = true;
             this.dl.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
-            this.dl.Location = new System.Drawing.Point(8, 125);
+            this.dl.Location = new System.Drawing.Point(8, 113);
             this.dl.Name = "dl";
             this.dl.Size = new System.Drawing.Size(58, 15);
             this.dl.TabIndex = 30;
@@ -108,7 +108,7 @@ namespace Hash
             // 
             this.dlgithub.AutoSize = true;
             this.dlgithub.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
-            this.dlgithub.Location = new System.Drawing.Point(66, 125);
+            this.dlgithub.Location = new System.Drawing.Point(62, 113);
             this.dlgithub.Name = "dlgithub";
             this.dlgithub.Size = new System.Drawing.Size(43, 15);
             this.dlgithub.TabIndex = 31;
@@ -121,7 +121,7 @@ namespace Hash
             this.AcceptButton = this.okButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(393, 193);
+            this.ClientSize = new System.Drawing.Size(393, 165);
             this.Controls.Add(this.dlgithub);
             this.Controls.Add(this.dl);
             this.Controls.Add(this.Created);

@@ -42,9 +42,9 @@ namespace Hash
                 }
             }
 
-            Text = "Hash for ContextMenu v" + HashCalculator.Major + "." + HashCalculator.Minor + "." + HashCalculator.Build;
-            Title.Text = "Hash for ContextMenu v" + HashCalculator.Major + "." + HashCalculator.Minor;
-            Copyright.Text = "Copyright © " + DateTime.Now.Year.ToString() + " Hibi_10000 All rights reserved.";
+            Text = "Hash for ContextMenu v" + HashCalculator.Major + "." + HashCalculator.Minor + "." + HashCalculator.Build + HashCalculator.Ch;
+            Title.Text = "Hash for ContextMenu v" + HashCalculator.Major + "." + HashCalculator.Minor + "." + HashCalculator.Build;
+            Copyright.Text = "Copyright © 2021-" + DateTime.Now.Year.ToString() + " Hibi_10000 GPLv3";
         }
 
         private void HashReset_Click(object sender, EventArgs e)

@@ -92,12 +92,12 @@ namespace Hash
             // 
             this.CopyRight.AutoSize = true;
             this.CopyRight.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.CopyRight.Location = new System.Drawing.Point(287, 386);
+            this.CopyRight.Location = new System.Drawing.Point(327, 386);
             this.CopyRight.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CopyRight.Name = "CopyRight";
-            this.CopyRight.Size = new System.Drawing.Size(272, 15);
+            this.CopyRight.Size = new System.Drawing.Size(228, 15);
             this.CopyRight.TabIndex = 3;
-            this.CopyRight.Text = "CopyRight © 2022 Hibi_10000  All Rights Reserved.";
+            this.CopyRight.Text = "Copyright © 2021-2022 Hibi_10000  GPLv3";
             // 
             // CreatedBy
             // 
@@ -203,9 +203,9 @@ namespace Hash
             this.hashandver.Location = new System.Drawing.Point(7, 27);
             this.hashandver.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.hashandver.Name = "hashandver";
-            this.hashandver.Size = new System.Drawing.Size(312, 47);
+            this.hashandver.Size = new System.Drawing.Size(274, 47);
             this.hashandver.TabIndex = 12;
-            this.hashandver.Text = "HashCalculator Ver.";
+            this.hashandver.Text = "HashCalculator v";
             // 
             // Tab
             // 
@@ -594,9 +594,9 @@ namespace Hash
             this.HashVer.Location = new System.Drawing.Point(0, 386);
             this.HashVer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.HashVer.Name = "HashVer";
-            this.HashVer.Size = new System.Drawing.Size(108, 15);
+            this.HashVer.Size = new System.Drawing.Size(96, 15);
             this.HashVer.TabIndex = 14;
-            this.HashVer.Text = "HashCalculator Ver.";
+            this.HashVer.Text = "HashCalculator v";
             // 
             // menuFile
             // 
@@ -729,7 +729,7 @@ namespace Hash
             this.MaximizeBox = false;
             this.Name = "HashCalculator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "HashCalculator Ver.";
+            this.Text = "HashCalculator v";
             this.Load += new System.EventHandler(this.Hash_Load);
             this.DropPanel.ResumeLayout(false);
             this.DropPanel.PerformLayout();

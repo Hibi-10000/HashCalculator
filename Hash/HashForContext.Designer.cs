@@ -53,9 +53,9 @@
             this.Copyright.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Copyright.Location = new System.Drawing.Point(9, 210);
             this.Copyright.Name = "Copyright";
-            this.Copyright.Size = new System.Drawing.Size(260, 15);
+            this.Copyright.Size = new System.Drawing.Size(225, 15);
             this.Copyright.TabIndex = 1;
-            this.Copyright.Text = "Copyright © 2022 Hibi_10000 All rights reserved.";
+            this.Copyright.Text = "Copyright © 2021-2022 Hibi_10000 GPLv3";
             // 
             // OK
             // 
@@ -77,9 +77,9 @@
             this.Title.ForeColor = System.Drawing.Color.Lime;
             this.Title.Location = new System.Drawing.Point(12, 9);
             this.Title.Name = "Title";
-            this.Title.Size = new System.Drawing.Size(357, 39);
+            this.Title.Size = new System.Drawing.Size(319, 39);
             this.Title.TabIndex = 3;
-            this.Title.Text = "Hash for ContextMenu v0.4";
+            this.Title.Text = "Hash for ContextMenu v";
             // 
             // HashSelecter
             // 
@@ -250,7 +250,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "HashForContext";
-            this.Text = "Hash for ContextMenu v0.4.0-alpha";
+            this.Text = "Hash for ContextMenu v";
             this.Load += new System.EventHandler(this.HashForContext_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
