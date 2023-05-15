@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hash", "Hash\Hash.csproj", 
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "WixInstallerSetup", "WixInstallerSetup\WixInstallerSetup.wixproj", "{D5755B47-DB4D-4180-A109-269062572C9D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hash-NET6", "Hash-NET6\Hash-NET6.csproj", "{94C1913F-BEEC-4194-96B1-2684AF44D216}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ソリューション項目", "ソリューション項目", "{C83F13BD-7671-42D8-95E3-82BB07E33881}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
@@ -31,9 +29,6 @@ Global
 		{D5755B47-DB4D-4180-A109-269062572C9D}.Debug|x64.Build.0 = Debug|x86
 		{D5755B47-DB4D-4180-A109-269062572C9D}.Release|x64.ActiveCfg = Release|x86
 		{D5755B47-DB4D-4180-A109-269062572C9D}.Release|x64.Build.0 = Release|x86
-		{94C1913F-BEEC-4194-96B1-2684AF44D216}.Debug|x64.ActiveCfg = Debug|x64
-		{94C1913F-BEEC-4194-96B1-2684AF44D216}.Release|x64.ActiveCfg = Release|x64
-		{94C1913F-BEEC-4194-96B1-2684AF44D216}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
