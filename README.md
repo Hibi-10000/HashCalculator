@@ -25,15 +25,15 @@ Hashを選択または*をクリックするとそのファイルのHashを計�
 *がついているものは選択ボックスに直接入力してください。  
   
 動作確認  
-Windows10 Pro 21H2 x86_64 
+Windows11 Home 22H2 x86_64 
 .NET Framework 4.8  
   
-更新予定:  .NET 6へ移行  
+更新予定:  WinUI3(.NET6)への移行  
   
 不具合ありましても作者は更新の責任を負いません。  
 自己責任でご利用ください。  
   
-Copyright © 2021-2022 Hibi_10000 GNU General Public License Version 3  
+Copyright © 2021-2023 Hibi_10000 GNU General Public License Version 3  
   
 更新履歴  
 Ver.β0.1.1 初版  
