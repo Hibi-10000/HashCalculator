@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
@@ -12,6 +14,9 @@ namespace Hash
         public static string Minor = "5";
         public static string Build = "2";
         public static string Ch = "-alpha";
+
+        //[DllImport("UXTheme.dll", SetLastError = true, EntryPoint = "#138")]
+        //public static extern bool ShouldSystemUseDarkMode();
 
         public HashCalculator()
         {
@@ -40,6 +45,8 @@ namespace Hash
                     //HashFileURL.ReadOnly = false;
                 }
             }
+
+            //(ShouldSystemUseDarkMode() ? (Action)setDarkMode : setLightMode)();
 
             RegistryKey root = RegistryKey.OpenBaseKey(RegistryHive.ClassesRoot, RegistryView.Registry64);
             String regPath = @"*\shell\HashForContext";
@@ -293,5 +300,36 @@ namespace Hash
                 }
             }
         }
+
+        /*
+        private void setLightMode()
+        {
+            this.BackColor = SystemColors.Control;
+            this.ForeColor = SystemColors.ControlText;
+            this.richTextBox1.BackColor = SystemColors.Control;
+            this.hashandver.ForeColor = Color.Lime;
+            this.hashandver.BackColor = SystemColors.Window;
+            this.TabHash.BackColor = SystemColors.Window;
+            this.TabHash.ForeColor = SystemColors.ControlText;
+            this.HashFileURL.BackColor = SystemColors.Control;
+            this.HashFileURL.ForeColor = SystemColors.WindowText;
+            this.DropPanel.BackColor = SystemColors.Window;
+            this.DropPanel.ForeColor = SystemColors.ControlText;
+        }
+
+        private void setDarkMode()
+        {
+            this.BackColor = SystemColors.ControlDark;
+            this.ForeColor = SystemColors.ControlLightLight;
+            this.richTextBox1.BackColor = SystemColors.ControlDark;
+            this.hashandver.ForeColor = Color.Lime;
+            this.hashandver.BackColor = SystemColors.ControlDarkDark;
+            this.TabHash.BackColor = SystemColors.ControlDarkDark;
+            this.TabHash.ForeColor = SystemColors.ControlLightLight;
+            this.HashFileURL.BackColor = SystemColors.ControlDark;
+            this.HashFileURL.ForeColor = SystemColors.Window;
+            this.DropPanel.BackColor = SystemColors.ControlDark;
+            this.DropPanel.ForeColor = SystemColors.Window;
+        }*/
     }
 }

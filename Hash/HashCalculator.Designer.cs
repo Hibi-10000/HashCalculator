@@ -175,6 +175,7 @@ namespace Hash
             // 
             // HashFileURL
             // 
+            this.HashFileURL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.HashFileURL.Cursor = System.Windows.Forms.Cursors.No;
             this.HashFileURL.Font = new System.Drawing.Font("Yu Gothic UI", 10F);
             this.HashFileURL.Location = new System.Drawing.Point(5, 4);
@@ -315,6 +316,7 @@ namespace Hash
             // 
             // HashOutputBox
             // 
+            this.HashOutputBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.HashOutputBox.Font = new System.Drawing.Font("Yu Gothic UI", 10F);
             this.HashOutputBox.Location = new System.Drawing.Point(6, 187);
             this.HashOutputBox.Margin = new System.Windows.Forms.Padding(2);
@@ -670,6 +672,7 @@ namespace Hash
             this.menu.BackColor = System.Drawing.SystemColors.ControlLight;
             this.menu.Dock = System.Windows.Forms.DockStyle.None;
             this.menu.GripMargin = new System.Windows.Forms.Padding(2);
+            this.menu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuFile,
             this.menuHelp});
@@ -685,14 +688,12 @@ namespace Hash
             this.richTextBox3.BackColor = System.Drawing.SystemColors.ControlLight;
             this.richTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.richTextBox3.Font = new System.Drawing.Font("Yu Gothic UI", 1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.richTextBox3.Location = new System.Drawing.Point(0, 0);
             this.richTextBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBox3.Name = "richTextBox3";
             this.richTextBox3.Size = new System.Drawing.Size(606, 20);
             this.richTextBox3.TabIndex = 16;
-            this.richTextBox3.Text = "_________________________________________________________________________________" +
-    "____________________________";
+            this.richTextBox3.Text = "";
             // 
             // richTextBox1
             // 
@@ -701,7 +702,7 @@ namespace Hash
             this.richTextBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.richTextBox1.Location = new System.Drawing.Point(0, 20);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(175, 34);
+            this.richTextBox1.Size = new System.Drawing.Size(308, 19);
             this.richTextBox1.TabIndex = 17;
             this.richTextBox1.Text = "";
             // 
@@ -722,6 +723,7 @@ namespace Hash
             this.Controls.Add(this.menu);
             this.Controls.Add(this.richTextBox3);
             this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menu;
