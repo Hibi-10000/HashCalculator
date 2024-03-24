@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
     <Fragment>
         <UI Id="NormalUI">
@@ -29,9 +28,9 @@
             <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="ReadmeDlg">NOT Installed</Publish>
             <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="ReadmeDlg">Installed AND PATCH</Publish>
 
-			<Publish Dialog="ReadmeDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg">1</Publish>
-			<Publish Dialog="ReadmeDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
-            
+            <Publish Dialog="ReadmeDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg">1</Publish>
+            <Publish Dialog="ReadmeDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
+
             <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="ReadmeDlg" Order="1">NOT Installed</Publish>
             <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="MaintenanceTypeDlg" Order="2">Installed AND NOT PATCH</Publish>
             <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2">Installed AND PATCH</Publish>
