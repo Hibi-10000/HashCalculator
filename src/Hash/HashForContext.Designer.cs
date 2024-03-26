@@ -55,7 +55,7 @@
             this.Copyright.Name = "Copyright";
             this.Copyright.Size = new System.Drawing.Size(225, 15);
             this.Copyright.TabIndex = 1;
-            this.Copyright.Text = "Copyright © 2021-2022 Hibi_10000 GPLv3";
+            this.Copyright.Text = "Copyright © 2021-2024 Hibi_10000 GPLv3";
             // 
             // OK
             // 
@@ -79,7 +79,7 @@
             this.Title.Name = "Title";
             this.Title.Size = new System.Drawing.Size(319, 39);
             this.Title.TabIndex = 3;
-            this.Title.Text = "Hash for ContextMenu v";
+            this.Title.Text = "Hash for ContextMenu";
             // 
             // HashSelecter
             // 
@@ -250,7 +250,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "HashForContext";
-            this.Text = "Hash for ContextMenu v";
+            this.Text = "Hash for ContextMenu";
             this.Load += new System.EventHandler(this.HashForContext_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

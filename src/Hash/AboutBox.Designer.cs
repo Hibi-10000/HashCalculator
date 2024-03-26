@@ -62,7 +62,7 @@ namespace Hash
             this.hashandver.Name = "hashandver";
             this.hashandver.Size = new System.Drawing.Size(271, 48);
             this.hashandver.TabIndex = 25;
-            this.hashandver.Text = "HashCalculator v";
+            this.hashandver.Text = "HashCalculator";
             // 
             // Version
             // 
@@ -72,7 +72,7 @@ namespace Hash
             this.Version.Name = "Version";
             this.Version.Size = new System.Drawing.Size(57, 15);
             this.Version.TabIndex = 27;
-            this.Version.Text = "Version: v";
+            this.Version.Text = "Version: ";
             // 
             // Copyright
             // 
@@ -82,7 +82,7 @@ namespace Hash
             this.Copyright.Name = "Copyright";
             this.Copyright.Size = new System.Drawing.Size(225, 15);
             this.Copyright.TabIndex = 28;
-            this.Copyright.Text = "Copyright © 2021-2022 Hibi_10000 GPLv3";
+            this.Copyright.Text = "Copyright © 2021-2024 Hibi_10000 GPLv3";
             // 
             // Created
             // 

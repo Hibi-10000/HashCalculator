@@ -45,7 +45,7 @@
                         <RegistryKey Key="*\shell\HashForContext\shell\CRC64-ECMA-182" Root="HKCR" />
                         <RegistryKey Key="*\shell\HashForContext\shell\CRC64-ECMA-182\command" Root="HKCR" />
                         <RegistryValue Key="*\shell\HashForContext\shell\MD5\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\Hash.exe&quot; /ctm /f &quot;%1&quot; /h MD5" />
-                        <RegistryValue Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\Hash.exe&quot; /ctm /f &quot;%1&quot; /h SHA1" Key="*\shell\HashForContext\shell\SHA1\command" />
+                        <RegistryValue Key="*\shell\HashForContext\shell\SHA1\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\Hash.exe&quot; /ctm /f &quot;%1&quot; /h SHA1" />
                         <RegistryValue Key="*\shell\HashForContext\shell\SHA256\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\Hash.exe&quot; /ctm /f &quot;%1&quot; /h SHA256" />
                         <RegistryValue Key="*\shell\HashForContext\shell\SHA384\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\Hash.exe&quot; /ctm /f &quot;%1&quot; /h SHA384" />
                         <RegistryValue Key="*\shell\HashForContext\shell\SHA512\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\Hash.exe&quot; /ctm /f &quot;%1&quot; /h SHA512" />

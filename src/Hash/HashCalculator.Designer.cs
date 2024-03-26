@@ -97,7 +97,7 @@ namespace Hash
             this.CopyRight.Name = "CopyRight";
             this.CopyRight.Size = new System.Drawing.Size(228, 15);
             this.CopyRight.TabIndex = 3;
-            this.CopyRight.Text = "Copyright © 2021-2022 Hibi_10000  GPLv3";
+            this.CopyRight.Text = "Copyright © 2021-2024 Hibi_10000  GPLv3";
             // 
             // CreatedBy
             // 
@@ -206,7 +206,7 @@ namespace Hash
             this.hashandver.Name = "hashandver";
             this.hashandver.Size = new System.Drawing.Size(274, 47);
             this.hashandver.TabIndex = 12;
-            this.hashandver.Text = "HashCalculator v";
+            this.hashandver.Text = "HashCalculator";
             // 
             // Tab
             // 
@@ -598,7 +598,7 @@ namespace Hash
             this.HashVer.Name = "HashVer";
             this.HashVer.Size = new System.Drawing.Size(96, 15);
             this.HashVer.TabIndex = 14;
-            this.HashVer.Text = "HashCalculator v";
+            this.HashVer.Text = "HashCalculator";
             // 
             // menuFile
             // 
@@ -731,7 +731,7 @@ namespace Hash
             this.MaximizeBox = false;
             this.Name = "HashCalculator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "HashCalculator v";
+            this.Text = "HashCalculator";
             this.Load += new System.EventHandler(this.Hash_Load);
             this.DropPanel.ResumeLayout(false);
             this.DropPanel.PerformLayout();
