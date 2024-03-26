@@ -133,10 +133,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\UAC.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Icon.ico" />
+    <None Include="Resources\Icon.ico" />
+    <None Include="Resources\UAC.ico" />
+    <None Include="..\..\README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

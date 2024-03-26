@@ -536,7 +536,7 @@ namespace Hash
             this.Readme.ReadOnly = true;
             this.Readme.Size = new System.Drawing.Size(542, 272);
             this.Readme.TabIndex = 0;
-            this.Readme.Text = resources.GetString("Readme.Text");
+            this.Readme.Text = Hash.Properties.Resources.Readme;
             // 
             // TabSettings
             // 

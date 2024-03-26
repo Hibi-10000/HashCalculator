@@ -1,4 +1,4 @@
-# HashCalculator [v0.5.3]  
+﻿# HashCalculator [v0.5.3]  
   
 Hash計算機でHashを計算できます。  
 また、ファイルを右クリックしてHash for ContextMenu(F)をクリックし、  

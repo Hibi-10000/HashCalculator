@@ -79,5 +79,14 @@ namespace Hash.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   (Readme.md) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Readme {
+            get {
+                return ResourceManager.GetString("Readme", resourceCulture);
+            }
+        }
     }
 }
