@@ -30,9 +30,6 @@ Windows11 Pro 23H2 x86_64
   
 更新予定: WPF,.NET6,WinUI3への移行  
   
-不具合ありましても作者は更新の責任を負いません。  
-自己責任でご利用ください。  
-  
 Copyright © 2021-2024 Hibi_10000 GNU General Public License Version 3  
   
 更新履歴  
