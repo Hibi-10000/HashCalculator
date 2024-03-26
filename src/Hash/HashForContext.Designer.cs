@@ -247,7 +247,7 @@
             this.Controls.Add(this.Title);
             this.Controls.Add(this.OK);
             this.Controls.Add(this.Copyright);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = Hash.Properties.Resources.Icon;
             this.MaximizeBox = false;
             this.Name = "HashForContext";
             this.Text = "Hash for ContextMenu";

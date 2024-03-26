@@ -556,7 +556,7 @@ namespace Hash
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.ErrorImage = null;
-            this.pictureBox1.Image = global::Hash.Properties.Resources.UAC;
+            this.pictureBox1.Image = Hash.Properties.Resources.UAC;
             this.pictureBox1.InitialImage = null;
             this.pictureBox1.Location = new System.Drawing.Point(73, 60);
             this.pictureBox1.Name = "pictureBox1";
@@ -725,7 +725,7 @@ namespace Hash
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = Hash.Properties.Resources.Icon;
             this.MainMenuStrip = this.menu;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
