@@ -18,7 +18,7 @@ namespace Hash
 
         private void HashForContext_Load(object sender, EventArgs e)
         {
-            string[] Commands = System.Environment.GetCommandLineArgs();
+            string[] Commands = Environment.GetCommandLineArgs();
 
             for (int i = 0; i < Commands.Length; i++)
             {
@@ -63,8 +63,10 @@ namespace Hash
 
         private void DLGithub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new System.Diagnostics.ProcessStartInfo("https://github.com/Hibi-10000/HashCalculator/releases/");
-            startInfo.UseShellExecute = true;
+            var startInfo = new System.Diagnostics.ProcessStartInfo("https://github.com/Hibi-10000/HashCalculator/releases/")
+            {
+                UseShellExecute = true
+            };
             System.Diagnostics.Process.Start(startInfo);
         }
 
@@ -76,40 +78,20 @@ namespace Hash
                 switch (HashSelecter.Text)
                 {
                     case "MD5":
-                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.MD5, filePath, UpperCheck.Checked, HihunCheck.Checked);
-                        break;
                     case "SHA1":
-                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.SHA1, filePath, UpperCheck.Checked, HihunCheck.Checked);
-                        break;
                     case "SHA256":
-                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.SHA256, filePath, UpperCheck.Checked, HihunCheck.Checked);
-                        break;
                     case "SHA384":
-                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.SHA384, filePath, UpperCheck.Checked, HihunCheck.Checked);
-                        break;
                     case "SHA512":
-                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.SHA512, filePath, UpperCheck.Checked, HihunCheck.Checked);
-                        break;
+                    //case "CRC8":
                     case "CRC16-IBM":
-                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC16_IBM, filePath, UpperCheck.Checked, HihunCheck.Checked);
-                        break;
                     case "CRC16-CCITT":
-                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC16_CCITT, filePath, UpperCheck.Checked, HihunCheck.Checked);
-                        break;
                     case "CRC32":
-                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC32, filePath, UpperCheck.Checked, HihunCheck.Checked);
-                        break;
                     case "CRC64-ECMA":
-                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC64_ECMA, filePath, UpperCheck.Checked, HihunCheck.Checked);
-                        break;
                     case "CRC64-ISO":
-                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC64_ISO, filePath, UpperCheck.Checked, HihunCheck.Checked);
-                        break;
                     case "MACTripleDES":
-                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.MACTripleDES, filePath, UpperCheck.Checked, HihunCheck.Checked);
-                        break;
                     case "RIPEMD160":
-                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.RIPEMD160, filePath, UpperCheck.Checked, HihunCheck.Checked);
+                        var hashType = HashCalculate.HashTypeFromString(HashSelecter.Text);
+                        HashOutputBox.Text = HashCalculate.GetHash(hashType, filePath, UpperCheck.Checked, HihunCheck.Checked);
                         break;
                     default:
                         HashOutputBox.Text = "ここにHash値が表示されます";
@@ -122,20 +104,22 @@ namespace Hash
 
         private void StartHash_Click(object sender, EventArgs e)
         {
-            var startInfo = new System.Diagnostics.ProcessStartInfo(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            startInfo.UseShellExecute = true;
             string option = "";
-            if (HashFileURL.Text != "ファイルのパス(※これが表示されている場合はバグまたは起動方法が間違っています)") option = option + "/f \"" + HashFileURL.Text + "\" ";
-            if (HashSelecter.Text != "Hashを選択してください") option = option + "/h " + HashSelecter.Text + " ";
-            if (DebugUse.Visible == true) option = option + "/d";
-            startInfo.Arguments = option;
+            if (HashFileURL.Text != "ファイルのパス(※これが表示されている場合はバグまたは起動方法が間違っています)") option += "/f \"" + HashFileURL.Text + "\" ";
+            if (HashSelecter.Text != "Hashを選択してください") option += "/h " + HashSelecter.Text + " ";
+            if (DebugUse.Visible == true) option += "/d";
+            var startInfo = new System.Diagnostics.ProcessStartInfo(System.Reflection.Assembly.GetExecutingAssembly().Location)
+            {
+                UseShellExecute = true,
+                Arguments = option
+            };
             System.Diagnostics.Process.Start(startInfo);
         }
 
         private void DebugUse_Click(object sender, EventArgs e)
         {
             DialogResult dr = DebugUseDialog.ShowDialog();
-            if (dr == System.Windows.Forms.DialogResult.OK)
+            if (dr == DialogResult.OK)
             {
                 HashFileURL.Text = null;
                 HashFileURL.Text = DebugUseDialog.FileName;

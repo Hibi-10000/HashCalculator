@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Drawing;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
@@ -49,7 +47,7 @@ namespace Hash
             //(ShouldSystemUseDarkMode() ? (Action)setDarkMode : setLightMode)();
 
             RegistryKey root = RegistryKey.OpenBaseKey(RegistryHive.ClassesRoot, RegistryView.Registry64);
-            String regPath = @"*\shell\HashForContext";
+            string regPath = @"*\shell\HashForContext";
             RegistryKey regKey = null;
             try {
                 regKey = root.OpenSubKey(regPath);
@@ -60,7 +58,7 @@ namespace Hash
                 }
             }
             catch (Exception) { HashForContextEnable.Checked = false; }
-            finally { if (regKey != null) { regKey.Close(); } }
+            finally { regKey?.Close(); }
 
             Text = "HashCalculator v" + Major + "." + Minor + "." + Build + Ch;
             hashandver.Text = "HashCalculator v" + Major + "." + Minor + "." + Build;
@@ -70,8 +68,10 @@ namespace Hash
 
         private void DLLink1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new System.Diagnostics.ProcessStartInfo("https://github.com/Hibi-10000/HashCalculator/releases/");
-            startInfo.UseShellExecute = true;
+            var startInfo = new System.Diagnostics.ProcessStartInfo("https://github.com/Hibi-10000/HashCalculator/releases/")
+            {
+                UseShellExecute = true
+            };
             System.Diagnostics.Process.Start(startInfo);
         }
 
@@ -101,7 +101,7 @@ namespace Hash
         private void SelectFileButton_Click(object sender, EventArgs e)
         {
             DialogResult dr = SelectFileDialog.ShowDialog();
-            if (dr == System.Windows.Forms.DialogResult.OK)
+            if (dr == DialogResult.OK)
             {
                 HashFileURL.Text = null;
                 HashFileURL.Text = SelectFileDialog.FileName;
@@ -152,43 +152,20 @@ namespace Hash
                 string filePath = HashFileURL.Text;
                 switch (HashSelecter.Text) {
                     case "MD5":
-                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.MD5, filePath, UpperCheck.Checked, HihunCheck.Checked);
-                        break;
                     case "SHA1":
-                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.SHA1, filePath, UpperCheck.Checked, HihunCheck.Checked);
-                        break;
                     case "SHA256":
-                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.SHA256, filePath, UpperCheck.Checked, HihunCheck.Checked);
-                        break;
                     case "SHA384":
-                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.SHA384, filePath, UpperCheck.Checked, HihunCheck.Checked);
-                        break;
                     case "SHA512":
-                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.SHA512, filePath, UpperCheck.Checked, HihunCheck.Checked);
-                        break;
                     //case "CRC8":
-                    //    HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC8, filePath, UpperCheck.Checked, HihunCheck.Checked);
-                    //    break;
                     case "CRC16-IBM":
-                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC16_IBM, filePath, UpperCheck.Checked, HihunCheck.Checked);
-                        break;
                     case "CRC16-CCITT":
-                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC16_CCITT, filePath, UpperCheck.Checked, HihunCheck.Checked);
-                        break;
                     case "CRC32":
-                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC32, filePath, UpperCheck.Checked, HihunCheck.Checked);
-                        break;
                     case "CRC64-ECMA":
-                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC64_ECMA, filePath, UpperCheck.Checked, HihunCheck.Checked);
-                        break;
                     case "CRC64-ISO":
-                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC64_ISO, filePath, UpperCheck.Checked, HihunCheck.Checked);
-                        break;
                     case "MACTripleDES":
-                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.MACTripleDES, filePath, UpperCheck.Checked, HihunCheck.Checked);
-                        break;
                     case "RIPEMD160":
-                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.RIPEMD160, filePath, UpperCheck.Checked, HihunCheck.Checked);
+                        var hashType = HashCalculate.HashTypeFromString(HashSelecter.Text);
+                        HashOutputBox.Text = HashCalculate.GetHash(hashType, filePath, UpperCheck.Checked, HihunCheck.Checked);
                         break;
                     default:
                         HashOutputBox.Text = "ここにHash値が表示されます";
@@ -268,10 +245,12 @@ namespace Hash
             {
                 if (HashForContextEnable.Checked == false)
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo(Application.ExecutablePath);
-                    startInfo.UseShellExecute = true;
-                    startInfo.Verb = "runas";
-                    startInfo.Arguments = "/rd";
+                    var startInfo = new System.Diagnostics.ProcessStartInfo(Application.ExecutablePath)
+                    {
+                        UseShellExecute = true,
+                        Verb = "runas",
+                        Arguments = "/rd"
+                    };
                     if (File.Exists("C:\\Program Files\\HashCalculator\\Hash.exe"))
                     {
                         System.Diagnostics.Process.Start(startInfo);
@@ -285,10 +264,12 @@ namespace Hash
                 {
 
                     //var startInfo = new System.Diagnostics.ProcessStartInfo("C:\\Program Files\\HashCalculator\\Hash.exe");
-                    var startInfo = new System.Diagnostics.ProcessStartInfo(Application.ExecutablePath);
-                    startInfo.UseShellExecute = true;
-                    startInfo.Verb = "runas";
-                    startInfo.Arguments = "/rc";
+                    var startInfo = new System.Diagnostics.ProcessStartInfo(Application.ExecutablePath)
+                    {
+                        UseShellExecute = true,
+                        Verb = "runas",
+                        Arguments = "/rc"
+                    };
                     if (File.Exists("C:\\Program Files\\HashCalculator\\Hash.exe"))
                     {
                         System.Diagnostics.Process.Start(startInfo);

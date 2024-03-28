@@ -12,8 +12,10 @@ namespace Hash
 
         private void dlgithub_Click(object sender, EventArgs e)
         {
-            var startInfo = new System.Diagnostics.ProcessStartInfo("https://github.com/Hibi-10000/HashCalculator/releases/");
-            startInfo.UseShellExecute = true;
+            var startInfo = new System.Diagnostics.ProcessStartInfo("https://github.com/Hibi-10000/HashCalculator/releases/")
+            {
+                UseShellExecute = true
+            };
             System.Diagnostics.Process.Start(startInfo);
         }
 

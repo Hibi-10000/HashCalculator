@@ -1,5 +1,4 @@
-﻿
-namespace Hash
+﻿namespace Hash
 {
     partial class HashCalculator
     {
@@ -802,4 +801,3 @@ namespace Hash
         private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
-

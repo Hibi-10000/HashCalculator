@@ -17,7 +17,7 @@ namespace Hash
                 Application.Exit();
             }
 
-            string[] Commands = System.Environment.GetCommandLineArgs();
+            string[] Commands = Environment.GetCommandLineArgs();
 
             for (int i = 0; i < Commands.Length; i++)
             {
@@ -125,9 +125,7 @@ namespace Hash
             }
 
             string mutexName = "HashCalculator-Mutex";
-            bool createdNew;
-            System.Threading.Mutex mutex =
-                new System.Threading.Mutex(true, mutexName, out createdNew);
+            System.Threading.Mutex mutex = new System.Threading.Mutex(true, mutexName, out bool createdNew);
 
             //Mutexの初期所有権が付与されたか調べる
             if (createdNew == false)
