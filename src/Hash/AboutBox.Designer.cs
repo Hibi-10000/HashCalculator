@@ -28,121 +28,123 @@ namespace Hash
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutBox));
-            this.okButton = new System.Windows.Forms.Button();
-            this.hashandver = new System.Windows.Forms.Label();
-            this.Version = new System.Windows.Forms.Label();
-            this.Copyright = new System.Windows.Forms.Label();
-            this.Created = new System.Windows.Forms.Label();
-            this.dl = new System.Windows.Forms.Label();
-            this.dlgithub = new System.Windows.Forms.LinkLabel();
-            this.SuspendLayout();
+            okButton = new System.Windows.Forms.Button();
+            hashandver = new System.Windows.Forms.Label();
+            Version = new System.Windows.Forms.Label();
+            Copyright = new System.Windows.Forms.Label();
+            Created = new System.Windows.Forms.Label();
+            dl = new System.Windows.Forms.Label();
+            dlgithub = new System.Windows.Forms.LinkLabel();
+            SuspendLayout();
             // 
             // okButton
             // 
-            this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.okButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.okButton.Location = new System.Drawing.Point(306, 133);
-            this.okButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.okButton.Name = "okButton";
-            this.okButton.Size = new System.Drawing.Size(75, 22);
-            this.okButton.TabIndex = 24;
-            this.okButton.Text = "OK";
+            okButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            okButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            okButton.Location = new System.Drawing.Point(510, 206);
+            okButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            okButton.Name = "okButton";
+            okButton.Size = new System.Drawing.Size(125, 32);
+            okButton.TabIndex = 24;
+            okButton.Text = "OK";
             // 
             // hashandver
             // 
-            this.hashandver.AutoSize = true;
-            this.hashandver.BackColor = System.Drawing.SystemColors.Window;
-            this.hashandver.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.hashandver.Font = new System.Drawing.Font("Yu Gothic UI", 25F);
-            this.hashandver.ForeColor = System.Drawing.Color.Lime;
-            this.hashandver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.hashandver.Location = new System.Drawing.Point(11, 8);
-            this.hashandver.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.hashandver.Name = "hashandver";
-            this.hashandver.Size = new System.Drawing.Size(271, 48);
-            this.hashandver.TabIndex = 25;
-            this.hashandver.Text = "HashCalculator";
+            hashandver.AutoSize = true;
+            hashandver.BackColor = System.Drawing.SystemColors.Window;
+            hashandver.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            hashandver.Font = new System.Drawing.Font("Yu Gothic UI", 25F);
+            hashandver.ForeColor = System.Drawing.Color.Lime;
+            hashandver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            hashandver.Location = new System.Drawing.Point(18, 17);
+            hashandver.Name = "hashandver";
+            hashandver.Size = new System.Drawing.Size(360, 69);
+            hashandver.TabIndex = 25;
+            hashandver.Text = "HashCalculator";
             // 
             // Version
             // 
-            this.Version.AutoSize = true;
-            this.Version.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
-            this.Version.Location = new System.Drawing.Point(8, 89);
-            this.Version.Name = "Version";
-            this.Version.Size = new System.Drawing.Size(57, 15);
-            this.Version.TabIndex = 27;
-            this.Version.Text = "Version: ";
+            Version.AutoSize = true;
+            Version.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
+            Version.Location = new System.Drawing.Point(20, 139);
+            Version.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            Version.Name = "Version";
+            Version.Size = new System.Drawing.Size(79, 25);
+            Version.TabIndex = 27;
+            Version.Text = "Version: ";
             // 
             // Copyright
             // 
-            this.Copyright.AutoSize = true;
-            this.Copyright.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
-            this.Copyright.Location = new System.Drawing.Point(8, 137);
-            this.Copyright.Name = "Copyright";
-            this.Copyright.Size = new System.Drawing.Size(225, 15);
-            this.Copyright.TabIndex = 28;
-            this.Copyright.Text = "Copyright © 2021-2024 Hibi_10000 GPLv3";
+            Copyright.AutoSize = true;
+            Copyright.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
+            Copyright.Location = new System.Drawing.Point(20, 210);
+            Copyright.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            Copyright.Name = "Copyright";
+            Copyright.Size = new System.Drawing.Size(352, 25);
+            Copyright.TabIndex = 28;
+            Copyright.Text = "Copyright © 2021-2024 Hibi_10000 GPLv3";
             // 
             // Created
             // 
-            this.Created.AutoSize = true;
-            this.Created.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
-            this.Created.Location = new System.Drawing.Point(8, 65);
-            this.Created.Name = "Created";
-            this.Created.Size = new System.Drawing.Size(123, 15);
-            this.Created.TabIndex = 29;
-            this.Created.Text = "CreatedBy: Hibi_10000";
+            Created.AutoSize = true;
+            Created.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
+            Created.Location = new System.Drawing.Point(20, 104);
+            Created.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            Created.Name = "Created";
+            Created.Size = new System.Drawing.Size(190, 25);
+            Created.TabIndex = 29;
+            Created.Text = "CreatedBy: Hibi_10000";
             // 
             // dl
             // 
-            this.dl.AutoSize = true;
-            this.dl.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
-            this.dl.Location = new System.Drawing.Point(8, 113);
-            this.dl.Name = "dl";
-            this.dl.Size = new System.Drawing.Size(58, 15);
-            this.dl.TabIndex = 30;
-            this.dl.Text = "配布場所:";
+            dl.AutoSize = true;
+            dl.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
+            dl.Location = new System.Drawing.Point(20, 174);
+            dl.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            dl.Name = "dl";
+            dl.Size = new System.Drawing.Size(93, 25);
+            dl.TabIndex = 30;
+            dl.Text = "配布場所 :";
             // 
             // dlgithub
             // 
-            this.dlgithub.AutoSize = true;
-            this.dlgithub.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
-            this.dlgithub.Location = new System.Drawing.Point(62, 113);
-            this.dlgithub.Name = "dlgithub";
-            this.dlgithub.Size = new System.Drawing.Size(43, 15);
-            this.dlgithub.TabIndex = 31;
-            this.dlgithub.TabStop = true;
-            this.dlgithub.Text = "Github";
-            this.dlgithub.Click += new System.EventHandler(this.dlgithub_Click);
+            dlgithub.AutoSize = true;
+            dlgithub.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
+            dlgithub.Location = new System.Drawing.Point(108, 174);
+            dlgithub.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            dlgithub.Name = "dlgithub";
+            dlgithub.Size = new System.Drawing.Size(65, 25);
+            dlgithub.TabIndex = 31;
+            dlgithub.TabStop = true;
+            dlgithub.Text = "Github";
+            dlgithub.Click += dlgithub_Click;
             // 
             // AboutBox
             // 
-            this.AcceptButton = this.okButton;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(393, 165);
-            this.Controls.Add(this.dlgithub);
-            this.Controls.Add(this.dl);
-            this.Controls.Add(this.Created);
-            this.Controls.Add(this.Copyright);
-            this.Controls.Add(this.Version);
-            this.Controls.Add(this.hashandver);
-            this.Controls.Add(this.okButton);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = Hash.Properties.Resources.Icon;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "AboutBox";
-            this.Padding = new System.Windows.Forms.Padding(9, 8, 9, 8);
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "HashCalculatorについて";
-            this.Load += new System.EventHandler(this.AboutBox_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AcceptButton = okButton;
+            AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(655, 255);
+            Controls.Add(dlgithub);
+            Controls.Add(dl);
+            Controls.Add(Created);
+            Controls.Add(Copyright);
+            Controls.Add(Version);
+            Controls.Add(hashandver);
+            Controls.Add(okButton);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            Icon = Properties.Resources.Icon;
+            Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "AboutBox";
+            Padding = new System.Windows.Forms.Padding(15, 17, 15, 17);
+            ShowInTaskbar = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            Text = "HashCalculatorについて";
+            Load += AboutBox_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
