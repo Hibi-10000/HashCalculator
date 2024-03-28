@@ -19,8 +19,6 @@ namespace Hash
             CRC32,
             CRC64_ECMA,
             CRC64_ISO,
-            MACTripleDES,
-            RIPEMD160,
         }
 
         public static HashType HashTypeFromString(string value) {
@@ -33,19 +31,19 @@ namespace Hash
             switch (hashtype)
             {
                 case HashType.MD5:
-                    hashProvider = new MD5CryptoServiceProvider();
+                    hashProvider = MD5.Create();
                     break;
                 case HashType.SHA1:
-                    hashProvider = new SHA1CryptoServiceProvider();
+                    hashProvider = SHA1.Create();
                     break;
                 case HashType.SHA256:
-                    hashProvider = new SHA256CryptoServiceProvider();
+                    hashProvider = SHA256.Create();
                     break;
                 case HashType.SHA384:
-                    hashProvider = new SHA384CryptoServiceProvider();
+                    hashProvider = SHA384.Create();
                     break;
                 case HashType.SHA512:
-                    hashProvider = new SHA512CryptoServiceProvider();
+                    hashProvider = SHA512.Create();
                     break;
                 //case HashType.CRC8:
                 //    hashProvider = new CRC(CRC.Polynomial.CRC8);
@@ -64,12 +62,6 @@ namespace Hash
                     break;
                 case HashType.CRC64_ISO:
                     hashProvider = new CRC(CRC.Polynomial.CRC64_ISO);
-                    break;
-                case HashType.MACTripleDES:
-                    hashProvider = new MACTripleDES();
-                    break;
-                case HashType.RIPEMD160:
-                    hashProvider = new RIPEMD160Managed();
                     break;
             }
 

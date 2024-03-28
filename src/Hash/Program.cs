@@ -117,8 +117,7 @@ namespace Hash
                 }
                 else if (Commands[i] == "/ctm")
                 {
-                    Application.EnableVisualStyles();
-                    Application.SetCompatibleTextRenderingDefault(false);
+                    ApplicationConfiguration.Initialize();
                     Application.Run(new HashForContext());
                     return;
                 }
@@ -138,8 +137,9 @@ namespace Hash
                 return;
             }
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            // To customize application configuration such as set high DPI settings or default font,
+            // see https://aka.ms/applicationconfiguration.
+            ApplicationConfiguration.Initialize();
             Application.Run(new HashCalculator());
             mutex.ReleaseMutex();
             mutex.Close();

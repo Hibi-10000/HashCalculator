@@ -162,8 +162,6 @@ namespace Hash
                     case "CRC32":
                     case "CRC64-ECMA":
                     case "CRC64-ISO":
-                    case "MACTripleDES":
-                    case "RIPEMD160":
                         var hashType = HashCalculate.HashTypeFromString(HashSelecter.Text);
                         HashOutputBox.Text = HashCalculate.GetHash(hashType, filePath, UpperCheck.Checked, HihunCheck.Checked);
                         break;

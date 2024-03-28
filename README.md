@@ -18,17 +18,13 @@ Hashを選択または*をクリックするとそのファイルのHashを計�
 ・CRC64-ECMA  
 ・CRC64-ISO*  
   
-・MACTripleDES*  
-  
-・RIPEMD160*  
-  
 *がついているものは選択ボックスに直接入力してください。  
   
 動作確認  
-Windows11 Pro 23H2 x86_64 
-.NET Framework 4.8  
+Windows11 Pro 23H2 x86_64  
+.NET Desktop Runtime 8.0.3  
   
-更新予定: .NET8,WPF,WinUI3への移行  
+更新予定: WPF,WinUI3への移行  
   
 更新履歴  
 Ver.β0.1.1 初版  
