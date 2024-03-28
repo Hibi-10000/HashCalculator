@@ -340,7 +340,7 @@ namespace Hash
             "SHA512",
             "CRC16-IBM",
             "CRC32",
-            "CRC64-ECMA-182"});
+            "CRC64-ECMA"});
             this.HashSelecter.Location = new System.Drawing.Point(5, 158);
             this.HashSelecter.Margin = new System.Windows.Forms.Padding(2);
             this.HashSelecter.Name = "HashSelecter";

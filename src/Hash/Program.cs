@@ -81,10 +81,10 @@ namespace Hash
                         regkey.SetValue("", "\"C:\\Program Files\\HashCalculator\\Hash.exe\" /ctm /f \"%1\" /h CRC32", Microsoft.Win32.RegistryValueKind.String);
                         regkey.Close();
 
-                        regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\CRC64-ECMA-182");
+                        regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\CRC64-ECMA");
                         regkey.Close();
-                        regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\CRC64-ECMA-182\command");
-                        regkey.SetValue("", "\"C:\\Program Files\\HashCalculator\\Hash.exe\" /ctm /f \"%1\" /h CRC64-ECMA-182", Microsoft.Win32.RegistryValueKind.String);
+                        regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\CRC64-ECMA\command");
+                        regkey.SetValue("", "\"C:\\Program Files\\HashCalculator\\Hash.exe\" /ctm /f \"%1\" /h CRC64-ECMA", Microsoft.Win32.RegistryValueKind.String);
                         regkey.Close();
 
                         Environment.ExitCode = 0;

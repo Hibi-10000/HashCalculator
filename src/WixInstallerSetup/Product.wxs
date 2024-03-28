@@ -42,8 +42,8 @@
                         <RegistryKey Key="*\shell\HashForContext\shell\CRC16-IBM\command" Root="HKCR" />
                         <RegistryKey Key="*\shell\HashForContext\shell\CRC32" Root="HKCR" />
                         <RegistryKey Key="*\shell\HashForContext\shell\CRC32\command" Root="HKCR" />
-                        <RegistryKey Key="*\shell\HashForContext\shell\CRC64-ECMA-182" Root="HKCR" />
-                        <RegistryKey Key="*\shell\HashForContext\shell\CRC64-ECMA-182\command" Root="HKCR" />
+                        <RegistryKey Key="*\shell\HashForContext\shell\CRC64-ECMA" Root="HKCR" />
+                        <RegistryKey Key="*\shell\HashForContext\shell\CRC64-ECMA\command" Root="HKCR" />
                         <RegistryValue Key="*\shell\HashForContext\shell\MD5\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\Hash.exe&quot; /ctm /f &quot;%1&quot; /h MD5" />
                         <RegistryValue Key="*\shell\HashForContext\shell\SHA1\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\Hash.exe&quot; /ctm /f &quot;%1&quot; /h SHA1" />
                         <RegistryValue Key="*\shell\HashForContext\shell\SHA256\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\Hash.exe&quot; /ctm /f &quot;%1&quot; /h SHA256" />
@@ -51,7 +51,7 @@
                         <RegistryValue Key="*\shell\HashForContext\shell\SHA512\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\Hash.exe&quot; /ctm /f &quot;%1&quot; /h SHA512" />
                         <RegistryValue Key="*\shell\HashForContext\shell\CRC16-IBM\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\Hash.exe&quot; /ctm /f &quot;%1&quot; /h CRC16-IBM" />
                         <RegistryValue Key="*\shell\HashForContext\shell\CRC32\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\Hash.exe&quot; /ctm /f &quot;%1&quot; /h CRC32" />
-                        <RegistryValue Key="*\shell\HashForContext\shell\CRC64-ECMA-182\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\Hash.exe&quot; /ctm /f &quot;%1&quot; /h CRC64-ECMA-182" />
+                        <RegistryValue Key="*\shell\HashForContext\shell\CRC64-ECMA\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\Hash.exe&quot; /ctm /f &quot;%1&quot; /h CRC64-ECMA" />
                         <RegistryValue Key="*\shell\HashForContext" Name="MUIVerb" Root="HKCR" Type="string" Value="Hash for ContextMenu(&amp;F)" />
                         <RegistryValue Key="*\shell\HashForContext" Name="SubCommands" Root="HKCR" Type="string" Value="" />
                         <RegistryValue Key="*\shell\HashForContext\shell\*\command" Root="HKCR" Type="string" Value="&quot;C:\Program Files\HashCalculator\Hash.exe&quot; /ctm /f &quot;%1&quot;" />

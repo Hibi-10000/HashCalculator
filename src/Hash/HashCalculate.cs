@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Security.Cryptography;
 
@@ -17,7 +17,7 @@ namespace Hash
             CRC16_IBM,
             CRC16_CCITT,
             CRC32,
-            CRC64_ECMA_182,
+            CRC64_ECMA,
             CRC64_ISO,
             MACTripleDES,
             RIPEMD160,
@@ -55,8 +55,8 @@ namespace Hash
                 case HashType.CRC32:
                     hashProvider = new CRC(CRC.Polynomial.CRC32);
                     break;
-                case HashType.CRC64_ECMA_182:
-                    hashProvider = new CRC(CRC.Polynomial.CRC64_ECMA182);
+                case HashType.CRC64_ECMA:
+                    hashProvider = new CRC(CRC.Polynomial.CRC64_ECMA);
                     break;
                 case HashType.CRC64_ISO:
                     hashProvider = new CRC(CRC.Polynomial.CRC64_ISO);
@@ -99,7 +99,7 @@ namespace Hash
             CRC16_IBM = 0xA001,
             CRC32 = 0xEDB88320,
             CRC64_ISO = 0xD800000000000000,
-            CRC64_ECMA182 = 0xC96C5795D7870F42,
+            CRC64_ECMA = 0xC96C5795D7870F42,
         }
 
         ulong getSeed()
@@ -114,7 +114,7 @@ namespace Hash
                 case Polynomial.CRC32:
                     return 0xffffffff;
                 case Polynomial.CRC64_ISO:
-                case Polynomial.CRC64_ECMA182:
+                case Polynomial.CRC64_ECMA:
                     return 0xffffffffffffffff;
                 default:
                     return 0xffffffffffffffff;
@@ -166,7 +166,7 @@ namespace Hash
                     case Polynomial.CRC32:
                         return 32;
                     case Polynomial.CRC64_ISO:
-                    case Polynomial.CRC64_ECMA182:
+                    case Polynomial.CRC64_ECMA:
                         return 64;
                     default:
                         return 64;
@@ -245,7 +245,7 @@ namespace Hash
                         (byte)(x & 0xff)
                     };
                 case Polynomial.CRC64_ISO:
-                case Polynomial.CRC64_ECMA182:
+                case Polynomial.CRC64_ECMA:
                     return new byte[] {
                         (byte)((x >> 56) & 0xff),
                         (byte)((x >> 48) & 0xff),

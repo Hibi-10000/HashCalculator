@@ -94,7 +94,7 @@
             "SHA512",
             "CRC16-IBM",
             "CRC32",
-            "CRC64-ECMA-182"});
+            "CRC64-ECMA"});
             this.HashSelecter.Location = new System.Drawing.Point(12, 107);
             this.HashSelecter.Name = "HashSelecter";
             this.HashSelecter.Size = new System.Drawing.Size(135, 23);

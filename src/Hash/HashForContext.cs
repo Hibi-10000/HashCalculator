@@ -99,8 +99,8 @@ namespace Hash
                     case "CRC32":
                         HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC32, filePath, UpperCheck.Checked, HihunCheck.Checked);
                         break;
-                    case "CRC64-ECMA-182":
-                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC64_ECMA_182, filePath, UpperCheck.Checked, HihunCheck.Checked);
+                    case "CRC64-ECMA":
+                        HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC64_ECMA, filePath, UpperCheck.Checked, HihunCheck.Checked);
                         break;
                     case "CRC64-ISO":
                         HashOutputBox.Text = HashCalculate.GetHash(HashCalculate.HashType.CRC64_ISO, filePath, UpperCheck.Checked, HihunCheck.Checked);
