@@ -13,7 +13,7 @@ namespace Hash
             SHA256,
             SHA384,
             SHA512,
-            CRC8,
+            //CRC8,
             CRC16_IBM,
             CRC16_CCITT,
             CRC32,
@@ -27,43 +27,21 @@ namespace Hash
 
         public static string GetHash(HashType hashtype, string filePath, bool upper, bool hihun)
         {
-            HashAlgorithm hashProvider = null;
-            switch (hashtype)
+            HashAlgorithm hashProvider = hashtype switch
             {
-                case HashType.MD5:
-                    hashProvider = MD5.Create();
-                    break;
-                case HashType.SHA1:
-                    hashProvider = SHA1.Create();
-                    break;
-                case HashType.SHA256:
-                    hashProvider = SHA256.Create();
-                    break;
-                case HashType.SHA384:
-                    hashProvider = SHA384.Create();
-                    break;
-                case HashType.SHA512:
-                    hashProvider = SHA512.Create();
-                    break;
-                //case HashType.CRC8:
-                //    hashProvider = new CRC(CRC.Polynomial.CRC8);
-                //    break;
-                case HashType.CRC16_IBM:
-                    hashProvider = new CRC(CRC.Polynomial.CRC16_IBM);
-                    break;
-                case HashType.CRC16_CCITT:
-                    hashProvider = new CRC(CRC.Polynomial.CRC16_CCITT);
-                    break;
-                case HashType.CRC32:
-                    hashProvider = new CRC(CRC.Polynomial.CRC32);
-                    break;
-                case HashType.CRC64_ECMA:
-                    hashProvider = new CRC(CRC.Polynomial.CRC64_ECMA);
-                    break;
-                case HashType.CRC64_ISO:
-                    hashProvider = new CRC(CRC.Polynomial.CRC64_ISO);
-                    break;
-            }
+                HashType.MD5         => MD5   .Create(),
+                HashType.SHA1        => SHA1  .Create(),
+                HashType.SHA256      => SHA256.Create(),
+                HashType.SHA384      => SHA384.Create(),
+                HashType.SHA512      => SHA512.Create(),
+                //HashType.CRC8        => new CRC(CRC.Polynomial.CRC8),
+                HashType.CRC16_IBM   => new CRC(CRC.Polynomial.CRC16_IBM  ),
+                HashType.CRC16_CCITT => new CRC(CRC.Polynomial.CRC16_CCITT),
+                HashType.CRC32       => new CRC(CRC.Polynomial.CRC32      ),
+                HashType.CRC64_ECMA  => new CRC(CRC.Polynomial.CRC64_ECMA ),
+                HashType.CRC64_ISO   => new CRC(CRC.Polynomial.CRC64_ISO  ),
+                _ => throw new ArgumentOutOfRangeException(nameof(hashtype), hashtype, null),
+            };
 
             var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
             //var fs = new MemoryStream(System.Text.Encoding.ASCII.GetBytes("123456789"));
@@ -224,25 +202,25 @@ namespace Hash
             switch (poly)
             {
                 case Polynomial.CRC8:
-                    return new byte[] {
+                    return [
                         (byte)(x & 0xff)
-                    };
+                    ];
                 case Polynomial.CRC16_CCITT:
                 case Polynomial.CRC16_IBM:
-                    return new byte[] {
+                    return [
                         (byte)((x >> 8) & 0xff),
                         (byte)(x & 0xff)
-                    };
+                    ];
                 case Polynomial.CRC32:
-                    return new byte[] {
+                    return [
                         (byte)((x >> 24) & 0xff),
                         (byte)((x >> 16) & 0xff),
                         (byte)((x >> 8) & 0xff),
                         (byte)(x & 0xff)
-                    };
+                    ];
                 case Polynomial.CRC64_ECMA:
                 case Polynomial.CRC64_ISO:
-                    return new byte[] {
+                    return [
                         (byte)((x >> 56) & 0xff),
                         (byte)((x >> 48) & 0xff),
                         (byte)((x >> 40) & 0xff),
@@ -251,7 +229,7 @@ namespace Hash
                         (byte)((x >> 16) & 0xff),
                         (byte)((x >> 8) & 0xff),
                         (byte)(x & 0xff)
-                    };
+                    ];
                 default:
                     return new byte[] {
                         (byte)((x >> 56) & 0xff),

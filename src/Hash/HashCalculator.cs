@@ -8,10 +8,10 @@ namespace Hash
     public partial class HashCalculator : Form
     {
 
-        public static string Major = "0";
-        public static string Minor = "5";
-        public static string Build = "4";
-        public static string Ch = "";
+        public const string Major = "0";
+        public const string Minor = "5";
+        public const string Build = "4";
+        public const string Ch = "";
 
         //[DllImport("UXTheme.dll", SetLastError = true, EntryPoint = "#138")]
         //public static extern bool ShouldSystemUseDarkMode();
@@ -48,17 +48,12 @@ namespace Hash
 
             RegistryKey root = RegistryKey.OpenBaseKey(RegistryHive.ClassesRoot, RegistryView.Registry64);
             string regPath = @"*\shell\HashForContext";
-            RegistryKey regKey = null;
             try {
-                regKey = root.OpenSubKey(regPath);
-                if (regKey != null) {
-                    HashForContextEnable.Checked = true;
-                } else {
-                    HashForContextEnable.Checked = false;
-                }
+                using RegistryKey? regKey = root.OpenSubKey(regPath);
+                HashForContextEnable.Checked = regKey != null;
+            } catch (Exception) {
+                HashForContextEnable.Checked = false;
             }
-            catch (Exception) { HashForContextEnable.Checked = false; }
-            finally { regKey?.Close(); }
 
             Text = "HashCalculator v" + Major + "." + Minor + "." + Build + Ch;
             hashandver.Text = "HashCalculator v" + Major + "." + Minor + "." + Build;
@@ -78,17 +73,15 @@ namespace Hash
         private void DropPanel_DragDrop(object sender, DragEventArgs e)
         {
             HashFileURL.Text = null;
-            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-            for (int i = 0; i < files.Length; i++)
-            {
-                string fileName = files[i];
-                HashFileURL.Text += fileName;
+            string[]? files = (string[]?)e.Data?.GetData(DataFormats.FileDrop, false);
+            foreach (string file in files ?? []) {
+                HashFileURL.Text += file;
             }
         }
 
         private void DropPanel_DragEnter(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            if (e.Data?.GetDataPresent(DataFormats.FileDrop) ?? false)
             {
                 e.Effect = DragDropEffects.All;
             }
@@ -113,20 +106,18 @@ namespace Hash
         private void SelectFolderButton_Click(object sender, EventArgs e)
         {
             FileFolderURLBox.Text = null;
-            using (var cofd = new CommonOpenFileDialog()
+            using var cofd = new CommonOpenFileDialog()
             {
                 Title = "フォルダを選択してください",
                 InitialDirectory = @"C:\",
                 RestoreDirectory = true,
                 IsFolderPicker = true,
-            })
+            };
+            if (cofd.ShowDialog() != CommonFileDialogResult.Ok)
             {
-                if (cofd.ShowDialog() != CommonFileDialogResult.Ok)
-                {
-                    return;
-                }
-                FileFolderURLBox.Text = $"{cofd.FileName}";
+                return;
             }
+            FileFolderURLBox.Text = $"{cofd.FileName}";
         }
         */
 
