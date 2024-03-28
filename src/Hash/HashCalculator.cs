@@ -10,7 +10,7 @@ namespace Hash
 
         public static string Major = "0";
         public static string Minor = "5";
-        public static string Build = "3";
+        public static string Build = "4";
         public static string Ch = "";
 
         //[DllImport("UXTheme.dll", SetLastError = true, EntryPoint = "#138")]

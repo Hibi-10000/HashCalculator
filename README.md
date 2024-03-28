@@ -1,4 +1,4 @@
-﻿# HashCalculator [v0.5.3]  
+﻿# HashCalculator [v0.5.4]  
   
 Hash計算機でHashを計算できます。  
 また、ファイルを右クリックしてHash for ContextMenu(F)をクリックし、  
@@ -28,9 +28,7 @@ Hashを選択または*をクリックするとそのファイルのHashを計�
 Windows11 Pro 23H2 x86_64 
 .NET Framework 4.8  
   
-更新予定: WPF,.NET6,WinUI3への移行  
-  
-Copyright © 2021-2024 Hibi_10000 GNU General Public License Version 3  
+更新予定: .NET8,WPF,WinUI3への移行  
   
 更新履歴  
 Ver.β0.1.1 初版  
@@ -42,3 +40,4 @@ v0.5.0-alpha Hashアルゴリズムを追加(CRC系統・MACTripleDES・RIPEMD16
 v0.5.1-alpha 設定の"HashForContextを有効にする"が正常に動作しない問題を修正  
 v0.5.2-alpha ライセンスの表示を修正 Githubへのリンクを更新  
 v0.5.3 alpha表記を削除 Githubへのリンクを更新  
+v0.5.4 ファイルサイズを削減 一部表記変更  
