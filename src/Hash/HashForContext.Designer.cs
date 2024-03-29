@@ -87,7 +87,7 @@
             // 
             HashSelecter.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 128);
             HashSelecter.FormattingEnabled = true;
-            HashSelecter.Items.AddRange(new object[] { "Hashを選択してください", "MD5", "SHA1", "SHA256", "SHA384", "SHA512", "CRC16-IBM", "CRC32", "CRC64-ECMA" });
+            HashSelecter.Items.AddRange([ "Hashを選択してください", ..HashCalculate.GetHashTypeNames() ]);
             HashSelecter.Location = new System.Drawing.Point(14, 164);
             HashSelecter.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             HashSelecter.Name = "HashSelecter";

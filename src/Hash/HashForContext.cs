@@ -74,27 +74,12 @@ namespace Hash
         {
             if (HashFileURL.Text != "ファイルのパス(※これが表示されている場合はバグまたは起動方法が間違っています)" && HashFileURL.Text != "")
             {
+                string hashType = HashSelecter.Text;
                 string filePath = HashFileURL.Text;
-                switch (HashSelecter.Text)
-                {
-                    case "MD5":
-                    case "SHA1":
-                    case "SHA256":
-                    case "SHA384":
-                    case "SHA512":
-                    //case "CRC8":
-                    case "CRC16-IBM":
-                    case "CRC16-CCITT":
-                    case "CRC32":
-                    case "CRC64-ECMA":
-                    case "CRC64-ISO":
-                        var hashType = HashCalculate.HashTypeFromString(HashSelecter.Text);
-                        HashOutputBox.Text = HashCalculate.GetHash(hashType, filePath, UpperCheck.Checked, HihunCheck.Checked);
-                        break;
-                    default:
-                        HashOutputBox.Text = "ここにHash値が表示されます";
-                        break;
-                }
+                bool upper = UpperCheck.Checked;
+                bool hihun = HihunCheck.Checked;
+                string hash = HashCalculate.GetHash(hashType, filePath, upper, hihun) ?? "ここにHash値が表示されます";
+                HashOutputBox.Text = hash;
             } else {
                 HashOutputBox.Text = "ここにHash値が表示されます";
             }

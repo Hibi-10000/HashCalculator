@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Security.Cryptography;
 
 namespace Hash
@@ -21,13 +22,26 @@ namespace Hash
             CRC64_ISO,
         }
 
-        public static HashType HashTypeFromString(string value) {
-            return (HashType)Enum.Parse(typeof(HashType), value.Replace("-", "_"));
+        public static string[] GetHashTypeNames()
+        {
+            return Enum.GetNames<HashType>().Select(x => x.Replace("_", "-")).ToArray();
         }
 
-        public static string GetHash(HashType hashtype, string filePath, bool upper, bool hihun)
+        public static string? GetHash(string hashType, string filePath, bool upper, bool hihun)
         {
-            HashAlgorithm hashProvider = hashtype switch
+            foreach (HashType type in Enum.GetValues<HashType>())
+            {
+                if (hashType.Replace("-", "_") == type.ToString())
+                {
+                    return GetHash(type, filePath, upper, hihun);
+                }
+            }
+            return null;
+        }
+
+        public static string GetHash(HashType hashType, string filePath, bool upper, bool hihun)
+        {
+            HashAlgorithm hashProvider = hashType switch
             {
                 HashType.MD5         => MD5   .Create(),
                 HashType.SHA1        => SHA1  .Create(),
@@ -40,7 +54,7 @@ namespace Hash
                 HashType.CRC32       => new CRC(CRC.Polynomial.CRC32      ),
                 HashType.CRC64_ECMA  => new CRC(CRC.Polynomial.CRC64_ECMA ),
                 HashType.CRC64_ISO   => new CRC(CRC.Polynomial.CRC64_ISO  ),
-                _ => throw new ArgumentOutOfRangeException(nameof(hashtype), hashtype, null),
+                _ => throw new ArgumentOutOfRangeException(nameof(hashType), hashType, null),
             };
 
             var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
@@ -48,16 +62,12 @@ namespace Hash
             var bs = hashProvider.ComputeHash(fs);
 
             string return_str = BitConverter.ToString(bs);
-            if (upper)
-            {
+            if (upper) {
                 return_str = return_str.ToUpper();
-            }
-            else
-            {
+            } else {
                 return_str = return_str.ToLower();
             }
-            if (!hihun)
-            {
+            if (!hihun) {
                 return_str = return_str.Replace("-", "");
             }
             return return_str;

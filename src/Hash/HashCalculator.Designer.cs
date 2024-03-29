@@ -325,7 +325,7 @@
             // 
             HashSelecter.Font = new System.Drawing.Font("游ゴシック", 10F);
             HashSelecter.FormattingEnabled = true;
-            HashSelecter.Items.AddRange(new object[] { "②Hashを選択", "MD5", "SHA1", "SHA256", "SHA384", "SHA512", "CRC16-IBM", "CRC32", "CRC64-ECMA" });
+            HashSelecter.Items.AddRange([ "②Hashを選択", ..HashCalculate.GetHashTypeNames() ]);
             HashSelecter.Location = new System.Drawing.Point(6, 278);
             HashSelecter.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             HashSelecter.Name = "HashSelecter";
@@ -443,10 +443,9 @@
             // 
             // hikaku2hashtype
             // 
-            hikaku2hashtype.AutoCompleteCustomSource.AddRange(new string[] { "比較②", "MD5", "SHA1", "SHA256", "SHA384", "SHA512" });
             hikaku2hashtype.Font = new System.Drawing.Font("游ゴシック Medium", 9F);
             hikaku2hashtype.FormattingEnabled = true;
-            hikaku2hashtype.Items.AddRange(new object[] { "比較②", "MD5", "SHA1", "SHA256", "SHA384", "SHA512" });
+            hikaku2hashtype.Items.AddRange([ "比較②", ..HashCalculate.GetHashTypeNames() ]);
             hikaku2hashtype.Location = new System.Drawing.Point(5, 181);
             hikaku2hashtype.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             hikaku2hashtype.Name = "hikaku2hashtype";
@@ -458,7 +457,7 @@
             // 
             hikaku1hashtype.Font = new System.Drawing.Font("游ゴシック", 9F);
             hikaku1hashtype.FormattingEnabled = true;
-            hikaku1hashtype.Items.AddRange(new object[] { "比較①", "MD5", "SHA1", "SHA256", "SHA384", "SHA512" });
+            hikaku1hashtype.Items.AddRange([ "比較①", ..HashCalculate.GetHashTypeNames() ]);
             hikaku1hashtype.Location = new System.Drawing.Point(5, 73);
             hikaku1hashtype.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             hikaku1hashtype.Name = "hikaku1hashtype";
