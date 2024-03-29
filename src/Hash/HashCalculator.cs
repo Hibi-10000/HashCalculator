@@ -226,7 +226,7 @@ namespace Hash
                         Verb = "runas",
                         Arguments = "/rd"
                     };
-                    if (File.Exists("C:\\Program Files\\HashCalculator\\Hash.exe"))
+                    if (File.Exists(Application.ExecutablePath))
                     {
                         System.Diagnostics.Process.Start(startInfo);
                     }
@@ -245,7 +245,7 @@ namespace Hash
                         Verb = "runas",
                         Arguments = "/rc"
                     };
-                    if (File.Exists("C:\\Program Files\\HashCalculator\\Hash.exe"))
+                    if (File.Exists(Application.ExecutablePath))
                     {
                         System.Diagnostics.Process.Start(startInfo);
                     }
