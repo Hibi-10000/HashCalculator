@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Windows.Forms;
 using Microsoft.Win32;
@@ -218,41 +218,20 @@ namespace Hash
         {
             if (Tab.SelectedIndex == 3)
             {
-                if (HashForContextEnable.Checked == false)
+                if (File.Exists(Application.ExecutablePath))
                 {
+                    //var startInfo = new System.Diagnostics.ProcessStartInfo(@"C:\Program Files\HashCalculator\Hash.exe");
                     var startInfo = new System.Diagnostics.ProcessStartInfo(Application.ExecutablePath)
                     {
                         UseShellExecute = true,
                         Verb = "runas",
-                        Arguments = "/rd"
+                        Arguments = HashForContextEnable.Checked ? "/rc" : "/rd"
                     };
-                    if (File.Exists(Application.ExecutablePath))
-                    {
-                        System.Diagnostics.Process.Start(startInfo);
-                    }
-                    else
-                    {
-                        HashForContextEnable.Checked = true;
-                    }
+                    System.Diagnostics.Process.Start(startInfo);
                 }
                 else
                 {
-
-                    //var startInfo = new System.Diagnostics.ProcessStartInfo("C:\\Program Files\\HashCalculator\\Hash.exe");
-                    var startInfo = new System.Diagnostics.ProcessStartInfo(Application.ExecutablePath)
-                    {
-                        UseShellExecute = true,
-                        Verb = "runas",
-                        Arguments = "/rc"
-                    };
-                    if (File.Exists(Application.ExecutablePath))
-                    {
-                        System.Diagnostics.Process.Start(startInfo);
-                    }
-                    else
-                    {
-                        HashForContextEnable.Checked = false;
-                    }
+                    HashForContextEnable.Checked = HashForContextEnable.Checked is false;
                 }
             }
         }
