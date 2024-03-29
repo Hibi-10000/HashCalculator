@@ -227,7 +227,11 @@ namespace Hash
                         Verb = "runas",
                         Arguments = HashForContextEnable.Checked ? "/rc" : "/rd"
                     };
-                    System.Diagnostics.Process.Start(startInfo);
+                    var process = System.Diagnostics.Process.Start(startInfo);
+                    process?.WaitForExit();
+                    if (process?.ExitCode is not 0) {
+                        HashForContextEnable.Checked = HashForContextEnable.Checked is false;
+                    }
                 }
                 else
                 {
