@@ -15,16 +15,24 @@ namespace Hash
             SHA384,
             SHA512,
             //CRC8,
+            [Hidden]
             CRC16_IBM,
             CRC16_CCITT,
             CRC32,
             CRC64_ECMA,
+            [Hidden]
             CRC64_ISO,
         }
 
-        public static string[] GetHashTypeNames()
+        [AttributeUsage(AttributeTargets.Field)]
+        public class HiddenAttribute : Attribute {}
+
+        public static string[] GetHashTypeNames(bool includeHidden = false)
         {
-            return Enum.GetNames<HashType>().Select(x => x.Replace("_", "-")).ToArray();
+            return Enum.GetNames<HashType>()
+                .Where(x => includeHidden || !Attribute.IsDefined(typeof(HashType).GetField(x)!, typeof(HiddenAttribute)))
+                .Select(x => x.Replace("_", "-"))
+                .ToArray();
         }
 
         public static string? GetHash(string hashType, string filePath, bool upper, bool hihun)
