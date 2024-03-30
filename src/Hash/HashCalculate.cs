@@ -57,8 +57,8 @@ namespace Hash
                 _ => throw new ArgumentOutOfRangeException(nameof(hashType), hashType, null),
             };
 
-            var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-            //var fs = new MemoryStream(System.Text.Encoding.ASCII.GetBytes("123456789"));
+            using var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            //using var fs = new MemoryStream(System.Text.Encoding.ASCII.GetBytes("123456789"));
             var bs = hashProvider.ComputeHash(fs);
 
             string return_str = BitConverter.ToString(bs);
@@ -241,7 +241,7 @@ namespace Hash
                         (byte)(x & 0xff)
                     ];
                 default:
-                    return new byte[] {
+                    return [
                         (byte)((x >> 56) & 0xff),
                         (byte)((x >> 48) & 0xff),
                         (byte)((x >> 40) & 0xff),
@@ -250,7 +250,7 @@ namespace Hash
                         (byte)((x >> 16) & 0xff),
                         (byte)((x >> 8) & 0xff),
                         (byte)(x & 0xff)
-                    };
+                    ];
             }
         }
     }
