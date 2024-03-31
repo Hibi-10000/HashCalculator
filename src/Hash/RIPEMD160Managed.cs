@@ -31,10 +31,6 @@ namespace System.Security.Cryptography {
         private uint[]      _stateMD160;
         private uint[]      _blockDWords;
 
-        //
-        // public constructors
-        //
-
         public RIPEMD160Managed() {
             // .NET Framework 2.0 - 4.7.2 rejected all managed implementations when in FIPS mode
             // because the implementations are not certified. For applications which needed to
@@ -44,7 +40,9 @@ namespace System.Security.Cryptography {
             // Since RIPEMD160 is not a FIPS-Approved algorithm anyway, this just means that an
             // application or library needs to determine on its own if RIPEMD160 is prohibited in context.
             if (CryptoConfig.AllowOnlyFipsAlgorithms/* && AppContextSwitches.UseLegacyFipsThrow*/)
-                throw new InvalidOperationException(/*Environment.GetResourceString(*/"Cryptography_NonCompliantFIPSAlgorithm"/*)*/);
+                throw new InvalidOperationException(
+                    "This implementation is not part of the Windows Platform FIPS validated cryptographic algorithms."
+                );
             Contract.EndContractBlock();
 
             _stateMD160 = new uint[5];
@@ -54,10 +52,6 @@ namespace System.Security.Cryptography {
             InitializeState();
         }
 
-        //
-        // public methods
-        //
-
         public override void Initialize() {
             InitializeState();
 
@@ -66,19 +60,13 @@ namespace System.Security.Cryptography {
             Array.Clear(_buffer, 0, _buffer.Length);
         }
 
-        [System.Security.SecuritySafeCritical]  // auto-generated
         protected override void HashCore(byte[] rgb, int ibStart, int cbSize) {
             _HashData(rgb, ibStart, cbSize);
         }
 
-        [System.Security.SecuritySafeCritical]  // auto-generated
         protected override byte[] HashFinal() {
             return _EndHash();
         }
-
-        //
-        // private methods
-        //
 
         private void InitializeState() {
             _count = 0;
@@ -92,7 +80,6 @@ namespace System.Security.Cryptography {
             _stateMD160[4] =  0xc3d2e1f0;
         }
 
-        [System.Security.SecurityCritical]  // auto-generated
         private void _HashData(byte[] partIn, int ibStart, int cbSize) {
             int bufferLen;
             int partInLen = cbSize;
@@ -125,15 +112,13 @@ namespace System.Security.Cryptography {
             }
         }
 
-        [System.Security.SecurityCritical]  // auto-generated
         private byte[] _EndHash() {
             byte[]          pad;
             int             padLen;
             long            bitCount;
             byte[]          hash = new byte[20];
 
-            /* Compute padding: 80 00 00 ... 00 00 <bit count>
-             */
+            // Compute padding: 80 00 00 ... 00 00 <bit count>
 
             padLen = 64 - (int)(_count & 0x3f);
             if (padLen <= 8)
@@ -142,7 +127,7 @@ namespace System.Security.Cryptography {
             pad = new byte[padLen];
             pad[0] = 0x80;
 
-            //  Convert count to bit count
+            // Convert count to bit count
             bitCount = _count * 8;
 
             // The convention for RIPEMD is little endian (the same as MD4)
@@ -165,7 +150,6 @@ namespace System.Security.Cryptography {
             return hash;
         }
 
-        [System.Security.SecurityCritical]  // auto-generated
         private static void MDTransform (uint[] blockDWords, uint[] state, byte[] block)
         {
             uint aa = state[0];
@@ -1035,7 +1019,6 @@ namespace System.Security.Cryptography {
         // https://github.com/microsoft/referencesource/blob/51cf7850defa8a17d815b4700b67116e3fa283c2/mscorlib/system/security/cryptography/utils.cs#L714
 
         // digits == number of DWORDs
-        [System.Security.SecurityCritical]  // auto-generated
         internal static void DWORDFromLittleEndian (uint[] x, int digits, byte[] block) {
             int i;
             int j;

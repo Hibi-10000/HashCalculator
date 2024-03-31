@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -14,7 +14,6 @@ namespace Hash
             SHA256,
             SHA384,
             SHA512,
-            //CRC8,
             [Hidden]
             CRC16_IBM,
             CRC16_CCITT,
@@ -60,7 +59,6 @@ namespace Hash
                 HashType.SHA256      => SHA256.Create(),
                 HashType.SHA384      => SHA384.Create(),
                 HashType.SHA512      => SHA512.Create(),
-                //HashType.CRC8        => new CRC(CRC.Polynomial.CRC8),
                 HashType.CRC16_IBM   => new CRC(CRC.Polynomial.CRC16_IBM  ),
                 HashType.CRC16_CCITT => new CRC(CRC.Polynomial.CRC16_CCITT),
                 HashType.CRC32       => new CRC(CRC.Polynomial.CRC32      ),
@@ -120,7 +118,6 @@ namespace Hash
         private ulong hash;
         private readonly ulong seed;
         private readonly ulong[] table;
-        //private static ulong[] defaultTable;
 
         public CRC(Polynomial polynomial)
         {
@@ -165,26 +162,8 @@ namespace Hash
             }
         }
 
-        /*public static ulong Compute(byte[] buffer)
-        {
-            return ~CalculateHash(InitializeTable(DefaultPolynomial), DefaultSeed, buffer, 0, buffer.Length);
-        }
-
-        public static ulong Compute(ulong seed, byte[] buffer)
-        {
-            return ~CalculateHash(InitializeTable(DefaultPolynomial), seed, buffer, 0, buffer.Length);
-        }
-
-        public static ulong Compute(ulong polynomial, ulong seed, byte[] buffer)
-        {
-            return ~CalculateHash(InitializeTable(polynomial), seed, buffer, 0, buffer.Length);
-        }*/
-
         private static ulong[] InitializeTable(ulong polynomial)
         {
-            //if (polynomial == DefaultPolynomial && defaultTable != null)
-            //    return defaultTable;
-
             ulong[] createTable = new ulong[256];
             for (int i = 0; i < 256; i++)
             {
@@ -196,10 +175,6 @@ namespace Hash
                         entry = entry >> 1;
                 createTable[i] = entry;
             }
-
-            //if (polynomial == DefaultPolynomial)
-            //    defaultTable = createTable;
-
             return createTable;
         }
 
@@ -218,9 +193,6 @@ namespace Hash
         {
             return poly switch
             {
-                //Polynomial.CRC8 => [
-                //    (byte)(x & 0xff)
-                //],
                 Polynomial.CRC16_CCITT or
                 Polynomial.CRC16_IBM => [
                     (byte)((x >> 8) & 0xff),
