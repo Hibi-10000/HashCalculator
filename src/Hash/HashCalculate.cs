@@ -19,6 +19,8 @@ namespace Hash
             CRC16_IBM,
             CRC16_CCITT,
             CRC32,
+            [Hidden]
+            CRC32C,
             CRC64_ECMA,
             [Hidden]
             CRC64_ISO,
@@ -62,6 +64,7 @@ namespace Hash
                 HashType.CRC16_IBM   => new CRC(CRC.Polynomial.CRC16_IBM  ),
                 HashType.CRC16_CCITT => new CRC(CRC.Polynomial.CRC16_CCITT),
                 HashType.CRC32       => new CRC(CRC.Polynomial.CRC32      ),
+                HashType.CRC32C      => new CRC(CRC.Polynomial.CRC32C     ),
                 HashType.CRC64_ECMA  => new CRC(CRC.Polynomial.CRC64_ECMA ),
                 HashType.CRC64_ISO   => new CRC(CRC.Polynomial.CRC64_ISO  ),
                 HashType.RIPEMD160   => new RIPEMD160Managed(),
@@ -93,6 +96,7 @@ namespace Hash
             CRC16_CCITT = 0x8408,
             CRC16_IBM = 0xA001,
             CRC32 = 0xEDB88320,
+            CRC32C = 0x82F63B78,
             CRC64_ECMA = 0xC96C5795D7870F42,
             CRC64_ISO = 0xD800000000000000,
         }
@@ -104,7 +108,8 @@ namespace Hash
                 //Polynomial.CRC8 => 0xff,
                 Polynomial.CRC16_CCITT or
                 Polynomial.CRC16_IBM => 0xffff,
-                Polynomial.CRC32 => 0xffffffff,
+                Polynomial.CRC32 or
+                Polynomial.CRC32C => 0xffffffff,
                 Polynomial.CRC64_ECMA or
                 Polynomial.CRC64_ISO => 0xffffffffffffffff,
                 _ => 0xffffffffffffffff,
@@ -151,7 +156,8 @@ namespace Hash
                     //Polynomial.CRC8 => 8,
                     Polynomial.CRC16_CCITT or
                     Polynomial.CRC16_IBM => 16,
-                    Polynomial.CRC32 => 32,
+                    Polynomial.CRC32 or
+                    Polynomial.CRC32C => 32,
                     Polynomial.CRC64_ECMA or
                     Polynomial.CRC64_ISO => 64,
                     _ => 64,
@@ -220,7 +226,8 @@ namespace Hash
                     (byte)((x >> 8) & 0xff),
                     (byte)(x & 0xff)
                 ],
-                Polynomial.CRC32 => [
+                Polynomial.CRC32 or
+                Polynomial.CRC32C => [
                     (byte)((x >> 24) & 0xff),
                     (byte)((x >> 16) & 0xff),
                     (byte)((x >> 8) & 0xff),

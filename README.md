@@ -15,6 +15,7 @@ Hashを選択または*をクリックするとそのファイルのHashを計�
 ・CRC16-IBM  
 ・CRC16-CCITT*  
 ・CRC32  
+・CRC32C*  
 ・CRC64-ECMA  
 ・CRC64-ISO*  
   
