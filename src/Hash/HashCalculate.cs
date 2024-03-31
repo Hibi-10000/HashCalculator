@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -89,7 +89,7 @@ namespace Hash
     {
         public enum Polynomial : ulong
         {
-            CRC8 = 0x7,
+            //CRC8 = 0x7,
             CRC16_CCITT = 0x8408,
             CRC16_IBM = 0xA001,
             CRC32 = 0xEDB88320,
@@ -99,21 +99,16 @@ namespace Hash
 
         ulong GetSeed()
         {
-            switch (poly)
+            return poly switch
             {
-                case Polynomial.CRC8:
-                    return 0xff;
-                case Polynomial.CRC16_CCITT:
-                case Polynomial.CRC16_IBM:
-                    return 0xffff;
-                case Polynomial.CRC32:
-                    return 0xffffffff;
-                case Polynomial.CRC64_ECMA:
-                case Polynomial.CRC64_ISO:
-                    return 0xffffffffffffffff;
-                default:
-                    return 0xffffffffffffffff;
-            }
+                //Polynomial.CRC8 => 0xff,
+                Polynomial.CRC16_CCITT or
+                Polynomial.CRC16_IBM => 0xffff,
+                Polynomial.CRC32 => 0xffffffff,
+                Polynomial.CRC64_ECMA or
+                Polynomial.CRC64_ISO => 0xffffffffffffffff,
+                _ => 0xffffffffffffffff,
+            };
         }
 
         private readonly Polynomial poly;
@@ -151,21 +146,16 @@ namespace Hash
         {
             get
             {
-                switch (poly)
+                return poly switch
                 {
-                    case Polynomial.CRC8:
-                        return 8;
-                    case Polynomial.CRC16_CCITT:
-                    case Polynomial.CRC16_IBM:
-                        return 16;
-                    case Polynomial.CRC32:
-                        return 32;
-                    case Polynomial.CRC64_ECMA:
-                    case Polynomial.CRC64_ISO:
-                        return 64;
-                    default:
-                        return 64;
-                }
+                    //Polynomial.CRC8 => 8,
+                    Polynomial.CRC16_CCITT or
+                    Polynomial.CRC16_IBM => 16,
+                    Polynomial.CRC32 => 32,
+                    Polynomial.CRC64_ECMA or
+                    Polynomial.CRC64_ISO => 64,
+                    _ => 64,
+                };
             }
         }
 
@@ -220,49 +210,35 @@ namespace Hash
 
         private byte[] ULongToBigEndianBytes(ulong x)
         {
-            switch (poly)
+            return poly switch
             {
-                case Polynomial.CRC8:
-                    return [
-                        (byte)(x & 0xff)
-                    ];
-                case Polynomial.CRC16_CCITT:
-                case Polynomial.CRC16_IBM:
-                    return [
-                        (byte)((x >> 8) & 0xff),
-                        (byte)(x & 0xff)
-                    ];
-                case Polynomial.CRC32:
-                    return [
-                        (byte)((x >> 24) & 0xff),
-                        (byte)((x >> 16) & 0xff),
-                        (byte)((x >> 8) & 0xff),
-                        (byte)(x & 0xff)
-                    ];
-                case Polynomial.CRC64_ECMA:
-                case Polynomial.CRC64_ISO:
-                    return [
-                        (byte)((x >> 56) & 0xff),
-                        (byte)((x >> 48) & 0xff),
-                        (byte)((x >> 40) & 0xff),
-                        (byte)((x >> 32) & 0xff),
-                        (byte)((x >> 24) & 0xff),
-                        (byte)((x >> 16) & 0xff),
-                        (byte)((x >> 8) & 0xff),
-                        (byte)(x & 0xff)
-                    ];
-                default:
-                    return [
-                        (byte)((x >> 56) & 0xff),
-                        (byte)((x >> 48) & 0xff),
-                        (byte)((x >> 40) & 0xff),
-                        (byte)((x >> 32) & 0xff),
-                        (byte)((x >> 24) & 0xff),
-                        (byte)((x >> 16) & 0xff),
-                        (byte)((x >> 8) & 0xff),
-                        (byte)(x & 0xff)
-                    ];
-            }
+                //Polynomial.CRC8 => [
+                //    (byte)(x & 0xff)
+                //],
+                Polynomial.CRC16_CCITT or
+                Polynomial.CRC16_IBM => [
+                    (byte)((x >> 8) & 0xff),
+                    (byte)(x & 0xff)
+                ],
+                Polynomial.CRC32 => [
+                    (byte)((x >> 24) & 0xff),
+                    (byte)((x >> 16) & 0xff),
+                    (byte)((x >> 8) & 0xff),
+                    (byte)(x & 0xff)
+                ],
+                Polynomial.CRC64_ECMA or
+                Polynomial.CRC64_ISO => [
+                    (byte)((x >> 56) & 0xff),
+                    (byte)((x >> 48) & 0xff),
+                    (byte)((x >> 40) & 0xff),
+                    (byte)((x >> 32) & 0xff),
+                    (byte)((x >> 24) & 0xff),
+                    (byte)((x >> 16) & 0xff),
+                    (byte)((x >> 8) & 0xff),
+                    (byte)(x & 0xff)
+                ],
+                _ => [],
+            };
         }
     }
 }
