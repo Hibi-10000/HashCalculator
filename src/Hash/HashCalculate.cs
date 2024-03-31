@@ -22,6 +22,8 @@ namespace Hash
             CRC64_ECMA,
             [Hidden]
             CRC64_ISO,
+            [Hidden]
+            RIPEMD160,
         }
 
         [AttributeUsage(AttributeTargets.Field)]
@@ -62,6 +64,7 @@ namespace Hash
                 HashType.CRC32       => new CRC(CRC.Polynomial.CRC32      ),
                 HashType.CRC64_ECMA  => new CRC(CRC.Polynomial.CRC64_ECMA ),
                 HashType.CRC64_ISO   => new CRC(CRC.Polynomial.CRC64_ISO  ),
+                HashType.RIPEMD160   => new RIPEMD160Managed(),
                 _ => throw new ArgumentOutOfRangeException(nameof(hashType), hashType, null),
             };
 
