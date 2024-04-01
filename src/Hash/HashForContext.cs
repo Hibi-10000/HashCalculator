@@ -91,7 +91,7 @@ namespace Hash
             if (HashFileURL.Text != "ファイルのパス(※これが表示されている場合はバグまたは起動方法が間違っています)") option += "/f \"" + HashFileURL.Text + "\" ";
             if (HashSelecter.Text != "Hashを選択してください") option += "/h " + HashSelecter.Text + " ";
             if (DebugUse.Visible == true) option += "/d";
-            var startInfo = new System.Diagnostics.ProcessStartInfo(System.Reflection.Assembly.GetExecutingAssembly().Location)
+            var startInfo = new System.Diagnostics.ProcessStartInfo(Application.ExecutablePath)
             {
                 UseShellExecute = true,
                 Arguments = option
