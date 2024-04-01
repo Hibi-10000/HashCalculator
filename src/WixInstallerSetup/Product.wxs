@@ -1,7 +1,7 @@
-<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
     <!-- 
-        MajorUpdate: Product.Id Product.Version
-        MinorUpdate: Product.Version
+        MajorUpdate: Package.ProductCode Package.Version
+        MinorUpdate: Package.Version
         SmallUpdate: No Changes
     -->
     <Package Name="HashCalculator" Manufacturer="Hibi_10000" Version="0.5.4" ProductCode="60095A52-52EB-4DC9-8752-ADD0C130A798" UpgradeCode="B0C53B72-7CDE-4EF9-A3F8-0838292E7197" Language="1033" Codepage="932" InstallerVersion="405">
@@ -10,37 +10,10 @@
         <StandardDirectory Id="ProgramFiles64Folder">
             <Directory Id="HASHCALCULATOR" Name="HashCalculator">
                 <Component Id="HASH.EXE" DiskId="1" Guid="B0B89934-3D7F-49CC-A8BE-DB6CEDF489CC" Bitness="always64">
-                    <File Id="HASH.EXE" Name="Hash.exe" Source="..\Hash\publish\win-x64\Hash.exe" KeyPath="yes" ReadOnly="yes">
-                        <!-- -><Shortcut Id="HashDesktopLnk" Name="HashCalculator" Directory="DesktopFolder" Icon="DesktopIcon.exe" IconIndex="0" WorkingDirectory="INSTALLDIR" Advertise="yes" />
-                        <Shortcut Id="HashPMFLnk" Name="HashCalculator" Directory="ProgramMenuFolder" Icon="ProgramMenuIcon.exe" IconIndex="0" Advertise="yes" /><!- -->
-                    </File>
+                    <File Id="HASH.EXE" Name="Hash.exe" Source="..\Hash\publish\win-x64\Hash.exe" KeyPath="yes" ReadOnly="yes" />
                 </Component>
-                <!-- ->
-                <Component Id="HASHFORCONTEXT.EXE" DiskId="1" Guid="74531E7A-0D07-4C68-BB83-0DFF3F486AA8" Win64="yes">
-                    <File Id="HASHFORCONTEXT.EXE" Name="HashForContext.exe" Source="..\HashForContext\bin\x64\Release\HashForContext.exe" KeyPath="yes" ReadOnly="yes" />
-                </Component>
-                <!- -->
                 <Component Id="REGISTRY" DiskId="1" Guid="671CCB3C-65C5-460C-9C73-158662C1E451" Bitness="always64">
                     <RegistryKey Root="HKCR" Key="*\shell\HashForContext" />
-                    <RegistryKey Root="HKCR" Key="*\shell\HashForContext\shell" />
-                    <RegistryKey Root="HKCR" Key="*\shell\HashForContext\shell\*\" />
-                    <RegistryKey Root="HKCR" Key="*\shell\HashForContext\shell\*\command" />
-                    <RegistryKey Root="HKCR" Key="*\shell\HashForContext\shell\MD5" />
-                    <RegistryKey Root="HKCR" Key="*\shell\HashForContext\shell\MD5\command" />
-                    <RegistryKey Root="HKCR" Key="*\shell\HashForContext\shell\SHA1" />
-                    <RegistryKey Root="HKCR" Key="*\shell\HashForContext\shell\SHA1\command" />
-                    <RegistryKey Root="HKCR" Key="*\shell\HashForContext\shell\SHA256" />
-                    <RegistryKey Root="HKCR" Key="*\shell\HashForContext\shell\SHA256\command" />
-                    <RegistryKey Root="HKCR" Key="*\shell\HashForContext\shell\SHA384" />
-                    <RegistryKey Root="HKCR" Key="*\shell\HashForContext\shell\SHA384\command" />
-                    <RegistryKey Root="HKCR" Key="*\shell\HashForContext\shell\SHA512" />
-                    <RegistryKey Root="HKCR" Key="*\shell\HashForContext\shell\SHA512\command" />
-                    <RegistryKey Root="HKCR" Key="*\shell\HashForContext\shell\CRC16-IBM" />
-                    <RegistryKey Root="HKCR" Key="*\shell\HashForContext\shell\CRC16-IBM\command" />
-                    <RegistryKey Root="HKCR" Key="*\shell\HashForContext\shell\CRC32" />
-                    <RegistryKey Root="HKCR" Key="*\shell\HashForContext\shell\CRC32\command" />
-                    <RegistryKey Root="HKCR" Key="*\shell\HashForContext\shell\CRC64-ECMA" />
-                    <RegistryKey Root="HKCR" Key="*\shell\HashForContext\shell\CRC64-ECMA\command" />
                     <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext" Name="MUIVerb" Value="Hash for ContextMenu(&amp;F)" />
                     <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext" Name="SubCommands" Value="" />
                     <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\*\command" Value="&quot;C:\Program Files\HashCalculator\Hash.exe&quot; /ctm /f &quot;%1&quot;" />
@@ -68,9 +41,6 @@
             </Component>
         </StandardDirectory>
         <Feature Id="DefaultFeature" Title="Main Feature" Level="1">
-            <!-- ->
-            <ComponentRef Id="HASHFORCONTEXT.EXE" />
-            <!- -->
             <ComponentRef Id="HASH.EXE" />
             <ComponentRef Id="REGISTRY" />
             <ComponentRef Id="HASHCALCULATOR.LNK.DF" />
@@ -96,10 +66,6 @@
             </Dialog>
         </UI>
         <UIRef Id="NormalUI" />
-        <!-- ->
-        <Icon Id="DesktopIcon.exe" SourceFile="..\Hash\bin\x64\Release\Hash.exe" />
-        <Icon Id="ProgramMenuIcon.exe" SourceFile="..\Hash\bin\x64\Release\Hash.exe" />
-        <!- -->
         <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
         <WixVariable Id="WixUIBannerBmp" Value="banner.bmp" />
         <WixVariable Id="WixUIDialogBmp" Value="dialog.bmp" />
