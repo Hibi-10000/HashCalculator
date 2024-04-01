@@ -180,7 +180,7 @@
             DLGithub.Size = new System.Drawing.Size(65, 25);
             DLGithub.TabIndex = 11;
             DLGithub.TabStop = true;
-            DLGithub.Text = "Github";
+            DLGithub.Text = "GitHub";
             DLGithub.LinkClicked += DLGithub_LinkClicked;
             // 
             // StartHash

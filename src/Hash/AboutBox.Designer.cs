@@ -116,7 +116,7 @@ namespace Hash
             dlgithub.Size = new System.Drawing.Size(65, 25);
             dlgithub.TabIndex = 31;
             dlgithub.TabStop = true;
-            dlgithub.Text = "Github";
+            dlgithub.Text = "GitHub";
             dlgithub.Click += dlgithub_Click;
             // 
             // AboutBox

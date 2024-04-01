@@ -524,9 +524,9 @@
             // 
             pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             pictureBox1.ErrorImage = null;
-            pictureBox1.Image = Properties.Resources.UAC;
+            pictureBox1.Image = new System.Drawing.Bitmap(Properties.Resources.UAC, 24, 24);
             pictureBox1.InitialImage = null;
-            pictureBox1.Location = new System.Drawing.Point(101, 84);
+            pictureBox1.Location = new System.Drawing.Point(101, 86);
             pictureBox1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new System.Drawing.Size(27, 33);
@@ -599,7 +599,7 @@
             menuFIleExit.Name = "menuFIleExit";
             menuFIleExit.ShortcutKeyDisplayString = "X";
             menuFIleExit.ShowShortcutKeys = false;
-            menuFIleExit.Size = new System.Drawing.Size(180, 22);
+            menuFIleExit.Size = new System.Drawing.Size(159, 34);
             menuFIleExit.Text = "終了(&X)";
             menuFIleExit.Click += menuFIleExit_Click;
             // 
