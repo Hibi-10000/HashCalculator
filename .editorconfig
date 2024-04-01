@@ -11,5 +11,5 @@ insert_final_newline = true
 charset = utf-8
 end_of_line = lf
 
-[*.{csproj,pubxml,resx,settings}{,.user}]
+[*.{*proj,pubxml,resx,settings}{,.user}]
 indent_size = 2
