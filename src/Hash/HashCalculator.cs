@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Windows.Forms;
 using Microsoft.Win32;
@@ -58,7 +58,7 @@ namespace Hash
             Text = "HashCalculator v" + Major + "." + Minor + "." + Build + Ch;
             hashandver.Text = "HashCalculator v" + Major + "." + Minor + "." + Build;
             HashVer.Text = "HashCalculator v" + Major + "." + Minor + "." + Build + Ch;
-            CopyRight.Text = "Copyright © 2021-" + DateTime.Now.Year.ToString() + " Hibi_10000 GPLv3";
+            CopyRight.Text = "Copyright © 2021-" + DateTime.Now.Year.ToString() + " Hibi_10000";
         }
 
         private void DLLink1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

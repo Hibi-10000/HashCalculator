@@ -55,7 +55,7 @@
             Copyright.Name = "Copyright";
             Copyright.Size = new System.Drawing.Size(352, 25);
             Copyright.TabIndex = 1;
-            Copyright.Text = "Copyright © 2021-2024 Hibi_10000 GPLv3";
+            Copyright.Text = "Copyright © 2021-2024 Hibi_10000";
             // 
             // OK
             // 

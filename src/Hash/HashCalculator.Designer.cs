@@ -91,11 +91,11 @@
             // 
             CopyRight.AutoSize = true;
             CopyRight.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 128);
-            CopyRight.Location = new System.Drawing.Point(560, 611);
+            CopyRight.Location = new System.Drawing.Point(620, 611);
             CopyRight.Name = "CopyRight";
             CopyRight.Size = new System.Drawing.Size(357, 25);
             CopyRight.TabIndex = 3;
-            CopyRight.Text = "Copyright © 2021-2024 Hibi_10000  GPLv3";
+            CopyRight.Text = "Copyright © 2021-2024 Hibi_10000";
             // 
             // CreatedBy
             // 
