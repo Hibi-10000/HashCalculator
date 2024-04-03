@@ -21,9 +21,9 @@ namespace Hash
 
         private void AboutBox_Load(object sender, EventArgs e)
         {
-            hashandver.Text = "HashCalculator v" + HashCalculator.Major + "." + HashCalculator.Minor + "." + HashCalculator.Build;
-            Version.Text = "Version: v" + HashCalculator.Major + "." + HashCalculator.Minor + "." + HashCalculator.Build + HashCalculator.Ch;
-            Copyright.Text = "Copyright © 2021-" + DateTime.Now.Year.ToString() + " Hibi_10000";
+            hashandver.Text = $"HashCalculator v{HashCalculator.Major}.{HashCalculator.Minor}.{HashCalculator.Build}";
+            Version.Text = $"Version: v{HashCalculator.Major}.{HashCalculator.Minor}.{HashCalculator.Build}{HashCalculator.Ch}";
+            Copyright.Text = $"Copyright © 2021-{DateTime.Now.Year} Hibi_10000";
         }
     }
 }
