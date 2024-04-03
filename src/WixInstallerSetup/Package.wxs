@@ -1,4 +1,4 @@
-﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
     <!-- 
         MajorUpdate: Package.ProductCode Package.Version
         MinorUpdate: Package.Version
@@ -8,7 +8,7 @@
         <Media Id="1" Cabinet="simple.cab" EmbedCab="yes" />
         <MajorUpgrade DowngradeErrorMessage="A new version of [ProductName] is already installed." />
         <StandardDirectory Id="ProgramFiles64Folder">
-            <Directory Id="HASHCALCULATOR" Name="HashCalculator">
+            <Directory Id="INSTALLFOLDER" Name="HashCalculator">
                 <Component Id="HASH.EXE" DiskId="1" Guid="B0B89934-3D7F-49CC-A8BE-DB6CEDF489CC" Bitness="always64">
                     <File Id="HASH.EXE" Name="Hash.exe" Source="..\Hash\publish\win-x64\Hash.exe" KeyPath="yes" ReadOnly="yes" />
                 </Component>
@@ -31,20 +31,22 @@
         <StandardDirectory Id="DesktopFolder">
             <Component Id="HASHCALCULATOR.LNK.DF" DiskId="1" Guid="92B1091C-2E0F-45EF-A5C3-22D76FD66BD8" Bitness="always64">
                 <RegistryValue Root="HKCU" Key="Software\Hibi_10000\HashCalculator" Name="InstallFolder" Value="[INSTALLFOLDER]" Type="string" KeyPath="yes" />
-                <File Id="HASHCALCULATOR.LNK.DF" Name="HashCalculator.lnk" ReadOnly="yes" Source=".\HashCalculator.lnk" />
+                <File Id="DesktopShortcut" Name="HashCalculator.lnk" ReadOnly="yes" Source=".\HashCalculator.lnk" />
             </Component>
         </StandardDirectory>
         <StandardDirectory Id="ProgramMenuFolder">
             <Component Id="HASHCALCULATOR.LNK.PMF" DiskId="1" Guid="DCC6F1D4-B1E8-4C47-AC9F-B5F7362614FD" Bitness="always64">
                 <RegistryValue Root="HKCU" Key="Software\Hibi_10000\HashCalculator" Name="InstallFolder" Value="[INSTALLFOLDER]" Type="string" KeyPath="yes" />
-                <File Id="HASHCALCULATOR.LNK.PMF" Name="HashCalculator.lnk" ReadOnly="yes" Source=".\HashCalculator.lnk" />
+                <File Id="ProgramMenuShortcut" Name="HashCalculator.lnk" ReadOnly="yes" Source=".\HashCalculator.lnk" />
             </Component>
         </StandardDirectory>
-        <Feature Id="DefaultFeature" Title="Main Feature" Level="1">
+        <Feature Id="DefaultFeature" Title="HashCalculator" Level="1" AllowAbsent="no" AllowAdvertise="no">
             <ComponentRef Id="HASH.EXE" />
             <ComponentRef Id="REGISTRY" />
-            <ComponentRef Id="HASHCALCULATOR.LNK.DF" />
             <ComponentRef Id="HASHCALCULATOR.LNK.PMF" />
+        </Feature>
+        <Feature Id="DesktopShortcut" Title="DesktopShortcut" Level="1" AllowAdvertise="no">
+            <ComponentRef Id="HASHCALCULATOR.LNK.DF" />
         </Feature>
         <UIRef Id="NormalUI" />
         <WixVariable Id="WixUIBannerBmp" Value="banner.bmp" />
