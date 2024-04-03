@@ -35,7 +35,7 @@ namespace Hash
 
                         Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\*").Close();
                         using (regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\*\command")) {
-                            regkey.SetValue("", @"""C:\Program Files\HashCalculator\Hash.exe"" /ctm /f ""%1""", Microsoft.Win32.RegistryValueKind.String);
+                            regkey.SetValue("", @$"""{Application.ExecutablePath}"" /ctm /f ""%1""", Microsoft.Win32.RegistryValueKind.String);
                         }
 
                         foreach (string hashType in Enum.GetNames<HashCalculate.HashType>())
@@ -43,7 +43,7 @@ namespace Hash
                             var hash = hashType.Replace("_", "-");
                             Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@$"*\shell\HashForContext\shell\{hash}").Close();
                             using (regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@$"*\shell\HashForContext\shell\{hash}\command")) {
-                                regkey.SetValue("", @$"""C:\Program Files\HashCalculator\Hash.exe"" /ctm /f ""%1"" /h {hash}", Microsoft.Win32.RegistryValueKind.String);
+                                regkey.SetValue("", @$"""{Application.ExecutablePath}"" /ctm /f ""%1"" /h {hash}", Microsoft.Win32.RegistryValueKind.String);
                             }
                         }
 
