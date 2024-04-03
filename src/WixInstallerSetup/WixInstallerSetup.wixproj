@@ -10,8 +10,9 @@
   <ItemGroup>
     <Content Include="banner.bmp" />
     <Content Include="dialog.bmp" />
-    <Content Include="License.rtf" />
-    <Content Include="Readme.rtf" />
     <Content Include="HashCalculator.lnk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hash\Hash.csproj" />
   </ItemGroup>
 </Project>
