@@ -1,4 +1,4 @@
-<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
     <!-- 
         MajorUpdate: Package.ProductCode Package.Version
         MinorUpdate: Package.Version
@@ -31,13 +31,13 @@
         <StandardDirectory Id="DesktopFolder">
             <Component Id="HASHCALCULATOR.LNK.DF" DiskId="1" Guid="92B1091C-2E0F-45EF-A5C3-22D76FD66BD8" Bitness="always64">
                 <RegistryValue Root="HKCU" Key="Software\Hibi_10000\HashCalculator" Name="InstallFolder" Value="[INSTALLFOLDER]" Type="string" KeyPath="yes" />
-                <File Id="DesktopShortcut" Name="HashCalculator.lnk" ReadOnly="yes" Source=".\HashCalculator.lnk" />
+                <Shortcut Id="DesktopShortcut" Name="HashCalculator.lnk" Target="[INSTALLFOLDER]Hash.exe" WorkingDirectory="INSTALLFOLDER" />
             </Component>
         </StandardDirectory>
         <StandardDirectory Id="ProgramMenuFolder">
             <Component Id="HASHCALCULATOR.LNK.PMF" DiskId="1" Guid="DCC6F1D4-B1E8-4C47-AC9F-B5F7362614FD" Bitness="always64">
                 <RegistryValue Root="HKCU" Key="Software\Hibi_10000\HashCalculator" Name="InstallFolder" Value="[INSTALLFOLDER]" Type="string" KeyPath="yes" />
-                <File Id="ProgramMenuShortcut" Name="HashCalculator.lnk" ReadOnly="yes" Source=".\HashCalculator.lnk" />
+                <Shortcut Id="ProgramMenuShortcut" Name="HashCalculator.lnk" Target="[INSTALLFOLDER]Hash.exe" WorkingDirectory="INSTALLFOLDER" />
             </Component>
         </StandardDirectory>
         <Feature Id="DefaultFeature" Title="HashCalculator" Level="1" AllowAbsent="no" AllowAdvertise="no">
