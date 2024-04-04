@@ -35,13 +35,14 @@ namespace Hash
             Created = new System.Windows.Forms.Label();
             dl = new System.Windows.Forms.Label();
             dlgithub = new System.Windows.Forms.LinkLabel();
+            noticelink = new System.Windows.Forms.LinkLabel();
             SuspendLayout();
             // 
             // okButton
             // 
             okButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
             okButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            okButton.Location = new System.Drawing.Point(510, 206);
+            okButton.Location = new System.Drawing.Point(510, 236);
             okButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             okButton.Name = "okButton";
             okButton.Size = new System.Drawing.Size(125, 32);
@@ -77,7 +78,7 @@ namespace Hash
             // 
             Copyright.AutoSize = true;
             Copyright.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
-            Copyright.Location = new System.Drawing.Point(20, 210);
+            Copyright.Location = new System.Drawing.Point(20, 240);
             Copyright.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             Copyright.Name = "Copyright";
             Copyright.Size = new System.Drawing.Size(352, 25);
@@ -104,13 +105,13 @@ namespace Hash
             dl.Name = "dl";
             dl.Size = new System.Drawing.Size(93, 25);
             dl.TabIndex = 30;
-            dl.Text = "配布場所 :";
+            dl.Text = "DL :";
             // 
             // dlgithub
             // 
             dlgithub.AutoSize = true;
             dlgithub.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
-            dlgithub.Location = new System.Drawing.Point(108, 174);
+            dlgithub.Location = new System.Drawing.Point(58, 174);
             dlgithub.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             dlgithub.Name = "dlgithub";
             dlgithub.Size = new System.Drawing.Size(65, 25);
@@ -118,13 +119,27 @@ namespace Hash
             dlgithub.TabStop = true;
             dlgithub.Text = "GitHub";
             dlgithub.Click += dlgithub_Click;
+            //
+            // noticelink
+            //
+            noticelink.AutoSize = true;
+            noticelink.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
+            noticelink.Location = new System.Drawing.Point(20, 205);
+            noticelink.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            noticelink.Name = "noticelink";
+            noticelink.Size = new System.Drawing.Size(352, 25);
+            noticelink.TabIndex = 32;
+            noticelink.TabStop = true;
+            noticelink.Text = "サードパーティーライセンス";
+            noticelink.Click += noticelink_Click;
             // 
             // AboutBox
             // 
             AcceptButton = okButton;
             AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(655, 255);
+            ClientSize = new System.Drawing.Size(655, 285);
+            Controls.Add(noticelink);
             Controls.Add(dlgithub);
             Controls.Add(dl);
             Controls.Add(Created);
@@ -156,5 +171,6 @@ namespace Hash
         private new System.Windows.Forms.Label Created;
         private System.Windows.Forms.Label dl;
         private System.Windows.Forms.LinkLabel dlgithub;
+        private System.Windows.Forms.LinkLabel noticelink;
     }
 }

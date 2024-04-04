@@ -19,6 +19,15 @@ namespace Hash
             System.Diagnostics.Process.Start(startInfo);
         }
 
+        private void noticelink_Click(object sender, EventArgs e)
+        {
+            var startInfo = new System.Diagnostics.ProcessStartInfo("https://github.com/Hibi-10000/HashCalculator/blob/main/NOTICE.md")
+            {
+                UseShellExecute = true
+            };
+            System.Diagnostics.Process.Start(startInfo);
+        }
+
         private void AboutBox_Load(object sender, EventArgs e)
         {
             hashandver.Text = $"HashCalculator v{HashCalculator.Major}.{HashCalculator.Minor}.{HashCalculator.Build}";
