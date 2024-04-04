@@ -21,7 +21,7 @@ namespace Hash
 
         private void noticelink_Click(object sender, EventArgs e)
         {
-            var startInfo = new System.Diagnostics.ProcessStartInfo("https://github.com/Hibi-10000/HashCalculator/blob/main/NOTICE.md")
+            var startInfo = new System.Diagnostics.ProcessStartInfo("https://github.com/Hibi-10000/HashCalculator/blob/v0.6.0/NOTICE.md")
             {
                 UseShellExecute = true
             };

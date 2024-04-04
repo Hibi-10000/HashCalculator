@@ -4,7 +4,7 @@
         MinorUpdate: Package.Version
         SmallUpdate: No Changes
     -->
-    <Package Name="HashCalculator" Manufacturer="Hibi_10000" Version="0.5.4" ProductCode="60095A52-52EB-4DC9-8752-ADD0C130A798" UpgradeCode="B0C53B72-7CDE-4EF9-A3F8-0838292E7197" Language="1033" Codepage="932" InstallerVersion="405">
+    <Package Name="HashCalculator" Manufacturer="Hibi_10000" Version="0.6.0" ProductCode="FDFAA8B1-1EF6-42A3-97FE-7DDD76E0B965" UpgradeCode="B0C53B72-7CDE-4EF9-A3F8-0838292E7197" Language="1033" Codepage="932" InstallerVersion="405">
         <Media Id="1" Cabinet="simple.cab" EmbedCab="yes" />
         <MajorUpgrade DowngradeErrorMessage="A new version of [ProductName] is already installed." />
         <StandardDirectory Id="ProgramFiles64Folder">

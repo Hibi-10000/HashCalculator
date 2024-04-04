@@ -1,4 +1,4 @@
-﻿# HashCalculator [v0.5.4]  
+﻿# HashCalculator [v0.6.0]  
   
 Hash計算機でHashを計算できます。  
 また、ファイルを右クリックしてHash for ContextMenu(F)をクリックし、  
@@ -40,3 +40,4 @@ v0.5.1-alpha 設定の"HashForContextを有効にする"が正常に動作しな
 v0.5.2-alpha ライセンスの表示を修正 Githubへのリンクを更新  
 v0.5.3 alpha表記を削除 Githubへのリンクを更新  
 v0.5.4 ファイルサイズを削減 一部表記変更  
+v0.6.0 .NET8へ移行 MACTripleDESを削除 CRC32Cを追加 その他バグ修正  
