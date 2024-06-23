@@ -1,4 +1,4 @@
-﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
     <!-- 
         MajorUpdate: Package.ProductCode Package.Version
         MinorUpdate: Package.Version
@@ -48,8 +48,9 @@
         <Feature Id="DesktopShortcut" Title="DesktopShortcut" Level="1" AllowAdvertise="no">
             <ComponentRef Id="HASHCALCULATOR.LNK.DF" />
         </Feature>
-        <UIRef Id="NormalUI" />
+        <ui:WixUI Id="WixUI_FeatureTree" />
         <WixVariable Id="WixUIBannerBmp" Value="banner.bmp" />
         <WixVariable Id="WixUIDialogBmp" Value="dialog.bmp" />
+        <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
     </Package>
 </Wix>
