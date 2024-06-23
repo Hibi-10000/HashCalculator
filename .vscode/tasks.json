@@ -1,0 +1,29 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "dotnet: publish Hash",
+            "group": "build",
+            "command": "dotnet",
+            "args": [
+                "publish",
+                "src/Hash",
+                "/p:PublishProfile=win-x64"
+            ],
+            "problemMatcher": "$msCompile",
+        },
+        {
+            "label": "dotnet: build wix",
+            "group": "build",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "--output",
+                "src/WixInstallerSetup/bin/x64/Debug",
+                "--no-dependencies",
+                "src/WixInstallerSetup"
+            ],
+            "problemMatcher": "$msCompile",
+        },
+    ]
+}
