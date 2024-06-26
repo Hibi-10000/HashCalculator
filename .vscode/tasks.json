@@ -2,18 +2,34 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "dotnet: build Hash",
+            "group": "build",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "--configuration",
+                "${input:conf}",
+                "--arch",
+                "${input:arch}",
+                "--output",
+                "src/Hash/bin/${input:arch}/${input:conf}",
+                "--no-dependencies",
+                "src/Hash",
+            ],
+        },
+        {
             "label": "dotnet: publish Hash",
             "group": "build",
             "command": "dotnet",
             "args": [
                 "publish",
                 "src/Hash",
-                "/p:PublishProfile=win-x64"
+                "/p:PublishProfile=win-${input:arch}",
             ],
             "problemMatcher": "$msCompile",
         },
         {
-            "label": "dotnet: build wix",
+            "label": "dotnet: build Wix",
             "group": "build",
             "command": "dotnet",
             "args": [
@@ -21,9 +37,32 @@
                 "--output",
                 "src/WixInstallerSetup/bin/x64/Debug",
                 "--no-dependencies",
-                "src/WixInstallerSetup"
+                "src/WixInstallerSetup",
             ],
             "problemMatcher": "$msCompile",
         },
-    ]
+    ],
+    "inputs": [
+        {
+            "id": "arch",
+            "type": "pickString",
+            "default": "x64",
+            "description": "Architecture",
+            "options": [
+                "arm64",
+                "x64",
+                "x86",
+            ],
+        },
+        {
+            "id": "conf",
+            "type": "pickString",
+            "default": "Debug",
+            "description": "Configuration",
+            "options": [
+                "Release",
+                "Debug",
+            ],
+        },
+    ],
 }
