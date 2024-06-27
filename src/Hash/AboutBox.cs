@@ -36,9 +36,18 @@ namespace Hash
             System.Diagnostics.Process.Start(startInfo);
         }
 
+        private void licenselink_Click(object sender, EventArgs e)
+        {
+            var startInfo = new System.Diagnostics.ProcessStartInfo($"https://github.com/Hibi-10000/HashCalculator/blob/v{HashCalculator.Major}.{HashCalculator.Minor}.{HashCalculator.Build}/LICENSE.md")
+            {
+                UseShellExecute = true
+            };
+            System.Diagnostics.Process.Start(startInfo);
+        }
+
         private void noticelink_Click(object sender, EventArgs e)
         {
-            var startInfo = new System.Diagnostics.ProcessStartInfo("https://github.com/Hibi-10000/HashCalculator/blob/v0.6.0/NOTICE.md")
+            var startInfo = new System.Diagnostics.ProcessStartInfo($"https://github.com/Hibi-10000/HashCalculator/blob/v{HashCalculator.Major}.{HashCalculator.Minor}.{HashCalculator.Build}/NOTICE.md")
             {
                 UseShellExecute = true
             };

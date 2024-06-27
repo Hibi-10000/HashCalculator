@@ -51,6 +51,7 @@ namespace Hash
             Created = new System.Windows.Forms.Label();
             dl = new System.Windows.Forms.Label();
             dlgithub = new System.Windows.Forms.LinkLabel();
+            licenselink = new System.Windows.Forms.LinkLabel();
             noticelink = new System.Windows.Forms.LinkLabel();
             SuspendLayout();
             // 
@@ -136,11 +137,23 @@ namespace Hash
             dlgithub.Text = "GitHub";
             dlgithub.Click += dlgithub_Click;
             //
+            // licenselink
+            //
+            licenselink.AutoSize = true;
+            licenselink.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
+            licenselink.Location = new System.Drawing.Point(20, 205);
+            licenselink.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            licenselink.Name = "licenselink";
+            licenselink.TabIndex = 32;
+            licenselink.TabStop = true;
+            licenselink.Text = "ライセンス";
+            licenselink.Click += licenselink_Click;
+            //
             // noticelink
             //
             noticelink.AutoSize = true;
             noticelink.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
-            noticelink.Location = new System.Drawing.Point(20, 205);
+            noticelink.Location = new System.Drawing.Point(120, 205);
             noticelink.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             noticelink.Name = "noticelink";
             noticelink.Size = new System.Drawing.Size(352, 25);
@@ -156,6 +169,7 @@ namespace Hash
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(655, 285);
             Controls.Add(noticelink);
+            Controls.Add(licenselink);
             Controls.Add(dlgithub);
             Controls.Add(dl);
             Controls.Add(Created);
@@ -187,6 +201,8 @@ namespace Hash
         private new System.Windows.Forms.Label Created;
         private System.Windows.Forms.Label dl;
         private System.Windows.Forms.LinkLabel dlgithub;
+
+        private System.Windows.Forms.LinkLabel licenselink;
         private System.Windows.Forms.LinkLabel noticelink;
     }
 }
