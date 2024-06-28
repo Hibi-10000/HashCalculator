@@ -128,7 +128,7 @@ namespace Hash
             // 
             DL.AutoSize = true;
             DL.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
-            DL.Location = new System.Drawing.Point(817, 71);
+            DL.Location = new System.Drawing.Point(815, 71);
             DL.Name = "DL";
             DL.Size = new System.Drawing.Size(42, 25);
             DL.TabIndex = 6;
@@ -596,7 +596,7 @@ namespace Hash
             menuFile.Name = "menuFile";
             menuFile.ShortcutKeyDisplayString = "";
             menuFile.ShowShortcutKeys = false;
-            menuFile.Size = new System.Drawing.Size(95, 29);
+            menuFile.Size = new System.Drawing.Size(95, 24);
             menuFile.Text = "ファイル(&F)";
             // 
             // menuFileSettings
@@ -605,7 +605,6 @@ namespace Hash
             menuFileSettings.Name = "menuFileSettings";
             menuFileSettings.ShortcutKeyDisplayString = "S";
             menuFileSettings.ShowShortcutKeys = false;
-            menuFileSettings.Size = new System.Drawing.Size(159, 34);
             menuFileSettings.Text = "設定(&S)";
             menuFileSettings.Click += menuFileSettings_Click;
             // 
@@ -616,7 +615,6 @@ namespace Hash
             menuFIleExit.Name = "menuFIleExit";
             menuFIleExit.ShortcutKeyDisplayString = "X";
             menuFIleExit.ShowShortcutKeys = false;
-            menuFIleExit.Size = new System.Drawing.Size(159, 34);
             menuFIleExit.Text = "終了(&X)";
             menuFIleExit.Click += menuFIleExit_Click;
             // 
@@ -627,7 +625,7 @@ namespace Hash
             menuHelp.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             menuHelp.Name = "menuHelp";
             menuHelp.ShortcutKeyDisplayString = "H";
-            menuHelp.Size = new System.Drawing.Size(95, 29);
+            menuHelp.Size = new System.Drawing.Size(95, 24);
             menuHelp.Text = "ヘルプ(&H)";
             // 
             // menuHelpReadme
@@ -636,7 +634,6 @@ namespace Hash
             menuHelpReadme.Name = "menuHelpReadme";
             menuHelpReadme.ShortcutKeyDisplayString = "R";
             menuHelpReadme.ShowShortcutKeys = false;
-            menuHelpReadme.Size = new System.Drawing.Size(224, 34);
             menuHelpReadme.Text = "Readme(&R)";
             menuHelpReadme.Click += menuHelpReadme_Click;
             // 
@@ -646,7 +643,6 @@ namespace Hash
             menuHelpVer.Name = "menuHelpVer";
             menuHelpVer.ShortcutKeyDisplayString = "V";
             menuHelpVer.ShowShortcutKeys = false;
-            menuHelpVer.Size = new System.Drawing.Size(224, 34);
             menuHelpVer.Text = "バーション情報(&V)";
             menuHelpVer.Click += menuHelpVer_Click;
             // 
@@ -659,7 +655,7 @@ namespace Hash
             menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { menuFile, menuHelp });
             menu.Location = new System.Drawing.Point(-8, -4);
             menu.Name = "menu";
-            menu.Padding = new System.Windows.Forms.Padding(8, 4, 0, 4);
+            menu.Padding = new System.Windows.Forms.Padding(8, 4, 0, 0);
             menu.Size = new System.Drawing.Size(200, 37);
             menu.TabIndex = 15;
             menu.Text = "menu";
@@ -669,9 +665,9 @@ namespace Hash
             richTextBox3.BackColor = System.Drawing.SystemColors.ControlLight;
             richTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             richTextBox3.Location = new System.Drawing.Point(0, 0);
-            richTextBox3.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            richTextBox3.Margin = new System.Windows.Forms.Padding(0);
             richTextBox3.Name = "richTextBox3";
-            richTextBox3.Size = new System.Drawing.Size(1010, 33);
+            richTextBox3.Size = new System.Drawing.Size(1010, 30);
             richTextBox3.TabIndex = 16;
             richTextBox3.Text = "";
             // 
