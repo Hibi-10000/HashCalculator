@@ -7,11 +7,11 @@
     <Package Name="HashCalculator" Manufacturer="Hibi_10000" Version="0.6.0" ProductCode="FDFAA8B1-1EF6-42A3-97FE-7DDD76E0B965" UpgradeCode="B0C53B72-7CDE-4EF9-A3F8-0838292E7197" Language="1033" Codepage="932" InstallerVersion="405">
         <Media Id="1" Cabinet="simple.cab" EmbedCab="yes" />
         <MajorUpgrade DowngradeErrorMessage="A new version of [ProductName] is already installed." />
-        <StandardDirectory Id="ProgramFiles64Folder">
+        <StandardDirectory Id="ProgramFiles6432Folder">
             <Directory Id="INSTALLFOLDER" Name="HashCalculator" />
         </StandardDirectory>
-        <Component Id="HASHCALCULATOR.EXE" Directory="INSTALLFOLDER" Guid="B0B89934-3D7F-49CC-A8BE-DB6CEDF489CC" Bitness="always64">
-            <File Id="HASHCALCULATOREXE" Name="HashCalculator.exe" Source="..\Hash\publish\win-x64\HashCalculator.exe" KeyPath="yes" ReadOnly="yes" />
+        <Component Id="HASHCALCULATOR.EXE" Directory="INSTALLFOLDER" Guid="B0B89934-3D7F-49CC-A8BE-DB6CEDF489CC">
+            <File Id="HASHCALCULATOREXE" Name="HashCalculator.exe" Source="..\Hash\publish\win-$(var.Platform)\HashCalculator.exe" KeyPath="yes" ReadOnly="yes" />
         </Component>
         <Component Id="REGISTRY" Guid="671CCB3C-65C5-460C-9C73-158662C1E451">
             <RegistryKey Root="HKCR" Key="*\shell\HashForContext" />

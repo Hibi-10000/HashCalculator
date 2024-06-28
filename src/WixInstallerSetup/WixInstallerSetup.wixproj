@@ -1,8 +1,8 @@
 <Project Sdk="WixToolset.Sdk/5.0.0">
   <PropertyGroup>
     <OutputName>HashCalculator-Setup</OutputName>
-    <Platforms>x64</Platforms>
-    <InstallerPlatform>x64</InstallerPlatform>
+    <Platforms>arm64;x64;x86</Platforms>
+    <InstallerPlatform>$(Platform)</InstallerPlatform>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="WixToolset.UI.wixext" Version="5.0.0" />
