@@ -12,7 +12,7 @@
                 "--arch",
                 "${input:arch}",
                 "--output",
-                "src/Hash/bin/${input:arch}/${input:conf}",
+                "src/Hash/bin/${input:arch}/${input:conf}/net8.0-windows",
                 "--no-dependencies",
                 "src/Hash",
             ],
