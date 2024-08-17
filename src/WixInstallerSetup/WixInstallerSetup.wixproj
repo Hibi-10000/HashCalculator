@@ -1,11 +1,11 @@
-<Project Sdk="WixToolset.Sdk/5.0.0">
+<Project Sdk="WixToolset.Sdk/5.0.1">
   <PropertyGroup>
     <OutputName>HashCalculator-Setup</OutputName>
     <Platforms>arm64;x64;x86</Platforms>
     <InstallerPlatform>$(Platform)</InstallerPlatform>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="WixToolset.UI.wixext" Version="5.0.0" />
+    <PackageReference Include="WixToolset.UI.wixext" Version="5.0.1" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="banner.bmp" />
