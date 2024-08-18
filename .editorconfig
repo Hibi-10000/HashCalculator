@@ -7,8 +7,8 @@ indent_style = space
 indent_size = 4
 insert_final_newline = true
 
-[*.{editorconfig,gitignore,md}]
+[*.{editorconfig,gitignore,md,yml}]
 end_of_line = lf
 
-[*.{*proj,pubxml,resx,settings}{,.user}]
+[*.{{*proj,pubxml,resx,settings}{,.user},yml}]
 indent_size = 2

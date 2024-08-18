@@ -1,0 +1,46 @@
+name: build
+
+on:
+  workflow_dispatch:
+  workflow_call:
+  push:
+  pull_request:
+
+jobs:
+
+  build:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        arch: [arm64,x64,x86]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Build Hash
+      run: dotnet publish src\Hash /p:PublishProfile=win-${{ matrix.arch }}
+
+    - name: Build MSI
+      run: dotnet build src\WixInstallerSetup --arch ${{ matrix.arch }} --output src\WixInstallerSetup\bin\${{ matrix.arch }}\Release --no-dependencies /p:Platform=${{ matrix.arch }}
+      env:
+        Configuration: Release
+
+    - name: Copy build artifacts
+      run: |
+        mkdir artifact
+        copy src\Hash\publish\win-${{ matrix.arch }}\HashCalculator.exe artifact\
+        copy src\WixInstallerSetup\bin\${{ matrix.arch }}\Release\ja-jp\HashCalculator-Setup.msi artifact\
+
+    - run: tree /F
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: win-${{ matrix.arch }}
+        path: artifact\
