@@ -2,10 +2,8 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
     <!-- 
         MajorUpdate: Package.ProductCode Package.Version
-        MinorUpdate: Package.Version
-        SmallUpdate: No Changes
     -->
-    <Package Name="HashCalculator" Manufacturer="Hibi_10000" Version="0.6.0" ProductCode="FDFAA8B1-1EF6-42A3-97FE-7DDD76E0B965" UpgradeCode="B0C53B72-7CDE-4EF9-A3F8-0838292E7197" Language="1033" Codepage="932" InstallerVersion="405">
+    <Package Name="HashCalculator" Manufacturer="Hibi_10000" Version="0.6.1" ProductCode="8A511924-449E-4378-8E1D-E0BA39A915FC" UpgradeCode="B0C53B72-7CDE-4EF9-A3F8-0838292E7197" Language="1033" Codepage="932" InstallerVersion="405">
         <Media Id="1" Cabinet="simple.cab" EmbedCab="yes" />
         <MajorUpgrade DowngradeErrorMessage="A new version of [ProductName] is already installed." />
         <StandardDirectory Id="ProgramFiles6432Folder">

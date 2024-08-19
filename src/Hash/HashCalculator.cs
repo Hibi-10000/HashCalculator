@@ -27,7 +27,7 @@ namespace Hash
 
         public const string Major = "0";
         public const string Minor = "6";
-        public const string Build = "0";
+        public const string Build = "1";
         public const string Ch = "";
 
         //[DllImport("UXTheme.dll", SetLastError = true, EntryPoint = "#138")]

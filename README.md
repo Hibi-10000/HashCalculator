@@ -1,4 +1,4 @@
-# HashCalculator [v0.6.0]  
+# HashCalculator [v0.6.1]  
   
 Hash計算機でHashを計算できます。  
 また、ファイルを右クリックしてHash for ContextMenu(F)をクリックし、  
@@ -27,7 +27,7 @@ Hashを選択または*をクリックするとそのファイルのHashを計�
 Windows11 Pro 23H2 x86_64  
 .NET Desktop Runtime 8.0.3  
   
-更新予定: WPF,WinUI3への移行  
+更新予定: WPF,WinUI3(Windows App SDK)への移行  
   
 更新履歴  
 Ver.β0.1.1 初版  
@@ -41,3 +41,4 @@ v0.5.2-alpha ライセンスの表示を修正 Githubへのリンクを更新
 v0.5.3 alpha表記を削除 Githubへのリンクを更新  
 v0.5.4 ファイルサイズを削減 一部表記変更  
 v0.6.0 .NET8へ移行 MACTripleDESを削除 CRC32Cを追加 その他バグ修正  
+v0.6.1 arm64及びx86版を追加 その他細かい変更・修正  
