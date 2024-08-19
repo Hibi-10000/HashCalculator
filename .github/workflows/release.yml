@@ -1,0 +1,42 @@
+name: release
+run-name: Release ${{ github.ref_name }}
+
+on: workflow_dispatch
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    if: github.ref_type == 'tag'
+    uses: ./.github/workflows/build.yml
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download arm64 Artifact
+        uses: actions/download-artifact@v4
+        with:
+          pattern: win-*
+
+      - run: tree
+
+      - name: copy and rename
+        run: |
+          cp -v ./win-arm64/HashCalculator-Setup.msi HashCalculator-${{ github.ref_name }}-arm64-Setup.msi
+          cp -v ./win-x64/HashCalculator-Setup.msi HashCalculator-${{ github.ref_name }}-x64-Setup.msi
+          cp -v ./win-x86/HashCalculator-Setup.msi HashCalculator-${{ github.ref_name }}-x86-Setup.msi
+
+      - run: tree
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ github.ref_name }}
+          tag_name: ${{ github.ref_name }}
+          files: |
+            HashCalculator-*-arm64-Setup.msi
+            HashCalculator-*-x64-Setup.msi
+            HashCalculator-*-x86-Setup.msi
+          draft: true

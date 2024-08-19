@@ -31,6 +31,8 @@ jobs:
       env:
         Configuration: Release
 
+    - run: tree /F
+
     - name: Copy build artifacts
       run: |
         mkdir artifact
