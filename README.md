@@ -25,7 +25,7 @@ Hashを選択または*をクリックするとそのファイルのHashを計�
   
 動作確認  
 Windows11 Pro 23H2 x86_64  
-.NET Desktop Runtime 8.0.3  
+.NET Desktop Runtime 8.0.8  
   
 更新予定: WPF,WinUI3(Windows App SDK)への移行  
   
