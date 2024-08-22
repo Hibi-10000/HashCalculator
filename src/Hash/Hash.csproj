@@ -5,6 +5,7 @@
     <TargetFramework>net8.0-windows</TargetFramework>
     <Platforms>arm64;x64;x86</Platforms>
     <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
     <UseWindowsForms>true</UseWindowsForms>
     <AssemblyName>HashCalculator</AssemblyName>
     <Authors>Hibi_10000</Authors>
