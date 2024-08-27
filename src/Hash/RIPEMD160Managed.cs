@@ -19,10 +19,11 @@
 // http://www.esat.kuleuven.ac.be/~cosicart/ps/AB-9601/.
 //
 
-namespace System.Security.Cryptography {
-    using System;
-    using System.Diagnostics.Contracts;
+using System.Diagnostics.Contracts;
+using System.Security.Cryptography;
 
+namespace Hash
+{
     [System.Runtime.InteropServices.ComVisible(true)]
     public class RIPEMD160Managed : HashAlgorithm
     {
