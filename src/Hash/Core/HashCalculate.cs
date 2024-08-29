@@ -17,7 +17,7 @@
 
 using System.Security.Cryptography;
 
-namespace Hash
+namespace Hash.Core
 {
     internal class HashCalculate
     {

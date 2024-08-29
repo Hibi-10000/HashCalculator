@@ -22,7 +22,7 @@
 using System.Diagnostics.Contracts;
 using System.Security.Cryptography;
 
-namespace Hash
+namespace Hash.Core
 {
     [System.Runtime.InteropServices.ComVisible(true)]
     public class RIPEMD160Managed : HashAlgorithm
@@ -40,10 +40,11 @@ namespace Hash
             //
             // Since RIPEMD160 is not a FIPS-Approved algorithm anyway, this just means that an
             // application or library needs to determine on its own if RIPEMD160 is prohibited in context.
-            if (CryptoConfig.AllowOnlyFipsAlgorithms/* && AppContextSwitches.UseLegacyFipsThrow*/)
+            if (CryptoConfig.AllowOnlyFipsAlgorithms/* && AppContextSwitches.UseLegacyFipsThrow*/) {
                 throw new InvalidOperationException(
                     "This implementation is not part of the Windows Platform FIPS validated cryptographic algorithms."
                 );
+            }
             Contract.EndContractBlock();
 
             _stateMD160 = new uint[5];
