@@ -19,7 +19,7 @@ using System.Security.Cryptography;
 
 namespace Hash.Core
 {
-    internal class HashCalculate
+    public class HashCalculate
     {
         public enum HashType
         {

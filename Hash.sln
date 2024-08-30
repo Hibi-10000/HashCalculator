@@ -3,6 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hash", "src\Hash\Hash.csproj", "{90562688-9004-4C35-934D-3A8FF9B6E45A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B84F57AF-BF67-466C-8449-AAC9D8035F07} = {B84F57AF-BF67-466C-8449-AAC9D8035F07}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hash.Core", "src\Hash.Core\Hash.Core.csproj", "{B84F57AF-BF67-466C-8449-AAC9D8035F07}"
 EndProject
 Project("{B7DD6F7E-DEF8-4E67-B5B7-07EF123DB6F0}") = "WixInstallerSetup", "src\WixInstallerSetup\WixInstallerSetup.wixproj", "{D5755B47-DB4D-4180-A109-269062572C9D}"
 EndProject
@@ -28,6 +33,18 @@ Global
 		{90562688-9004-4C35-934D-3A8FF9B6E45A}.Release|x64.Build.0 = Release|x64
 		{90562688-9004-4C35-934D-3A8FF9B6E45A}.Release|x86.ActiveCfg = Release|x86
 		{90562688-9004-4C35-934D-3A8FF9B6E45A}.Release|x86.Build.0 = Release|x86
+		{B84F57AF-BF67-466C-8449-AAC9D8035F07}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{B84F57AF-BF67-466C-8449-AAC9D8035F07}.Debug|arm64.Build.0 = Debug|Any CPU
+		{B84F57AF-BF67-466C-8449-AAC9D8035F07}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B84F57AF-BF67-466C-8449-AAC9D8035F07}.Debug|x64.Build.0 = Debug|Any CPU
+		{B84F57AF-BF67-466C-8449-AAC9D8035F07}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B84F57AF-BF67-466C-8449-AAC9D8035F07}.Debug|x86.Build.0 = Debug|Any CPU
+		{B84F57AF-BF67-466C-8449-AAC9D8035F07}.Release|arm64.ActiveCfg = Release|Any CPU
+		{B84F57AF-BF67-466C-8449-AAC9D8035F07}.Release|arm64.Build.0 = Release|Any CPU
+		{B84F57AF-BF67-466C-8449-AAC9D8035F07}.Release|x64.ActiveCfg = Release|Any CPU
+		{B84F57AF-BF67-466C-8449-AAC9D8035F07}.Release|x64.Build.0 = Release|Any CPU
+		{B84F57AF-BF67-466C-8449-AAC9D8035F07}.Release|x86.ActiveCfg = Release|Any CPU
+		{B84F57AF-BF67-466C-8449-AAC9D8035F07}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
