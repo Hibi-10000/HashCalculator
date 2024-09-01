@@ -19,7 +19,7 @@ using System.Security.Cryptography;
 
 namespace Hash.Core
 {
-    public class HashCalculate
+    public static class HashCalculate
     {
         public enum HashType
         {
@@ -42,7 +42,7 @@ namespace Hash.Core
         }
 
         [AttributeUsage(AttributeTargets.Field)]
-        public class HiddenAttribute : Attribute {}
+        private class HiddenAttribute : Attribute;
 
         public static string[] GetHashTypeNames(bool includeHidden = false)
         {
@@ -64,7 +64,7 @@ namespace Hash.Core
             return null;
         }
 
-        public static string GetHash(HashType hashType, string filePath, bool upper, bool hihun)
+        private static string GetHash(HashType hashType, string filePath, bool upper, bool hihun)
         {
             HashAlgorithm hashProvider = hashType switch
             {
@@ -87,16 +87,9 @@ namespace Hash.Core
             //using var fs = new MemoryStream(System.Text.Encoding.ASCII.GetBytes("123456789"));
             var bs = hashProvider.ComputeHash(fs);
 
-            string return_str = BitConverter.ToString(bs);
-            if (upper) {
-                return_str = return_str.ToUpper();
-            } else {
-                return_str = return_str.ToLower();
-            }
-            if (!hihun) {
-                return_str = return_str.Replace("-", "");
-            }
-            return return_str;
+            string returnStr = BitConverter.ToString(bs);
+            returnStr = upper ? returnStr.ToUpper() : returnStr.ToLower();
+            return hihun ? returnStr.Replace("-", "") : returnStr;
         }
     }
 }

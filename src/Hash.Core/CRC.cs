@@ -32,7 +32,7 @@ namespace Hash.Core
             CRC64_ISO = 0xD800000000000000,
         }
 
-        ulong GetSeed()
+        private ulong GetSeed()
         {
             return poly switch
             {
@@ -115,10 +115,9 @@ namespace Hash.Core
         {
             ulong crc = seed;
             for (int i = start; i < size; i++)
-                unchecked
-                {
-                    crc = (crc >> 8) ^ table[buffer[i] ^ crc & 0xff];
-                }
+            {
+                crc = (crc >> 8) ^ table[buffer[i] ^ crc & 0xff];
+            }
             return crc;
         }
 

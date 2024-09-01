@@ -17,7 +17,7 @@
 
 namespace Hash
 {
-    partial class AboutBox : Form
+    internal partial class AboutBox : Form
     {
         public AboutBox()
         {

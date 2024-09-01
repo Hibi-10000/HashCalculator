@@ -16,16 +16,17 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 using Hash.Core;
+using Microsoft.Win32;
 
 namespace Hash
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
         /// アプリケーションのメイン エントリ ポイントです。
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             if (!Environment.Is64BitOperatingSystem)
             {
@@ -33,33 +34,33 @@ namespace Hash
                 Application.Exit();
             }
 
-            string[] Commands = Environment.GetCommandLineArgs();
+            string[] args = Environment.GetCommandLineArgs();
 
-            for (int i = 0; i < Commands.Length; i++)
+            foreach (string arg in args)
             {
-                if (Commands[i] == "/rc")
+                if (arg == "/rc")
                 {
                     if (IsAdministrator())
                     {
-                        Microsoft.Win32.RegistryKey regkey;
-                        using (regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext"))
+                        RegistryKey regkey;
+                        using (regkey = Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext"))
                         {
-                            regkey.SetValue("MUIVerb", "Hash for ContextMenu(&F)", Microsoft.Win32.RegistryValueKind.String);
-                            regkey.SetValue("SubCommands", "", Microsoft.Win32.RegistryValueKind.String);
+                            regkey.SetValue("MUIVerb", "Hash for ContextMenu(&F)", RegistryValueKind.String);
+                            regkey.SetValue("SubCommands", "", RegistryValueKind.String);
                         }
-                        Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell").Close();
+                        Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell").Close();
 
-                        Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\*").Close();
-                        using (regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\*\command")) {
-                            regkey.SetValue("", @$"""{Application.ExecutablePath}"" /ctm /f ""%1""", Microsoft.Win32.RegistryValueKind.String);
+                        Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\*").Close();
+                        using (regkey = Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\*\command")) {
+                            regkey.SetValue("", @$"""{Application.ExecutablePath}"" /ctm /f ""%1""", RegistryValueKind.String);
                         }
 
                         foreach (string hashType in Enum.GetNames<HashCalculate.HashType>())
                         {
-                            var hash = hashType.Replace("_", "-");
-                            Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@$"*\shell\HashForContext\shell\{hash}").Close();
-                            using (regkey = Microsoft.Win32.Registry.ClassesRoot.CreateSubKey(@$"*\shell\HashForContext\shell\{hash}\command")) {
-                                regkey.SetValue("", @$"""{Application.ExecutablePath}"" /ctm /f ""%1"" /h {hash}", Microsoft.Win32.RegistryValueKind.String);
+                            string hash = hashType.Replace("_", "-");
+                            Registry.ClassesRoot.CreateSubKey(@$"*\shell\HashForContext\shell\{hash}").Close();
+                            using (regkey = Registry.ClassesRoot.CreateSubKey(@$"*\shell\HashForContext\shell\{hash}\command")) {
+                                regkey.SetValue("", @$"""{Application.ExecutablePath}"" /ctm /f ""%1"" /h {hash}", RegistryValueKind.String);
                             }
                         }
 
@@ -72,13 +73,12 @@ namespace Hash
                         Environment.ExitCode = 1;
                         Application.Exit();
                     }
-                    return;
                 }
-                else if (Commands[i] == "/rd")
+                else if (arg == "/rd")
                 {
                     if (IsAdministrator())
                     {
-                        Microsoft.Win32.Registry.ClassesRoot.DeleteSubKeyTree(@"*\shell\HashForContext");
+                        Registry.ClassesRoot.DeleteSubKeyTree(@"*\shell\HashForContext");
 
                         Environment.ExitCode = 0;
                         Application.Exit();
@@ -89,24 +89,22 @@ namespace Hash
                         Environment.ExitCode = 1;
                         Application.Exit();
                     }
-                    return;
                 }
-                else if (Commands[i] == "/ctm")
+                else if (arg == "/ctm")
                 {
                     ApplicationConfiguration.Initialize();
                     Application.Run(new HashForContext());
-                    return;
                 }
             }
 
-            string mutexName = "HashCalculator-Mutex";
-            System.Threading.Mutex mutex = new System.Threading.Mutex(true, mutexName, out bool createdNew);
+            const string mutexName = "HashCalculator-Mutex";
+            Mutex mutex = new Mutex(true, mutexName, out bool createdNew);
 
             //Mutexの初期所有権が付与されたか調べる
             if (createdNew == false)
             {
                 //System.Media.SystemSounds.Hand.Play();
-                MessageBox.Show("多重起動はできません。","HashCalculator  -  ERROR",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("多重起動はできません。", "HashCalculator  -  ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 mutex.Close();
                 Environment.ExitCode = 1;
                 Application.Exit();

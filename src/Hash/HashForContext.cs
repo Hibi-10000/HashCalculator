@@ -19,7 +19,7 @@ using Hash.Core;
 
 namespace Hash
 {
-    public partial class HashForContext : Form
+    internal partial class HashForContext : Form
     {
         public HashForContext()
         {
@@ -34,23 +34,23 @@ namespace Hash
 
         private void HashForContext_Load(object sender, EventArgs e)
         {
-            string[] Commands = Environment.GetCommandLineArgs();
+            string[] args = Environment.GetCommandLineArgs();
 
-            for (int i = 0; i < Commands.Length; i++)
+            for (int i = 0; i < args.Length; i++)
             {
-                if (Commands[i] == "/f")
+                if (args[i] == "/f")
                 {
                     //File (/f "{FileURL}")
                     int urlno = i + 1;
-                    HashFileURL.Text = Commands[urlno];
+                    HashFileURL.Text = args[urlno];
                 }
-                else if (Commands[i] == "/h")
+                else if (args[i] == "/h")
                 {
                     //HashType (/h MD5)
                     int hashtypeno = i + 1;
-                    HashSelecter.Text = Commands[hashtypeno];
+                    HashSelecter.Text = args[hashtypeno];
                 }
-                else if (Commands[i] == "/d")
+                else if (args[i] == "/d")
                 {
                     //Debug (/d)
                     DebugUse.Visible = true;
