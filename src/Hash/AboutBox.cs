@@ -35,7 +35,7 @@ namespace Hash
 
         private void licenselink_Click(object sender, EventArgs e)
         {
-            var startInfo = new System.Diagnostics.ProcessStartInfo($"https://github.com/Hibi-10000/HashCalculator/blob/v{HashCalculator.Major}.{HashCalculator.Minor}.{HashCalculator.Build}/LICENSE.md")
+            var startInfo = new System.Diagnostics.ProcessStartInfo($"https://github.com/Hibi-10000/HashCalculator/blob/v{Program.Major}.{Program.Minor}.{Program.Build}/LICENSE.md")
             {
                 UseShellExecute = true
             };
@@ -44,7 +44,7 @@ namespace Hash
 
         private void noticelink_Click(object sender, EventArgs e)
         {
-            var startInfo = new System.Diagnostics.ProcessStartInfo($"https://github.com/Hibi-10000/HashCalculator/blob/v{HashCalculator.Major}.{HashCalculator.Minor}.{HashCalculator.Build}/NOTICE.md")
+            var startInfo = new System.Diagnostics.ProcessStartInfo($"https://github.com/Hibi-10000/HashCalculator/blob/v{Program.Major}.{Program.Minor}.{Program.Build}/NOTICE.md")
             {
                 UseShellExecute = true
             };
@@ -53,8 +53,8 @@ namespace Hash
 
         private void AboutBox_Load(object sender, EventArgs e)
         {
-            hashandver.Text = $"HashCalculator v{HashCalculator.Major}.{HashCalculator.Minor}.{HashCalculator.Build}";
-            Version.Text = $"Version: v{HashCalculator.Major}.{HashCalculator.Minor}.{HashCalculator.Build}{HashCalculator.Ch}";
+            hashandver.Text = $"HashCalculator v{Program.Major}.{Program.Minor}.{Program.Build}";
+            Version.Text = $"Version: v{Program.Major}.{Program.Minor}.{Program.Build}{Program.Ch}";
             Copyright.Text = $"Copyright © 2021-{DateTime.Now.Year} Hibi_10000";
         }
     }

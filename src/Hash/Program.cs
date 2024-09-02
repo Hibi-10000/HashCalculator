@@ -22,6 +22,11 @@ namespace Hash
 {
     internal static class Program
     {
+        internal const string Major = "0";
+        internal const string Minor = "6";
+        internal const string Build = "1";
+        internal const string Ch = "";
+
         /// <summary>
         /// アプリケーションのメイン エントリ ポイントです。
         /// </summary>

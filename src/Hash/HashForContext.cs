@@ -58,8 +58,8 @@ namespace Hash
                 }
             }
 
-            Text = $"Hash for ContextMenu v{HashCalculator.Major}.{HashCalculator.Minor}.{HashCalculator.Build}{HashCalculator.Ch}";
-            Title.Text = $"Hash for ContextMenu v{HashCalculator.Major}.{HashCalculator.Minor}.{HashCalculator.Build}";
+            Text = $"Hash for ContextMenu v{Program.Major}.{Program.Minor}.{Program.Build}{Program.Ch}";
+            Title.Text = $"Hash for ContextMenu v{Program.Major}.{Program.Minor}.{Program.Build}";
             Copyright.Text = $"Copyright © 2021-{DateTime.Now.Year} Hibi_10000";
         }
 

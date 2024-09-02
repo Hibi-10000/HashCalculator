@@ -22,12 +22,6 @@ namespace Hash
 {
     internal partial class HashCalculator : Form
     {
-
-        public const string Major = "0";
-        public const string Minor = "6";
-        public const string Build = "1";
-        public const string Ch = "";
-
         //[DllImport("UXTheme.dll", SetLastError = true, EntryPoint = "#138")]
         //public static extern bool ShouldSystemUseDarkMode();
 
@@ -70,9 +64,9 @@ namespace Hash
                 HashForContextEnable.Checked = false;
             }
 
-            Text = $"HashCalculator v{Major}.{Minor}.{Build}{Ch}";
-            hashandver.Text = $"HashCalculator v{Major}.{Minor}.{Build}";
-            HashVer.Text = $"HashCalculator v{Major}.{Minor}.{Build}{Ch}";
+            Text = $"HashCalculator v{Program.Major}.{Program.Minor}.{Program.Build}{Program.Ch}";
+            hashandver.Text = $"HashCalculator v{Program.Major}.{Program.Minor}.{Program.Build}";
+            HashVer.Text = $"HashCalculator v{Program.Major}.{Program.Minor}.{Program.Build}{Program.Ch}";
             CopyRight.Text = $"Copyright © 2021-{DateTime.Now.Year} Hibi_10000";
         }
 
