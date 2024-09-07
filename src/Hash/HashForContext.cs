@@ -59,8 +59,8 @@ namespace Hash
                 }
             }
 
-            Text = $"Hash for ContextMenu v{Program.Major}.{Program.Minor}.{Program.Build}{Program.Ch}";
-            Title.Text = $"Hash for ContextMenu v{Program.Major}.{Program.Minor}.{Program.Build}";
+            Text = $"Hash for ContextMenu v{Program.SemVer}{Program.Ch}";
+            Title.Text = $"Hash for ContextMenu v{Program.SemVer}";
             Copyright.Text = $"Copyright © 2021-{DateTime.Now.Year} Hibi_10000";
         }
 

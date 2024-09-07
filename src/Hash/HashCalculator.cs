@@ -65,9 +65,9 @@ namespace Hash
                 HashForContextEnable.Checked = false;
             }
 
-            Text = $"HashCalculator v{Program.Major}.{Program.Minor}.{Program.Build}{Program.Ch}";
-            hashandver.Text = $"HashCalculator v{Program.Major}.{Program.Minor}.{Program.Build}";
-            HashVer.Text = $"HashCalculator v{Program.Major}.{Program.Minor}.{Program.Build}{Program.Ch}";
+            Text = $"HashCalculator v{Program.SemVer}{Program.Ch}";
+            hashandver.Text = $"HashCalculator v{Program.SemVer}";
+            HashVer.Text = $"HashCalculator v{Program.SemVer}{Program.Ch}";
             CopyRight.Text = $"Copyright © 2021-{DateTime.Now.Year} Hibi_10000";
         }
 
