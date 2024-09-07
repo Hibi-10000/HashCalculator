@@ -15,6 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
+using System.Security.Principal;
 using Hash.Core;
 using Microsoft.Win32;
 
@@ -126,9 +127,9 @@ namespace Hash
 
         private static bool IsAdministrator()
         {
-            var identity = System.Security.Principal.WindowsIdentity.GetCurrent();
-            var principal = new System.Security.Principal.WindowsPrincipal(identity);
-            return principal.IsInRole(System.Security.Principal.WindowsBuiltInRole.Administrator);
+            WindowsIdentity identity = WindowsIdentity.GetCurrent();
+            WindowsPrincipal principal = new WindowsPrincipal(identity);
+            return principal.IsInRole(WindowsBuiltInRole.Administrator);
         }
     }
 }

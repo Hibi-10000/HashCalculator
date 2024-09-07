@@ -16,6 +16,7 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 using Hash.Core;
+using System.Diagnostics;
 
 namespace Hash
 {
@@ -79,11 +80,11 @@ namespace Hash
 
         private void DLGithub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new System.Diagnostics.ProcessStartInfo("https://github.com/Hibi-10000/HashCalculator/releases/")
+            ProcessStartInfo startInfo = new ProcessStartInfo("https://github.com/Hibi-10000/HashCalculator/releases/")
             {
                 UseShellExecute = true
             };
-            System.Diagnostics.Process.Start(startInfo);
+            Process.Start(startInfo);
         }
 
         private void HashSelecter_Set(object sender, EventArgs e)
@@ -107,12 +108,12 @@ namespace Hash
             if (HashFileURL.Text != "ファイルのパス(※これが表示されている場合はバグまたは起動方法が間違っています)") option += "/f \"" + HashFileURL.Text + "\" ";
             if (HashSelecter.Text != "Hashを選択してください") option += "/h " + HashSelecter.Text + " ";
             if (DebugUse.Visible == true) option += "/d";
-            var startInfo = new System.Diagnostics.ProcessStartInfo(Application.ExecutablePath)
+            ProcessStartInfo startInfo = new ProcessStartInfo(Application.ExecutablePath)
             {
                 UseShellExecute = true,
                 Arguments = option
             };
-            System.Diagnostics.Process.Start(startInfo);
+            Process.Start(startInfo);
         }
 
         private void DebugUse_Click(object sender, EventArgs e)

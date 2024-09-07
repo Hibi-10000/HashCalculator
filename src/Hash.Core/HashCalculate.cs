@@ -83,9 +83,9 @@ namespace Hash.Core
                 _ => throw new ArgumentOutOfRangeException(nameof(hashType), hashType, null),
             };
 
-            using var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-            //using var fs = new MemoryStream(System.Text.Encoding.ASCII.GetBytes("123456789"));
-            var bs = hashProvider.ComputeHash(fs);
+            using FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            //using MemoryStream fs = new MemoryStream(System.Text.Encoding.ASCII.GetBytes("123456789"));
+            byte[] bs = hashProvider.ComputeHash(fs);
 
             string returnStr = BitConverter.ToString(bs);
             returnStr = upper ? returnStr.ToUpper() : returnStr.ToLower();

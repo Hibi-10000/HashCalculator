@@ -17,6 +17,7 @@
 
 using Hash.Core;
 using Microsoft.Win32;
+using System.Diagnostics;
 
 namespace Hash
 {
@@ -72,11 +73,11 @@ namespace Hash
 
         private void DLLink1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new System.Diagnostics.ProcessStartInfo("https://github.com/Hibi-10000/HashCalculator/releases/")
+            ProcessStartInfo startInfo = new ProcessStartInfo("https://github.com/Hibi-10000/HashCalculator/releases/")
             {
                 UseShellExecute = true
             };
-            System.Diagnostics.Process.Start(startInfo);
+            Process.Start(startInfo);
         }
 
         private void DropPanel_DragDrop(object sender, DragEventArgs e)
@@ -115,7 +116,7 @@ namespace Hash
         private void SelectFolderButton_Click(object sender, EventArgs e)
         {
             FileFolderURLBox.Text = null;
-            using var cofd = new CommonOpenFileDialog()
+            using CommonOpenFileDialog cofd = new CommonOpenFileDialog()
             {
                 Title = "フォルダを選択してください",
                 InitialDirectory = @"C:\",
@@ -229,13 +230,13 @@ namespace Hash
             {
                 if (File.Exists(Application.ExecutablePath))
                 {
-                    var startInfo = new System.Diagnostics.ProcessStartInfo(Application.ExecutablePath)
+                    ProcessStartInfo startInfo = new ProcessStartInfo(Application.ExecutablePath)
                     {
                         UseShellExecute = true,
                         Verb = "runas",
                         Arguments = HashForContextEnable.Checked ? "/rc" : "/rd"
                     };
-                    var process = System.Diagnostics.Process.Start(startInfo);
+                    Process? process = Process.Start(startInfo);
                     process?.WaitForExit();
                     if (process?.ExitCode is not 0) {
                         HashForContextEnable.Checked = HashForContextEnable.Checked is false;

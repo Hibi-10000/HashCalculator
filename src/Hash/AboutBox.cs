@@ -15,6 +15,8 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
+using System.Diagnostics;
+
 namespace Hash
 {
     internal partial class AboutBox : Form
@@ -26,29 +28,29 @@ namespace Hash
 
         private void dlgithub_Click(object sender, EventArgs e)
         {
-            var startInfo = new System.Diagnostics.ProcessStartInfo("https://github.com/Hibi-10000/HashCalculator/releases/")
+            ProcessStartInfo startInfo = new ProcessStartInfo("https://github.com/Hibi-10000/HashCalculator/releases/")
             {
                 UseShellExecute = true
             };
-            System.Diagnostics.Process.Start(startInfo);
+            Process.Start(startInfo);
         }
 
         private void licenselink_Click(object sender, EventArgs e)
         {
-            var startInfo = new System.Diagnostics.ProcessStartInfo($"https://github.com/Hibi-10000/HashCalculator/blob/v{Program.Major}.{Program.Minor}.{Program.Build}/LICENSE.md")
+            ProcessStartInfo startInfo = new ProcessStartInfo($"https://github.com/Hibi-10000/HashCalculator/blob/v{Program.Major}.{Program.Minor}.{Program.Build}/LICENSE.md")
             {
                 UseShellExecute = true
             };
-            System.Diagnostics.Process.Start(startInfo);
+            Process.Start(startInfo);
         }
 
         private void noticelink_Click(object sender, EventArgs e)
         {
-            var startInfo = new System.Diagnostics.ProcessStartInfo($"https://github.com/Hibi-10000/HashCalculator/blob/v{Program.Major}.{Program.Minor}.{Program.Build}/NOTICE.md")
+            ProcessStartInfo startInfo = new ProcessStartInfo($"https://github.com/Hibi-10000/HashCalculator/blob/v{Program.Major}.{Program.Minor}.{Program.Build}/NOTICE.md")
             {
                 UseShellExecute = true
             };
-            System.Diagnostics.Process.Start(startInfo);
+            Process.Start(startInfo);
         }
 
         private void AboutBox_Load(object sender, EventArgs e)
