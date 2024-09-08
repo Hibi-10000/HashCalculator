@@ -26,9 +26,14 @@ namespace Hash
         //[DllImport("UXTheme.dll", SetLastError = true, EntryPoint = "#138")]
         //public static extern bool ShouldSystemUseDarkMode();
 
-        public HashCalculator()
+        public HashCalculator(bool multiInstance)
         {
             InitializeComponent();
+            if (multiInstance)
+            {
+                HashForContextEnable.Enabled = false;
+                HashForContextEnable.Text += " (最初のインスタンスでのみ変更できます)";
+            }
         }
 
         private void Hash_Load(object sender, EventArgs e)

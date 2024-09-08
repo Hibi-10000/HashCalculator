@@ -108,20 +108,11 @@ namespace Hash
             const string mutexName = "HashCalculator-Mutex";
             using Mutex mutex = new Mutex(true, mutexName, out bool createdNew);
 
-            //Mutexの初期所有権が付与されたか調べる
-            if (createdNew == false)
-            {
-                //System.Media.SystemSounds.Hand.Play();
-                MessageBox.Show("多重起動はできません。", "HashCalculator  -  ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Environment.ExitCode = 1;
-                Application.Exit();
-                return;
-            }
-
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new HashCalculator());
+            //Mutexの初期所有権が付与されたかを渡して起動
+            Application.Run(new HashCalculator(!createdNew));
             mutex.ReleaseMutex();
         }
 
