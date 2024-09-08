@@ -106,14 +106,13 @@ namespace Hash
             }
 
             const string mutexName = "HashCalculator-Mutex";
-            Mutex mutex = new Mutex(true, mutexName, out bool createdNew);
+            using Mutex mutex = new Mutex(true, mutexName, out bool createdNew);
 
             //Mutexの初期所有権が付与されたか調べる
             if (createdNew == false)
             {
                 //System.Media.SystemSounds.Hand.Play();
                 MessageBox.Show("多重起動はできません。", "HashCalculator  -  ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                mutex.Close();
                 Environment.ExitCode = 1;
                 Application.Exit();
                 return;
@@ -124,7 +123,6 @@ namespace Hash
             ApplicationConfiguration.Initialize();
             Application.Run(new HashCalculator());
             mutex.ReleaseMutex();
-            mutex.Close();
         }
 
         private static bool IsAdministrator()
