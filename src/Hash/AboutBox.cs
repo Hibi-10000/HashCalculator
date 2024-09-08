@@ -26,7 +26,7 @@ namespace Hash
             InitializeComponent();
         }
 
-        private void dlgithub_Click(object sender, EventArgs e)
+        private void dlFromGitHub_Click(object sender, EventArgs e)
         {
             ProcessStartInfo startInfo = new ProcessStartInfo("https://github.com/Hibi-10000/HashCalculator/releases/")
             {
@@ -35,7 +35,7 @@ namespace Hash
             Process.Start(startInfo);
         }
 
-        private void licenselink_Click(object sender, EventArgs e)
+        private void licenseLink_Click(object sender, EventArgs e)
         {
             ProcessStartInfo startInfo = new ProcessStartInfo($"https://github.com/Hibi-10000/HashCalculator/blob/v{Program.SemVer}/LICENSE.md")
             {
@@ -44,7 +44,7 @@ namespace Hash
             Process.Start(startInfo);
         }
 
-        private void noticelink_Click(object sender, EventArgs e)
+        private void noticeLink_Click(object sender, EventArgs e)
         {
             ProcessStartInfo startInfo = new ProcessStartInfo($"https://github.com/Hibi-10000/HashCalculator/blob/v{Program.SemVer}/NOTICE.md")
             {
@@ -55,9 +55,9 @@ namespace Hash
 
         private void AboutBox_Load(object sender, EventArgs e)
         {
-            hashandver.Text = $"HashCalculator v{Program.SemVer}";
-            Version.Text = $"Version: v{Program.SemVer}{Program.Ch}";
-            Copyright.Text = $"Copyright © 2021-{DateTime.Now.Year} Hibi_10000";
+            hashAndVer.Text = $"HashCalculator v{Program.SemVer}";
+            version.Text = $"Version: v{Program.SemVer}{Program.Ch}";
+            copyright.Text = $"Copyright © 2021-{DateTime.Now.Year} Hibi_10000";
         }
     }
 }

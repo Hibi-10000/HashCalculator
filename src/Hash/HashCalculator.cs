@@ -45,7 +45,7 @@ namespace Hash
                 {
                     //HashType (/h MD5)
                     int hashtypeno = i + 1;
-                    HashSelecter.Text = args[hashtypeno];
+                    HashSelector.Text = args[hashtypeno];
                 }
                 else if (args[i] == "/d")
                 {
@@ -66,7 +66,7 @@ namespace Hash
             }
 
             Text = $"HashCalculator v{Program.SemVer}{Program.Ch}";
-            hashandver.Text = $"HashCalculator v{Program.SemVer}";
+            hashAndVer.Text = $"HashCalculator v{Program.SemVer}";
             HashVer.Text = $"HashCalculator v{Program.SemVer}{Program.Ch}";
             CopyRight.Text = $"Copyright © 2021-{DateTime.Now.Year} Hibi_10000";
         }
@@ -109,7 +109,7 @@ namespace Hash
                 HashFileURL.Text = null;
                 HashFileURL.Text = SelectFileDialog.FileName;
             }
-            HashSelecter_Set(sender, e);
+            HashSelector_Set(sender, e);
         }
 
         /*
@@ -135,7 +135,7 @@ namespace Hash
         {
             HashOutputBox.Text = "ここにHash値が表示されます";
             HashFileURL.Text = "ファイルのパス";
-            HashSelecter.Text = "②Hashを選択";
+            HashSelector.Text = "②Hashを選択";
         }
 
         private void HashCopy_Click(object sender, EventArgs e)
@@ -145,61 +145,61 @@ namespace Hash
             HashOutputBox.SelectAll();
         }
 
-        private void HashSelecter_Set(object sender, EventArgs e)
+        private void HashSelector_Set(object sender, EventArgs e)
         {
             if (HashFileURL.Text == "ファイルのパス" || HashFileURL.Text == "") {
                 HashOutputBox.Text = "ここにHash値が表示されます";
             } else {
-                string hashType = HashSelecter.Text;
+                string hashType = HashSelector.Text;
                 string filePath = HashFileURL.Text;
-                bool upper = UpperCheck.Checked;
-                bool hihun = HihunCheck.Checked;
-                string hash = HashCalculate.GetHash(hashType, filePath, upper, hihun) ?? "ここにHash値が表示されます";
+                bool upper = checkUpper.Checked;
+                bool hyphen = checkHyphen.Checked;
+                string hash = HashCalculate.GetHash(hashType, filePath, upper, hyphen) ?? "ここにHash値が表示されます";
                 HashOutputBox.Text = hash;
             }
         }
 
-        private void hikaku1copy_Click(object sender, EventArgs e)
+        private void compare1copy_Click(object sender, EventArgs e)
         {
-            hikaku1hash.Text = HashOutputBox.Text;
-            hikaku1hashtype.Text = HashSelecter.Text;
+            compare1hash.Text = HashOutputBox.Text;
+            compare1hashType.Text = HashSelector.Text;
         }
 
-        private void hikaku2copy_Click(object sender, EventArgs e)
+        private void compare2copy_Click(object sender, EventArgs e)
         {
-            hikaku2hash.Text = HashOutputBox.Text;
-            hikaku2hashtype.Text = HashSelecter.Text;
+            compare2hash.Text = HashOutputBox.Text;
+            compare2hashType.Text = HashSelector.Text;
         }
 
-        private void hikakub_Click(object sender, EventArgs e)
+        private void compareExecButton_Click(object sender, EventArgs e)
         {
-            if (hikaku1hash.Text == hikaku2hash.Text)
+            if (compare1hash.Text == compare2hash.Text)
             {
-                hikakukekka.Text = "比較 : 真";
+                compareResult.Text = "比較 : 真";
             }
             else
             {
-                hikakukekka.Text = "比較 : 偽";
+                compareResult.Text = "比較 : 偽";
             }
         }
 
-        private void hikakureset_Click(object sender, EventArgs e)
+        private void compareReset_Click(object sender, EventArgs e)
         {
-            hikakukekka.Text = "比較 : 結果";
-            hikaku1hashtype.Text = "比較①";
-            hikaku1hash.Text = "";
-            hikaku2hashtype.Text = "比較②";
-            hikaku2hash.Text = "";
+            compareResult.Text = "比較 : 結果";
+            compare1hashType.Text = "比較①";
+            compare1hash.Text = "";
+            compare2hashType.Text = "比較②";
+            compare2hash.Text = "";
         }
 
         private void paste1cb_Click(object sender, EventArgs e)
         {
-            hikaku1hash.Text = Clipboard.GetText();
+            compare1hash.Text = Clipboard.GetText();
         }
 
         private void paste2cb_Click(object sender, EventArgs e)
         {
-            hikaku2hash.Text = Clipboard.GetText();
+            compare2hash.Text = Clipboard.GetText();
         }
 
         private void menuFIleExit_Click(object sender, EventArgs e)

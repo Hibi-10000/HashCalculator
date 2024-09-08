@@ -49,7 +49,7 @@ namespace Hash
                 {
                     //HashType (/h MD5)
                     int hashtypeno = i + 1;
-                    HashSelecter.Text = args[hashtypeno];
+                    HashSelector.Text = args[hashtypeno];
                 }
                 else if (args[i] == "/d")
                 {
@@ -67,18 +67,18 @@ namespace Hash
         private void HashReset_Click(object sender, EventArgs e)
         {
             HashOutputBox.Text = "ここにHash値が表示されます";
-            HashSelecter.Text = "Hashを選択してください";
+            HashSelector.Text = "Hashを選択してください";
         }
 
         private void HashCopy_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(HashSelecter.Text);
+            Clipboard.SetText(HashSelector.Text);
             Clipboard.SetText(HashOutputBox.Text);
             HashOutputBox.Focus();
             HashOutputBox.SelectAll();
         }
 
-        private void DLGithub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void DLGitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ProcessStartInfo startInfo = new ProcessStartInfo("https://github.com/Hibi-10000/HashCalculator/releases/")
             {
@@ -87,15 +87,15 @@ namespace Hash
             Process.Start(startInfo);
         }
 
-        private void HashSelecter_Set(object sender, EventArgs e)
+        private void HashSelector_Set(object sender, EventArgs e)
         {
             if (HashFileURL.Text != "ファイルのパス(※これが表示されている場合はバグまたは起動方法が間違っています)" && HashFileURL.Text != "")
             {
-                string hashType = HashSelecter.Text;
+                string hashType = HashSelector.Text;
                 string filePath = HashFileURL.Text;
-                bool upper = UpperCheck.Checked;
-                bool hihun = HihunCheck.Checked;
-                string hash = HashCalculate.GetHash(hashType, filePath, upper, hihun) ?? "ここにHash値が表示されます";
+                bool upper = checkUpper.Checked;
+                bool hyphen = checkHyphen.Checked;
+                string hash = HashCalculate.GetHash(hashType, filePath, upper, hyphen) ?? "ここにHash値が表示されます";
                 HashOutputBox.Text = hash;
             } else {
                 HashOutputBox.Text = "ここにHash値が表示されます";
@@ -106,7 +106,7 @@ namespace Hash
         {
             string option = "";
             if (HashFileURL.Text != "ファイルのパス(※これが表示されている場合はバグまたは起動方法が間違っています)") option += "/f \"" + HashFileURL.Text + "\" ";
-            if (HashSelecter.Text != "Hashを選択してください") option += "/h " + HashSelecter.Text + " ";
+            if (HashSelector.Text != "Hashを選択してください") option += "/h " + HashSelector.Text + " ";
             if (DebugUse.Visible == true) option += "/d";
             ProcessStartInfo startInfo = new ProcessStartInfo(Application.ExecutablePath)
             {

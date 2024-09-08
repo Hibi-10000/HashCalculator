@@ -52,19 +52,19 @@ namespace Hash.Core
                 .ToArray();
         }
 
-        public static string? GetHash(string hashType, string filePath, bool upper, bool hihun)
+        public static string? GetHash(string hashType, string filePath, bool upper, bool hyphen)
         {
             foreach (HashType type in Enum.GetValues<HashType>())
             {
                 if (hashType.Replace("-", "_") == type.ToString())
                 {
-                    return GetHash(type, filePath, upper, hihun);
+                    return GetHash(type, filePath, upper, hyphen);
                 }
             }
             return null;
         }
 
-        private static string GetHash(HashType hashType, string filePath, bool upper, bool hihun)
+        private static string GetHash(HashType hashType, string filePath, bool upper, bool hyphen)
         {
             HashAlgorithm hashProvider = hashType switch
             {
@@ -89,7 +89,7 @@ namespace Hash.Core
 
             string returnStr = BitConverter.ToString(bs);
             returnStr = upper ? returnStr.ToUpper() : returnStr.ToLower();
-            return hihun ? returnStr.Replace("-", "") : returnStr;
+            return hyphen ? returnStr.Replace("-", "") : returnStr;
         }
     }
 }

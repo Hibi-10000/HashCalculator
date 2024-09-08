@@ -57,35 +57,35 @@ namespace Hash
             SelectFileButton = new Button();
             HashFileURL = new TextBox();
             SelectFileDialog = new OpenFileDialog();
-            hashandver = new Label();
+            hashAndVer = new Label();
             Tab = new TabControl();
             TabHash = new TabPage();
-            UpperCheck = new CheckBox();
+            checkUpper = new CheckBox();
             AllReset = new Button();
-            HihunCheck = new CheckBox();
-            hikaku2copy = new Button();
-            hikaku1copy = new Button();
+            checkHyphen = new CheckBox();
+            compare2copy = new Button();
+            compare1copy = new Button();
             HashCopy = new Button();
             HashOutputBox = new TextBox();
-            HashSelecter = new ComboBox();
-            TabHashhikaku = new TabPage();
-            hikakureset = new Button();
-            hikakukekka = new Label();
-            hikakub = new Button();
+            HashSelector = new ComboBox();
+            TabHashCompare = new TabPage();
+            compareReset = new Button();
+            compareResult = new Label();
+            compareExecButton = new Button();
             paste1cb = new Button();
             paste2cb = new Button();
-            hikaku2t = new Label();
-            hikaku1t = new Label();
-            hikaku2hashtype = new ComboBox();
-            hikaku1hashtype = new ComboBox();
-            hikaku2hash = new TextBox();
-            hikaku1hash = new TextBox();
+            compare2t = new Label();
+            compare1t = new Label();
+            compare2hashType = new ComboBox();
+            compare1hashType = new ComboBox();
+            compare2hash = new TextBox();
+            compare1hash = new TextBox();
             TabReadme = new TabPage();
             Readme = new RichTextBox();
             TabSettings = new TabPage();
             pictureBox1 = new PictureBox();
             HashForContextEnable = new CheckBox();
-            settingslabel = new Label();
+            settingsLabel = new Label();
             HashVer = new Label();
             menuFile = new ToolStripMenuItem();
             menuFileSettings = new ToolStripMenuItem();
@@ -99,7 +99,7 @@ namespace Hash
             DropPanel.SuspendLayout();
             Tab.SuspendLayout();
             TabHash.SuspendLayout();
-            TabHashhikaku.SuspendLayout();
+            TabHashCompare.SuspendLayout();
             TabReadme.SuspendLayout();
             TabSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -206,24 +206,24 @@ namespace Hash
             SelectFileDialog.SupportMultiDottedExtensions = true;
             SelectFileDialog.Title = "ファイルを選択";
             // 
-            // hashandver
+            // hashAndVer
             // 
-            hashandver.AutoSize = true;
-            hashandver.BackColor = SystemColors.Window;
-            hashandver.BorderStyle = BorderStyle.FixedSingle;
-            hashandver.Font = new Font("Yu Gothic UI Semibold", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 128);
-            hashandver.ForeColor = Color.Lime;
-            hashandver.ImeMode = ImeMode.NoControl;
-            hashandver.Location = new Point(5, 37);
-            hashandver.Name = "hashandver";
-            hashandver.Size = new Size(374, 69);
-            hashandver.TabIndex = 12;
-            hashandver.Text = "HashCalculator";
+            hashAndVer.AutoSize = true;
+            hashAndVer.BackColor = SystemColors.Window;
+            hashAndVer.BorderStyle = BorderStyle.FixedSingle;
+            hashAndVer.Font = new Font("Yu Gothic UI Semibold", 24.75F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            hashAndVer.ForeColor = Color.Lime;
+            hashAndVer.ImeMode = ImeMode.NoControl;
+            hashAndVer.Location = new Point(5, 37);
+            hashAndVer.Name = "hashAndVer";
+            hashAndVer.Size = new Size(374, 69);
+            hashAndVer.TabIndex = 12;
+            hashAndVer.Text = "HashCalculator";
             // 
             // Tab
             // 
             Tab.Controls.Add(TabHash);
-            Tab.Controls.Add(TabHashhikaku);
+            Tab.Controls.Add(TabHashCompare);
             Tab.Controls.Add(TabReadme);
             Tab.Controls.Add(TabSettings);
             Tab.Font = new Font("Yu Gothic UI", 9F);
@@ -238,14 +238,14 @@ namespace Hash
             // 
             TabHash.BackColor = SystemColors.Window;
             TabHash.BorderStyle = BorderStyle.Fixed3D;
-            TabHash.Controls.Add(UpperCheck);
+            TabHash.Controls.Add(checkUpper);
             TabHash.Controls.Add(AllReset);
-            TabHash.Controls.Add(HihunCheck);
-            TabHash.Controls.Add(hikaku2copy);
-            TabHash.Controls.Add(hikaku1copy);
+            TabHash.Controls.Add(checkHyphen);
+            TabHash.Controls.Add(compare2copy);
+            TabHash.Controls.Add(compare1copy);
             TabHash.Controls.Add(HashCopy);
             TabHash.Controls.Add(HashOutputBox);
-            TabHash.Controls.Add(HashSelecter);
+            TabHash.Controls.Add(HashSelector);
             TabHash.Controls.Add(DropPanel);
             TabHash.Controls.Add(HashFileURL);
             TabHash.Location = new Point(4, 34);
@@ -258,15 +258,15 @@ namespace Hash
             // 
             // UpperCheck
             // 
-            UpperCheck.AutoSize = true;
-            UpperCheck.Location = new Point(236, 280);
-            UpperCheck.Margin = new Padding(5, 6, 5, 6);
-            UpperCheck.Name = "UpperCheck";
-            UpperCheck.Size = new Size(92, 29);
-            UpperCheck.TabIndex = 19;
-            UpperCheck.Text = "大文字";
-            UpperCheck.UseVisualStyleBackColor = true;
-            UpperCheck.CheckedChanged += HashSelecter_Set;
+            checkUpper.AutoSize = true;
+            checkUpper.Location = new Point(236, 280);
+            checkUpper.Margin = new Padding(5, 6, 5, 6);
+            checkUpper.Name = "checkUpper";
+            checkUpper.Size = new Size(92, 29);
+            checkUpper.TabIndex = 19;
+            checkUpper.Text = "大文字";
+            checkUpper.UseVisualStyleBackColor = true;
+            checkUpper.CheckedChanged += HashSelector_Set;
             // 
             // AllReset
             // 
@@ -281,39 +281,39 @@ namespace Hash
             AllReset.UseVisualStyleBackColor = true;
             AllReset.Click += AllReset_Click;
             // 
-            // HihunCheck
+            // checkHyphen
             // 
-            HihunCheck.AutoSize = true;
-            HihunCheck.Location = new Point(338, 281);
-            HihunCheck.Margin = new Padding(5, 6, 5, 6);
-            HihunCheck.Name = "HihunCheck";
-            HihunCheck.Size = new Size(90, 29);
-            HihunCheck.TabIndex = 18;
-            HihunCheck.Text = "ハイフン";
-            HihunCheck.UseVisualStyleBackColor = true;
-            HihunCheck.CheckedChanged += HashSelecter_Set;
+            checkHyphen.AutoSize = true;
+            checkHyphen.Location = new Point(338, 281);
+            checkHyphen.Margin = new Padding(5, 6, 5, 6);
+            checkHyphen.Name = "checkHyphen";
+            checkHyphen.Size = new Size(90, 29);
+            checkHyphen.TabIndex = 18;
+            checkHyphen.Text = "ハイフン";
+            checkHyphen.UseVisualStyleBackColor = true;
+            checkHyphen.CheckedChanged += HashSelector_Set;
             // 
-            // hikaku2copy
+            // compare2copy
             // 
-            hikaku2copy.Location = new Point(608, 418);
-            hikaku2copy.Margin = new Padding(5, 4, 5, 4);
-            hikaku2copy.Name = "hikaku2copy";
-            hikaku2copy.Size = new Size(290, 34);
-            hikaku2copy.TabIndex = 17;
-            hikaku2copy.Text = "比較②にコピー";
-            hikaku2copy.UseVisualStyleBackColor = true;
-            hikaku2copy.Click += hikaku2copy_Click;
+            compare2copy.Location = new Point(608, 418);
+            compare2copy.Margin = new Padding(5, 4, 5, 4);
+            compare2copy.Name = "compare2copy";
+            compare2copy.Size = new Size(290, 34);
+            compare2copy.TabIndex = 17;
+            compare2copy.Text = "比較②にコピー";
+            compare2copy.UseVisualStyleBackColor = true;
+            compare2copy.Click += compare2copy_Click;
             // 
-            // hikaku1copy
+            // compare1copy
             // 
-            hikaku1copy.Location = new Point(305, 418);
-            hikaku1copy.Margin = new Padding(5, 4, 5, 4);
-            hikaku1copy.Name = "hikaku1copy";
-            hikaku1copy.Size = new Size(293, 34);
-            hikaku1copy.TabIndex = 16;
-            hikaku1copy.Text = "比較①にコピー";
-            hikaku1copy.UseVisualStyleBackColor = true;
-            hikaku1copy.Click += hikaku1copy_Click;
+            compare1copy.Location = new Point(305, 418);
+            compare1copy.Margin = new Padding(5, 4, 5, 4);
+            compare1copy.Name = "compare1copy";
+            compare1copy.Size = new Size(293, 34);
+            compare1copy.TabIndex = 16;
+            compare1copy.Text = "比較①にコピー";
+            compare1copy.UseVisualStyleBackColor = true;
+            compare1copy.Click += compare1copy_Click;
             // 
             // HashCopy
             // 
@@ -340,78 +340,78 @@ namespace Hash
             HashOutputBox.TabIndex = 13;
             HashOutputBox.Text = "ここにHash値が表示されます";
             // 
-            // HashSelecter
+            // HashSelector
             // 
-            HashSelecter.Font = new Font("游ゴシック", 10F);
-            HashSelecter.FormattingEnabled = true;
-            HashSelecter.Items.AddRange([ "②Hashを選択", ..HashCalculate.GetHashTypeNames() ]);
-            HashSelecter.Location = new Point(6, 278);
-            HashSelecter.Margin = new Padding(3, 4, 3, 4);
-            HashSelecter.Name = "HashSelecter";
-            HashSelecter.Size = new Size(222, 34);
-            HashSelecter.TabIndex = 12;
-            HashSelecter.Text = "②Hashを選択";
-            HashSelecter.SelectedIndexChanged += HashSelecter_Set;
-            HashSelecter.TextChanged += HashSelecter_Set;
+            HashSelector.Font = new Font("游ゴシック", 10F);
+            HashSelector.FormattingEnabled = true;
+            HashSelector.Items.AddRange([ "②Hashを選択", ..HashCalculate.GetHashTypeNames() ]);
+            HashSelector.Location = new Point(6, 278);
+            HashSelector.Margin = new Padding(3, 4, 3, 4);
+            HashSelector.Name = "HashSelector";
+            HashSelector.Size = new Size(222, 34);
+            HashSelector.TabIndex = 12;
+            HashSelector.Text = "②Hashを選択";
+            HashSelector.SelectedIndexChanged += HashSelector_Set;
+            HashSelector.TextChanged += HashSelector_Set;
             // 
-            // TabHashhikaku
+            // TabHashCompare
             // 
-            TabHashhikaku.BorderStyle = BorderStyle.Fixed3D;
-            TabHashhikaku.Controls.Add(hikakureset);
-            TabHashhikaku.Controls.Add(hikakukekka);
-            TabHashhikaku.Controls.Add(hikakub);
-            TabHashhikaku.Controls.Add(paste1cb);
-            TabHashhikaku.Controls.Add(paste2cb);
-            TabHashhikaku.Controls.Add(hikaku2t);
-            TabHashhikaku.Controls.Add(hikaku1t);
-            TabHashhikaku.Controls.Add(hikaku2hashtype);
-            TabHashhikaku.Controls.Add(hikaku1hashtype);
-            TabHashhikaku.Controls.Add(hikaku2hash);
-            TabHashhikaku.Controls.Add(hikaku1hash);
-            TabHashhikaku.Font = new Font("游ゴシック Medium", 9F);
-            TabHashhikaku.Location = new Point(4, 34);
-            TabHashhikaku.Margin = new Padding(5, 4, 5, 4);
-            TabHashhikaku.Name = "TabHashhikaku";
-            TabHashhikaku.Size = new Size(908, 463);
-            TabHashhikaku.TabIndex = 3;
-            TabHashhikaku.Text = "Hash比較";
-            TabHashhikaku.UseVisualStyleBackColor = true;
+            TabHashCompare.BorderStyle = BorderStyle.Fixed3D;
+            TabHashCompare.Controls.Add(compareReset);
+            TabHashCompare.Controls.Add(compareResult);
+            TabHashCompare.Controls.Add(compareExecButton);
+            TabHashCompare.Controls.Add(paste1cb);
+            TabHashCompare.Controls.Add(paste2cb);
+            TabHashCompare.Controls.Add(compare2t);
+            TabHashCompare.Controls.Add(compare1t);
+            TabHashCompare.Controls.Add(compare2hashType);
+            TabHashCompare.Controls.Add(compare1hashType);
+            TabHashCompare.Controls.Add(compare2hash);
+            TabHashCompare.Controls.Add(compare1hash);
+            TabHashCompare.Font = new Font("游ゴシック Medium", 9F);
+            TabHashCompare.Location = new Point(4, 34);
+            TabHashCompare.Margin = new Padding(5, 4, 5, 4);
+            TabHashCompare.Name = "TabHashCompare";
+            TabHashCompare.Size = new Size(908, 463);
+            TabHashCompare.TabIndex = 3;
+            TabHashCompare.Text = "Hash比較";
+            TabHashCompare.UseVisualStyleBackColor = true;
             // 
-            // hikakureset
+            // compareReset
             // 
-            hikakureset.Font = new Font("游ゴシック Medium", 9F);
-            hikakureset.ForeColor = Color.Red;
-            hikakureset.Location = new Point(781, 4);
-            hikakureset.Margin = new Padding(5, 4, 5, 4);
-            hikakureset.Name = "hikakureset";
-            hikakureset.Size = new Size(118, 34);
-            hikakureset.TabIndex = 10;
-            hikakureset.Text = "リセット";
-            hikakureset.UseVisualStyleBackColor = true;
-            hikakureset.Click += hikakureset_Click;
+            compareReset.Font = new Font("游ゴシック Medium", 9F);
+            compareReset.ForeColor = Color.Red;
+            compareReset.Location = new Point(781, 4);
+            compareReset.Margin = new Padding(5, 4, 5, 4);
+            compareReset.Name = "compareReset";
+            compareReset.Size = new Size(118, 34);
+            compareReset.TabIndex = 10;
+            compareReset.Text = "リセット";
+            compareReset.UseVisualStyleBackColor = true;
+            compareReset.Click += compareReset_Click;
             // 
-            // hikakukekka
+            // compareResult
             // 
-            hikakukekka.AutoSize = true;
-            hikakukekka.Font = new Font("Yu Gothic UI", 20F);
-            hikakukekka.Location = new Point(186, 336);
-            hikakukekka.Margin = new Padding(5, 0, 5, 0);
-            hikakukekka.Name = "hikakukekka";
-            hikakukekka.Size = new Size(214, 54);
-            hikakukekka.TabIndex = 9;
-            hikakukekka.Text = "比較 : 結果";
+            compareResult.AutoSize = true;
+            compareResult.Font = new Font("Yu Gothic UI", 20F);
+            compareResult.Location = new Point(186, 336);
+            compareResult.Margin = new Padding(5, 0, 5, 0);
+            compareResult.Name = "compareResult";
+            compareResult.Size = new Size(214, 54);
+            compareResult.TabIndex = 9;
+            compareResult.Text = "比較 : 結果";
             // 
-            // hikakub
+            // compareExecButton
             // 
-            hikakub.Font = new Font("游ゴシック Medium", 30F);
-            hikakub.Location = new Point(616, 264);
-            hikakub.Margin = new Padding(5, 4, 5, 4);
-            hikakub.Name = "hikakub";
-            hikakub.Size = new Size(283, 188);
-            hikakub.TabIndex = 8;
-            hikakub.Text = "比較";
-            hikakub.UseVisualStyleBackColor = true;
-            hikakub.Click += hikakub_Click;
+            compareExecButton.Font = new Font("游ゴシック Medium", 30F);
+            compareExecButton.Location = new Point(616, 264);
+            compareExecButton.Margin = new Padding(5, 4, 5, 4);
+            compareExecButton.Name = "compareExecButton";
+            compareExecButton.Size = new Size(283, 188);
+            compareExecButton.TabIndex = 8;
+            compareExecButton.Text = "比較";
+            compareExecButton.UseVisualStyleBackColor = true;
+            compareExecButton.Click += compareExecButton_Click;
             // 
             // paste1cb
             // 
@@ -436,69 +436,69 @@ namespace Hash
             paste2cb.UseVisualStyleBackColor = true;
             paste2cb.Click += paste2cb_Click;
             // 
-            // hikaku2t
+            // compare2t
             // 
-            hikaku2t.AutoSize = true;
-            hikaku2t.BorderStyle = BorderStyle.FixedSingle;
-            hikaku2t.Location = new Point(5, 152);
-            hikaku2t.Margin = new Padding(5, 0, 5, 0);
-            hikaku2t.Name = "hikaku2t";
-            hikaku2t.Size = new Size(66, 25);
-            hikaku2t.TabIndex = 5;
-            hikaku2t.Text = "比較②";
+            compare2t.AutoSize = true;
+            compare2t.BorderStyle = BorderStyle.FixedSingle;
+            compare2t.Location = new Point(5, 152);
+            compare2t.Margin = new Padding(5, 0, 5, 0);
+            compare2t.Name = "compare2t";
+            compare2t.Size = new Size(66, 25);
+            compare2t.TabIndex = 5;
+            compare2t.Text = "比較②";
             // 
-            // hikaku1t
+            // compare1t
             // 
-            hikaku1t.AutoSize = true;
-            hikaku1t.BackColor = SystemColors.Window;
-            hikaku1t.BorderStyle = BorderStyle.FixedSingle;
-            hikaku1t.ImeMode = ImeMode.NoControl;
-            hikaku1t.Location = new Point(5, 44);
-            hikaku1t.Margin = new Padding(5, 0, 5, 0);
-            hikaku1t.Name = "hikaku1t";
-            hikaku1t.Size = new Size(66, 25);
-            hikaku1t.TabIndex = 4;
-            hikaku1t.Text = "比較①";
+            compare1t.AutoSize = true;
+            compare1t.BackColor = SystemColors.Window;
+            compare1t.BorderStyle = BorderStyle.FixedSingle;
+            compare1t.ImeMode = ImeMode.NoControl;
+            compare1t.Location = new Point(5, 44);
+            compare1t.Margin = new Padding(5, 0, 5, 0);
+            compare1t.Name = "compare1t";
+            compare1t.Size = new Size(66, 25);
+            compare1t.TabIndex = 4;
+            compare1t.Text = "比較①";
             // 
-            // hikaku2hashtype
+            // compare2hashType
             // 
-            hikaku2hashtype.Font = new Font("游ゴシック Medium", 9F);
-            hikaku2hashtype.FormattingEnabled = true;
-            hikaku2hashtype.Items.AddRange([ "比較②", ..HashCalculate.GetHashTypeNames() ]);
-            hikaku2hashtype.Location = new Point(5, 181);
-            hikaku2hashtype.Margin = new Padding(5, 4, 5, 4);
-            hikaku2hashtype.Name = "hikaku2hashtype";
-            hikaku2hashtype.Size = new Size(171, 31);
-            hikaku2hashtype.TabIndex = 3;
-            hikaku2hashtype.Text = "比較②";
+            compare2hashType.Font = new Font("游ゴシック Medium", 9F);
+            compare2hashType.FormattingEnabled = true;
+            compare2hashType.Items.AddRange([ "比較②", ..HashCalculate.GetHashTypeNames() ]);
+            compare2hashType.Location = new Point(5, 181);
+            compare2hashType.Margin = new Padding(5, 4, 5, 4);
+            compare2hashType.Name = "compare2hashType";
+            compare2hashType.Size = new Size(171, 31);
+            compare2hashType.TabIndex = 3;
+            compare2hashType.Text = "比較②";
             // 
-            // hikaku1hashtype
+            // compare1hashType
             // 
-            hikaku1hashtype.Font = new Font("游ゴシック", 9F);
-            hikaku1hashtype.FormattingEnabled = true;
-            hikaku1hashtype.Items.AddRange([ "比較①", ..HashCalculate.GetHashTypeNames() ]);
-            hikaku1hashtype.Location = new Point(5, 73);
-            hikaku1hashtype.Margin = new Padding(5, 4, 5, 4);
-            hikaku1hashtype.Name = "hikaku1hashtype";
-            hikaku1hashtype.Size = new Size(171, 31);
-            hikaku1hashtype.TabIndex = 2;
-            hikaku1hashtype.Text = "比較①";
+            compare1hashType.Font = new Font("游ゴシック", 9F);
+            compare1hashType.FormattingEnabled = true;
+            compare1hashType.Items.AddRange([ "比較①", ..HashCalculate.GetHashTypeNames() ]);
+            compare1hashType.Location = new Point(5, 73);
+            compare1hashType.Margin = new Padding(5, 4, 5, 4);
+            compare1hashType.Name = "compare1hashType";
+            compare1hashType.Size = new Size(171, 31);
+            compare1hashType.TabIndex = 2;
+            compare1hashType.Text = "比較①";
             // 
-            // hikaku2hash
+            // compare2hash
             // 
-            hikaku2hash.Location = new Point(5, 220);
-            hikaku2hash.Margin = new Padding(5, 4, 5, 4);
-            hikaku2hash.Name = "hikaku2hash";
-            hikaku2hash.Size = new Size(894, 36);
-            hikaku2hash.TabIndex = 1;
+            compare2hash.Location = new Point(5, 220);
+            compare2hash.Margin = new Padding(5, 4, 5, 4);
+            compare2hash.Name = "compare2hash";
+            compare2hash.Size = new Size(894, 36);
+            compare2hash.TabIndex = 1;
             // 
-            // hikaku1hash
+            // compare1hash
             // 
-            hikaku1hash.Location = new Point(5, 112);
-            hikaku1hash.Margin = new Padding(5, 4, 5, 4);
-            hikaku1hash.Name = "hikaku1hash";
-            hikaku1hash.Size = new Size(894, 36);
-            hikaku1hash.TabIndex = 0;
+            compare1hash.Location = new Point(5, 112);
+            compare1hash.Margin = new Padding(5, 4, 5, 4);
+            compare1hash.Name = "compare1hash";
+            compare1hash.Size = new Size(894, 36);
+            compare1hash.TabIndex = 0;
             // 
             // TabReadme
             // 
@@ -530,7 +530,7 @@ namespace Hash
             TabSettings.BorderStyle = BorderStyle.Fixed3D;
             TabSettings.Controls.Add(pictureBox1);
             TabSettings.Controls.Add(HashForContextEnable);
-            TabSettings.Controls.Add(settingslabel);
+            TabSettings.Controls.Add(settingsLabel);
             TabSettings.Location = new Point(4, 34);
             TabSettings.Margin = new Padding(5, 4, 5, 4);
             TabSettings.Name = "TabSettings";
@@ -567,17 +567,17 @@ namespace Hash
             HashForContextEnable.UseVisualStyleBackColor = true;
             HashForContextEnable.CheckedChanged += HashForContextEnable_CheckedChanged;
             // 
-            // settingslabel
+            // settingsLabel
             // 
-            settingslabel.AutoSize = true;
-            settingslabel.BorderStyle = BorderStyle.FixedSingle;
-            settingslabel.Font = new Font("Yu Gothic UI", 20F);
-            settingslabel.Location = new Point(0, 0);
-            settingslabel.Margin = new Padding(5, 0, 5, 0);
-            settingslabel.Name = "settingslabel";
-            settingslabel.Size = new Size(105, 56);
-            settingslabel.TabIndex = 17;
-            settingslabel.Text = "設定";
+            settingsLabel.AutoSize = true;
+            settingsLabel.BorderStyle = BorderStyle.FixedSingle;
+            settingsLabel.Font = new Font("Yu Gothic UI", 20F);
+            settingsLabel.Location = new Point(0, 0);
+            settingsLabel.Margin = new Padding(5, 0, 5, 0);
+            settingsLabel.Name = "settingsLabel";
+            settingsLabel.Size = new Size(105, 56);
+            settingsLabel.TabIndex = 17;
+            settingsLabel.Text = "設定";
             // 
             // HashVer
             // 
@@ -690,7 +690,7 @@ namespace Hash
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(924, 639);
-            Controls.Add(hashandver);
+            Controls.Add(hashAndVer);
             Controls.Add(richTextBox1);
             Controls.Add(HashVer);
             Controls.Add(DL);
@@ -715,8 +715,8 @@ namespace Hash
             Tab.ResumeLayout(false);
             TabHash.ResumeLayout(false);
             TabHash.PerformLayout();
-            TabHashhikaku.ResumeLayout(false);
-            TabHashhikaku.PerformLayout();
+            TabHashCompare.ResumeLayout(false);
+            TabHashCompare.PerformLayout();
             TabReadme.ResumeLayout(false);
             TabSettings.ResumeLayout(false);
             TabSettings.PerformLayout();
@@ -728,6 +728,7 @@ namespace Hash
         }
 
         #endregion
+
         private Label CopyRight;
         private Label CreatedBy;
         private Label DL;
@@ -737,28 +738,28 @@ namespace Hash
         private TextBox HashFileURL;
         private Button SelectFileButton;
         private OpenFileDialog SelectFileDialog;
-        private Label hashandver;
+        private Label hashAndVer;
         private TabControl Tab;
         private TabPage TabHash;
         private Label HashVer;
-        private ComboBox HashSelecter;
+        private ComboBox HashSelector;
         private Button AllReset;
         private Button HashCopy;
         private TextBox HashOutputBox;
-        private TabPage TabHashhikaku;
-        private Button hikaku2copy;
-        private Button hikaku1copy;
-        private Label hikaku2t;
-        private Label hikaku1t;
-        private ComboBox hikaku2hashtype;
-        private ComboBox hikaku1hashtype;
-        private TextBox hikaku2hash;
-        private TextBox hikaku1hash;
-        private Label hikakukekka;
-        private Button hikakub;
+        private TabPage TabHashCompare;
+        private Button compare2copy;
+        private Button compare1copy;
+        private Label compare2t;
+        private Label compare1t;
+        private ComboBox compare2hashType;
+        private ComboBox compare1hashType;
+        private TextBox compare2hash;
+        private TextBox compare1hash;
+        private Label compareResult;
+        private Button compareExecButton;
         private Button paste1cb;
         private Button paste2cb;
-        private Button hikakureset;
+        private Button compareReset;
         private TabPage TabReadme;
         private TabPage TabSettings;
         private RichTextBox Readme;
@@ -770,11 +771,11 @@ namespace Hash
         private ToolStripMenuItem menuHelpVer;
         private ToolStripMenuItem menuHelpReadme;
         private ToolStripMenuItem menuFileSettings;
-        private Label settingslabel;
+        private Label settingsLabel;
         private CheckBox HashForContextEnable;
         private PictureBox pictureBox1;
-        private CheckBox UpperCheck;
-        private CheckBox HihunCheck;
+        private CheckBox checkUpper;
+        private CheckBox checkHyphen;
         private RichTextBox richTextBox1;
     }
 }

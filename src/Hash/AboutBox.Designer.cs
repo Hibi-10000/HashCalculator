@@ -45,14 +45,14 @@ namespace Hash
         private void InitializeComponent()
         {
             okButton = new Button();
-            hashandver = new Label();
-            Version = new Label();
-            Copyright = new Label();
-            Created = new Label();
+            hashAndVer = new Label();
+            version = new Label();
+            copyright = new Label();
+            createdBy = new Label();
             dl = new Label();
-            dlgithub = new LinkLabel();
-            licenselink = new LinkLabel();
-            noticelink = new LinkLabel();
+            dlFromGitHub = new LinkLabel();
+            licenseLink = new LinkLabel();
+            noticeLink = new LinkLabel();
             SuspendLayout();
             // 
             // okButton
@@ -66,52 +66,52 @@ namespace Hash
             okButton.TabIndex = 24;
             okButton.Text = "OK";
             // 
-            // hashandver
+            // hashAndVer
             // 
-            hashandver.AutoSize = true;
-            hashandver.BackColor = SystemColors.Window;
-            hashandver.BorderStyle = BorderStyle.FixedSingle;
-            hashandver.Font = new Font("Yu Gothic UI", 25F);
-            hashandver.ForeColor = Color.Lime;
-            hashandver.ImeMode = ImeMode.NoControl;
-            hashandver.Location = new Point(18, 17);
-            hashandver.Name = "hashandver";
-            hashandver.Size = new Size(360, 69);
-            hashandver.TabIndex = 25;
-            hashandver.Text = "HashCalculator";
+            hashAndVer.AutoSize = true;
+            hashAndVer.BackColor = SystemColors.Window;
+            hashAndVer.BorderStyle = BorderStyle.FixedSingle;
+            hashAndVer.Font = new Font("Yu Gothic UI", 25F);
+            hashAndVer.ForeColor = Color.Lime;
+            hashAndVer.ImeMode = ImeMode.NoControl;
+            hashAndVer.Location = new Point(18, 17);
+            hashAndVer.Name = "hashAndVer";
+            hashAndVer.Size = new Size(360, 69);
+            hashAndVer.TabIndex = 25;
+            hashAndVer.Text = "HashCalculator";
             // 
-            // Version
+            // version
             // 
-            Version.AutoSize = true;
-            Version.Font = new Font("Yu Gothic UI", 9F);
-            Version.Location = new Point(20, 139);
-            Version.Margin = new Padding(5, 0, 5, 0);
-            Version.Name = "Version";
-            Version.Size = new Size(79, 25);
-            Version.TabIndex = 27;
-            Version.Text = "Version: ";
+            version.AutoSize = true;
+            version.Font = new Font("Yu Gothic UI", 9F);
+            version.Location = new Point(20, 139);
+            version.Margin = new Padding(5, 0, 5, 0);
+            version.Name = "version";
+            version.Size = new Size(79, 25);
+            version.TabIndex = 27;
+            version.Text = "Version: ";
             // 
-            // Copyright
+            // copyright
             // 
-            Copyright.AutoSize = true;
-            Copyright.Font = new Font("Yu Gothic UI", 9F);
-            Copyright.Location = new Point(20, 240);
-            Copyright.Margin = new Padding(5, 0, 5, 0);
-            Copyright.Name = "Copyright";
-            Copyright.Size = new Size(352, 25);
-            Copyright.TabIndex = 28;
-            Copyright.Text = "Copyright © 2021-2024 Hibi_10000";
+            copyright.AutoSize = true;
+            copyright.Font = new Font("Yu Gothic UI", 9F);
+            copyright.Location = new Point(20, 240);
+            copyright.Margin = new Padding(5, 0, 5, 0);
+            copyright.Name = "copyright";
+            copyright.Size = new Size(352, 25);
+            copyright.TabIndex = 28;
+            copyright.Text = "Copyright © 2021-2024 Hibi_10000";
             // 
-            // Created
+            // createdBy
             // 
-            Created.AutoSize = true;
-            Created.Font = new Font("Yu Gothic UI", 9F);
-            Created.Location = new Point(20, 104);
-            Created.Margin = new Padding(5, 0, 5, 0);
-            Created.Name = "Created";
-            Created.Size = new Size(190, 25);
-            Created.TabIndex = 29;
-            Created.Text = "CreatedBy: Hibi_10000";
+            createdBy.AutoSize = true;
+            createdBy.Font = new Font("Yu Gothic UI", 9F);
+            createdBy.Location = new Point(20, 104);
+            createdBy.Margin = new Padding(5, 0, 5, 0);
+            createdBy.Name = "createdBy";
+            createdBy.Size = new Size(190, 25);
+            createdBy.TabIndex = 29;
+            createdBy.Text = "CreatedBy: Hibi_10000";
             // 
             // dl
             // 
@@ -124,43 +124,43 @@ namespace Hash
             dl.TabIndex = 30;
             dl.Text = "DL :";
             // 
-            // dlgithub
+            // dlFromGitHub
             // 
-            dlgithub.AutoSize = true;
-            dlgithub.Font = new Font("Yu Gothic UI", 9F);
-            dlgithub.Location = new Point(58, 174);
-            dlgithub.Margin = new Padding(5, 0, 5, 0);
-            dlgithub.Name = "dlgithub";
-            dlgithub.Size = new Size(65, 25);
-            dlgithub.TabIndex = 31;
-            dlgithub.TabStop = true;
-            dlgithub.Text = "GitHub";
-            dlgithub.Click += dlgithub_Click;
+            dlFromGitHub.AutoSize = true;
+            dlFromGitHub.Font = new Font("Yu Gothic UI", 9F);
+            dlFromGitHub.Location = new Point(58, 174);
+            dlFromGitHub.Margin = new Padding(5, 0, 5, 0);
+            dlFromGitHub.Name = "dlFromGitHub";
+            dlFromGitHub.Size = new Size(65, 25);
+            dlFromGitHub.TabIndex = 31;
+            dlFromGitHub.TabStop = true;
+            dlFromGitHub.Text = "GitHub";
+            dlFromGitHub.Click += dlFromGitHub_Click;
             //
-            // licenselink
+            // licenseLink
             //
-            licenselink.AutoSize = true;
-            licenselink.Font = new Font("Yu Gothic UI", 9F);
-            licenselink.Location = new Point(20, 205);
-            licenselink.Margin = new Padding(5, 0, 5, 0);
-            licenselink.Name = "licenselink";
-            licenselink.TabIndex = 32;
-            licenselink.TabStop = true;
-            licenselink.Text = "ライセンス";
-            licenselink.Click += licenselink_Click;
+            licenseLink.AutoSize = true;
+            licenseLink.Font = new Font("Yu Gothic UI", 9F);
+            licenseLink.Location = new Point(20, 205);
+            licenseLink.Margin = new Padding(5, 0, 5, 0);
+            licenseLink.Name = "licenseLink";
+            licenseLink.TabIndex = 32;
+            licenseLink.TabStop = true;
+            licenseLink.Text = "ライセンス";
+            licenseLink.Click += licenseLink_Click;
             //
-            // noticelink
+            // noticeLink
             //
-            noticelink.AutoSize = true;
-            noticelink.Font = new Font("Yu Gothic UI", 9F);
-            noticelink.Location = new Point(120, 205);
-            noticelink.Margin = new Padding(5, 0, 5, 0);
-            noticelink.Name = "noticelink";
-            noticelink.Size = new Size(352, 25);
-            noticelink.TabIndex = 32;
-            noticelink.TabStop = true;
-            noticelink.Text = "サードパーティーライセンス";
-            noticelink.Click += noticelink_Click;
+            noticeLink.AutoSize = true;
+            noticeLink.Font = new Font("Yu Gothic UI", 9F);
+            noticeLink.Location = new Point(120, 205);
+            noticeLink.Margin = new Padding(5, 0, 5, 0);
+            noticeLink.Name = "noticeLink";
+            noticeLink.Size = new Size(352, 25);
+            noticeLink.TabIndex = 32;
+            noticeLink.TabStop = true;
+            noticeLink.Text = "サードパーティーライセンス";
+            noticeLink.Click += noticeLink_Click;
             // 
             // AboutBox
             // 
@@ -168,14 +168,14 @@ namespace Hash
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(655, 285);
-            Controls.Add(noticelink);
-            Controls.Add(licenselink);
-            Controls.Add(dlgithub);
+            Controls.Add(noticeLink);
+            Controls.Add(licenseLink);
+            Controls.Add(dlFromGitHub);
             Controls.Add(dl);
-            Controls.Add(Created);
-            Controls.Add(Copyright);
-            Controls.Add(Version);
-            Controls.Add(hashandver);
+            Controls.Add(createdBy);
+            Controls.Add(copyright);
+            Controls.Add(version);
+            Controls.Add(hashAndVer);
             Controls.Add(okButton);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Icon = Properties.Resources.Icon;
@@ -195,13 +195,13 @@ namespace Hash
         #endregion
 
         private Button okButton;
-        private Label hashandver;
-        private Label Version;
-        private Label Copyright;
-        private new Label Created;
+        private Label hashAndVer;
+        private Label version;
+        private Label copyright;
+        private Label createdBy;
         private Label dl;
-        private LinkLabel dlgithub;
-        private LinkLabel licenselink;
-        private LinkLabel noticelink;
+        private LinkLabel dlFromGitHub;
+        private LinkLabel licenseLink;
+        private LinkLabel noticeLink;
     }
 }

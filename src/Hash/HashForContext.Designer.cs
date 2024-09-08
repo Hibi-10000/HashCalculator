@@ -50,19 +50,19 @@ namespace Hash
             Copyright = new Label();
             OK = new Button();
             Title = new Label();
-            HashSelecter = new ComboBox();
+            HashSelector = new ComboBox();
             HashOutputBox = new TextBox();
             HashFileURL = new TextBox();
             HashReset = new Button();
             HashCopy = new Button();
             CreatedBy = new Label();
             DL = new Label();
-            DLGithub = new LinkLabel();
+            DLGitHub = new LinkLabel();
             StartHash = new Button();
             DebugUse = new Button();
             DebugUseDialog = new OpenFileDialog();
-            UpperCheck = new CheckBox();
-            HihunCheck = new CheckBox();
+            checkUpper = new CheckBox();
+            checkHyphen = new CheckBox();
             SuspendLayout();
             // 
             // Copyright
@@ -104,17 +104,17 @@ namespace Hash
             // 
             // HashSelecter
             // 
-            HashSelecter.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            HashSelecter.FormattingEnabled = true;
-            HashSelecter.Items.AddRange([ "Hashを選択してください", ..HashCalculate.GetHashTypeNames() ]);
-            HashSelecter.Location = new Point(14, 164);
-            HashSelecter.Margin = new Padding(5, 6, 5, 6);
-            HashSelecter.Name = "HashSelecter";
-            HashSelecter.Size = new Size(222, 33);
-            HashSelecter.TabIndex = 4;
-            HashSelecter.Text = "Hashを選択してください";
-            HashSelecter.SelectedIndexChanged += HashSelecter_Set;
-            HashSelecter.TextChanged += HashSelecter_Set;
+            HashSelector.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            HashSelector.FormattingEnabled = true;
+            HashSelector.Items.AddRange([ "Hashを選択してください", ..HashCalculate.GetHashTypeNames() ]);
+            HashSelector.Location = new Point(14, 164);
+            HashSelector.Margin = new Padding(5, 6, 5, 6);
+            HashSelector.Name = "HashSelector";
+            HashSelector.Size = new Size(222, 33);
+            HashSelector.TabIndex = 4;
+            HashSelector.Text = "Hashを選択してください";
+            HashSelector.SelectedIndexChanged += HashSelector_Set;
+            HashSelector.TextChanged += HashSelector_Set;
             // 
             // HashOutputBox
             // 
@@ -191,16 +191,16 @@ namespace Hash
             // 
             // DLGithub
             // 
-            DLGithub.AutoSize = true;
-            DLGithub.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            DLGithub.Location = new Point(814, 34);
-            DLGithub.Margin = new Padding(5, 0, 5, 0);
-            DLGithub.Name = "DLGithub";
-            DLGithub.Size = new Size(65, 25);
-            DLGithub.TabIndex = 11;
-            DLGithub.TabStop = true;
-            DLGithub.Text = "GitHub";
-            DLGithub.LinkClicked += DLGithub_LinkClicked;
+            DLGitHub.AutoSize = true;
+            DLGitHub.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            DLGitHub.Location = new Point(814, 34);
+            DLGitHub.Margin = new Padding(5, 0, 5, 0);
+            DLGitHub.Name = "DLGitHub";
+            DLGitHub.Size = new Size(65, 25);
+            DLGitHub.TabIndex = 11;
+            DLGitHub.TabStop = true;
+            DLGitHub.Text = "GitHub";
+            DLGitHub.LinkClicked += DLGitHub_LinkClicked;
             // 
             // StartHash
             // 
@@ -229,45 +229,45 @@ namespace Hash
             // 
             // UpperCheck
             // 
-            UpperCheck.AutoSize = true;
-            UpperCheck.Location = new Point(246, 166);
-            UpperCheck.Margin = new Padding(5, 6, 5, 6);
-            UpperCheck.Name = "UpperCheck";
-            UpperCheck.Size = new Size(92, 29);
-            UpperCheck.TabIndex = 14;
-            UpperCheck.Text = "大文字";
-            UpperCheck.UseVisualStyleBackColor = true;
-            UpperCheck.CheckedChanged += HashSelecter_Set;
+            checkUpper.AutoSize = true;
+            checkUpper.Location = new Point(246, 166);
+            checkUpper.Margin = new Padding(5, 6, 5, 6);
+            checkUpper.Name = "checkUpper";
+            checkUpper.Size = new Size(92, 29);
+            checkUpper.TabIndex = 14;
+            checkUpper.Text = "大文字";
+            checkUpper.UseVisualStyleBackColor = true;
+            checkUpper.CheckedChanged += HashSelector_Set;
             // 
-            // HihunCheck
+            // HyphenCheck
             // 
-            HihunCheck.AutoSize = true;
-            HihunCheck.Location = new Point(348, 166);
-            HihunCheck.Margin = new Padding(5, 6, 5, 6);
-            HihunCheck.Name = "HihunCheck";
-            HihunCheck.Size = new Size(90, 29);
-            HihunCheck.TabIndex = 15;
-            HihunCheck.Text = "ハイフン";
-            HihunCheck.UseVisualStyleBackColor = true;
-            HihunCheck.CheckedChanged += HashSelecter_Set;
+            checkHyphen.AutoSize = true;
+            checkHyphen.Location = new Point(348, 166);
+            checkHyphen.Margin = new Padding(5, 6, 5, 6);
+            checkHyphen.Name = "checkHyphen";
+            checkHyphen.Size = new Size(90, 29);
+            checkHyphen.TabIndex = 15;
+            checkHyphen.Text = "ハイフン";
+            checkHyphen.UseVisualStyleBackColor = true;
+            checkHyphen.CheckedChanged += HashSelector_Set;
             // 
             // HashForContext
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(893, 354);
-            Controls.Add(HihunCheck);
-            Controls.Add(UpperCheck);
+            Controls.Add(checkHyphen);
+            Controls.Add(checkUpper);
             Controls.Add(DebugUse);
             Controls.Add(StartHash);
-            Controls.Add(DLGithub);
+            Controls.Add(DLGitHub);
             Controls.Add(DL);
             Controls.Add(CreatedBy);
             Controls.Add(HashCopy);
             Controls.Add(HashReset);
             Controls.Add(HashFileURL);
             Controls.Add(HashOutputBox);
-            Controls.Add(HashSelecter);
+            Controls.Add(HashSelector);
             Controls.Add(Title);
             Controls.Add(OK);
             Controls.Add(Copyright);
@@ -282,21 +282,22 @@ namespace Hash
         }
 
         #endregion
+
         private Label Copyright;
         private Button OK;
         private Label Title;
-        private ComboBox HashSelecter;
+        private ComboBox HashSelector;
         private TextBox HashOutputBox;
         private TextBox HashFileURL;
         private Button HashReset;
         private Button HashCopy;
         private Label CreatedBy;
         private Label DL;
-        private LinkLabel DLGithub;
+        private LinkLabel DLGitHub;
         private Button StartHash;
         private Button DebugUse;
         private OpenFileDialog DebugUseDialog;
-        private CheckBox UpperCheck;
-        private CheckBox HihunCheck;
+        private CheckBox checkUpper;
+        private CheckBox checkHyphen;
     }
 }
