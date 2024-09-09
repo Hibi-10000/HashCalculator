@@ -89,7 +89,7 @@ namespace Hash.Core
 
             string returnStr = BitConverter.ToString(bs);
             returnStr = upper ? returnStr.ToUpper() : returnStr.ToLower();
-            return hyphen ? returnStr.Replace("-", "") : returnStr;
+            return hyphen ? returnStr : returnStr.Replace("-", "");
         }
     }
 }
