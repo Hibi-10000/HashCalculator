@@ -46,10 +46,9 @@ namespace Hash
 
             foreach (string arg in args)
             {
-                if (arg == "/rc")
+                switch (arg)
                 {
-                    if (IsAdministrator())
-                    {
+                    case "/rc" when IsAdministrator():
                         RegistryKey regkey;
                         using (regkey = Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext"))
                         {
@@ -74,34 +73,27 @@ namespace Hash
 
                         Environment.ExitCode = 0;
                         Application.Exit();
-                    }
-                    else
-                    {
+                        break;
+                    case "/rc":
                         MessageBox.Show("UACをキャンセルしたか、起動方法が間違っています。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Environment.ExitCode = 1;
                         Application.Exit();
-                    }
-                }
-                else if (arg == "/rd")
-                {
-                    if (IsAdministrator())
-                    {
+                        break;
+                    case "/rd" when IsAdministrator():
                         Registry.ClassesRoot.DeleteSubKeyTree(@"*\shell\HashForContext");
 
                         Environment.ExitCode = 0;
                         Application.Exit();
-                    }
-                    else
-                    {
+                        break;
+                    case "/rd":
                         MessageBox.Show("UACをキャンセルしたか、起動方法が間違っています。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Environment.ExitCode = 1;
                         Application.Exit();
-                    }
-                }
-                else if (arg == "/ctm")
-                {
-                    ApplicationConfiguration.Initialize();
-                    Application.Run(new HashForContext());
+                        break;
+                    case "/ctm":
+                        ApplicationConfiguration.Initialize();
+                        Application.Run(new HashForContext());
+                        break;
                 }
             }
 

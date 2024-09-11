@@ -39,23 +39,23 @@ namespace Hash
 
             for (int i = 0; i < args.Length; i++)
             {
-                if (args[i] == "/f")
+                switch (args[i])
                 {
-                    //File (/f "{FileURL}")
-                    int urlno = i + 1;
-                    HashFileURL.Text = args[urlno];
-                }
-                else if (args[i] == "/h")
-                {
-                    //HashType (/h MD5)
-                    int hashtypeno = i + 1;
-                    HashSelector.Text = args[hashtypeno];
-                }
-                else if (args[i] == "/d")
-                {
-                    //Debug (/d)
-                    DebugUse.Visible = true;
-                    HashFileURL.ReadOnly = false;
+                    case "/f":
+                        //File (/f "{FileURL}")
+                        int urlNum = i + 1;
+                        HashFileURL.Text = args[urlNum];
+                        break;
+                    case "/h":
+                        //HashType (/h MD5)
+                        int hashTypeNum = i + 1;
+                        HashSelector.Text = args[hashTypeNum];
+                        break;
+                    case "/d":
+                        //Debug (/d)
+                        DebugUse.Visible = true;
+                        HashFileURL.ReadOnly = false;
+                        break;
                 }
             }
 
