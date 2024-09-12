@@ -39,23 +39,24 @@ namespace Hash
         private void Hash_Load(object sender, EventArgs e)
         {
             string[] args = Environment.GetCommandLineArgs();
-            for (int i = 0; i < args.Length; i++) {
-                if (args[i] == "/f")
+            for (int i = 0; i < args.Length; i++)
+            {
+                switch (args[i])
                 {
-                    //File (/f "{FileURL}")
-                    int urlno = i + 1;
-                    HashFileURL.Text = args[urlno];
-                }
-                else if (args[i] == "/h")
-                {
-                    //HashType (/h MD5)
-                    int hashtypeno = i + 1;
-                    HashSelector.Text = args[hashtypeno];
-                }
-                else if (args[i] == "/d")
-                {
-                    //Debug (/d)
-                    //HashFileURL.ReadOnly = false;
+                    case "/f":
+                        //File (/f "{FileURL}")
+                        int urlNum = i + 1;
+                        HashFileURL.Text = args[urlNum];
+                        break;
+                    case "/h":
+                        //HashType (/h MD5)
+                        int hashTypeNum = i + 1;
+                        HashSelector.Text = args[hashTypeNum];
+                        break;
+                    case "/d":
+                        //Debug (/d)
+                        //HashFileURL.ReadOnly = false;
+                        break;
                 }
             }
 
@@ -215,8 +216,8 @@ namespace Hash
 
         private void menuHelpVer_Click(object sender, EventArgs e)
         {
-            AboutBox aboutbox = new AboutBox();
-            aboutbox.ShowDialog();
+            AboutBox aboutBox = new AboutBox();
+            aboutBox.ShowDialog();
         }
 
         private void menuHelpReadme_Click(object sender, EventArgs e)
@@ -260,8 +261,8 @@ namespace Hash
             this.BackColor = SystemColors.Control;
             this.ForeColor = SystemColors.ControlText;
             this.richTextBox1.BackColor = SystemColors.Control;
-            this.hashandver.ForeColor = Color.Lime;
-            this.hashandver.BackColor = SystemColors.Window;
+            this.hashAndVer.ForeColor = Color.Lime;
+            this.hashAndVer.BackColor = SystemColors.Window;
             this.TabHash.BackColor = SystemColors.Window;
             this.TabHash.ForeColor = SystemColors.ControlText;
             this.HashFileURL.BackColor = SystemColors.Control;
@@ -275,8 +276,8 @@ namespace Hash
             this.BackColor = SystemColors.ControlDark;
             this.ForeColor = SystemColors.ControlLightLight;
             this.richTextBox1.BackColor = SystemColors.ControlDark;
-            this.hashandver.ForeColor = Color.Lime;
-            this.hashandver.BackColor = SystemColors.ControlDarkDark;
+            this.hashAndVer.ForeColor = Color.Lime;
+            this.hashAndVer.BackColor = SystemColors.ControlDarkDark;
             this.TabHash.BackColor = SystemColors.ControlDarkDark;
             this.TabHash.ForeColor = SystemColors.ControlLightLight;
             this.HashFileURL.BackColor = SystemColors.ControlDark;

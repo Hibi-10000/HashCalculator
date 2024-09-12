@@ -102,7 +102,7 @@ namespace Hash
             Title.TabIndex = 3;
             Title.Text = "Hash for ContextMenu";
             // 
-            // HashSelecter
+            // HashSelector
             // 
             HashSelector.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
             HashSelector.FormattingEnabled = true;
