@@ -16,7 +16,9 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 using Hash.Core;
+using System;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace Hash
 {

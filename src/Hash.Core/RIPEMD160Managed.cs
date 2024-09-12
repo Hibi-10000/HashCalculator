@@ -19,6 +19,7 @@
 // http://www.esat.kuleuven.ac.be/~cosicart/ps/AB-9601/.
 //
 
+using System;
 using System.Diagnostics.Contracts;
 using System.Security.Cryptography;
 
