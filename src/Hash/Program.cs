@@ -39,12 +39,6 @@ namespace Hash
         [STAThread]
         private static void Main()
         {
-            if (!Environment.Is64BitOperatingSystem)
-            {
-                Environment.ExitCode = 1;
-                Application.Exit();
-            }
-
             string[] args = Environment.GetCommandLineArgs();
 
             foreach (string arg in args)
