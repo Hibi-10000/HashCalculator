@@ -52,34 +52,23 @@ namespace Hash
                 switch (arg)
                 {
                     case "/rc" when IsAdministrator():
-                        RegistryKey regkey;
-                        using (regkey = Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext"))
+                        using (RegistryKey regKey = Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext"))
                         {
-                            regkey.SetValue("MUIVerb", "Hash for ContextMenu(&F)", RegistryValueKind.String);
-                            regkey.SetValue("SubCommands", "", RegistryValueKind.String);
+                            regKey.SetValue("MUIVerb", "Hash for ContextMenu(&F)", RegistryValueKind.String);
+                            regKey.SetValue("SubCommands", "", RegistryValueKind.String);
                         }
-                        Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell").Close();
-
-                        Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\*").Close();
-                        using (regkey = Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\*\command")) {
-                            regkey.SetValue("", @$"""{Application.ExecutablePath}"" /ctm /f ""%1""", RegistryValueKind.String);
+                        using (RegistryKey regKey = Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\*\command")) {
+                            regKey.SetValue("", @$"""{Application.ExecutablePath}"" /ctm /f ""%1""", RegistryValueKind.String);
                         }
 
                         foreach (string hashType in Enum.GetNames<HashCalculate.HashType>())
                         {
                             string hash = hashType.Replace("_", "-");
-                            Registry.ClassesRoot.CreateSubKey(@$"*\shell\HashForContext\shell\{hash}").Close();
-                            using (regkey = Registry.ClassesRoot.CreateSubKey(@$"*\shell\HashForContext\shell\{hash}\command")) {
-                                regkey.SetValue("", @$"""{Application.ExecutablePath}"" /ctm /f ""%1"" /h {hash}", RegistryValueKind.String);
-                            }
+                            using RegistryKey regKey = Registry.ClassesRoot.CreateSubKey(@$"*\shell\HashForContext\shell\{hash}\command");
+                            regKey.SetValue("", @$"""{Application.ExecutablePath}"" /ctm /f ""%1"" /h {hash}", RegistryValueKind.String);
                         }
 
                         Environment.ExitCode = 0;
-                        Application.Exit();
-                        break;
-                    case "/rc":
-                        MessageBox.Show("UACをキャンセルしたか、起動方法が間違っています。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Environment.ExitCode = 1;
                         Application.Exit();
                         break;
                     case "/rd" when IsAdministrator():
@@ -88,7 +77,7 @@ namespace Hash
                         Environment.ExitCode = 0;
                         Application.Exit();
                         break;
-                    case "/rd":
+                    case "/rd" or "/rc":
                         MessageBox.Show("UACをキャンセルしたか、起動方法が間違っています。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Environment.ExitCode = 1;
                         Application.Exit();

@@ -65,10 +65,9 @@ namespace Hash
 
             //(ShouldSystemUseDarkMode() ? (Action)setDarkMode : setLightMode)();
 
-            RegistryKey root = RegistryKey.OpenBaseKey(RegistryHive.ClassesRoot, RegistryView.Registry64);
-            string regPath = @"*\shell\HashForContext";
+            const string regPath = @"*\shell\HashForContext";
             try {
-                using RegistryKey? regKey = root.OpenSubKey(regPath);
+                using RegistryKey? regKey = Registry.ClassesRoot.OpenSubKey(regPath);
                 HashForContextEnable.Checked = regKey != null;
             } catch (Exception) {
                 HashForContextEnable.Checked = false;
