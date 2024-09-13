@@ -67,25 +67,18 @@ namespace Hash
                             using RegistryKey regKey = Registry.ClassesRoot.CreateSubKey(@$"*\shell\HashForContext\shell\{hash}\command");
                             regKey.SetValue("", @$"""{Application.ExecutablePath}"" /ctm /f ""%1"" /h {hash}", RegistryValueKind.String);
                         }
-
-                        Environment.ExitCode = 0;
-                        Application.Exit();
-                        break;
+                        return;
                     case "/rd" when IsAdministrator():
                         Registry.ClassesRoot.DeleteSubKeyTree(@"*\shell\HashForContext");
-
-                        Environment.ExitCode = 0;
-                        Application.Exit();
-                        break;
+                        return;
                     case "/rd" or "/rc":
                         MessageBox.Show("UACをキャンセルしたか、起動方法が間違っています。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Environment.ExitCode = 1;
-                        Application.Exit();
-                        break;
+                        return;
                     case "/ctm":
                         ApplicationConfiguration.Initialize();
                         Application.Run(new HashForContext());
-                        break;
+                        return;
                 }
             }
 
