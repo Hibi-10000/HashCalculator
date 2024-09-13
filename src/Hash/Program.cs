@@ -16,7 +16,6 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 using System;
-using System.Security.Principal;
 using System.Threading;
 using System.Windows.Forms;
 using Hash.Core;
@@ -45,7 +44,7 @@ namespace Hash
             {
                 switch (arg)
                 {
-                    case "/rc" when IsAdministrator():
+                    case "/rc" when Environment.IsPrivilegedProcess:
                         using (RegistryKey regKey = Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext"))
                         {
                             regKey.SetValue("MUIVerb", "Hash for ContextMenu(&F)", RegistryValueKind.String);
@@ -62,7 +61,7 @@ namespace Hash
                             regKey.SetValue("", @$"""{Application.ExecutablePath}"" /ctm /f ""%1"" /h {hash}", RegistryValueKind.String);
                         }
                         return;
-                    case "/rd" when IsAdministrator():
+                    case "/rd" when Environment.IsPrivilegedProcess:
                         Registry.ClassesRoot.DeleteSubKeyTree(@"*\shell\HashForContext");
                         return;
                     case "/rd" or "/rc":
@@ -85,13 +84,6 @@ namespace Hash
             //Mutexの初期所有権が付与されたかを渡して起動
             Application.Run(new HashCalculator(!createdNew));
             mutex.ReleaseMutex();
-        }
-
-        private static bool IsAdministrator()
-        {
-            WindowsIdentity identity = WindowsIdentity.GetCurrent();
-            WindowsPrincipal principal = new WindowsPrincipal(identity);
-            return principal.IsInRole(WindowsBuiltInRole.Administrator);
         }
     }
 }
