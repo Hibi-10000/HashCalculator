@@ -16,7 +16,6 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 using System;
-using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace Hash
@@ -30,29 +29,17 @@ namespace Hash
 
         private void dlFromGitHub_Click(object sender, EventArgs e)
         {
-            ProcessStartInfo startInfo = new ProcessStartInfo("https://github.com/Hibi-10000/HashCalculator/releases/")
-            {
-                UseShellExecute = true
-            };
-            Process.Start(startInfo);
+            Program.OpenLink("https://github.com/Hibi-10000/HashCalculator/releases/");
         }
 
         private void licenseLink_Click(object sender, EventArgs e)
         {
-            ProcessStartInfo startInfo = new ProcessStartInfo($"https://github.com/Hibi-10000/HashCalculator/blob/v{Program.SemVer}/LICENSE.md")
-            {
-                UseShellExecute = true
-            };
-            Process.Start(startInfo);
+            Program.OpenLink($"https://github.com/Hibi-10000/HashCalculator/blob/v{Program.SemVer}/LICENSE.md");
         }
 
         private void noticeLink_Click(object sender, EventArgs e)
         {
-            ProcessStartInfo startInfo = new ProcessStartInfo($"https://github.com/Hibi-10000/HashCalculator/blob/v{Program.SemVer}/NOTICE.md")
-            {
-                UseShellExecute = true
-            };
-            Process.Start(startInfo);
+            Program.OpenLink($"https://github.com/Hibi-10000/HashCalculator/blob/v{Program.SemVer}/NOTICE.md");
         }
 
         private void AboutBox_Load(object sender, EventArgs e)

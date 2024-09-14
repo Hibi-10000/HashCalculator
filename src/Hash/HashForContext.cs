@@ -82,11 +82,7 @@ namespace Hash
 
         private void DLGitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            ProcessStartInfo startInfo = new ProcessStartInfo("https://github.com/Hibi-10000/HashCalculator/releases/")
-            {
-                UseShellExecute = true
-            };
-            Process.Start(startInfo);
+            Program.OpenLink("https://github.com/Hibi-10000/HashCalculator/releases/");
         }
 
         private void HashSelector_Set(object sender, EventArgs e)

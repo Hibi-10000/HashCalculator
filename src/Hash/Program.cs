@@ -16,6 +16,7 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
 using Hash.Core;
@@ -84,6 +85,15 @@ namespace Hash
             //Mutexの初期所有権が付与されたかを渡して起動
             Application.Run(new HashCalculator(!createdNew));
             mutex.ReleaseMutex();
+        }
+
+        internal static void OpenLink(string link)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo(link)
+            {
+                UseShellExecute = true
+            };
+            Process.Start(startInfo);
         }
     }
 }
