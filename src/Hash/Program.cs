@@ -55,9 +55,8 @@ namespace Hash
                             regKey.SetValue("", @$"""{Application.ExecutablePath}"" /ctm /f ""%1""", RegistryValueKind.String);
                         }
 
-                        foreach (string hashType in Enum.GetNames<HashCalculate.HashType>())
+                        foreach (string hash in HashCalculate.GetHashTypeNames())
                         {
-                            string hash = hashType.Replace("_", "-");
                             using RegistryKey regKey = Registry.ClassesRoot.CreateSubKey(@$"*\shell\HashForContext\shell\{hash}\command");
                             regKey.SetValue("", @$"""{Application.ExecutablePath}"" /ctm /f ""%1"" /h {hash}", RegistryValueKind.String);
                         }

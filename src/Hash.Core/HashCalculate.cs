@@ -24,7 +24,7 @@ namespace Hash.Core
 {
     public static class HashCalculate
     {
-        public enum HashType
+        private enum HashType
         {
             MD5,
             SHA1,
