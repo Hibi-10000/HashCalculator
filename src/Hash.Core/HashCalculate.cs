@@ -47,12 +47,26 @@ namespace Hash.Core
         [AttributeUsage(AttributeTargets.Field)]
         private class HiddenAttribute : Attribute;
 
+        private static bool IsHidden(HashType hashType)
+        {
+            return hashType switch
+            {
+                HashType.CRC16_IBM
+                    or HashType.CRC32C
+                    or HashType.CRC64_ISO
+                    or HashType.RIPEMD160
+                    => true,
+                _ => false
+            };
+        }
+
         public static string[] GetHashTypeNames(bool includeHidden = false)
         {
-            return Enum.GetNames<HashType>()
-                .Where(x => includeHidden || !Attribute.IsDefined(typeof(HashType).GetField(x)!, typeof(HiddenAttribute)))
-                .Select(x => x.Replace("_", "-"))
-                .ToArray();
+            return (
+                from type in Enum.GetValues<HashType>()
+                where includeHidden || !IsHidden(type)
+                select type.ToString().Replace("_", "-")
+            ).ToArray();
         }
 
         public static string? GetHash(string hashType, string filePath, bool upper, bool hyphen)
