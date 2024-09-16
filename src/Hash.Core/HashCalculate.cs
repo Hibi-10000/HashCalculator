@@ -31,6 +31,12 @@ namespace Hash.Core
             SHA256,
             SHA384,
             SHA512,
+            [ShouldCheckSupport]
+            SHA3_256,
+            [ShouldCheckSupport]
+            SHA3_384,
+            [ShouldCheckSupport]
+            SHA3_512,
             [Hidden]
             CRC16_IBM,
             CRC16_CCITT,
@@ -60,11 +66,25 @@ namespace Hash.Core
             };
         }
 
+        [AttributeUsage(AttributeTargets.Field)]
+        private class ShouldCheckSupportAttribute : Attribute;
+
+        private static bool IsSupported(HashType hashType)
+        {
+            return hashType switch
+            {
+                HashType.SHA3_256 => SHA3_256.IsSupported,
+                HashType.SHA3_384 => SHA3_384.IsSupported,
+                HashType.SHA3_512 => SHA3_512.IsSupported,
+                _ => true
+            };
+        }
+
         public static string[] GetHashTypeNames(bool includeHidden = false)
         {
             return (
                 from type in Enum.GetValues<HashType>()
-                where includeHidden || !IsHidden(type)
+                where IsSupported(type) && (includeHidden || !IsHidden(type))
                 select type.ToString().Replace("_", "-")
             ).ToArray();
         }
@@ -90,6 +110,9 @@ namespace Hash.Core
                 HashType.SHA256      => SHA256.Create(),
                 HashType.SHA384      => SHA384.Create(),
                 HashType.SHA512      => SHA512.Create(),
+                HashType.SHA3_256    => SHA3_256.Create(),
+                HashType.SHA3_384    => SHA3_384.Create(),
+                HashType.SHA3_512    => SHA3_512.Create(),
                 HashType.CRC16_IBM   => new CRC(CRC.Polynomial.CRC16_IBM  ),
                 HashType.CRC16_CCITT => new CRC(CRC.Polynomial.CRC16_CCITT),
                 HashType.CRC32       => new CRC(CRC.Polynomial.CRC32      ),
