@@ -37,8 +37,8 @@ namespace Hash.Core
             SHA3_384,
             [ShouldCheckSupport]
             SHA3_512,
-            [Hidden]
             CRC16_IBM,
+            [Hidden]
             CRC16_CCITT,
             CRC32,
             [Hidden]
@@ -57,7 +57,7 @@ namespace Hash.Core
         {
             return hashType switch
             {
-                HashType.CRC16_IBM
+                HashType.CRC16_CCITT
                     or HashType.CRC32C
                     or HashType.CRC64_ISO
                     or HashType.RIPEMD160
