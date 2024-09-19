@@ -1018,7 +1018,7 @@ namespace Hash.Core
     }
 
     // Utils.cs
-    internal static class Utils {
+    internal static partial class Utils {
         // https://github.com/microsoft/referencesource/blob/51cf7850defa8a17d815b4700b67116e3fa283c2/mscorlib/system/security/cryptography/utils.cs#L714-L736
 
         // digits == number of DWORDs

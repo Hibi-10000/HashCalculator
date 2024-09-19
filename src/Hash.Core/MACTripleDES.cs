@@ -18,9 +18,12 @@
 
 // See: http://www.itl.nist.gov/fipspubs/fip81.htm for a spec
 
-namespace System.Security.Cryptography {
-    using System.IO;
-    using System.Diagnostics.Contracts;
+using System;
+using System.IO;
+using System.Diagnostics.Contracts;
+using System.Security.Cryptography;
+
+namespace Hash.Core {
 
     [System.Runtime.InteropServices.ComVisible(true)]
     public class MACTripleDES : KeyedHashAlgorithm 
@@ -54,20 +57,13 @@ namespace System.Security.Cryptography {
             m_encryptor = null;
         }
 
-        public MACTripleDES(byte[] rgbKey) 
-            : this("System.Security.Cryptography.TripleDES",rgbKey) {}
-
-        public MACTripleDES(String strTripleDES, byte[] rgbKey) {
+        public MACTripleDES(byte[] rgbKey) {
             // Make sure we know which algorithm to use
             if (rgbKey == null)
                 throw new ArgumentNullException("rgbKey");
             Contract.EndContractBlock();
             // Create a TripleDES encryptor
-            if (strTripleDES == null) {
-                des = TripleDES.Create();
-            } else {
-                des = TripleDES.Create(strTripleDES);
-            }
+            des = TripleDES.Create();
 
             HashSizeValue = des.BlockSize;
             // Stash the key away
@@ -261,15 +257,15 @@ namespace System.Security.Cryptography {
     }
 
     // Utils.cs
-    internal static class Utils
+    internal static partial class Utils
     {
         // https://github.com/microsoft/referencesource/blob/4251daa76e0aae7330139978648fc04f5c7b8ccb/mscorlib/system/security/cryptography/utils.cs#L495-L502
 
-        private static volatile RNGCryptoServiceProvider _rng;
-        internal static RNGCryptoServiceProvider StaticRandomNumberGenerator {
+        private static volatile RandomNumberGenerator? _rng;
+        internal static RandomNumberGenerator StaticRandomNumberGenerator {
             get {
                 if (_rng == null)
-                    _rng = new RNGCryptoServiceProvider();
+                    _rng = RandomNumberGenerator.Create();
                 return _rng;
             }
         }
