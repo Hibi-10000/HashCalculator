@@ -6,8 +6,14 @@
 // <OWNER>Microsoft</OWNER>
 // 
 
+// MIT License
+// https://github.com/microsoft/referencesource/blob/4251daa76e0aae7330139978648fc04f5c7b8ccb/LICENSE.txt
+// 
+// See NOTICE.md for the full license text.
+
 //
 // MACTripleDES.cs -- Implementation of the MAC-CBC keyed hash w/ 3DES
+// https://github.com/microsoft/referencesource/blob/4251daa76e0aae7330139978648fc04f5c7b8ccb/mscorlib/system/security/cryptography/mactripledes.cs
 //
 
 // See: http://www.itl.nist.gov/fipspubs/fip81.htm for a spec
@@ -20,9 +26,9 @@ namespace System.Security.Cryptography {
     public class MACTripleDES : KeyedHashAlgorithm 
     {
         // Output goes to HashMemorySink since we don't care about the actual data
-        private ICryptoTransform m_encryptor;
-        private CryptoStream _cs;
-        private TailStream _ts;
+        private ICryptoTransform? m_encryptor;
+        private CryptoStream? _cs;
+        private TailStream? _ts;
         private const int m_bitsPerByte = 8;
         private int m_bytesPerBlock;
         private TripleDES des;
@@ -85,7 +91,7 @@ namespace System.Security.Cryptography {
             get { return des.Padding; }
             set { 
                 if ((value < PaddingMode.None) || (PaddingMode.ISO10126 < value))
-                    throw new CryptographicException(Environment.GetResourceString("Cryptography_InvalidPaddingMode"));
+                    throw new CryptographicException("Specified padding mode is not valid for this algorithm.");
                 des.Padding = value;
             }
         }
@@ -143,7 +149,7 @@ namespace System.Security.Cryptography {
     // This is useful for MAC-3DES since we need to capture only the result of the last block
 
     internal sealed class TailStream : Stream {
-        private byte[] _Buffer;
+        private byte[]? _Buffer;
         private int _BufferSize;
         private int _BufferIndex = 0;
         private bool _BufferFull = false;
@@ -191,12 +197,12 @@ namespace System.Security.Cryptography {
         }
 
         public override long Length {
-            get { throw new NotSupportedException(Environment.GetResourceString("NotSupported_UnseekableStream")); }
+            get { throw new NotSupportedException("Stream does not support seeking."); }
         }
 
         public override long Position {
-            get { throw new NotSupportedException(Environment.GetResourceString("NotSupported_UnseekableStream")); }
-            set { throw new NotSupportedException(Environment.GetResourceString("NotSupported_UnseekableStream")); }
+            get { throw new NotSupportedException("Stream does not support seeking."); }
+            set { throw new NotSupportedException("Stream does not support seeking."); }
         }
 
         public override void Flush() {
@@ -204,15 +210,15 @@ namespace System.Security.Cryptography {
         }
 
         public override long Seek(long offset, SeekOrigin origin) {
-            throw new NotSupportedException(Environment.GetResourceString("NotSupported_UnseekableStream"));
+            throw new NotSupportedException("Stream does not support seeking.");
         }
 
         public override void SetLength(long value) {
-            throw new NotSupportedException(Environment.GetResourceString("NotSupported_UnseekableStream"));
+            throw new NotSupportedException("Stream does not support seeking.");
         }
 
         public override int Read(byte[] buffer, int offset, int count) {
-            throw new NotSupportedException(Environment.GetResourceString("NotSupported_UnreadableStream"));
+            throw new NotSupportedException("Stream does not support reading.");
         }
 
         public override void Write(byte[] buffer, int offset, int count) {
@@ -226,30 +232,45 @@ namespace System.Security.Cryptography {
                 // if more bytes are written in this call than the size of the buffer,
                 // just remember the last _BufferSize bytes
                 if (count > _BufferSize) {
-                    System.Buffer.InternalBlockCopy(buffer, offset+count-_BufferSize, _Buffer, 0, _BufferSize);
+                    System.Buffer.BlockCopy(buffer, offset+count-_BufferSize, _Buffer, 0, _BufferSize);
                     return;
                 } else {
                     // move _BufferSize - count bytes left, then copy the new bytes
-                    System.Buffer.InternalBlockCopy(_Buffer, _BufferSize - count, _Buffer, 0, _BufferSize - count);
-                    System.Buffer.InternalBlockCopy(buffer, offset, _Buffer, _BufferSize - count, count);
+                    System.Buffer.BlockCopy(_Buffer, _BufferSize - count, _Buffer, 0, _BufferSize - count);
+                    System.Buffer.BlockCopy(buffer, offset, _Buffer, _BufferSize - count, count);
                     return;
                 }
             } else {
                 // buffer isn't full yet, so more cases
                 if (count > _BufferSize) {
-                    System.Buffer.InternalBlockCopy(buffer, offset+count-_BufferSize, _Buffer, 0, _BufferSize);
+                    System.Buffer.BlockCopy(buffer, offset+count-_BufferSize, _Buffer, 0, _BufferSize);
                     _BufferFull = true;
                     return;
                 } else if (count + _BufferIndex >= _BufferSize) {
-                    System.Buffer.InternalBlockCopy(_Buffer, _BufferIndex+count-_BufferSize, _Buffer, 0, _BufferSize - count);
-                    System.Buffer.InternalBlockCopy(buffer, offset, _Buffer, _BufferIndex, count);
+                    System.Buffer.BlockCopy(_Buffer, _BufferIndex+count-_BufferSize, _Buffer, 0, _BufferSize - count);
+                    System.Buffer.BlockCopy(buffer, offset, _Buffer, _BufferIndex, count);
                     _BufferFull = true;
                     return;
                 } else {
-                    System.Buffer.InternalBlockCopy(buffer, offset, _Buffer, _BufferIndex, count);
+                    System.Buffer.BlockCopy(buffer, offset, _Buffer, _BufferIndex, count);
                     _BufferIndex += count;
                     return;
                 }
+            }
+        }
+    }
+
+    // Utils.cs
+    internal static class Utils
+    {
+        // https://github.com/microsoft/referencesource/blob/4251daa76e0aae7330139978648fc04f5c7b8ccb/mscorlib/system/security/cryptography/utils.cs#L495-L502
+
+        private static volatile RNGCryptoServiceProvider _rng;
+        internal static RNGCryptoServiceProvider StaticRandomNumberGenerator {
+            get {
+                if (_rng == null)
+                    _rng = new RNGCryptoServiceProvider();
+                return _rng;
             }
         }
     }

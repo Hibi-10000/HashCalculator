@@ -48,6 +48,8 @@ namespace Hash.Core
             CRC64_ISO,
             [Hidden]
             RIPEMD160,
+            [Hidden]
+            MACTripleDES,
         }
 
         [AttributeUsage(AttributeTargets.Field)]
@@ -61,6 +63,7 @@ namespace Hash.Core
                     or HashType.CRC32C
                     or HashType.CRC64_ISO
                     or HashType.RIPEMD160
+                    or HashType.MACTripleDES
                     => true,
                 _ => false
             };
@@ -105,21 +108,22 @@ namespace Hash.Core
         {
             HashAlgorithm hashProvider = hashType switch
             {
-                HashType.MD5         => MD5   .Create(),
-                HashType.SHA1        => SHA1  .Create(),
-                HashType.SHA256      => SHA256.Create(),
-                HashType.SHA384      => SHA384.Create(),
-                HashType.SHA512      => SHA512.Create(),
-                HashType.SHA3_256    => SHA3_256.Create(),
-                HashType.SHA3_384    => SHA3_384.Create(),
-                HashType.SHA3_512    => SHA3_512.Create(),
-                HashType.CRC16_IBM   => new CRC(CRC.Polynomial.CRC16_IBM  ),
-                HashType.CRC16_CCITT => new CRC(CRC.Polynomial.CRC16_CCITT),
-                HashType.CRC32       => new CRC(CRC.Polynomial.CRC32      ),
-                HashType.CRC32C      => new CRC(CRC.Polynomial.CRC32C     ),
-                HashType.CRC64_ECMA  => new CRC(CRC.Polynomial.CRC64_ECMA ),
-                HashType.CRC64_ISO   => new CRC(CRC.Polynomial.CRC64_ISO  ),
-                HashType.RIPEMD160   => new RIPEMD160Managed(),
+                HashType.MD5          => MD5   .Create(),
+                HashType.SHA1         => SHA1  .Create(),
+                HashType.SHA256       => SHA256.Create(),
+                HashType.SHA384       => SHA384.Create(),
+                HashType.SHA512       => SHA512.Create(),
+                HashType.SHA3_256     => SHA3_256.Create(),
+                HashType.SHA3_384     => SHA3_384.Create(),
+                HashType.SHA3_512     => SHA3_512.Create(),
+                HashType.CRC16_IBM    => new CRC(CRC.Polynomial.CRC16_IBM  ),
+                HashType.CRC16_CCITT  => new CRC(CRC.Polynomial.CRC16_CCITT),
+                HashType.CRC32        => new CRC(CRC.Polynomial.CRC32      ),
+                HashType.CRC32C       => new CRC(CRC.Polynomial.CRC32C     ),
+                HashType.CRC64_ECMA   => new CRC(CRC.Polynomial.CRC64_ECMA ),
+                HashType.CRC64_ISO    => new CRC(CRC.Polynomial.CRC64_ISO  ),
+                HashType.RIPEMD160    => new RIPEMD160Managed(),
+                HashType.MACTripleDES => new MACTripleDES(),
                 _ => throw new ArgumentOutOfRangeException(nameof(hashType), hashType, null),
             };
 

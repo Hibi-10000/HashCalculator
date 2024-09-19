@@ -1019,7 +1019,7 @@ namespace Hash.Core
 
     // Utils.cs
     internal static class Utils {
-        // https://github.com/microsoft/referencesource/blob/51cf7850defa8a17d815b4700b67116e3fa283c2/mscorlib/system/security/cryptography/utils.cs#L714
+        // https://github.com/microsoft/referencesource/blob/51cf7850defa8a17d815b4700b67116e3fa283c2/mscorlib/system/security/cryptography/utils.cs#L714-L736
 
         // digits == number of DWORDs
         internal static void DWORDFromLittleEndian (uint[] x, int digits, byte[] block) {
