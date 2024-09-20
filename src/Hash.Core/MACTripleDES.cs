@@ -17,6 +17,7 @@
 //
 
 // See: http://www.itl.nist.gov/fipspubs/fip81.htm for a spec
+/*
 
 using System;
 using System.IO;
@@ -271,3 +272,4 @@ namespace Hash.Core {
         }
     }
 }
+*/
