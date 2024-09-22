@@ -27,32 +27,32 @@ namespace Hash.Core
         internal class HashType
         {
             internal static readonly HashType[] Types = [
-                new("MD5"        , MD5     .Create()                                               ),
-                new("SHA1"       , SHA1    .Create()                                               ),
-                new("SHA256"     , SHA256  .Create()                                               ),
-                new("SHA384"     , SHA384  .Create()                                               ),
-                new("SHA512"     , SHA512  .Create()                                               ),
-                new("SHA3-256"   , SHA3_256.Create()                  , SHA3_256.IsSupported       ),
-                new("SHA3-384"   , SHA3_384.Create()                  , SHA3_384.IsSupported       ),
-                new("SHA3-512"   , SHA3_512.Create()                  , SHA3_512.IsSupported       ),
-                new("CRC16-IBM"  , new CRC(CRC.Polynomial.CRC16_IBM  ), true                , true ),
-                new("CRC16-CCITT", new CRC(CRC.Polynomial.CRC16_CCITT)                             ),
-                new("CRC32"      , new CRC(CRC.Polynomial.CRC32      )                             ),
-                new("CRC32C"     , new CRC(CRC.Polynomial.CRC32C     ), true                , true ),
-                new("CRC64-ECMA" , new CRC(CRC.Polynomial.CRC64_ECMA )                             ),
-                new("CRC64-ISO"  , new CRC(CRC.Polynomial.CRC64_ISO  ), true                , true ),
-                new("RIPEMD160"  , new RIPEMD160Managed()             , true                , true ),
+                new("MD5"        ,           MD5     .Create                                             ),
+                new("SHA1"       ,           SHA1    .Create                                             ),
+                new("SHA256"     ,           SHA256  .Create                                             ),
+                new("SHA384"     ,           SHA384  .Create                                             ),
+                new("SHA512"     ,           SHA512  .Create                                             ),
+                new("SHA3-256"   ,           SHA3_256.Create                , SHA3_256.IsSupported       ),
+                new("SHA3-384"   ,           SHA3_384.Create                , SHA3_384.IsSupported       ),
+                new("SHA3-512"   ,           SHA3_512.Create                , SHA3_512.IsSupported       ),
+                new("CRC16-IBM"  , () => new CRC(CRC.Polynomial.CRC16_IBM  ), true                , true ),
+                new("CRC16-CCITT", () => new CRC(CRC.Polynomial.CRC16_CCITT)                             ),
+                new("CRC32"      , () => new CRC(CRC.Polynomial.CRC32      )                             ),
+                new("CRC32C"     , () => new CRC(CRC.Polynomial.CRC32C     ), true                , true ),
+                new("CRC64-ECMA" , () => new CRC(CRC.Polynomial.CRC64_ECMA )                             ),
+                new("CRC64-ISO"  , () => new CRC(CRC.Polynomial.CRC64_ISO  ), true                , true ),
+                new("RIPEMD160"  , () => new RIPEMD160Managed()             , true                , true ),
             ];
 
             internal readonly string Name;
-            internal readonly HashAlgorithm Provider;
+            internal readonly Func<HashAlgorithm> ProviderFunc;
             internal readonly bool Supported;
             internal readonly bool Hidden;
 
-            private HashType(string name, HashAlgorithm provider, bool supported = true, bool hidden = false)
+            private HashType(string name, Func<HashAlgorithm> providerFunc, bool supported = true, bool hidden = false)
             {
                 Name = name;
-                Provider = provider;
+                ProviderFunc = providerFunc;
                 Supported = supported;
                 Hidden = hidden;
             }
@@ -83,7 +83,7 @@ namespace Hash.Core
         {
             using FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
             //using MemoryStream fs = new MemoryStream(System.Text.Encoding.ASCII.GetBytes("123456789"));
-            byte[] bs = hashType.Provider.ComputeHash(fs);
+            byte[] bs = hashType.ProviderFunc().ComputeHash(fs);
 
             string returnStr = BitConverter.ToString(bs);
             returnStr = upper ? returnStr.ToUpper() : returnStr.ToLower();
