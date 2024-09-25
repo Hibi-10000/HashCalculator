@@ -18,7 +18,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace Hash
+namespace Hash.App
 {
     internal partial class AboutBox : Form
     {

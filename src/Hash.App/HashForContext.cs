@@ -20,7 +20,7 @@ using System;
 using System.Diagnostics;
 using System.Windows.Forms;
 
-namespace Hash
+namespace Hash.App
 {
     internal partial class HashForContext : Form
     {

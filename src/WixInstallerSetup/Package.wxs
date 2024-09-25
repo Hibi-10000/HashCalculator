@@ -10,7 +10,7 @@
             <Directory Id="INSTALLFOLDER" Name="HashCalculator" />
         </StandardDirectory>
         <Component Id="HASHCALCULATOR.EXE" Directory="INSTALLFOLDER" Guid="B0B89934-3D7F-49CC-A8BE-DB6CEDF489CC">
-            <File Id="HASHCALCULATOREXE" Name="HashCalculator.exe" Source="..\Hash\publish\win-$(var.Platform)\HashCalculator.exe" KeyPath="yes" ReadOnly="yes" />
+            <File Id="HASHCALCULATOREXE" Name="HashCalculator.exe" Source="..\Hash.App\publish\win-$(var.Platform)\HashCalculator.exe" KeyPath="yes" ReadOnly="yes" />
         </Component>
         <Component Id="REGISTRY" Guid="671CCB3C-65C5-460C-9C73-158662C1E451">
             <RegistryKey Root="HKCR" Key="*\shell\HashForContext" />

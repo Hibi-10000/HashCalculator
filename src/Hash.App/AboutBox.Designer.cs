@@ -18,7 +18,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Hash
+namespace Hash.App
 {
     partial class AboutBox
     {

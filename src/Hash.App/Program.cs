@@ -22,7 +22,7 @@ using System.Windows.Forms;
 using Hash.Core;
 using Microsoft.Win32;
 
-namespace Hash
+namespace Hash.App
 {
     internal static class Program
     {

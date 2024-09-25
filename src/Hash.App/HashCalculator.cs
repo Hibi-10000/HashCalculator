@@ -22,7 +22,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 
-namespace Hash
+namespace Hash.App
 {
     internal partial class HashCalculator : Form
     {
