@@ -33,33 +33,33 @@ namespace Hash.Core
                 new("SHA256"     , stream => func(stream,     SHA256  .Create()              )                             ),
                 new("SHA384"     , stream => func(stream,     SHA384  .Create()              )                             ),
                 new("SHA512"     , stream => func(stream,     SHA512  .Create()              )                             ),
-                new("SHA3-256"   , stream => func(stream,     SHA3_256.Create()              ), SHA3_256.IsSupported       ),
-                new("SHA3-384"   , stream => func(stream,     SHA3_384.Create()              ), SHA3_384.IsSupported       ),
-                new("SHA3-512"   , stream => func(stream,     SHA3_512.Create()              ), SHA3_512.IsSupported       ),
-                new("CRC16-IBM"  , stream => func(stream, new CRC(CRC.Polynomial.CRC16_IBM  )), true                , true ),
+                new("SHA3-256"   , stream => func(stream,     SHA3_256.Create()              ), false, SHA3_256.IsSupported),
+                new("SHA3-384"   , stream => func(stream,     SHA3_384.Create()              ), false, SHA3_384.IsSupported),
+                new("SHA3-512"   , stream => func(stream,     SHA3_512.Create()              ), false, SHA3_512.IsSupported),
+                new("CRC16-IBM"  , stream => func(stream, new CRC(CRC.Polynomial.CRC16_IBM  )), true                       ),
                 new("CRC16-CCITT", stream => func(stream, new CRC(CRC.Polynomial.CRC16_CCITT))                             ),
                 new("CRC32"      , stream => func(stream, new CRC(CRC.Polynomial.CRC32      ))                             ),
-                new("CRC32C"     , stream => func(stream, new CRC(CRC.Polynomial.CRC32C     )), true                , true ),
+                new("CRC32C"     , stream => func(stream, new CRC(CRC.Polynomial.CRC32C     )), true                       ),
                 new("CRC64-ECMA" , stream => func(stream, new CRC(CRC.Polynomial.CRC64_ECMA ))                             ),
-                new("CRC64-ISO"  , stream => func(stream, new CRC(CRC.Polynomial.CRC64_ISO  )), true                , true ),
-                new("RIPEMD160"  , stream => func(stream, new RIPEMD160Managed()             ), true                , true ),
-                new("xxHash32"   , stream => func(stream, new XxHash32()                     ), true                , true ),
-                new("xxHash64"   , stream => func(stream, new XxHash64()                     ), true                , true ),
+                new("CRC64-ISO"  , stream => func(stream, new CRC(CRC.Polynomial.CRC64_ISO  )), true                       ),
+                new("RIPEMD160"  , stream => func(stream, new RIPEMD160Managed()             ), true                       ),
+                new("xxHash32"   , stream => func(stream, new XxHash32()                     ), true                       ),
+                new("xxHash64"   , stream => func(stream, new XxHash64()                     ), true                       ),
                 new("xxHash3"    , stream => func(stream, new XxHash3()                      )                             ),
-                new("xxHash128"  , stream => func(stream, new XxHash128()                    ), true                , true ),
+                new("xxHash128"  , stream => func(stream, new XxHash128()                    ), true                       ),
             ];
 
             internal readonly string Name;
             internal readonly Func<FileStream, byte[]> ComputeFunc;
-            internal readonly bool Supported;
             internal readonly bool Hidden;
+            internal readonly bool Supported;
 
-            private HashType(string name, Func<FileStream, byte[]> computeFunc, bool supported = true, bool hidden = false)
+            private HashType(string name, Func<FileStream, byte[]> computeFunc, bool hidden = false, bool supported = true)
             {
                 Name = name;
                 ComputeFunc = computeFunc;
-                Supported = supported;
                 Hidden = hidden;
+                Supported = supported;
             }
 
             private static byte[] func(Stream stream, HashAlgorithm provider)
