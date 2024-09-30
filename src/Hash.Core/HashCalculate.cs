@@ -28,49 +28,70 @@ namespace Hash.Core
         internal class HashType
         {
             internal static readonly HashType[] Types = [
-                new("MD5"        , stream => func(stream,     MD5     .Create()              )                             ),
-                new("SHA1"       , stream => func(stream,     SHA1    .Create()              )                             ),
-                new("SHA256"     , stream => func(stream,     SHA256  .Create()              )                             ),
-                new("SHA384"     , stream => func(stream,     SHA384  .Create()              )                             ),
-                new("SHA512"     , stream => func(stream,     SHA512  .Create()              )                             ),
-                new("SHA3-256"   , stream => func(stream,     SHA3_256.Create()              ), false, SHA3_256.IsSupported),
-                new("SHA3-384"   , stream => func(stream,     SHA3_384.Create()              ), false, SHA3_384.IsSupported),
-                new("SHA3-512"   , stream => func(stream,     SHA3_512.Create()              ), false, SHA3_512.IsSupported),
-                new("CRC16-IBM"  , stream => func(stream, new CRC(CRC.Polynomial.CRC16_IBM  )), true                       ),
-                new("CRC16-CCITT", stream => func(stream, new CRC(CRC.Polynomial.CRC16_CCITT))                             ),
-                new("CRC32"      , stream => func(stream, new CRC(CRC.Polynomial.CRC32      ))                             ),
-                new("CRC32C"     , stream => func(stream, new CRC(CRC.Polynomial.CRC32C     )), true                       ),
-                new("CRC64-ECMA" , stream => func(stream, new CRC(CRC.Polynomial.CRC64_ECMA ))                             ),
-                new("CRC64-ISO"  , stream => func(stream, new CRC(CRC.Polynomial.CRC64_ISO  )), true                       ),
-                new("RIPEMD160"  , stream => func(stream, new RIPEMD160Managed()             ), true                       ),
-                new("xxHash32"   , stream => func(stream, new XxHash32()                     ), true                       ),
-                new("xxHash64"   , stream => func(stream, new XxHash64()                     ), true                       ),
-                new("xxHash3"    , stream => func(stream, new XxHash3()                      )                             ),
-                new("xxHash128"  , stream => func(stream, new XxHash128()                    ), true                       ),
+                new("MD5"        , () => GetProvider(    MD5     .Create()              )                             ),
+                new("SHA1"       , () => GetProvider(    SHA1    .Create()              )                             ),
+                new("SHA256"     , () => GetProvider(    SHA256  .Create()              )                             ),
+                new("SHA384"     , () => GetProvider(    SHA384  .Create()              )                             ),
+                new("SHA512"     , () => GetProvider(    SHA512  .Create()              )                             ),
+                new("SHA3-256"   , () => GetProvider(    SHA3_256.Create()              ), false, SHA3_256.IsSupported),
+                new("SHA3-384"   , () => GetProvider(    SHA3_384.Create()              ), false, SHA3_384.IsSupported),
+                new("SHA3-512"   , () => GetProvider(    SHA3_512.Create()              ), false, SHA3_512.IsSupported),
+                new("CRC16-IBM"  , () => GetProvider(new CRC(CRC.Polynomial.CRC16_IBM  )), true                       ),
+                new("CRC16-CCITT", () => GetProvider(new CRC(CRC.Polynomial.CRC16_CCITT))                             ),
+                new("CRC32"      , () => GetProvider(new CRC(CRC.Polynomial.CRC32      ))                             ),
+                new("CRC32C"     , () => GetProvider(new CRC(CRC.Polynomial.CRC32C     )), true                       ),
+                new("CRC64-ECMA" , () => GetProvider(new CRC(CRC.Polynomial.CRC64_ECMA ))                             ),
+                new("CRC64-ISO"  , () => GetProvider(new CRC(CRC.Polynomial.CRC64_ISO  )), true                       ),
+                new("RIPEMD160"  , () => GetProvider(new RIPEMD160Managed()             ), true                       ),
+                new("xxHash32"   , () => GetProvider(new XxHash32()                     ), true                       ),
+                new("xxHash64"   , () => GetProvider(new XxHash64()                     ), true                       ),
+                new("xxHash3"    , () => GetProvider(new XxHash3()                      )                             ),
+                new("xxHash128"  , () => GetProvider(new XxHash128()                    ), true                       ),
             ];
 
             internal readonly string Name;
-            internal readonly Func<FileStream, byte[]> ComputeFunc;
+            internal readonly Func<IHashProvider> ProviderFunc;
             internal readonly bool Hidden;
             internal readonly bool Supported;
 
-            private HashType(string name, Func<FileStream, byte[]> computeFunc, bool hidden = false, bool supported = true)
+            private HashType(string name, Func<IHashProvider> providerFunc, bool hidden = false, bool supported = true)
             {
                 Name = name;
-                ComputeFunc = computeFunc;
+                ProviderFunc = providerFunc;
                 Hidden = hidden;
                 Supported = supported;
             }
 
-            private static byte[] func(Stream stream, HashAlgorithm provider)
+            private static HashProvider GetProvider(HashAlgorithm provider)
             {
-                return provider.ComputeHash(stream);
+                return new HashProvider(provider);
             }
 
-            private static byte[] func(Stream stream, NonCryptographicHashAlgorithm provider)
+            private static NonCryptoHashProvider GetProvider(NonCryptographicHashAlgorithm provider)
             {
-                provider.Append(stream);
-                return provider.GetCurrentHash();
+                return new NonCryptoHashProvider(provider);
+            }
+            
+            internal interface IHashProvider
+            {
+                internal byte[] ComputeHash(Stream stream);
+            }
+            
+            private class HashProvider(HashAlgorithm provider) : IHashProvider
+            {
+                public byte[] ComputeHash(Stream stream)
+                {
+                    return provider.ComputeHash(stream);
+                }
+            }
+
+            private class NonCryptoHashProvider(NonCryptographicHashAlgorithm provider) : IHashProvider
+            {
+                public byte[] ComputeHash(Stream stream)
+                {
+                    provider.Append(stream);
+                    return provider.GetCurrentHash();
+                }
             }
         }
 
@@ -99,7 +120,7 @@ namespace Hash.Core
         {
             using FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
             //using MemoryStream fs = new MemoryStream(System.Text.Encoding.ASCII.GetBytes("123456789"));
-            byte[] bs = hashType.ComputeFunc(fs);
+            byte[] bs = hashType.ProviderFunc().ComputeHash(fs);
 
             string returnStr = BitConverter.ToString(bs);
             returnStr = upper ? returnStr.ToUpper() : returnStr.ToLower();
