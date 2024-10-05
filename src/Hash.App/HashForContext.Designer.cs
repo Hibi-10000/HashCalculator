@@ -273,6 +273,7 @@ namespace Hash.App
             Controls.Add(Title);
             Controls.Add(OK);
             Controls.Add(Copyright);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = Properties.Resources.Icon;
             Margin = new Padding(5, 6, 5, 6);
             MaximizeBox = false;
