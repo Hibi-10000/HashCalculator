@@ -15,6 +15,8 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
+using System;
+using System.Buffers.Binary;
 using System.Security.Cryptography;
 
 namespace Hash.Core
@@ -46,6 +48,21 @@ namespace Hash.Core
                 _ => 0xffffffffffffffff,
             };
         }
+        
+        private int GetSize()
+        {
+            return poly switch
+            {
+                //Polynomial.CRC8 => 1,
+                Polynomial.CRC16_CCITT or
+                Polynomial.CRC16_IBM => 2,
+                Polynomial.CRC32 or
+                Polynomial.CRC32C => 4,
+                Polynomial.CRC64_ECMA or
+                Polynomial.CRC64_ISO => 8,
+                _ => 8,
+            };
+        }
 
         private readonly Polynomial poly;
         private ulong hash;
@@ -57,6 +74,7 @@ namespace Hash.Core
             poly = polynomial;
             table = InitializeTable((ulong)polynomial);
             seed = GetSeed();
+            HashSizeValue = GetSize() * 4;
             Initialize();
         }
 
@@ -75,24 +93,6 @@ namespace Hash.Core
             byte[] hashBuffer = ULongToBigEndianBytes(~hash);
             HashValue = hashBuffer;
             return hashBuffer;
-        }
-
-        public override int HashSize
-        {
-            get
-            {
-                return poly switch
-                {
-                    //Polynomial.CRC8 => 8,
-                    Polynomial.CRC16_CCITT or
-                    Polynomial.CRC16_IBM => 16,
-                    Polynomial.CRC32 or
-                    Polynomial.CRC32C => 32,
-                    Polynomial.CRC64_ECMA or
-                    Polynomial.CRC64_ISO => 64,
-                    _ => 64,
-                };
-            }
         }
 
         private static ulong[] InitializeTable(ulong polynomial)
@@ -123,33 +123,26 @@ namespace Hash.Core
 
         private byte[] ULongToBigEndianBytes(ulong x)
         {
-            return poly switch
+            Span<byte> buffer = stackalloc byte[GetSize()];
+            switch (poly)
             {
-                Polynomial.CRC16_CCITT or
-                Polynomial.CRC16_IBM => [
-                    (byte)((x >> 8) & 0xff),
-                    (byte)(x & 0xff)
-                ],
-                Polynomial.CRC32 or
-                Polynomial.CRC32C => [
-                    (byte)((x >> 24) & 0xff),
-                    (byte)((x >> 16) & 0xff),
-                    (byte)((x >> 8) & 0xff),
-                    (byte)(x & 0xff)
-                ],
-                Polynomial.CRC64_ECMA or
-                Polynomial.CRC64_ISO => [
-                    (byte)((x >> 56) & 0xff),
-                    (byte)((x >> 48) & 0xff),
-                    (byte)((x >> 40) & 0xff),
-                    (byte)((x >> 32) & 0xff),
-                    (byte)((x >> 24) & 0xff),
-                    (byte)((x >> 16) & 0xff),
-                    (byte)((x >> 8) & 0xff),
-                    (byte)(x & 0xff)
-                ],
-                _ => [],
-            };
+                //case Polynomial.CRC8:
+                //    buffer[0] = (byte)x;
+                //    break;
+                case Polynomial.CRC16_CCITT or
+                     Polynomial.CRC16_IBM:
+                    BinaryPrimitives.WriteUInt16BigEndian(buffer, (ushort)x);
+                    break;
+                case Polynomial.CRC32 or
+                     Polynomial.CRC32C:
+                    BinaryPrimitives.WriteUInt32BigEndian(buffer, (uint)x);
+                    break;
+                case Polynomial.CRC64_ECMA or
+                     Polynomial.CRC64_ISO:
+                    BinaryPrimitives.WriteUInt64BigEndian(buffer, x);
+                    break;
+            }
+            return buffer.ToArray();
         }
     }
 }
