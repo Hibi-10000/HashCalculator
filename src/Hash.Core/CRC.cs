@@ -21,76 +21,43 @@ using System.Security.Cryptography;
 
 namespace Hash.Core
 {
+    //public class CRC8       () : CRC(1, 0x7, 0xff);
+    //public class CRC16_CCITT() : CRC(2, 0x8408, 0xffff);
+    //public class CRC16_IBM  () : CRC(2, 0xA001, 0xffff);
+    public class CRC32     () : CRC(4, 0xEDB88320, 0xffffffff);
+    public class CRC32C    () : CRC(4, 0x82F63B78, 0xffffffff);
+    public class CRC64_ECMA() : CRC(8, 0xC96C5795D7870F42, 0xffffffffffffffff);
+    public class CRC64_ISO () : CRC(8, 0xD800000000000000, 0xffffffffffffffff);
+
     public class CRC : HashAlgorithm
     {
-        public enum Polynomial : ulong
-        {
-            //CRC8 = 0x7,
-            CRC16_CCITT = 0x8408,
-            CRC16_IBM = 0xA001,
-            CRC32 = 0xEDB88320,
-            CRC32C = 0x82F63B78,
-            CRC64_ECMA = 0xC96C5795D7870F42,
-            CRC64_ISO = 0xD800000000000000,
-        }
+        private ulong _hash;
+        private readonly ulong[] _table;
+        private readonly ulong _seed;
+        private readonly int _size;
 
-        private ulong GetSeed()
+        protected CRC(int size, ulong revPoly, ulong init)
         {
-            return poly switch
-            {
-                //Polynomial.CRC8 => 0xff,
-                Polynomial.CRC16_CCITT or
-                Polynomial.CRC16_IBM => 0xffff,
-                Polynomial.CRC32 or
-                Polynomial.CRC32C => 0xffffffff,
-                Polynomial.CRC64_ECMA or
-                Polynomial.CRC64_ISO => 0xffffffffffffffff,
-                _ => 0xffffffffffffffff,
-            };
-        }
-        
-        private int GetSize()
-        {
-            return poly switch
-            {
-                //Polynomial.CRC8 => 1,
-                Polynomial.CRC16_CCITT or
-                Polynomial.CRC16_IBM => 2,
-                Polynomial.CRC32 or
-                Polynomial.CRC32C => 4,
-                Polynomial.CRC64_ECMA or
-                Polynomial.CRC64_ISO => 8,
-                _ => 8,
-            };
-        }
-
-        private readonly Polynomial poly;
-        private ulong hash;
-        private readonly ulong seed;
-        private readonly ulong[] table;
-
-        public CRC(Polynomial polynomial)
-        {
-            poly = polynomial;
-            table = InitializeTable((ulong)polynomial);
-            seed = GetSeed();
-            HashSizeValue = GetSize() * 4;
+            _table = InitializeTable(revPoly);
+            _seed = init;
+            _size = size;
+            HashSizeValue = size * 4;
             Initialize();
         }
 
         public override void Initialize()
         {
-            hash = seed;
+            _hash = _seed;
         }
 
         protected override void HashCore(byte[] buffer, int start, int length)
         {
-            hash = CalculateHash(table, hash, buffer, start, length);
+            _hash = CalculateHash(_table, _hash, buffer, start, length);
         }
 
         protected override byte[] HashFinal()
         {
-            byte[] hashBuffer = ULongToBigEndianBytes(~hash);
+            byte[] hashBuffer = ULongToBigEndianBytes(~_hash);
             HashValue = hashBuffer;
             return hashBuffer;
         }
@@ -123,22 +90,19 @@ namespace Hash.Core
 
         private byte[] ULongToBigEndianBytes(ulong x)
         {
-            Span<byte> buffer = stackalloc byte[GetSize()];
-            switch (poly)
+            Span<byte> buffer = stackalloc byte[_size];
+            switch (_size)
             {
-                //case Polynomial.CRC8:
+                //case 1: //8
                 //    buffer[0] = (byte)x;
                 //    break;
-                case Polynomial.CRC16_CCITT or
-                     Polynomial.CRC16_IBM:
+                case 2: //16
                     BinaryPrimitives.WriteUInt16BigEndian(buffer, (ushort)x);
                     break;
-                case Polynomial.CRC32 or
-                     Polynomial.CRC32C:
+                case 4: //32
                     BinaryPrimitives.WriteUInt32BigEndian(buffer, (uint)x);
                     break;
-                case Polynomial.CRC64_ECMA or
-                     Polynomial.CRC64_ISO:
+                case 8: //64
                     BinaryPrimitives.WriteUInt64BigEndian(buffer, x);
                     break;
             }
