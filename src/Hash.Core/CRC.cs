@@ -21,9 +21,9 @@ using System.Security.Cryptography;
 
 namespace Hash.Core
 {
-    //public class CRC8       () : CRC(1, 0x7, 0xff);
-    //public class CRC16_CCITT() : CRC(2, 0x8408, 0xffff);
-    //public class CRC16_IBM  () : CRC(2, 0xA001, 0xffff);
+    //public class CRC8       () : CRC(1, 0x7, 0x00);
+    //public class CRC16_CCITT() : CRC(2, 0x8408, 0x0000);
+    //public class CRC16_IBM  () : CRC(2, 0xA001, 0x0000);
     public class CRC32     () : CRC(4, 0xEDB88320, 0xffffffff);
     public class CRC32C    () : CRC(4, 0x82F63B78, 0xffffffff);
     public class CRC64_ECMA() : CRC(8, 0xC96C5795D7870F42, 0xffffffffffffffff);
@@ -34,12 +34,14 @@ namespace Hash.Core
         private ulong _hash;
         private readonly ulong[] _table;
         private readonly ulong _seed;
+        private readonly ulong _xorOut;
         private readonly int _size;
 
         protected CRC(int size, ulong revPoly, ulong init)
         {
             _table = InitializeTable(revPoly);
             _seed = init;
+            _xorOut = init;
             _size = size;
             HashSizeValue = size * 4;
             Initialize();
@@ -52,12 +54,12 @@ namespace Hash.Core
 
         protected override void HashCore(byte[] buffer, int start, int length)
         {
-            _hash = CalculateHash(_table, _hash, buffer, start, length);
+            _hash = CalculateHash(_table, _hash, _xorOut, buffer, start, length);
         }
 
         protected override byte[] HashFinal()
         {
-            byte[] hashBuffer = ULongToBigEndianBytes(~_hash);
+            byte[] hashBuffer = ULongToBigEndianBytes(_hash);
             HashValue = hashBuffer;
             return hashBuffer;
         }
@@ -69,23 +71,25 @@ namespace Hash.Core
             {
                 ulong entry = (ulong)i;
                 for (int j = 0; j < 8; j++)
+                {
                     if ((entry & 1) == 1)
                         entry = (entry >> 1) ^ polynomial;
                     else
                         entry = entry >> 1;
+                }
                 createTable[i] = entry;
             }
             return createTable;
         }
 
-        private static ulong CalculateHash(ulong[] table, ulong seed, byte[] buffer, int start, int size)
+        private static ulong CalculateHash(ulong[] table, ulong seed, ulong xorOut, byte[] buffer, int start, int size)
         {
             ulong crc = seed;
             for (int i = start; i < size; i++)
             {
                 crc = (crc >> 8) ^ table[buffer[i] ^ crc & 0xff];
             }
-            return crc;
+            return crc ^ xorOut;
         }
 
         private byte[] ULongToBigEndianBytes(ulong x)
