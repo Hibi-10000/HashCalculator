@@ -21,26 +21,28 @@ using System.IO.Hashing;
 
 namespace Hash.Core;
 
-public class CRC16_CCITT() : CRC16(0x8408);
+public class CRC16_CCITT() : CRC16(0x1021);
 
-public class CRC16_IBM() : CRC16(0xA001);
+public class CRC16_IBM() : CRC16(0x8005);
 
 public abstract class CRC16 : NonCryptographicHashAlgorithm
 {
     private const ushort InitialState = 0x0000;
+    private const bool RefInOut = true;
+    private const ushort XOROut = 0x0000;
     private const int Size = sizeof(ushort);
 
     private readonly ushort[] _table;
     private ushort _crc = InitialState;
 
-    protected CRC16(ushort revPoly) : base(Size)
+    protected CRC16(ushort poly) : base(Size)
     {
-        _table = InitializeTable(revPoly);
+        _table = InitializeTable(poly);
     }
 
     public override void Append(ReadOnlySpan<byte> source)
     {
-        _crc = CalculateHash(_table, _crc, source, 0, source.Length);
+        _crc = CalculateHash(_table, _crc, source);
     }
 
     public override void Reset()
@@ -53,8 +55,9 @@ public abstract class CRC16 : NonCryptographicHashAlgorithm
         BinaryPrimitives.WriteUInt16BigEndian(destination, _crc);
     }
 
-    private static ushort[] InitializeTable(ushort revPoly)
+    private static ushort[] InitializeTable(ushort poly)
     {
+        ushort refPoly = RefInOut ? ReverseBits(poly) : poly;
         ushort[] createTable = new ushort[256];
         for (int i = 0; i < createTable.Length; i++)
         {
@@ -62,7 +65,7 @@ public abstract class CRC16 : NonCryptographicHashAlgorithm
             for (int j = 0; j < 8; j++)
             {
                 if ((entry & 1) == 1)
-                    entry = (ushort)((entry >> 1) ^ revPoly);
+                    entry = (ushort)((entry >> 1) ^ refPoly);
                 else
                     entry = (ushort)(entry >> 1);
             }
@@ -70,14 +73,22 @@ public abstract class CRC16 : NonCryptographicHashAlgorithm
         }
         return createTable;
     }
+    
+    private static ushort ReverseBits(ushort source) {
+        ushort reverse = 0;
+        for (int i = 0; i < 16; i++) {
+            reverse = (ushort)((reverse << 1) | ((source >> i) & 1));
+        }
+        return reverse;
+    }
 
-    private static ushort CalculateHash(ushort[] table, ushort seed, ReadOnlySpan<byte> buffer, int start, int size)
+    private static ushort CalculateHash(ushort[] table, ushort seed, ReadOnlySpan<byte> buffer)
     {
         ushort crc = seed;
-        for (int i = start; i < size; i++)
+        foreach (byte bufferValue in buffer)
         {
-            crc = (ushort)((crc >> 8) ^ table[buffer[i] ^ crc & 0xff]);
+            crc = (ushort)((crc >> 8) ^ table[bufferValue ^ crc & 0xff]);
         }
-        return crc;
+        return (ushort)(crc ^ XOROut);
     }
 }
