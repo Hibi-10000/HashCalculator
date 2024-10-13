@@ -17,19 +17,19 @@
 
 using System;
 using System.Buffers.Binary;
-using System.Security.Cryptography;
+using System.IO.Hashing;
 
 namespace Hash.Core
 {
-    //public class CRC8       () : CRC(1, 0x7, 0x00);
-    //public class CRC16_CCITT() : CRC(2, 0x8408, 0x0000);
-    //public class CRC16_IBM  () : CRC(2, 0xA001, 0x0000);
-    public class CRC32     () : CRC(4, 0xEDB88320, 0xffffffff);
-    public class CRC32C    () : CRC(4, 0x82F63B78, 0xffffffff);
-    public class CRC64_ECMA() : CRC(8, 0xC96C5795D7870F42, 0xffffffffffffffff);
-    public class CRC64_ISO () : CRC(8, 0xD800000000000000, 0xffffffffffffffff);
+    //public class CRC8       () : CRC(sizeof(byte), 0x7, 0x00);
+    //public class CRC16_CCITT() : CRC(sizeof(ushort), 0x8408, 0x0000);
+    //public class CRC16_IBM  () : CRC(sizeof(ushort), 0xA001, 0x0000);
+    public class CRC32     () : CRC(sizeof(uint), 0xEDB88320, 0xffffffff);
+    public class CRC32C    () : CRC(sizeof(uint), 0x82F63B78, 0xffffffff);
+    public class CRC64_ECMA() : CRC(sizeof(ulong), 0xC96C5795D7870F42, 0xffffffffffffffff);
+    public class CRC64_ISO () : CRC(sizeof(ulong), 0xD800000000000000, 0xffffffffffffffff);
 
-    public class CRC : HashAlgorithm
+    public class CRC : NonCryptographicHashAlgorithm
     {
         private ulong _hash;
         private readonly ulong[] _table;
@@ -37,31 +37,23 @@ namespace Hash.Core
         private readonly ulong _xorOut;
         private readonly int _size;
 
-        protected CRC(int size, ulong revPoly, ulong init)
+        protected CRC(int size, ulong revPoly, ulong init): base(size)
         {
             _table = InitializeTable(revPoly);
             _seed = init;
             _xorOut = init;
             _size = size;
-            HashSizeValue = size * 4;
-            Initialize();
-        }
-
-        public override void Initialize()
-        {
             _hash = _seed;
         }
 
-        protected override void HashCore(byte[] buffer, int start, int length)
+        public override void Append(ReadOnlySpan<byte> source)
         {
-            _hash = CalculateHash(_table, _hash, _xorOut, buffer, start, length);
+            _hash = CalculateHash(_table, _hash, _xorOut, source);
         }
 
-        protected override byte[] HashFinal()
+        public override void Reset()
         {
-            byte[] hashBuffer = ULongToBigEndianBytes(_hash);
-            HashValue = hashBuffer;
-            return hashBuffer;
+            _hash = _seed;
         }
 
         private static ulong[] InitializeTable(ulong polynomial)
@@ -82,35 +74,33 @@ namespace Hash.Core
             return createTable;
         }
 
-        private static ulong CalculateHash(ulong[] table, ulong seed, ulong xorOut, byte[] buffer, int start, int size)
+        private static ulong CalculateHash(ulong[] table, ulong seed, ulong xorOut, ReadOnlySpan<byte> buffer)
         {
             ulong crc = seed;
-            for (int i = start; i < size; i++)
+            foreach (byte bufferValue in buffer)
             {
-                crc = (crc >> 8) ^ table[buffer[i] ^ crc & 0xff];
+                crc = (crc >> 8) ^ table[bufferValue ^ crc & 0xff];
             }
             return crc ^ xorOut;
         }
 
-        private byte[] ULongToBigEndianBytes(ulong x)
+        protected override void GetCurrentHashCore(Span<byte> destination)
         {
-            Span<byte> buffer = stackalloc byte[_size];
             switch (_size)
             {
-                //case 1: //8
-                //    buffer[0] = (byte)x;
+                //case sizeof(byte): //8
+                //    destination[0] = (byte)_hash;
                 //    break;
-                case 2: //16
-                    BinaryPrimitives.WriteUInt16BigEndian(buffer, (ushort)x);
+                case sizeof(ushort): //16
+                    BinaryPrimitives.WriteUInt16BigEndian(destination, (ushort)_hash);
                     break;
-                case 4: //32
-                    BinaryPrimitives.WriteUInt32BigEndian(buffer, (uint)x);
+                case sizeof(uint): //32
+                    BinaryPrimitives.WriteUInt32BigEndian(destination, (uint)_hash);
                     break;
-                case 8: //64
-                    BinaryPrimitives.WriteUInt64BigEndian(buffer, x);
+                case sizeof(ulong): //64
+                    BinaryPrimitives.WriteUInt64BigEndian(destination, _hash);
                     break;
             }
-            return buffer.ToArray();
         }
     }
 }
