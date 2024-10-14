@@ -21,26 +21,28 @@ using System.IO.Hashing;
 
 namespace Hash.Core
 {
-    //public class CRC8       () : CRC(sizeof(byte), 0x7, 0x00);
-    //public class CRC16_CCITT() : CRC(sizeof(ushort), 0x8408, 0x0000);
-    //public class CRC16_IBM  () : CRC(sizeof(ushort), 0xA001, 0x0000);
-    public class CRC32     () : CRC(sizeof(uint), 0xEDB88320, 0xffffffff);
-    public class CRC32C    () : CRC(sizeof(uint), 0x82F63B78, 0xffffffff);
-    public class CRC64_ECMA() : CRC(sizeof(ulong), 0xC96C5795D7870F42, 0xffffffffffffffff);
-    public class CRC64_ISO () : CRC(sizeof(ulong), 0xD800000000000000, 0xffffffffffffffff);
+    //public class CRC8       () : CRC(sizeof(byte), 0x7, 0x00, false);
+    //public class CRC16_CCITT() : CRC(sizeof(ushort), 0x8408, 0x0000, true);
+    //public class CRC16_IBM  () : CRC(sizeof(ushort), 0xA001, 0x0000, true);
+    public class CRC32     () : CRC(sizeof(uint), 0xEDB88320, 0xffffffff, true);
+    public class CRC32C    () : CRC(sizeof(uint), 0x82F63B78, 0xffffffff, true);
+    public class CRC64_ECMA() : CRC(sizeof(ulong), 0xC96C5795D7870F42, 0xffffffffffffffff, true);
+    public class CRC64_ISO () : CRC(sizeof(ulong), 0xD800000000000000, 0xffffffffffffffff, true);
 
     public class CRC : NonCryptographicHashAlgorithm
     {
         private ulong _hash;
         private readonly ulong[] _table;
         private readonly ulong _seed;
+        private readonly bool _refOut;
         private readonly ulong _xorOut;
         private readonly int _size;
 
-        protected CRC(int size, ulong revPoly, ulong init): base(size)
+        protected CRC(int size, ulong revPoly, ulong init, bool refInOut): base(size)
         {
-            _table = InitializeTable(revPoly);
+            _table = InitializeTable(size, revPoly, refInOut);
             _seed = init;
+            _refOut = refInOut;
             _xorOut = init;
             _size = size;
             _hash = _seed;
@@ -48,7 +50,7 @@ namespace Hash.Core
 
         public override void Append(ReadOnlySpan<byte> source)
         {
-            _hash = CalculateHash(_table, _hash, _xorOut, source);
+            _hash = CalculateHash(_table, _hash, _refOut, _xorOut, source);
         }
 
         public override void Reset()
@@ -56,30 +58,66 @@ namespace Hash.Core
             _hash = _seed;
         }
 
-        private static ulong[] InitializeTable(ulong polynomial)
+        private static ulong[] InitializeTable(int size, ulong polynomial, bool refIn)
         {
             ulong[] createTable = new ulong[256];
-            for (int i = 0; i < 256; i++)
+            if (refIn)
             {
-                ulong entry = (ulong)i;
-                for (int j = 0; j < 8; j++)
+                for (int i = 0; i < 256; i++)
                 {
-                    if ((entry & 1) == 1)
-                        entry = (entry >> 1) ^ polynomial;
-                    else
-                        entry = entry >> 1;
+                    ulong entry = (ulong)i;
+                    for (int j = 0; j < 8; j++)
+                    {
+                        if ((entry & 1) == 1)
+                            entry = (entry >> 1) ^ polynomial;
+                        else
+                            entry = entry >> 1;
+                    }
+                    createTable[i] = entry;
                 }
-                createTable[i] = entry;
+            }
+            else
+            {
+                for (int i = 0; i < 256; i++)
+                {
+                    ulong entry = (ulong)i << 56;
+                    for (int j = 0; j < 8; j++)
+                    {
+                        if ((entry & ReverseBits(1, size * 8)) != 0)
+                            entry = (entry << 1) ^ ReverseBits(polynomial, size * 8);
+                        else
+                            entry = entry << 1;
+                    }
+                    createTable[i] = entry;
+                }
             }
             return createTable;
         }
+    
+        private static ulong ReverseBits(ulong source, int size) {
+            ulong reverse = 0;
+            for (int i = 0; i < size; i++) {
+                reverse = (reverse << 1) | ((source >> i) & 1);
+            }
+            return reverse;
+        }
 
-        private static ulong CalculateHash(ulong[] table, ulong seed, ulong xorOut, ReadOnlySpan<byte> buffer)
+        private static ulong CalculateHash(ulong[] table, ulong seed, bool refOut, ulong xorOut, ReadOnlySpan<byte> buffer)
         {
             ulong crc = seed;
-            foreach (byte bufferValue in buffer)
+            if (refOut)
             {
-                crc = (crc >> 8) ^ table[bufferValue ^ crc & 0xff];
+                foreach (byte bufferValue in buffer)
+                {
+                    crc = (crc >> 8) ^ table[(bufferValue ^ crc) & 0xff];
+                }
+            }
+            else
+            {
+                foreach (byte bufferValue in buffer)
+                {
+                    crc = (crc << 8) ^ table[(bufferValue ^ (crc >> 56)) & 0xff];
+                }
             }
             return crc ^ xorOut;
         }
