@@ -12,8 +12,8 @@ Hashを選択または*をクリックするとそのファイルのHashを計�
 ・SHA384  
 ・SHA512  
   
-・CRC16-IBM  
-・CRC16-CCITT*  
+・CRC16-CCITT  
+・CRC16-IBM*  
 ・CRC32  
 ・CRC32C*  
 ・CRC64-ECMA  
