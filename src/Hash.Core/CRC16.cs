@@ -58,8 +58,8 @@ public abstract class CRC16 : NonCryptographicHashAlgorithm
     private static ushort[] InitializeTable(ushort poly)
     {
         ushort refPoly = RefInOut ? ReverseBits(poly) : poly;
-        ushort[] createTable = new ushort[256];
-        for (int i = 0; i < createTable.Length; i++)
+        ushort[] table = new ushort[256];
+        for (int i = 0; i < table.Length; i++)
         {
             ushort entry = (ushort)i;
             for (int j = 0; j < 8; j++)
@@ -69,9 +69,9 @@ public abstract class CRC16 : NonCryptographicHashAlgorithm
                 else
                     entry = (ushort)(entry >> 1);
             }
-            createTable[i] = entry;
+            table[i] = entry;
         }
-        return createTable;
+        return table;
     }
     
     private static ushort ReverseBits(ushort source) {
@@ -85,9 +85,9 @@ public abstract class CRC16 : NonCryptographicHashAlgorithm
     private static ushort CalculateHash(ushort[] table, ushort seed, ReadOnlySpan<byte> buffer)
     {
         ushort crc = seed;
-        foreach (byte bufferValue in buffer)
+        foreach (byte bufferEntry in buffer)
         {
-            crc = (ushort)((crc >> 8) ^ table[bufferValue ^ crc & 0xff]);
+            crc = (ushort)((crc >> 8) ^ table[(byte)(bufferEntry ^ crc)]);
         }
         return (ushort)(crc ^ XOROut);
     }
