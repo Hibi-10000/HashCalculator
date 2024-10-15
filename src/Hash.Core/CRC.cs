@@ -50,7 +50,7 @@ namespace Hash.Core
 
         public override void Append(ReadOnlySpan<byte> source)
         {
-            _hash = CalculateHash(_table, _hash, _refOut, _xorOut, source);
+            _hash = CalculateHash(_table, _hash, _refOut, source);
         }
 
         public override void Reset()
@@ -60,7 +60,7 @@ namespace Hash.Core
 
         private static ulong[] InitializeTable(int size, ulong poly, bool refIn)
         {
-            ulong[] table = new ulong[256];
+            ulong[] table = new ulong[256]; //byte.MaxValue + 1
             if (refIn)
             {
                 for (int i = 0; i < 256; i++)
@@ -68,7 +68,7 @@ namespace Hash.Core
                     ulong entry = (ulong)i;
                     for (int j = 0; j < 8; j++)
                     {
-                        if ((entry & 1) == 1)
+                        if ((entry & 1) != 0)
                             entry = (entry >> 1) ^ ReverseBits(poly, size * 8);
                         else
                             entry >>= 1;
@@ -102,7 +102,7 @@ namespace Hash.Core
             return reverse;
         }
 
-        private static ulong CalculateHash(ulong[] table, ulong seed, bool refOut, ulong xorOut, ReadOnlySpan<byte> buffer)
+        private static ulong CalculateHash(ulong[] table, ulong seed, bool refOut, ReadOnlySpan<byte> buffer)
         {
             ulong crc = seed;
             if (refOut)
@@ -119,24 +119,25 @@ namespace Hash.Core
                     crc = (crc << 8) ^ table[(byte)(bufferEntry ^ (crc >> 56))];
                 }
             }
-            return crc ^ xorOut;
+            return crc;
         }
 
         protected override void GetCurrentHashCore(Span<byte> destination)
         {
+            ulong hash = _hash ^ _xorOut;
             switch (_size)
             {
                 //case sizeof(byte): //1 8
                 //    destination[0] = (byte)_hash;
                 //    break;
                 case sizeof(ushort): //2 16
-                    BinaryPrimitives.WriteUInt16BigEndian(destination, (ushort)_hash);
+                    BinaryPrimitives.WriteUInt16BigEndian(destination, (ushort)hash);
                     break;
                 case sizeof(uint  ): //4 32
-                    BinaryPrimitives.WriteUInt32BigEndian(destination, (uint)  _hash);
+                    BinaryPrimitives.WriteUInt32BigEndian(destination, (uint)  hash);
                     break;
                 case sizeof(ulong ): //8 64
-                    BinaryPrimitives.WriteUInt64BigEndian(destination,         _hash);
+                    BinaryPrimitives.WriteUInt64BigEndian(destination,         hash);
                     break;
             }
         }

@@ -52,7 +52,7 @@ public abstract class CRC16 : NonCryptographicHashAlgorithm
 
     protected override void GetCurrentHashCore(Span<byte> destination)
     {
-        BinaryPrimitives.WriteUInt16BigEndian(destination, _crc);
+        BinaryPrimitives.WriteUInt16BigEndian(destination, (ushort)(_crc ^ XOROut));
     }
 
     private static ushort[] InitializeTable(ushort poly)
@@ -64,7 +64,7 @@ public abstract class CRC16 : NonCryptographicHashAlgorithm
             ushort entry = (ushort)i;
             for (int j = 0; j < 8; j++)
             {
-                if ((entry & 1) == 1)
+                if ((entry & 1) != 0)
                     entry = (ushort)((entry >> 1) ^ refPoly);
                 else
                     entry = (ushort)(entry >> 1);
@@ -89,6 +89,6 @@ public abstract class CRC16 : NonCryptographicHashAlgorithm
         {
             crc = (ushort)((crc >> 8) ^ table[(byte)(bufferEntry ^ crc)]);
         }
-        return (ushort)(crc ^ XOROut);
+        return crc;
     }
 }
