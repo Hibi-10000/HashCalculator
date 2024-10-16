@@ -26,8 +26,9 @@ namespace Hash.Core
     //public class CRC16_IBM  () : CRC(sizeof(ushort), 0x8005, 0x0000, true);
     public class CRC32     () : CRC(sizeof(uint), 0x04C11DB7, 0xffffffff, true);
     public class CRC32C    () : CRC(sizeof(uint), 0x1EDC6F41, 0xffffffff, true);
-    public class CRC64_ECMA() : CRC(sizeof(ulong), 0x42F0E1EBA9EA3693, 0xffffffffffffffff, true);
+    public class CRC64_ECMA() : CRC(sizeof(ulong), 0x42F0E1EBA9EA3693, 0x0000000000000000, false);
     public class CRC64_ISO () : CRC(sizeof(ulong), 0x000000000000001B, 0xffffffffffffffff, true);
+    public class CRC64_XZ  () : CRC(sizeof(ulong), 0x42F0E1EBA9EA3693, 0xffffffffffffffff, true);
 
     public class CRC : NonCryptographicHashAlgorithm
     {

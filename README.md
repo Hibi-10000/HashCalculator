@@ -18,6 +18,7 @@ Hashを選択または*をクリックするとそのファイルのHashを計�
 ・CRC32C*  
 ・CRC64-ECMA  
 ・CRC64-ISO*  
+・CRC64-XZ  
   
 ・RIPEMD160*  
   

@@ -42,6 +42,7 @@ namespace Hash.Core
                 new("CRC32C"     , GetProvider(() => new CRC32C()          ), true                       ),
                 new("CRC64-ECMA" , GetProvider(() => new CRC64_ECMA()      )                             ),
                 new("CRC64-ISO"  , GetProvider(() => new CRC64_ISO()       ), true                       ),
+                new("CRC64-XZ"   , GetProvider(() => new CRC64_XZ()        )                             ),
                 new("RIPEMD160"  , GetProvider(() => new RIPEMD160Managed()), true                       ),
                 new("xxHash32"   , GetProvider(() => new XxHash32()        ), true                       ),
                 new("xxHash64"   , GetProvider(() => new XxHash64()        ), true                       ),
