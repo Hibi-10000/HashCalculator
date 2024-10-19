@@ -28,38 +28,38 @@ namespace Hash.Core
         internal class HashType
         {
             internal static readonly HashType[] Types = [
-                new("MD5"        , GetProvider(          MD5     .Create   )                             ),
-                new("SHA1"       , GetProvider(          SHA1    .Create   )                             ),
-                new("SHA256"     , GetProvider(          SHA256  .Create   )                             ),
-                new("SHA384"     , GetProvider(          SHA384  .Create   )                             ),
-                new("SHA512"     , GetProvider(          SHA512  .Create   )                             ),
-                new("SHA3-256"   , GetProvider(          SHA3_256.Create   ), false, SHA3_256.IsSupported),
-                new("SHA3-384"   , GetProvider(          SHA3_384.Create   ), false, SHA3_384.IsSupported),
-                new("SHA3-512"   , GetProvider(          SHA3_512.Create   ), false, SHA3_512.IsSupported),
-                new("CRC16-CCITT", GetProvider(() => new CRC16_CCITT()     )                             ),
-                new("CRC16-IBM"  , GetProvider(() => new CRC16_IBM()       ), true                       ),
-                new("CRC32"      , GetProvider(() => new CRC32()           )                             ),
-                new("CRC32C"     , GetProvider(() => new CRC32C()          ), true                       ),
-                new("CRC64-ECMA" , GetProvider(() => new CRC64_ECMA()      )                             ),
-                new("CRC64-ISO"  , GetProvider(() => new CRC64_ISO()       ), true                       ),
-                new("CRC64-XZ"   , GetProvider(() => new CRC64_XZ()        )                             ),
-                new("RIPEMD160"  , GetProvider(() => new RIPEMD160Managed()), true                       ),
-                new("xxHash32"   , GetProvider(() => new XxHash32()        ), true                       ),
-                new("xxHash64"   , GetProvider(() => new XxHash64()        ), true                       ),
-                new("xxHash3"    , GetProvider(() => new XxHash3()         )                             ),
-                new("xxHash128"  , GetProvider(() => new XxHash128()       ), true                       ),
+                new("MD5"        , GetProvider(          MD5     .Create   ), true                      ),
+                new("SHA1"       , GetProvider(          SHA1    .Create   ), true                      ),
+                new("SHA256"     , GetProvider(          SHA256  .Create   ), true                      ),
+                new("SHA384"     , GetProvider(          SHA384  .Create   ), true                      ),
+                new("SHA512"     , GetProvider(          SHA512  .Create   ), true                      ),
+                new("SHA3-256"   , GetProvider(          SHA3_256.Create   ), true, SHA3_256.IsSupported),
+                new("SHA3-384"   , GetProvider(          SHA3_384.Create   ), true, SHA3_384.IsSupported),
+                new("SHA3-512"   , GetProvider(          SHA3_512.Create   ), true, SHA3_512.IsSupported),
+                new("CRC16-CCITT", GetProvider(() => new CRC16_CCITT()     ), true                      ),
+                new("CRC16-IBM"  , GetProvider(() => new CRC16_IBM()       )                            ),
+                new("CRC32"      , GetProvider(() => new CRC32()           ), true                      ),
+                new("CRC32C"     , GetProvider(() => new CRC32C()          )                            ),
+                new("CRC64-ECMA" , GetProvider(() => new CRC64_ECMA()      ), true                      ),
+                new("CRC64-ISO"  , GetProvider(() => new CRC64_ISO()       )                            ),
+                new("CRC64-XZ"   , GetProvider(() => new CRC64_XZ()        ), true                      ),
+                new("RIPEMD160"  , GetProvider(() => new RIPEMD160Managed())                            ),
+                new("xxHash32"   , GetProvider(() => new XxHash32()        )                            ),
+                new("xxHash64"   , GetProvider(() => new XxHash64()        )                            ),
+                new("xxHash3"    , GetProvider(() => new XxHash3()         ), true                      ),
+                new("xxHash128"  , GetProvider(() => new XxHash128()       )                            ),
             ];
 
             internal readonly string Name;
             internal readonly IHashProvider Provider;
-            internal readonly bool Hidden;
+            internal readonly bool Visible;
             internal readonly bool Supported;
 
-            private HashType(string name, IHashProvider provider, bool hidden = false, bool supported = true)
+            private HashType(string name, IHashProvider provider, bool visible = false, bool supported = true)
             {
                 Name = name;
                 Provider = provider;
-                Hidden = hidden;
+                Visible = visible;
                 Supported = supported;
             }
 
@@ -101,7 +101,7 @@ namespace Hash.Core
         {
             return (
                 from type in HashType.Types
-                where type.Supported && (includeHidden || !type.Hidden)
+                where type.Supported && (includeHidden || type.Visible)
                 select type.Name
             ).ToArray();
         }
