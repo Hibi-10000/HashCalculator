@@ -21,7 +21,6 @@ using System.IO.Hashing;
 
 namespace Hash.Core
 {
-    //public class CRC8       () : CRC(sizeof(byte), 0x7, 0x00, false);
     public class CRC16_CCITT() : CRC(sizeof(ushort), 0x1021, 0x0000, true);
     public class CRC16_IBM  () : CRC(sizeof(ushort), 0x8005, 0x0000, true);
     public class CRC32      () : CRC(sizeof(uint), 0x04C11DB7, 0xffffffff, true);
@@ -128,9 +127,6 @@ namespace Hash.Core
             ulong hash = _hash ^ _xorOut;
             switch (_size)
             {
-                //case sizeof(byte): //1 8
-                //    destination[0] = (byte)_hash;
-                //    break;
                 case sizeof(ushort): //2 16
                     BinaryPrimitives.WriteUInt16BigEndian(destination, (ushort)hash);
                     break;
