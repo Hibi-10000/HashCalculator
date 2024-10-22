@@ -36,6 +36,7 @@ namespace Hash.Core
                 new("SHA3-256"   , GetProvider(          SHA3_256.Create   ), true, SHA3_256.IsSupported),
                 new("SHA3-384"   , GetProvider(          SHA3_384.Create   ), true, SHA3_384.IsSupported),
                 new("SHA3-512"   , GetProvider(          SHA3_512.Create   ), true, SHA3_512.IsSupported),
+                new("CRC8"       , GetProvider(() => new CRC8_CCITT()      )                            ),
                 new("CRC16-CCITT", GetProvider(() => new CRC16_CCITT()     ), true                      ),
                 new("CRC16-IBM"  , GetProvider(() => new CRC16_IBM()       )                            ),
                 new("CRC32"      , GetProvider(() => new CRC32()           ), true                      ),
