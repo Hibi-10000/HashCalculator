@@ -21,6 +21,7 @@ using System.IO.Hashing;
 
 namespace Hash.Core
 {
+    public class CRC8_CCITT () : CRC(sizeof(byte), 0x07, 0x00, false);
     public class CRC16_CCITT() : CRC(sizeof(ushort), 0x1021, 0x0000, true);
     public class CRC16_IBM  () : CRC(sizeof(ushort), 0x8005, 0x0000, true);
     public class CRC32      () : CRC(sizeof(uint), 0x04C11DB7, 0xffffffff, true);
@@ -50,7 +51,7 @@ namespace Hash.Core
 
         public override void Append(ReadOnlySpan<byte> source)
         {
-            _hash = CalculateHash(_table, _hash, _refOut, source);
+            _hash = CalculateHash(_size, _table, _hash, _refOut, source);
         }
 
         public override void Reset()
@@ -73,14 +74,14 @@ namespace Hash.Core
                         else
                             entry >>= 1;
                     }
-                    table[i] = entry;
+                    table[i] = size == sizeof(byte) ? (byte)entry : entry;
                 }
             }
             else
             {
                 for (int i = 0; i < 256; i++)
                 {
-                    ulong entry = (ulong)i << 56;
+                    ulong entry = size == sizeof(byte) ? (ulong)i : (ulong)i << 56;
                     for (int j = 0; j < 8; j++)
                     {
                         if ((entry & ReverseBits(1, size * 8)) != 0)
@@ -88,7 +89,7 @@ namespace Hash.Core
                         else
                             entry <<= 1;
                     }
-                    table[i] = entry;
+                    table[i] = size == sizeof(byte) ? (byte)entry : entry;
                 }
             }
             return table;
@@ -102,7 +103,7 @@ namespace Hash.Core
             return reverse;
         }
 
-        private static ulong CalculateHash(ulong[] table, ulong seed, bool refOut, ReadOnlySpan<byte> buffer)
+        private static ulong CalculateHash(int size, ulong[] table, ulong seed, bool refOut, ReadOnlySpan<byte> buffer)
         {
             ulong crc = seed;
             if (refOut)
@@ -116,7 +117,7 @@ namespace Hash.Core
             {
                 foreach (byte bufferEntry in buffer)
                 {
-                    crc = (crc << 8) ^ table[(byte)(bufferEntry ^ (crc >> 56))];
+                    crc = (crc << 8) ^ table[(byte)(bufferEntry ^ (size == sizeof(byte) ? crc : crc >> 56))];
                 }
             }
             return crc;
@@ -127,6 +128,9 @@ namespace Hash.Core
             ulong hash = _hash ^ _xorOut;
             switch (_size)
             {
+                case sizeof(byte  ): //1  8
+                    destination[0] = (byte)hash;
+                    break;
                 case sizeof(ushort): //2 16
                     BinaryPrimitives.WriteUInt16BigEndian(destination, (ushort)hash);
                     break;
