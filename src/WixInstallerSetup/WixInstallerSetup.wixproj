@@ -13,7 +13,4 @@
     <Content Include="dialog.bmp" />
     <Content Include="License.rtf" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Hash\Hash.csproj" />
-  </ItemGroup>
 </Project>
