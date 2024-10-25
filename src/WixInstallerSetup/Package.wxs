@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
     <!-- 
-        MajorUpdate: Package.ProductCode Package.Version
+        MajorUpdate(Uninstall -> Install): Package.Version Package.ProductCode
+        MinorUpdate(Upgrade)             : Package.Version
     -->
     <Package Name="HashCalculator" Manufacturer="Hibi_10000" Version="0.6.1" ProductCode="8A511924-449E-4378-8E1D-E0BA39A915FC" UpgradeCode="B0C53B72-7CDE-4EF9-A3F8-0838292E7197" Language="1033" Codepage="932" InstallerVersion="405">
         <Media Id="1" Cabinet="simple.cab" EmbedCab="yes" />
@@ -9,38 +10,34 @@
         <StandardDirectory Id="ProgramFiles6432Folder">
             <Directory Id="INSTALLFOLDER" Name="HashCalculator" />
         </StandardDirectory>
-        <Component Id="HASHCALCULATOR.EXE" Directory="INSTALLFOLDER" Guid="B0B89934-3D7F-49CC-A8BE-DB6CEDF489CC">
-            <File Id="HASHCALCULATOREXE" Name="HashCalculator.exe" Source="..\Hash.App\publish\win-$(var.Platform)\HashCalculator.exe" KeyPath="yes" ReadOnly="yes" />
-        </Component>
-        <Component Id="REGISTRY" Guid="671CCB3C-65C5-460C-9C73-158662C1E451">
-            <RegistryKey Root="HKCR" Key="*\shell\HashForContext" />
-            <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext" Name="MUIVerb" Value="Hash for ContextMenu(&amp;F)" />
-            <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext" Name="SubCommands" Value="" />
-            <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\*\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot;" />
-            <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\MD5\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h MD5" />
-            <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\SHA1\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h SHA1" />
-            <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\SHA256\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h SHA256" />
-            <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\SHA384\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h SHA384" />
-            <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\SHA512\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h SHA512" />
-            <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\CRC16-IBM\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h CRC16-IBM" />
-            <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\CRC32\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h CRC32" />
-            <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\CRC64-ECMA\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h CRC64-ECMA" />
-        </Component>
-        <Component Id="HASHCALCULATOR.LNK.DF" Directory="DesktopFolder" Guid="92B1091C-2E0F-45EF-A5C3-22D76FD66BD8">
-            <RegistryValue Root="HKCU" Key="Software\Hibi_10000\HashCalculator" Name="InstallFolder" Value="[INSTALLFOLDER]" Type="string" KeyPath="yes" />
-            <Shortcut Id="DesktopShortcut" Name="HashCalculator.lnk" Target="[INSTALLFOLDER]HashCalculator.exe" WorkingDirectory="INSTALLFOLDER" />
-        </Component>
-        <Component Id="HASHCALCULATOR.LNK.PMF" Directory="ProgramMenuFolder" Guid="DCC6F1D4-B1E8-4C47-AC9F-B5F7362614FD">
-            <RegistryValue Root="HKCU" Key="Software\Hibi_10000\HashCalculator" Name="InstallFolder" Value="[INSTALLFOLDER]" Type="string" KeyPath="yes" />
-            <Shortcut Id="ProgramMenuShortcut" Name="HashCalculator.lnk" Target="[INSTALLFOLDER]HashCalculator.exe" WorkingDirectory="INSTALLFOLDER" />
-        </Component>
         <Feature Id="DefaultFeature" Title="HashCalculator" Level="1" AllowAbsent="no" AllowAdvertise="no">
-            <ComponentRef Id="HASHCALCULATOR.EXE" />
-            <ComponentRef Id="REGISTRY" />
-            <ComponentRef Id="HASHCALCULATOR.LNK.PMF" />
+            <Component Directory="INSTALLFOLDER" Guid="B0B89934-3D7F-49CC-A8BE-DB6CEDF489CC">
+                <File Name="HashCalculator.exe" Source="..\Hash.App\publish\win-$(var.Platform)\HashCalculator.exe" KeyPath="yes" ReadOnly="yes" />
+            </Component>
+            <Component Guid="671CCB3C-65C5-460C-9C73-158662C1E451">
+                <RegistryKey Root="HKCR" Key="*\shell\HashForContext" />
+                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext" Name="MUIVerb" Value="Hash for ContextMenu(&amp;F)" />
+                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext" Name="SubCommands" Value="" />
+                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\*\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot;" />
+                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\MD5\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h MD5" />
+                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\SHA1\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h SHA1" />
+                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\SHA256\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h SHA256" />
+                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\SHA384\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h SHA384" />
+                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\SHA512\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h SHA512" />
+                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\CRC16-IBM\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h CRC16-IBM" />
+                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\CRC32\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h CRC32" />
+                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\CRC64-ECMA\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h CRC64-ECMA" />
+            </Component>
+            <Component Directory="ProgramMenuFolder" Guid="DCC6F1D4-B1E8-4C47-AC9F-B5F7362614FD">
+                <RegistryValue Root="HKCU" Key="Software\Hibi_10000\HashCalculator" Name="InstallFolder" Value="[INSTALLFOLDER]" Type="string" KeyPath="yes" />
+                <Shortcut Name="HashCalculator.lnk" Target="[INSTALLFOLDER]HashCalculator.exe" WorkingDirectory="INSTALLFOLDER" />
+            </Component>
         </Feature>
         <Feature Id="DesktopShortcut" Title="DesktopShortcut" Level="1" AllowAdvertise="no">
-            <ComponentRef Id="HASHCALCULATOR.LNK.DF" />
+            <Component Directory="DesktopFolder" Guid="92B1091C-2E0F-45EF-A5C3-22D76FD66BD8">
+                <RegistryValue Root="HKCU" Key="Software\Hibi_10000\HashCalculator" Name="InstallFolder" Value="[INSTALLFOLDER]" Type="string" KeyPath="yes" />
+                <Shortcut Name="HashCalculator.lnk" Target="[INSTALLFOLDER]HashCalculator.exe" WorkingDirectory="INSTALLFOLDER" />
+            </Component>
         </Feature>
         <ui:WixUI Id="WixUI_FeatureTree" />
         <WixVariable Id="WixUIBannerBmp" Value="banner.bmp" />
