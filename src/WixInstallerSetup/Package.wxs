@@ -24,7 +24,7 @@
                 <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\SHA256\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h SHA256" />
                 <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\SHA384\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h SHA384" />
                 <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\SHA512\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h SHA512" />
-                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\CRC16-IBM\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h CRC16-IBM" />
+                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\CRC16-CCITT\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h CRC16-CCITT" />
                 <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\CRC32\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h CRC32" />
                 <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\CRC64-ECMA\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h CRC64-ECMA" />
             </Component>
