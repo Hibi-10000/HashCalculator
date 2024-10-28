@@ -13,7 +13,14 @@
         <Feature Id="DefaultFeature" Title="HashCalculator" Level="1" AllowAbsent="no" AllowAdvertise="no">
             <Component Directory="INSTALLFOLDER" Guid="B0B89934-3D7F-49CC-A8BE-DB6CEDF489CC">
                 <File Name="HashCalculator.exe" Source="..\Hash.App\publish\win-$(var.Platform)\HashCalculator.exe" KeyPath="yes" ReadOnly="yes" />
+                <RemoveRegistryKey Action="removeOnUninstall" Root="HKCR" Key="*\shell\HashForContext" />
             </Component>
+            <Component Directory="ProgramMenuFolder" Guid="DCC6F1D4-B1E8-4C47-AC9F-B5F7362614FD">
+                <RegistryValue Root="HKCU" Key="Software\Hibi_10000\HashCalculator" Name="InstallFolder" Value="[INSTALLFOLDER]" Type="string" KeyPath="yes" />
+                <Shortcut Name="HashCalculator.lnk" Target="[INSTALLFOLDER]HashCalculator.exe" WorkingDirectory="INSTALLFOLDER" />
+            </Component>
+        </Feature>
+        <Feature Id="Registry" Title="HashForContextMenu" Level="1" AllowAdvertise="no">
             <Component Guid="671CCB3C-65C5-460C-9C73-158662C1E451">
                 <RegistryKey Root="HKCR" Key="*\shell\HashForContext" />
                 <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext" Name="MUIVerb" Value="Hash for ContextMenu(&amp;F)" />
@@ -27,10 +34,6 @@
                 <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\CRC16-CCITT\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h CRC16-CCITT" />
                 <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\CRC32\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h CRC32" />
                 <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\CRC64-ECMA\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h CRC64-ECMA" />
-            </Component>
-            <Component Directory="ProgramMenuFolder" Guid="DCC6F1D4-B1E8-4C47-AC9F-B5F7362614FD">
-                <RegistryValue Root="HKCU" Key="Software\Hibi_10000\HashCalculator" Name="InstallFolder" Value="[INSTALLFOLDER]" Type="string" KeyPath="yes" />
-                <Shortcut Name="HashCalculator.lnk" Target="[INSTALLFOLDER]HashCalculator.exe" WorkingDirectory="INSTALLFOLDER" />
             </Component>
         </Feature>
         <Feature Id="DesktopShortcut" Title="DesktopShortcut" Level="1" AllowAdvertise="no">
