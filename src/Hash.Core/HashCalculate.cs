@@ -111,7 +111,7 @@ namespace Hash.Core
         {
             foreach (HashType type in HashType.Types)
             {
-                if (hashType == type.Name)
+                if (type.Supported && hashType == type.Name)
                 {
                     return GetHash(type, filePath, upper, hyphen);
                 }
