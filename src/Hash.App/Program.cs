@@ -22,77 +22,76 @@ using System.Windows.Forms;
 using Hash.Core;
 using Microsoft.Win32;
 
-namespace Hash.App
+namespace Hash.App;
+
+internal static class Program
 {
-    internal static class Program
+    internal const string Major = "0";
+    internal const string Minor = "6";
+    internal const string Build = "2";
+    internal const string Ch = "";
+
+    internal const string SemVer = $"{Major}.{Minor}.{Build}";
+
+    /// <summary>
+    /// アプリケーションのメイン エントリ ポイントです。
+    /// </summary>
+    [STAThread]
+    private static void Main()
     {
-        internal const string Major = "0";
-        internal const string Minor = "6";
-        internal const string Build = "2";
-        internal const string Ch = "";
+        string[] args = Environment.GetCommandLineArgs();
 
-        internal const string SemVer = $"{Major}.{Minor}.{Build}";
-
-        /// <summary>
-        /// アプリケーションのメイン エントリ ポイントです。
-        /// </summary>
-        [STAThread]
-        private static void Main()
+        foreach (string arg in args)
         {
-            string[] args = Environment.GetCommandLineArgs();
-
-            foreach (string arg in args)
+            switch (arg)
             {
-                switch (arg)
-                {
-                    case "/rc" when Environment.IsPrivilegedProcess:
-                        using (RegistryKey regKey = Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext"))
-                        {
-                            regKey.SetValue("MUIVerb", "Hash for ContextMenu(&F)", RegistryValueKind.String);
-                            regKey.SetValue("SubCommands", "", RegistryValueKind.String);
-                        }
-                        using (RegistryKey regKey = Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\*\command")) {
-                            regKey.SetValue("", @$"""{Application.ExecutablePath}"" /ctm /f ""%1""", RegistryValueKind.String);
-                        }
+                case "/rc" when Environment.IsPrivilegedProcess:
+                    using (RegistryKey regKey = Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext"))
+                    {
+                        regKey.SetValue("MUIVerb", "Hash for ContextMenu(&F)", RegistryValueKind.String);
+                        regKey.SetValue("SubCommands", "", RegistryValueKind.String);
+                    }
+                    using (RegistryKey regKey = Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\*\command")) {
+                        regKey.SetValue("", @$"""{Application.ExecutablePath}"" /ctm /f ""%1""", RegistryValueKind.String);
+                    }
 
-                        foreach (string hash in HashCalculate.GetHashTypeNames())
-                        {
-                            using RegistryKey regKey = Registry.ClassesRoot.CreateSubKey(@$"*\shell\HashForContext\shell\{hash}\command");
-                            regKey.SetValue("", @$"""{Application.ExecutablePath}"" /ctm /f ""%1"" /h {hash}", RegistryValueKind.String);
-                        }
-                        return;
-                    case "/rd" when Environment.IsPrivilegedProcess:
-                        Registry.ClassesRoot.DeleteSubKeyTree(@"*\shell\HashForContext");
-                        return;
-                    case "/rd" or "/rc":
-                        MessageBox.Show("UACをキャンセルしたか、起動方法が間違っています。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Environment.ExitCode = 1;
-                        return;
-                    case "/ctm":
-                        ApplicationConfiguration.Initialize();
-                        Application.Run(new HashForContext());
-                        return;
-                }
+                    foreach (string hash in HashCalculate.GetHashTypeNames())
+                    {
+                        using RegistryKey regKey = Registry.ClassesRoot.CreateSubKey(@$"*\shell\HashForContext\shell\{hash}\command");
+                        regKey.SetValue("", @$"""{Application.ExecutablePath}"" /ctm /f ""%1"" /h {hash}", RegistryValueKind.String);
+                    }
+                    return;
+                case "/rd" when Environment.IsPrivilegedProcess:
+                    Registry.ClassesRoot.DeleteSubKeyTree(@"*\shell\HashForContext");
+                    return;
+                case "/rd" or "/rc":
+                    MessageBox.Show("UACをキャンセルしたか、起動方法が間違っています。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Environment.ExitCode = 1;
+                    return;
+                case "/ctm":
+                    ApplicationConfiguration.Initialize();
+                    Application.Run(new HashForContext());
+                    return;
             }
-
-            const string mutexName = "HashCalculator-Mutex";
-            using Mutex mutex = new Mutex(true, mutexName, out bool createdNew);
-
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            //Mutexの初期所有権が付与されたかを渡して起動
-            Application.Run(new HashCalculator(!createdNew));
-            mutex.ReleaseMutex();
         }
 
-        internal static void OpenLink(string link)
+        const string mutexName = "HashCalculator-Mutex";
+        using Mutex mutex = new Mutex(true, mutexName, out bool createdNew);
+
+        // To customize application configuration such as set high DPI settings or default font,
+        // see https://aka.ms/applicationconfiguration.
+        ApplicationConfiguration.Initialize();
+        //Mutexの初期所有権が付与されたかを渡して起動
+        Application.Run(new HashCalculator(!createdNew));
+        mutex.ReleaseMutex();
+    }
+
+    internal static void OpenLink(string link)
+    {
+        ProcessStartInfo startInfo = new ProcessStartInfo(link)
         {
-            ProcessStartInfo startInfo = new ProcessStartInfo(link)
-            {
-                UseShellExecute = true
-            };
-            Process.Start(startInfo);
-        }
+            UseShellExecute = true
+        };
+        Process.Start(startInfo);
     }
 }

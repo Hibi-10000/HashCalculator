@@ -18,35 +18,34 @@
 using System;
 using System.Windows.Forms;
 
-namespace Hash.App
+namespace Hash.App;
+
+internal partial class AboutBox : Form
 {
-    internal partial class AboutBox : Form
+    public AboutBox()
     {
-        public AboutBox()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
 
-        private void dlFromGitHub_Click(object sender, EventArgs e)
-        {
-            Program.OpenLink("https://github.com/Hibi-10000/HashCalculator/releases/");
-        }
+    private void dlFromGitHub_Click(object sender, EventArgs e)
+    {
+        Program.OpenLink("https://github.com/Hibi-10000/HashCalculator/releases/");
+    }
 
-        private void licenseLink_Click(object sender, EventArgs e)
-        {
-            Program.OpenLink($"https://github.com/Hibi-10000/HashCalculator/blob/v{Program.SemVer}/LICENSE.md");
-        }
+    private void licenseLink_Click(object sender, EventArgs e)
+    {
+        Program.OpenLink($"https://github.com/Hibi-10000/HashCalculator/blob/v{Program.SemVer}/LICENSE.md");
+    }
 
-        private void noticeLink_Click(object sender, EventArgs e)
-        {
-            Program.OpenLink($"https://github.com/Hibi-10000/HashCalculator/blob/v{Program.SemVer}/NOTICE.md");
-        }
+    private void noticeLink_Click(object sender, EventArgs e)
+    {
+        Program.OpenLink($"https://github.com/Hibi-10000/HashCalculator/blob/v{Program.SemVer}/NOTICE.md");
+    }
 
-        private void AboutBox_Load(object sender, EventArgs e)
-        {
-            hashAndVer.Text = $"HashCalculator v{Program.SemVer}";
-            version.Text = $"Version: v{Program.SemVer}{Program.Ch}";
-            copyright.Text = $"Copyright © 2021-{DateTime.Now.Year} Hibi_10000";
-        }
+    private void AboutBox_Load(object sender, EventArgs e)
+    {
+        hashAndVer.Text = $"HashCalculator v{Program.SemVer}";
+        version.Text = $"Version: v{Program.SemVer}{Program.Ch}";
+        copyright.Text = $"Copyright © 2021-{DateTime.Now.Year} Hibi_10000";
     }
 }

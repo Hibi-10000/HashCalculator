@@ -20,108 +20,107 @@ using System;
 using System.Diagnostics;
 using System.Windows.Forms;
 
-namespace Hash.App
+namespace Hash.App;
+
+internal partial class HashForContext : Form
 {
-    internal partial class HashForContext : Form
+    public HashForContext()
     {
-        public HashForContext()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
 
-        private void OK_Click(object sender, EventArgs e)
-        {
-            Environment.ExitCode = 0;
-            Application.Exit();
-        }
+    private void OK_Click(object sender, EventArgs e)
+    {
+        Environment.ExitCode = 0;
+        Application.Exit();
+    }
 
-        private void HashForContext_Load(object sender, EventArgs e)
-        {
-            string[] args = Environment.GetCommandLineArgs();
+    private void HashForContext_Load(object sender, EventArgs e)
+    {
+        string[] args = Environment.GetCommandLineArgs();
 
-            for (int i = 0; i < args.Length; i++)
+        for (int i = 0; i < args.Length; i++)
+        {
+            switch (args[i])
             {
-                switch (args[i])
-                {
-                    case "/f":
-                        //File (/f "{FileURL}")
-                        int urlNum = i + 1;
-                        HashFileURL.Text = args[urlNum];
-                        break;
-                    case "/h":
-                        //HashType (/h MD5)
-                        int hashTypeNum = i + 1;
-                        HashSelector.Text = args[hashTypeNum];
-                        break;
-                    case "/d":
-                        //Debug (/d)
-                        DebugUse.Visible = true;
-                        HashFileURL.ReadOnly = false;
-                        break;
-                }
+                case "/f":
+                    //File (/f "{FileURL}")
+                    int urlNum = i + 1;
+                    HashFileURL.Text = args[urlNum];
+                    break;
+                case "/h":
+                    //HashType (/h MD5)
+                    int hashTypeNum = i + 1;
+                    HashSelector.Text = args[hashTypeNum];
+                    break;
+                case "/d":
+                    //Debug (/d)
+                    DebugUse.Visible = true;
+                    HashFileURL.ReadOnly = false;
+                    break;
             }
-
-            Text = $"Hash for ContextMenu v{Program.SemVer}{Program.Ch}";
-            Title.Text = $"Hash for ContextMenu v{Program.SemVer}";
-            Copyright.Text = $"Copyright © 2021-{DateTime.Now.Year} Hibi_10000";
         }
 
-        private void HashReset_Click(object sender, EventArgs e)
+        Text = $"Hash for ContextMenu v{Program.SemVer}{Program.Ch}";
+        Title.Text = $"Hash for ContextMenu v{Program.SemVer}";
+        Copyright.Text = $"Copyright © 2021-{DateTime.Now.Year} Hibi_10000";
+    }
+
+    private void HashReset_Click(object sender, EventArgs e)
+    {
+        HashOutputBox.Text = "ここにHash値が表示されます";
+        HashSelector.Text = "Hashを選択してください";
+    }
+
+    private void HashCopy_Click(object sender, EventArgs e)
+    {
+        Clipboard.SetText(HashSelector.Text);
+        Clipboard.SetText(HashOutputBox.Text);
+        HashOutputBox.Focus();
+        HashOutputBox.SelectAll();
+    }
+
+    private void DLGitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    {
+        Program.OpenLink("https://github.com/Hibi-10000/HashCalculator/releases/");
+    }
+
+    private void HashSelector_Set(object sender, EventArgs e)
+    {
+        if (HashFileURL.Text != "ファイルのパス(※これが表示されている場合はバグまたは起動方法が間違っています)" && HashFileURL.Text != "")
         {
+            string hashType = HashSelector.Text;
+            string filePath = HashFileURL.Text;
+            bool upper = checkUpper.Checked;
+            bool hyphen = checkHyphen.Checked;
+            string hash = HashCalculate.GetHash(hashType, filePath, upper, hyphen) ?? "ここにHash値が表示されます";
+            HashOutputBox.Text = hash;
+        } else {
             HashOutputBox.Text = "ここにHash値が表示されます";
-            HashSelector.Text = "Hashを選択してください";
         }
+    }
 
-        private void HashCopy_Click(object sender, EventArgs e)
+    private void StartHash_Click(object sender, EventArgs e)
+    {
+        string option = "";
+        if (HashFileURL.Text != "ファイルのパス(※これが表示されている場合はバグまたは起動方法が間違っています)") option += "/f \"" + HashFileURL.Text + "\" ";
+        if (HashSelector.Text != "Hashを選択してください") option += "/h " + HashSelector.Text + " ";
+        if (DebugUse.Visible == true) option += "/d";
+        ProcessStartInfo startInfo = new ProcessStartInfo(Application.ExecutablePath)
         {
-            Clipboard.SetText(HashSelector.Text);
-            Clipboard.SetText(HashOutputBox.Text);
-            HashOutputBox.Focus();
-            HashOutputBox.SelectAll();
-        }
+            UseShellExecute = true,
+            Arguments = option
+        };
+        Process.Start(startInfo);
+    }
 
-        private void DLGitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    private void DebugUse_Click(object sender, EventArgs e)
+    {
+        DialogResult dr = DebugUseDialog.ShowDialog();
+        if (dr == DialogResult.OK)
         {
-            Program.OpenLink("https://github.com/Hibi-10000/HashCalculator/releases/");
-        }
-
-        private void HashSelector_Set(object sender, EventArgs e)
-        {
-            if (HashFileURL.Text != "ファイルのパス(※これが表示されている場合はバグまたは起動方法が間違っています)" && HashFileURL.Text != "")
-            {
-                string hashType = HashSelector.Text;
-                string filePath = HashFileURL.Text;
-                bool upper = checkUpper.Checked;
-                bool hyphen = checkHyphen.Checked;
-                string hash = HashCalculate.GetHash(hashType, filePath, upper, hyphen) ?? "ここにHash値が表示されます";
-                HashOutputBox.Text = hash;
-            } else {
-                HashOutputBox.Text = "ここにHash値が表示されます";
-            }
-        }
-
-        private void StartHash_Click(object sender, EventArgs e)
-        {
-            string option = "";
-            if (HashFileURL.Text != "ファイルのパス(※これが表示されている場合はバグまたは起動方法が間違っています)") option += "/f \"" + HashFileURL.Text + "\" ";
-            if (HashSelector.Text != "Hashを選択してください") option += "/h " + HashSelector.Text + " ";
-            if (DebugUse.Visible == true) option += "/d";
-            ProcessStartInfo startInfo = new ProcessStartInfo(Application.ExecutablePath)
-            {
-                UseShellExecute = true,
-                Arguments = option
-            };
-            Process.Start(startInfo);
-        }
-
-        private void DebugUse_Click(object sender, EventArgs e)
-        {
-            DialogResult dr = DebugUseDialog.ShowDialog();
-            if (dr == DialogResult.OK)
-            {
-                HashFileURL.Text = null;
-                HashFileURL.Text = DebugUseDialog.FileName;
-            }
+            HashFileURL.Text = null;
+            HashFileURL.Text = DebugUseDialog.FileName;
         }
     }
 }
