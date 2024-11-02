@@ -9,6 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hash.App", "src\Hash.App\Ha
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hash.Core", "src\Hash.Core\Hash.Core.csproj", "{B84F57AF-BF67-466C-8449-AAC9D8035F07}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hash.Wpf", "src\Hash.Wpf\Hash.Wpf.csproj", "{5C9B7F94-B523-4C39-BCEB-19964C6A7237}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B84F57AF-BF67-466C-8449-AAC9D8035F07} = {B84F57AF-BF67-466C-8449-AAC9D8035F07}
+	EndProjectSection
+EndProject
 Project("{B7DD6F7E-DEF8-4E67-B5B7-07EF123DB6F0}") = "WixInstallerSetup", "src\WixInstallerSetup\WixInstallerSetup.wixproj", "{D5755B47-DB4D-4180-A109-269062572C9D}"
 EndProject
 Global
@@ -45,6 +50,18 @@ Global
 		{B84F57AF-BF67-466C-8449-AAC9D8035F07}.Release|x64.Build.0 = Release|Any CPU
 		{B84F57AF-BF67-466C-8449-AAC9D8035F07}.Release|x86.ActiveCfg = Release|Any CPU
 		{B84F57AF-BF67-466C-8449-AAC9D8035F07}.Release|x86.Build.0 = Release|Any CPU
+		{5C9B7F94-B523-4C39-BCEB-19964C6A7237}.Debug|arm64.ActiveCfg = Debug|arm64
+		{5C9B7F94-B523-4C39-BCEB-19964C6A7237}.Debug|arm64.Build.0 = Debug|arm64
+		{5C9B7F94-B523-4C39-BCEB-19964C6A7237}.Debug|x64.ActiveCfg = Debug|x64
+		{5C9B7F94-B523-4C39-BCEB-19964C6A7237}.Debug|x64.Build.0 = Debug|x64
+		{5C9B7F94-B523-4C39-BCEB-19964C6A7237}.Debug|x86.ActiveCfg = Debug|x86
+		{5C9B7F94-B523-4C39-BCEB-19964C6A7237}.Debug|x86.Build.0 = Debug|x86
+		{5C9B7F94-B523-4C39-BCEB-19964C6A7237}.Release|arm64.ActiveCfg = Release|arm64
+		{5C9B7F94-B523-4C39-BCEB-19964C6A7237}.Release|arm64.Build.0 = Release|arm64
+		{5C9B7F94-B523-4C39-BCEB-19964C6A7237}.Release|x64.ActiveCfg = Release|x64
+		{5C9B7F94-B523-4C39-BCEB-19964C6A7237}.Release|x64.Build.0 = Release|x64
+		{5C9B7F94-B523-4C39-BCEB-19964C6A7237}.Release|x86.ActiveCfg = Release|x86
+		{5C9B7F94-B523-4C39-BCEB-19964C6A7237}.Release|x86.Build.0 = Release|x86
 		{D5755B47-DB4D-4180-A109-269062572C9D}.Debug|arm64.ActiveCfg = Debug|arm64
 		{D5755B47-DB4D-4180-A109-269062572C9D}.Debug|arm64.Build.0 = Debug|arm64
 		{D5755B47-DB4D-4180-A109-269062572C9D}.Debug|x64.ActiveCfg = Debug|x64
