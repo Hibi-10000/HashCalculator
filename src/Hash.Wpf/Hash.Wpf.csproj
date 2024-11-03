@@ -6,6 +6,7 @@
     <Platforms>arm64;x64;x86</Platforms>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <EnableDefaultApplicationDefinition>false</EnableDefaultApplicationDefinition>
     <AssemblyName>HashCalculator</AssemblyName>
     <Authors>Hibi_10000</Authors>
     <Copyright>Copyright © Hibi_10000</Copyright>
@@ -13,6 +14,7 @@
     <AssemblyVersion>$(VersionPrefix).0</AssemblyVersion>
     <FileVersion>$(AssemblyVersion)</FileVersion>
     <ApplicationIcon>Resources\Hash.ico</ApplicationIcon>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>
     <None Include="..\..\README.md" />

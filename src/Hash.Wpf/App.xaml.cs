@@ -15,6 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
+using System;
 using System.Windows;
 
 namespace Hash.Wpf;
@@ -24,5 +25,13 @@ namespace Hash.Wpf;
 /// </summary>
 public partial class App : Application
 {
-
+    /// <summary>
+    /// Application Entry Point.
+    /// </summary>
+    [STAThread]
+    public static void Main() {
+        App app = new App();
+        app.InitializeComponent();
+        app.Run();
+    }
 }
