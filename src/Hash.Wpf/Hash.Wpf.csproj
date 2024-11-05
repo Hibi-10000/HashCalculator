@@ -17,6 +17,8 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>
+    <Resource Include="Resources\Hash.ico" />
+    <Resource Include="Resources\UAC.ico" />
     <None Include="..\..\README.md" />
   </ItemGroup>
   <ItemGroup>
