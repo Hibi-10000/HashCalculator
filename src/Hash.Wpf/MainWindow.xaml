@@ -179,7 +179,7 @@
                 <RichTextBox IsReadOnly="True">
                     <FlowDocument>
                         <Paragraph>
-                            <Run Text=""/>
+                            <Run Text="{Binding Readme, Mode=OneTime, Source={StaticResource PropResources}}"/>
                         </Paragraph>
                     </FlowDocument>
                 </RichTextBox>
