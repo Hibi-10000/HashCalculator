@@ -23,6 +23,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hash.Wpf"
+        xmlns:prop="clr-namespace:Hash.Wpf.Properties"
         mc:Ignorable="d"
         Title="HashCalculator" Icon="./Resources/Hash.ico"
         MinHeight="387" MinWidth="480" Height="400" Width="600">
@@ -179,7 +180,7 @@
                 <RichTextBox IsReadOnly="True">
                     <FlowDocument>
                         <Paragraph>
-                            <Run Text="{Binding Readme, Mode=OneTime, Source={StaticResource PropResources}}"/>
+                            <Run Text="{x:Static prop:Resources.Readme}"/>
                         </Paragraph>
                     </FlowDocument>
                 </RichTextBox>

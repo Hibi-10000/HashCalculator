@@ -21,9 +21,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Hash.Wpf"
-             xmlns:prop="clr-namespace:Hash.Wpf.Properties"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <prop:Resources x:Key="PropResources"/>
+        
     </Application.Resources>
 </Application>
