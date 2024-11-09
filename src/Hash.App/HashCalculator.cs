@@ -232,9 +232,9 @@ internal partial class HashCalculator : Form
     {
         if (Tab.SelectedIndex == 3)
         {
-            if (File.Exists(Application.ExecutablePath))
+            if (File.Exists(Environment.ProcessPath))
             {
-                ProcessStartInfo startInfo = new ProcessStartInfo(Application.ExecutablePath)
+                ProcessStartInfo startInfo = new ProcessStartInfo(Environment.ProcessPath)
                 {
                     UseShellExecute = true,
                     Verb = "runas",

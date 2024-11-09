@@ -18,6 +18,7 @@
 using Hash.Core;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Hash.App;
@@ -106,7 +107,8 @@ internal partial class HashForContext : Form
         if (HashFileURL.Text != "ファイルのパス(※これが表示されている場合はバグまたは起動方法が間違っています)") option += "/f \"" + HashFileURL.Text + "\" ";
         if (HashSelector.Text != "Hashを選択してください") option += "/h " + HashSelector.Text + " ";
         if (DebugUse.Visible == true) option += "/d";
-        ProcessStartInfo startInfo = new ProcessStartInfo(Application.ExecutablePath)
+        if (!File.Exists(Environment.ProcessPath)) return;
+        ProcessStartInfo startInfo = new ProcessStartInfo(Environment.ProcessPath)
         {
             UseShellExecute = true,
             Arguments = option
