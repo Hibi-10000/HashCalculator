@@ -26,7 +26,7 @@
         xmlns:prop="clr-namespace:Hash.Wpf.Properties"
         mc:Ignorable="d"
         Title="HashCalculator" Icon="./Resources/Hash.ico"
-        MinHeight="387" MinWidth="480" Height="400" Width="600">
+        MinHeight="387" MinWidth="480" Height="400" Width="520">
     <Grid Background="#FFF0F0F0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -88,7 +88,7 @@
                         <ComboBox Grid.Column="0" Text="Hashを選択" IsEditable="True"></ComboBox>
                         <CheckBox Grid.Column="1" Margin="5,3,0,0" Content="大文字"/>
                         <CheckBox Grid.Column="2" Margin="0,3,0,0" Content="ハイフン"/>
-                        <Button Grid.Column="3" Margin="0" Content="値をリセット"/>
+                        <Button Grid.Column="3" Margin="0" Foreground="#E00000" FontWeight="Bold" Content="値をリセット"/>
                     </Grid>
                     <Grid Grid.Row="3" Margin="0,5" Height="60">
                         <TextBox Text="ここにHash値が表示されます" FontSize="14" IsReadOnly="True"/>
@@ -118,7 +118,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" HorizontalAlignment="Right">
-                        <Button Padding="5,0" Content="リセット"/>
+                        <Button Padding="10,0" Foreground="Red" Content="リセット"/>
                     </Grid>
                     <Grid Grid.Row="1" Margin="0,0,0,1" HorizontalAlignment="Left">
                         <Rectangle Stroke="#FFACACAC"/>
@@ -133,7 +133,7 @@
                             <ComboBox Text="比較①" IsEditable="True"></ComboBox>
                         </Grid>
                         <Grid Grid.Column="1" Margin="5,0" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <Button Padding="5,0" Content="クリップボードから①へ貼り付け"/>
+                            <Button Padding="15,0" Content="クリップボードから①へ貼り付け"/>
                         </Grid>
                     </Grid>
                     <Grid Grid.Row="3" Margin="0,3">
@@ -152,7 +152,7 @@
                             <ComboBox Text="比較②" IsEditable="True"></ComboBox>
                         </Grid>
                         <Grid Grid.Column="1" Margin="5,0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Button Padding="5,0" Content="クリップボードから②へ貼り付け"/>
+                            <Button Padding="15,0" Content="クリップボードから②へ貼り付け"/>
                         </Grid>
                     </Grid>
                     <Grid Grid.Row="6" Margin="0,3">
