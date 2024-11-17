@@ -78,8 +78,9 @@ public partial class App : Application
                     Environment.ExitCode = 1;
                     return;
                 case "/ctm":
-                    //ApplicationConfiguration.Initialize();
-                    //Application.Run(new HashForContext());
+                    App appContext = new App();
+                    appContext.InitializeComponent();
+                    appContext.Run(new HashForContextWindow());
                     return;
             }
         }
@@ -89,7 +90,7 @@ public partial class App : Application
 
         App app = new App();
         app.InitializeComponent();
-        app.Run();
+        app.Run(new MainWindow(!createdNew));
         mutex.ReleaseMutex();
     }
 
