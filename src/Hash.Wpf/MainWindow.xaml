@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Copyright © 2021-2024 Hibi_10000
 
     This file is part of HashCalculator program.
@@ -26,6 +26,7 @@
         xmlns:prop="clr-namespace:Hash.Wpf.Properties"
         mc:Ignorable="d"
         Title="HashCalculator" Icon="./Resources/Hash.ico"
+        Loaded="MainWindow_OnLoaded"
         MinHeight="387" MinWidth="480" Height="400" Width="520">
     <Grid Background="#FFF0F0F0">
         <Grid.RowDefinitions>
@@ -45,7 +46,7 @@
             </MenuItem>
         </Menu>
         <Grid Grid.Row="1" Margin="5">
-            <Label Content="HashCalculator" FontSize="35" BorderThickness="1" Padding="10,0" HorizontalAlignment="Left" BorderBrush="Black" Background="White" Foreground="Lime" FontWeight="Bold"/>
+            <Label x:Name="hashAndVer" Content="HashCalculator" FontSize="35" BorderThickness="1" Padding="10,0" HorizontalAlignment="Left" BorderBrush="Black" Background="White" Foreground="Lime" FontWeight="Bold"/>
             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
                 <Label Content="CreatedBy : Hibi__10000" Padding="0"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
@@ -69,7 +70,7 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" Height="40">
-                        <TextBox Text="ファイルのパス" FontSize="14" TextWrapping="Wrap" Cursor="No" IsReadOnly="True" AllowDrop="False" AcceptsReturn="True"/>
+                        <TextBox x:Name="HashFileURL" Text="ファイルのパス" FontSize="14" TextWrapping="Wrap" Cursor="No" IsReadOnly="True" AllowDrop="False" AcceptsReturn="True"/>
                     </Grid>
                     <Grid Grid.Row="1" Margin="0,5" AllowDrop="True">
                         <Rectangle Stroke="Black"/>
@@ -85,7 +86,7 @@
                             <ColumnDefinition Width="3*"/>
                             <ColumnDefinition Width="4*"/>
                         </Grid.ColumnDefinitions>
-                        <ComboBox Grid.Column="0" Text="Hashを選択" IsEditable="True"></ComboBox>
+                        <ComboBox x:Name="HashSelector" Grid.Column="0" Text="Hashを選択" IsEditable="True"></ComboBox>
                         <CheckBox Grid.Column="1" Margin="5,3,0,0" Content="大文字"/>
                         <CheckBox Grid.Column="2" Margin="0,3,0,0" Content="ハイフン"/>
                         <Button Grid.Column="3" Margin="0" Foreground="#E00000" FontWeight="Bold" Content="値をリセット"/>
@@ -192,10 +193,10 @@
                         <Label Content="設定" FontSize="24" Padding="5,0"/>
                     </Grid>
                     <Grid>
-                        <CheckBox Margin="40,50,0,0">
+                        <CheckBox x:Name="HashForContextEnable" Margin="40,50,0,0">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="./Resources/UAC.ico" Height="16" Width="16" Margin="-2,0,2,0"/>
-                                <TextBlock Text="Hash for Contextを有効にする"/>
+                                <TextBlock x:Name="HashForContextEnableText" Text="Hash for Contextを有効にする"/>
                             </StackPanel>
                         </CheckBox>
                     </Grid>
@@ -203,8 +204,8 @@
             </TabItem>
         </TabControl>
         <Grid Grid.Row="3">
-            <Label Content="HashCalculator" Padding="5,0"/>
-            <Label Content="Copyright © 2021-2024 Hibi__10000" Padding="5,0" HorizontalAlignment="Right"/>
+            <Label x:Name="HashVer" Content="HashCalculator" Padding="5,0"/>
+            <Label x:Name="CopyRight" Content="Copyright © 2021-2024 Hibi__10000" Padding="5,0" HorizontalAlignment="Right"/>
         </Grid>
     </Grid>
 </Window>
