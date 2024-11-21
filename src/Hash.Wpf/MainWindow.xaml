@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Copyright © 2021-2024 Hibi_10000
 
     This file is part of HashCalculator program.
@@ -52,7 +52,8 @@
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Label Content="DL : " Padding="0"/>
                     <Label Padding="0">
-                        <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/releases">
+                        <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/releases/"
+                                   RequestNavigate="DLLink1_OnRequestNavigate">
                             <TextBlock Text="GitHub"/>
                         </Hyperlink>
                     </Label>
@@ -72,7 +73,7 @@
                     <Grid Grid.Row="0" Height="40">
                         <TextBox x:Name="HashFileURL" Text="ファイルのパス" FontSize="14" TextWrapping="Wrap" Cursor="No" IsReadOnly="True" AllowDrop="False" AcceptsReturn="True"/>
                     </Grid>
-                    <Grid Grid.Row="1" Margin="0,5" AllowDrop="True">
+                    <Grid Grid.Row="1" Margin="0,5" AllowDrop="True" Drop="DropPanel_OnDrop" DragEnter="DropPanel_OnDragEnter">
                         <Rectangle Stroke="Black"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Label Content="ここにファイルをドロップ" FontSize="30" Padding="5"/>

@@ -1,4 +1,4 @@
-// Copyright © 2021-2024 Hibi_10000
+﻿// Copyright © 2021-2024 Hibi_10000
 // 
 // This file is part of HashCalculator program.
 // 
@@ -17,6 +17,7 @@
 
 using System;
 using System.Windows;
+using System.Windows.Navigation;
 using Microsoft.Win32;
 
 namespace Hash.Wpf;
@@ -77,5 +78,31 @@ public partial class MainWindow : Window
         hashAndVer.Content = $"HashCalculator v{App.SemVer}";
         HashVer.Content = $"HashCalculator v{App.SemVer}{App.Ch}";
         CopyRight.Content = $"Copyright © 2021-{DateTime.Now.Year} Hibi__10000";
+    }
+
+    private void DLLink1_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
+    {
+        App.OpenLink("https://github.com/Hibi-10000/HashCalculator/releases/");
+    }
+
+    private void DropPanel_OnDrop(object sender, DragEventArgs e)
+    {
+        HashFileURL.Text = "";
+        string[]? files = (string[]?)e.Data?.GetData(DataFormats.FileDrop, false);
+        foreach (string file in files ?? []) {
+            HashFileURL.Text += file;
+        }
+    }
+
+    private void DropPanel_OnDragEnter(object sender, DragEventArgs e)
+    {
+        if (e.Data?.GetDataPresent(DataFormats.FileDrop) ?? false)
+        {
+            e.Effects = DragDropEffects.All;
+        }
+        else
+        {
+            e.Effects = DragDropEffects.None;
+        }
     }
 }
