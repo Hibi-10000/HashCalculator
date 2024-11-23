@@ -105,4 +105,32 @@ public partial class MainWindow : Window
             e.Effects = DragDropEffects.None;
         }
     }
+
+    private void SelectFileButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        OpenFileDialog ofd = new OpenFileDialog();
+        if (ofd.ShowDialog() ?? false)
+        {
+            HashFileURL.Text = "";
+            HashFileURL.Text = ofd.FileName;
+        }
+        //HashSelector_Set(sender, e);
+    }
+
+    /*
+    private void SelectFolderButton_OnClick(object sender, EventArgs e)
+    {
+        FileFolderURLBox.Text = "";
+        OpenFolderDialog ofd = new OpenFolderDialog()
+        {
+            Title = "フォルダを選択してください",
+            InitialDirectory = @"C:\",
+            RestoreDirectory = true,
+        };
+        if (ofd.ShowDialog() ?? false)
+        {
+            FileFolderURLBox.Text = $"{ofd.FolderName}";
+        }
+    }
+    */
 }

@@ -77,7 +77,7 @@
                         <Rectangle Stroke="Black"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Label Content="ここにファイルをドロップ" FontSize="30" Padding="5"/>
-                            <Button Content="ファイルを選択" FontSize="25" Margin="10,5" Padding="10,0"/>
+                            <Button Content="ファイルを選択" FontSize="25" Margin="10,5" Padding="10,0" Click="SelectFileButton_OnClick"/>
                         </StackPanel>
                     </Grid>
                     <Grid Grid.Row="2">
