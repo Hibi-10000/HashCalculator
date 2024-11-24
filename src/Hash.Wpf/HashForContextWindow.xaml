@@ -40,7 +40,8 @@
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Label Content="DL : " Padding="0"/>
                     <Label Padding="0">
-                        <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/releases">
+                        <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/releases"
+                                   RequestNavigate="DLGitHub_OnRequestNavigate">
                             <TextBlock Text="GitHub"/>
                         </Hyperlink>
                     </Label>
@@ -65,16 +66,16 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <ComboBox Grid.Column="0" x:Name="HashSelector" SelectedIndex="0" Width="100" IsEditable="True">
+                <ComboBox Grid.Column="0" x:Name="HashSelector" SelectedIndex="0" Width="100" IsEditable="True" Selected="HashSelector_OnSelected">
                     <ComboBoxItem Content="Hashを選択"/>
                 </ComboBox>
-                <CheckBox Grid.Column="1" Margin="5,4,10,0" Content="大文字"/>
-                <CheckBox Grid.Column="2" Margin="0,4,10,0" Content="ハイフン"/>
-                <Button Grid.Column="4" Padding="30,0" Margin="0,0,4,0" Content="Hashをコピー"/>
-                <Button Grid.Column="5" Padding="30,0" Foreground="Red" Content="Hashをリセット"/>
+                <CheckBox x:Name="checkUpper" Grid.Column="1" Margin="5,4,10,0" Content="大文字"/>
+                <CheckBox x:Name="checkHyphen" Grid.Column="2" Margin="0,4,10,0" Content="ハイフン"/>
+                <Button Grid.Column="4" Padding="30,0" Margin="0,0,4,0" Content="Hashをコピー" Click="HashCopy_OnClick"/>
+                <Button Grid.Column="5" Padding="30,0" Foreground="Red" Content="Hashをリセット" Click="HashReset_OnClick"/>
             </Grid>
             <Grid Grid.Row="2">
-                <TextBox Text="ここにHash値が表示されます" FontSize="14" TextWrapping="Wrap" IsReadOnly="True"/>
+                <TextBox x:Name="HashOutputBox" Text="ここにHash値が表示されます" FontSize="14" TextWrapping="Wrap" IsReadOnly="True"/>
             </Grid>
         </Grid>
         <Grid Grid.Row="2" Margin="5">

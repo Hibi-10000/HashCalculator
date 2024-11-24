@@ -18,6 +18,7 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 using Hash.Core;
 
 namespace Hash.Wpf;
@@ -66,6 +67,40 @@ public partial class HashForContextWindow : Window
         foreach (string hashTypeName in HashCalculate.GetHashTypeNames())
         {
             HashSelector.Items.Add(new ComboBoxItem { Content = hashTypeName });
+        }
+    }
+
+    private void HashReset_OnClick(object sender, RoutedEventArgs e)
+    {
+        HashOutputBox.Text = "ここにHash値が表示されます";
+        HashSelector.Text = "Hashを選択してください";
+    }
+
+    private void HashCopy_OnClick(object sender, RoutedEventArgs e)
+    {
+        Clipboard.SetText(HashSelector.Text);
+        Clipboard.SetText(HashOutputBox.Text);
+        HashOutputBox.Focus();
+        HashOutputBox.SelectAll();
+    }
+
+    private void DLGitHub_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
+    {
+        App.OpenLink("https://github.com/Hibi-10000/HashCalculator/releases/");
+    }
+
+    private void HashSelector_OnSelected(object sender, RoutedEventArgs e)
+    {
+        if (HashFileURL.Text != "ファイルのパス(※これが表示されている場合はバグまたは起動方法が間違っています)" && HashFileURL.Text != "")
+        {
+            string hashType = HashSelector.Text;
+            string filePath = HashFileURL.Text;
+            bool upper = checkUpper.IsChecked ?? false;
+            bool hyphen = checkHyphen.IsChecked ?? false;
+            string hash = HashCalculate.GetHash(hashType, filePath, upper, hyphen) ?? "ここにHash値が表示されます";
+            HashOutputBox.Text = hash;
+        } else {
+            HashOutputBox.Text = "ここにHash値が表示されます";
         }
     }
 }
