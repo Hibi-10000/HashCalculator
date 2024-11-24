@@ -25,6 +25,7 @@
         xmlns:local="clr-namespace:Hash.Wpf"
         mc:Ignorable="d"
         Title="Hash for ContextMenu" Icon="./Resources/Hash.ico"
+        Loaded="HashForContextWindow_OnLoaded"
         MinHeight="237" MinWidth="505" Height="268" Width="560">
     <Grid Background="#FFF0F0F0">
         <Grid.RowDefinitions>
@@ -33,7 +34,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Margin="5,5,5,10">
-            <Label Content="Hash for ContextMenu" FontSize="27" BorderThickness="1" Padding="10,0" HorizontalAlignment="Left" BorderBrush="Black" Background="White" Foreground="Lime" FontWeight="Bold"/>
+            <Label x:Name="hashAndVer" Content="Hash for ContextMenu" FontSize="27" BorderThickness="1" Padding="10,0" HorizontalAlignment="Left" BorderBrush="Black" Background="White" Foreground="Lime" FontWeight="Bold"/>
             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
                 <Label Content="CreatedBy : Hibi__10000" Padding="0"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
@@ -53,7 +54,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" Height="40">
-                <TextBox Text="ファイルのパス" FontSize="14" TextWrapping="Wrap" Cursor="No" IsReadOnly="True" AllowDrop="False" AcceptsReturn="True"/>
+                <TextBox x:Name="HashFileURL" Text="ファイルのパス" FontSize="14" TextWrapping="Wrap" Cursor="No" IsReadOnly="True" AllowDrop="False" AcceptsReturn="True"/>
             </Grid>
             <Grid Grid.Row="1" Margin="0,5">
                 <Grid.ColumnDefinitions>
@@ -64,7 +65,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <ComboBox Grid.Column="0" SelectedIndex="0" Width="100" IsEditable="True">
+                <ComboBox Grid.Column="0" x:Name="HashSelector" SelectedIndex="0" Width="100" IsEditable="True">
                     <ComboBoxItem Content="Hashを選択"/>
                 </ComboBox>
                 <CheckBox Grid.Column="1" Margin="5,4,10,0" Content="大文字"/>
@@ -84,10 +85,11 @@
                <ColumnDefinition Width="Auto"/>
                <ColumnDefinition Width="Auto"/>
            </Grid.ColumnDefinitions>
-           <Label Grid.Column="0" Padding="5,0" VerticalAlignment="Bottom" Content="Copyright © 2021-2024 Hibi__10000"/>
-           <Button Grid.Column="2" Margin="0,0,2,0" Padding="10,5" FontSize="15" Content="Debug"/>
+           <!-- TODO: StackPanelを使う? -->
+           <Label x:Name="CopyRight" Grid.Column="0" Padding="5,0" VerticalAlignment="Bottom" Content="Copyright © 2021-2024 Hibi__10000"/>
+           <Button x:Name="Debug" Grid.Column="2" Margin="0,0,2,0" Padding="10,5" FontSize="15" Visibility="Collapsed" Content="Debug"/>
            <Button Grid.Column="3" Margin="2,0,2,0" Padding="10,5" FontSize="15" Content="HashCalculatorを起動"/>
-           <Button Grid.Column="4" Margin="2,0,0,0" Padding="35,5" FontSize="15" Content="OK"/>
+           <Button Grid.Column="4" Margin="2,0,0,0" Padding="35,5" FontSize="15" Content="OK" Click="OK_OnClick"/>
         </Grid>
     </Grid>
 </Window>
