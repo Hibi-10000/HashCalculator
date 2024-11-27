@@ -76,7 +76,7 @@ public partial class HashForContextWindow : Window
     private void HashReset_OnClick(object sender, RoutedEventArgs e)
     {
         HashOutputBox.Text = "ここにHash値が表示されます";
-        HashSelector.Text = "Hashを選択してください";
+        HashSelector.Text = "Hashを選択";
     }
 
     private void HashCopy_OnClick(object sender, RoutedEventArgs e)
@@ -92,9 +92,9 @@ public partial class HashForContextWindow : Window
         App.OpenLink("https://github.com/Hibi-10000/HashCalculator/releases/");
     }
 
-    private void HashSelector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void HashSelector_OnTextChanged(object? sender, TextChangedEventArgs? e)
     {
-        if (HashFileURL.Text != "ファイルのパス(※これが表示されている場合はバグまたは起動方法が間違っています)" && HashFileURL.Text != "")
+        if (HashFileURL.Text != "ファイルのパス(※これが表示されている場合は起動方法が間違っています)" && HashFileURL.Text != "")
         {
             string hashType = HashSelector.Text;
             string filePath = HashFileURL.Text;
@@ -107,11 +107,21 @@ public partial class HashForContextWindow : Window
         }
     }
 
+    private void CheckUpper_OnClick(object sender, RoutedEventArgs e)
+    {
+        HashSelector_OnTextChanged(null, null);
+    }
+
+    private void CheckHyphen_OnClick(object sender, RoutedEventArgs e)
+    {
+        HashSelector_OnTextChanged(null, null);
+    }
+
     private void StartHash_OnClick(object sender, RoutedEventArgs e)
     {
         string option = "";
-        if (HashFileURL.Text != "ファイルのパス(※これが表示されている場合はバグまたは起動方法が間違っています)") option += "/f \"" + HashFileURL.Text + "\" ";
-        if (HashSelector.Text != "Hashを選択してください") option += "/h " + HashSelector.Text + " ";
+        if (HashFileURL.Text != "ファイルのパス(※これが表示されている場合は起動方法が間違っています)") option += "/f \"" + HashFileURL.Text + "\" ";
+        if (HashSelector.Text != "Hashを選択") option += "/h " + HashSelector.Text + " ";
         if (Debug.Visibility == Visibility.Visible) option += "/d";
         if (!File.Exists(Environment.ProcessPath)) return;
         ProcessStartInfo startInfo = new ProcessStartInfo(Environment.ProcessPath)
@@ -129,6 +139,7 @@ public partial class HashForContextWindow : Window
         {
             HashFileURL.Text = "";
             HashFileURL.Text = ofd.FileName;
+            HashSelector_OnTextChanged(null, null);
         }
     }
 }

@@ -55,7 +55,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" Height="40">
-                <TextBox x:Name="HashFileURL" Text="ファイルのパス" FontSize="14" TextWrapping="Wrap" Cursor="No" IsReadOnly="True" AllowDrop="False" AcceptsReturn="True"/>
+                <TextBox x:Name="HashFileURL" Text="ファイルのパス(※これが表示されている場合は起動方法が間違っています)" FontSize="14" TextWrapping="Wrap" Cursor="No" IsReadOnly="True" AllowDrop="False" AcceptsReturn="True"/>
             </Grid>
             <Grid Grid.Row="1" Margin="0,5">
                 <Grid.ColumnDefinitions>
@@ -66,11 +66,11 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <ComboBox Grid.Column="0" x:Name="HashSelector" SelectedIndex="0" Width="100" IsEditable="True" SelectionChanged="HashSelector_OnSelectionChanged">
+                <ComboBox Grid.Column="0" x:Name="HashSelector" SelectedIndex="0" Width="100" IsEditable="True" TextBoxBase.TextChanged="HashSelector_OnTextChanged">
                     <ComboBoxItem Content="Hashを選択"/>
                 </ComboBox>
-                <CheckBox x:Name="checkUpper" Grid.Column="1" Margin="5,4,10,0" Content="大文字"/>
-                <CheckBox x:Name="checkHyphen" Grid.Column="2" Margin="0,4,10,0" Content="ハイフン"/>
+                <CheckBox x:Name="checkUpper" Grid.Column="1" Margin="5,4,10,0" Content="大文字" Click="CheckUpper_OnClick"/>
+                <CheckBox x:Name="checkHyphen" Grid.Column="2" Margin="0,4,10,0" Content="ハイフン" Click="CheckHyphen_OnClick"/>
                 <Button Grid.Column="4" Padding="30,0" Margin="0,0,4,0" Content="Hashをコピー" Click="HashCopy_OnClick"/>
                 <Button Grid.Column="5" Padding="30,0" Foreground="Red" Content="Hashをリセット" Click="HashReset_OnClick"/>
             </Grid>
