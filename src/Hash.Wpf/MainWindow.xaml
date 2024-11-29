@@ -87,13 +87,13 @@
                             <ColumnDefinition Width="3*"/>
                             <ColumnDefinition Width="4*"/>
                         </Grid.ColumnDefinitions>
-                        <ComboBox x:Name="HashSelector" Grid.Column="0" Text="Hashを選択" IsEditable="True"></ComboBox>
-                        <CheckBox Grid.Column="1" Margin="5,3,0,0" Content="大文字"/>
-                        <CheckBox Grid.Column="2" Margin="0,3,0,0" Content="ハイフン"/>
-                        <Button Grid.Column="3" Margin="0" Foreground="#E00000" FontWeight="Bold" Content="値をリセット"/>
+                        <ComboBox x:Name="HashSelector" Grid.Column="0" Text="Hashを選択" IsEditable="True" TextBoxBase.TextChanged="HashSelector_OnTextChanged"></ComboBox>
+                        <CheckBox x:Name="checkUpper" Grid.Column="1" Margin="5,3,0,0" Content="大文字"/>
+                        <CheckBox x:Name="checkHyphen" Grid.Column="2" Margin="0,3,0,0" Content="ハイフン"/>
+                        <Button Grid.Column="3" Margin="0" Foreground="#E00000" FontWeight="Bold" Content="値をリセット" Click="AllReset_OnClick"/>
                     </Grid>
                     <Grid Grid.Row="3" Margin="0,5" Height="60">
-                        <TextBox Text="ここにHash値が表示されます" FontSize="14" TextWrapping="Wrap" IsReadOnly="True"/>
+                        <TextBox x:Name="HashOutputBox" Text="ここにHash値が表示されます" FontSize="14" TextWrapping="Wrap" IsReadOnly="True"/>
                     </Grid>
                     <Grid Grid.Row="4">
                         <Grid.ColumnDefinitions>
@@ -101,7 +101,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Margin="0,0,2,0" Content="Hash値をコピー"/>
+                        <Button Grid.Column="0" Margin="0,0,2,0" Content="Hash値をコピー" Click="HashCopy_OnClick"/>
                         <Button Grid.Column="1" Margin="2,0,2,0" Content="比較①にコピー"/>
                         <Button Grid.Column="2" Margin="2,0,0,0" Content="比較②にコピー"/>
                     </Grid>

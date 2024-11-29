@@ -17,7 +17,9 @@
 
 using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Navigation;
+using Hash.Core;
 using Microsoft.Win32;
 
 namespace Hash.Wpf;
@@ -114,7 +116,7 @@ public partial class MainWindow : Window
             HashFileURL.Text = "";
             HashFileURL.Text = ofd.FileName;
         }
-        //HashSelector_Set(sender, e);
+        HashSelector_OnTextChanged(null, null);
     }
 
     /*
@@ -133,4 +135,32 @@ public partial class MainWindow : Window
         }
     }
     */
+
+    private void AllReset_OnClick(object sender, RoutedEventArgs e)
+    {
+        HashOutputBox.Text = "ここにHash値が表示されます";
+        HashFileURL.Text = "ファイルのパス";
+        HashSelector.Text = "Hashを選択";
+    }
+
+    private void HashCopy_OnClick(object sender, RoutedEventArgs e)
+    {
+        Clipboard.SetText(HashOutputBox.Text);
+        HashOutputBox.Focus();
+        HashOutputBox.SelectAll();
+    }
+
+    private void HashSelector_OnTextChanged(object? sender, TextChangedEventArgs? e)
+    {
+        if (HashFileURL.Text == "ファイルのパス" || HashFileURL.Text == "") {
+            HashOutputBox.Text = "ここにHash値が表示されます";
+        } else {
+            string hashType = HashSelector.Text;
+            string filePath = HashFileURL.Text;
+            bool upper = checkUpper.IsChecked ?? false;
+            bool hyphen = checkHyphen.IsChecked ?? false;
+            string hash = HashCalculate.GetHash(hashType, filePath, upper, hyphen) ?? "ここにHash値が表示されます";
+            HashOutputBox.Text = hash;
+        }
+    }
 }
