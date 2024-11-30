@@ -232,8 +232,8 @@ public partial class MainWindow : Window
 
     private void menuHelpVer_OnClick(object sender, RoutedEventArgs e)
     {
-        //AboutBox aboutBox = new AboutBox();
-        //aboutBox.ShowDialog();
+        AboutWindow aboutBox = new AboutWindow();
+        aboutBox.ShowDialog();
     }
 
     private void menuHelpReadme_OnClick(object sender, RoutedEventArgs e)
