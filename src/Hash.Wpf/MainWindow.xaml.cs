@@ -163,4 +163,47 @@ public partial class MainWindow : Window
             HashOutputBox.Text = hash;
         }
     }
+
+    private void compare1copy_OnClick(object sender, RoutedEventArgs e)
+    {
+        compare1hash.Text = HashOutputBox.Text;
+        compare1hashType.Text = HashSelector.Text;
+    }
+
+    private void compare2copy_OnClick(object sender, RoutedEventArgs e)
+    {
+        compare2hash.Text = HashOutputBox.Text;
+        compare2hashType.Text = HashSelector.Text;
+    }
+
+    private void compareExecButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (compare1hash.Text == compare2hash.Text)
+        {
+            compareResult.Content = "真";
+        }
+        else
+        {
+            compareResult.Content = "偽";
+        }
+    }
+
+    private void compareReset_OnClick(object sender, RoutedEventArgs e)
+    {
+        compareResult.Content = "結果";
+        compare1hashType.Text = "比較①";
+        compare1hash.Text = "";
+        compare2hashType.Text = "比較②";
+        compare2hash.Text = "";
+    }
+
+    private void paste1cb_OnClick(object sender, RoutedEventArgs e)
+    {
+        compare1hash.Text = Clipboard.GetText();
+    }
+
+    private void paste2cb_OnClick(object sender, RoutedEventArgs e)
+    {
+        compare2hash.Text = Clipboard.GetText();
+    }
 }
