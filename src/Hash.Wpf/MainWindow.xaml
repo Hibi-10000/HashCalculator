@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Copyright © 2021-2024 Hibi_10000
 
     This file is part of HashCalculator program.
@@ -87,9 +87,11 @@
                             <ColumnDefinition Width="3*"/>
                             <ColumnDefinition Width="4*"/>
                         </Grid.ColumnDefinitions>
-                        <ComboBox x:Name="HashSelector" Grid.Column="0" Text="Hashを選択" IsEditable="True" TextBoxBase.TextChanged="HashSelector_OnTextChanged"></ComboBox>
-                        <CheckBox x:Name="checkUpper" Grid.Column="1" Margin="5,3,0,0" Content="大文字"/>
-                        <CheckBox x:Name="checkHyphen" Grid.Column="2" Margin="0,3,0,0" Content="ハイフン"/>
+                        <ComboBox x:Name="HashSelector" Grid.Column="0" SelectedIndex="0" IsEditable="True" TextBoxBase.TextChanged="HashSelector_OnTextChanged">
+                            <ComboBoxItem Content="Hashを選択"/>
+                        </ComboBox>
+                        <CheckBox x:Name="checkUpper" Grid.Column="1" Margin="5,3,0,0" Content="大文字" Click="CheckUpper_OnClick"/>
+                        <CheckBox x:Name="checkHyphen" Grid.Column="2" Margin="0,3,0,0" Content="ハイフン" Click="CheckHyphen_OnClick"/>
                         <Button Grid.Column="3" Margin="0" Foreground="#E00000" FontWeight="Bold" Content="値をリセット" Click="AllReset_OnClick"/>
                     </Grid>
                     <Grid Grid.Row="3" Margin="0,5" Height="60">
@@ -131,8 +133,10 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0">
-                            <ComboBox x:Name="compare1hashType" Text="比較①" IsEditable="True"></ComboBox>
+                        <Grid Grid.Column="0" Width="100">
+                            <ComboBox x:Name="compare1hashType" SelectedIndex="0" IsEditable="True">
+                                <ComboBoxItem Content="比較①"/>
+                            </ComboBox>
                         </Grid>
                         <Grid Grid.Column="1" Margin="5,0" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <Button Padding="15,0" Content="クリップボードから①へ貼り付け" Click="paste1cb_OnClick"/>
@@ -150,8 +154,10 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0">
-                            <ComboBox x:Name="compare2hashType" Text="比較②" IsEditable="True"></ComboBox>
+                        <Grid Grid.Column="0" Width="100">
+                            <ComboBox x:Name="compare2hashType" SelectedIndex="0" IsEditable="True">
+                                <ComboBoxItem Content="比較②"/>
+                            </ComboBox>
                         </Grid>
                         <Grid Grid.Column="1" Margin="5,0" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Button Padding="15,0" Content="クリップボードから②へ貼り付け" Click="paste2cb_OnClick"/>

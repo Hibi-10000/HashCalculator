@@ -1,4 +1,4 @@
-// Copyright © 2021-2024 Hibi_10000
+﻿// Copyright © 2021-2024 Hibi_10000
 // 
 // This file is part of HashCalculator program.
 // 
@@ -82,6 +82,12 @@ public partial class MainWindow : Window
         hashAndVer.Content = $"HashCalculator v{App.SemVer}";
         HashVer.Content = $"HashCalculator v{App.SemVer}{App.Ch}";
         CopyRight.Content = $"Copyright © 2021-{DateTime.Now.Year} Hibi__10000";
+        foreach (string hashTypeName in HashCalculate.GetHashTypeNames())
+        {
+            HashSelector.Items.Add(new ComboBoxItem { Content = hashTypeName });
+            compare1hashType.Items.Add(new ComboBoxItem { Content = hashTypeName });
+            compare2hashType.Items.Add(new ComboBoxItem { Content = hashTypeName });
+        }
     }
 
     private void DLLink1_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
@@ -164,6 +170,16 @@ public partial class MainWindow : Window
             string hash = HashCalculate.GetHash(hashType, filePath, upper, hyphen) ?? "ここにHash値が表示されます";
             HashOutputBox.Text = hash;
         }
+    }
+
+    private void CheckUpper_OnClick(object sender, RoutedEventArgs e)
+    {
+        HashSelector_OnTextChanged(null, null);
+    }
+
+    private void CheckHyphen_OnClick(object sender, RoutedEventArgs e)
+    {
+        HashSelector_OnTextChanged(null, null);
     }
 
     private void compare1copy_OnClick(object sender, RoutedEventArgs e)
