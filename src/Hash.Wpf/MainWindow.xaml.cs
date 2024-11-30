@@ -1,4 +1,4 @@
-﻿// Copyright © 2021-2024 Hibi_10000
+// Copyright © 2021-2024 Hibi_10000
 // 
 // This file is part of HashCalculator program.
 // 
@@ -16,6 +16,8 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -206,4 +208,81 @@ public partial class MainWindow : Window
     {
         compare2hash.Text = Clipboard.GetText();
     }
+
+    private void menuFileExit_OnClick(object sender, RoutedEventArgs e)
+    {
+        Close();
+    }
+
+    private void menuHelpVer_OnClick(object sender, RoutedEventArgs e)
+    {
+        //AboutBox aboutBox = new AboutBox();
+        //aboutBox.ShowDialog();
+    }
+
+    private void menuHelpReadme_OnClick(object sender, RoutedEventArgs e)
+    {
+        Tab.SelectedIndex = 2;
+    }
+
+    private void menuFileSettings_OnClick(object sender, RoutedEventArgs e)
+    {
+        Tab.SelectedIndex = 3;
+    }
+
+    private void HashForContextEnable_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (Tab.SelectedIndex == 3)
+        {
+            if (File.Exists(Environment.ProcessPath))
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo(Environment.ProcessPath)
+                {
+                    UseShellExecute = true,
+                    Verb = "runas",
+                    Arguments = HashForContextEnable.IsChecked ?? false ? "/rc" : "/rd"
+                };
+                Process? process = Process.Start(startInfo);
+                process?.WaitForExit();
+                if (process?.ExitCode is not 0) {
+                    HashForContextEnable.IsChecked = HashForContextEnable.IsChecked is not true;
+                }
+            }
+            else
+            {
+                HashForContextEnable.IsChecked = HashForContextEnable.IsChecked is not true;
+            }
+        }
+    }
+
+    /*
+    private void setLightMode()
+    {
+        this.BackColor = SystemColors.Control;
+        this.ForeColor = SystemColors.ControlText;
+        this.richTextBox1.BackColor = SystemColors.Control;
+        this.hashAndVer.ForeColor = Color.Lime;
+        this.hashAndVer.BackColor = SystemColors.Window;
+        this.TabHash.BackColor = SystemColors.Window;
+        this.TabHash.ForeColor = SystemColors.ControlText;
+        this.HashFileURL.BackColor = SystemColors.Control;
+        this.HashFileURL.ForeColor = SystemColors.WindowText;
+        this.DropPanel.BackColor = SystemColors.Window;
+        this.DropPanel.ForeColor = SystemColors.ControlText;
+    }
+
+    private void setDarkMode()
+    {
+        this.BackColor = SystemColors.ControlDark;
+        this.ForeColor = SystemColors.ControlLightLight;
+        this.richTextBox1.BackColor = SystemColors.ControlDark;
+        this.hashAndVer.ForeColor = Color.Lime;
+        this.hashAndVer.BackColor = SystemColors.ControlDarkDark;
+        this.TabHash.BackColor = SystemColors.ControlDarkDark;
+        this.TabHash.ForeColor = SystemColors.ControlLightLight;
+        this.HashFileURL.BackColor = SystemColors.ControlDark;
+        this.HashFileURL.ForeColor = SystemColors.Window;
+        this.DropPanel.BackColor = SystemColors.ControlDark;
+        this.DropPanel.ForeColor = SystemColors.Window;
+    }*/
 }
