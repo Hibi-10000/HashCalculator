@@ -27,7 +27,7 @@
         mc:Ignorable="d"
         Title="HashCalculator" Icon="./Resources/Hash.ico"
         Loaded="MainWindow_OnLoaded"
-        MinHeight="387" MinWidth="480" Height="400" Width="520">
+        MinHeight="387" MinWidth="520" Height="400" Width="520">
     <Grid Background="#FFF0F0F0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
