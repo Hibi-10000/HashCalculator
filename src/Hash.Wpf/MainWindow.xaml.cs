@@ -232,7 +232,11 @@ public partial class MainWindow : Window
 
     private void menuHelpVer_OnClick(object sender, RoutedEventArgs e)
     {
-        AboutWindow aboutBox = new AboutWindow();
+        AboutWindow aboutBox = new AboutWindow
+        {
+            Owner = this,
+            ShowInTaskbar = false
+        };
         aboutBox.ShowDialog();
     }
 

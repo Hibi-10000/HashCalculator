@@ -24,8 +24,38 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:Hash.Wpf"
         mc:Ignorable="d"
-        Title="AboutWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="HashCalculatorについて" Icon="./Resources/Hash.ico"
+        ResizeMode="CanMinimize"
+        Height="220" Width="450">
+    <Grid Background="#FFF0F0F0">
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0">
+            <Label Padding="10,0" Content="HashCalculator" FontSize="35" BorderThickness="1" BorderBrush="Black" Background="White" Foreground="Lime"/>
+            <Label Padding="0" Margin="5,10,5,0" Content="CreatedBy : Hibi__10000"/>
+            <Label Content="Version : v0.6.2"/>
+            <StackPanel Orientation="Horizontal" Margin="5,0">
+                <Label Padding="0" Content="DL : "/>
+                <Label Padding="0">
+                    <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/releases/">
+                        <TextBlock Text="GitHub"/>
+                    </Hyperlink>
+                </Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Label Padding="0" Margin="0,0,20,0">
+                    <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/blob/main/LICENSE.md">
+                        <TextBlock Text="ライセンス"/>
+                    </Hyperlink>
+                </Label>
+                <Label Padding="0">
+                    <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/blob/main/NOTICE.md">
+                        <TextBlock Text="サードパーティーライセンス"/>
+                    </Hyperlink>
+                </Label>
+            </StackPanel>
+            <Label Padding="0" Margin="5,2" Content="Copyright © 2021-2024 Hibi__10000"/>
+        </StackPanel>
+        <Grid HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,15,10">
+            <Button Padding="30,1" IsDefault="True" Content="OK"/>
+        </Grid>
     </Grid>
 </Window>
