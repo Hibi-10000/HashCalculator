@@ -15,7 +15,9 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
+using System;
 using System.Windows;
+using System.Windows.Navigation;
 
 namespace Hash.Wpf;
 
@@ -24,6 +26,33 @@ public partial class AboutWindow : Window
     public AboutWindow()
     {
         InitializeComponent();
+    }
+
+    private void OK_OnClick(object sender, RoutedEventArgs e)
+    {
+        Close();
+    }
+
+    private void dlFromGitHub_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
+    {
+        App.OpenLink("https://github.com/Hibi-10000/HashCalculator/releases/");
+    }
+
+    private void licenseLink_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
+    {
+        App.OpenLink($"https://github.com/Hibi-10000/HashCalculator/blob/v{App.SemVer}/LICENSE.md");
+    }
+
+    private void noticeLink_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
+    {
+        App.OpenLink($"https://github.com/Hibi-10000/HashCalculator/blob/v{App.SemVer}/NOTICE.md");
+    }
+
+    private void AboutWindow_OnLoaded(object sender, RoutedEventArgs e)
+    {
+        hashAndVer.Content = $"HashCalculator v{App.SemVer}";
+        version.Content = $"Version : v{App.SemVer}{App.Ch}";
+        copyright.Content = $"Copyright © 2021-{DateTime.Now.Year} Hibi__10000";
     }
 }
 

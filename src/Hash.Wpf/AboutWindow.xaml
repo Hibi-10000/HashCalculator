@@ -25,37 +25,40 @@
         xmlns:local="clr-namespace:Hash.Wpf"
         mc:Ignorable="d"
         Title="HashCalculatorについて" Icon="./Resources/Hash.ico"
-        ResizeMode="CanMinimize"
-        Height="220" Width="450">
+        Loaded="AboutWindow_OnLoaded"
+        ResizeMode="CanMinimize" Height="220" Width="450">
     <Grid Background="#FFF0F0F0">
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0">
-            <Label Padding="10,0" Content="HashCalculator" FontSize="35" BorderThickness="1" BorderBrush="Black" Background="White" Foreground="Lime"/>
+            <Label x:Name="hashAndVer" Padding="10,0" Content="HashCalculator" FontSize="35" BorderThickness="1" BorderBrush="Black" Background="White" Foreground="Lime"/>
             <Label Padding="0" Margin="5,10,5,0" Content="CreatedBy : Hibi__10000"/>
-            <Label Content="Version : v0.6.2"/>
+            <Label x:Name="version" Content="Version : "/>
             <StackPanel Orientation="Horizontal" Margin="5,0">
                 <Label Padding="0" Content="DL : "/>
                 <Label Padding="0">
-                    <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/releases/">
+                    <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/releases/"
+                               RequestNavigate="dlFromGitHub_OnRequestNavigate">
                         <TextBlock Text="GitHub"/>
                     </Hyperlink>
                 </Label>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5">
                 <Label Padding="0" Margin="0,0,20,0">
-                    <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/blob/main/LICENSE.md">
+                    <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/blob/main/LICENSE.md"
+                               RequestNavigate="licenseLink_OnRequestNavigate">
                         <TextBlock Text="ライセンス"/>
                     </Hyperlink>
                 </Label>
                 <Label Padding="0">
-                    <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/blob/main/NOTICE.md">
+                    <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/blob/main/NOTICE.md"
+                               RequestNavigate="noticeLink_OnRequestNavigate">
                         <TextBlock Text="サードパーティーライセンス"/>
                     </Hyperlink>
                 </Label>
             </StackPanel>
-            <Label Padding="0" Margin="5,2" Content="Copyright © 2021-2024 Hibi__10000"/>
+            <Label x:Name="copyright" Padding="0" Margin="5,2" Content="Copyright © 2021-2024 Hibi__10000"/>
         </StackPanel>
         <Grid HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,15,10">
-            <Button Padding="30,1" IsDefault="True" Content="OK"/>
+            <Button Padding="30,1" IsDefault="True" Content="OK" Click="OK_OnClick"/>
         </Grid>
     </Grid>
 </Window>
