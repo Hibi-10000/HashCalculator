@@ -23,7 +23,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hash.Wpf"
-        xmlns:prop="clr-namespace:Hash.Wpf.Properties"
         mc:Ignorable="d"
         Title="HashCalculator" Icon="./Resources/Hash.ico"
         Loaded="MainWindow_OnLoaded"
@@ -185,10 +184,10 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Readme">
-                <RichTextBox IsReadOnly="True">
+                <RichTextBox IsReadOnly="True" VerticalScrollBarVisibility="Visible">
                     <FlowDocument>
                         <Paragraph>
-                            <Run Text="{x:Static prop:Resources.Readme}"/>
+                            <Run Text="{x:Static local:Properties.Resources.Readme}"/>
                         </Paragraph>
                     </FlowDocument>
                 </RichTextBox>
