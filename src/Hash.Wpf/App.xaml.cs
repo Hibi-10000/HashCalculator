@@ -19,13 +19,16 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
-using System.Windows.Forms;
+using System.Windows;
 using Hash.Core;
 using Microsoft.Win32;
 
-namespace Hash.App;
+namespace Hash.Wpf;
 
-internal static class Program
+/// <summary>
+/// Interaction logic for App.xaml
+/// </summary>
+public partial class App : Application
 {
     internal const string Major = "0";
     internal const string Minor = "6";
@@ -35,11 +38,10 @@ internal static class Program
     internal const string SemVer = $"{Major}.{Minor}.{Build}";
 
     /// <summary>
-    /// アプリケーションのメイン エントリ ポイントです。
+    /// Application Entry Point.
     /// </summary>
     [STAThread]
-    private static void Main()
-    {
+    public static void Main() {
         string[] args = Environment.GetCommandLineArgs();
 
         foreach (string arg in args)
@@ -49,7 +51,7 @@ internal static class Program
                 case "/rc" when Environment.IsPrivilegedProcess:
                     if (!File.Exists(Environment.ProcessPath))
                     {
-                        MessageBox.Show("予期せぬ原因によりファイルパスを取得できませんでした。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("予期せぬ原因によりファイルパスを取得できませんでした。", "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
                         Environment.ExitCode = 1;
                         return;
                     }
@@ -72,12 +74,13 @@ internal static class Program
                     Registry.ClassesRoot.DeleteSubKeyTree(@"*\shell\HashForContext");
                     return;
                 case "/rd" or "/rc":
-                    MessageBox.Show("UACをキャンセルしたか、起動方法が間違っています。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("UACをキャンセルしたか、起動方法が間違っています。", "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
                     Environment.ExitCode = 1;
                     return;
                 case "/ctm":
-                    ApplicationConfiguration.Initialize();
-                    Application.Run(new HashForContext());
+                    App appContext = new App();
+                    appContext.InitializeComponent();
+                    appContext.Run(new HashForContextWindow());
                     return;
             }
         }
@@ -85,11 +88,9 @@ internal static class Program
         const string mutexName = "HashCalculator-Mutex";
         using Mutex mutex = new Mutex(true, mutexName, out bool createdNew);
 
-        // To customize application configuration such as set high DPI settings or default font,
-        // see https://aka.ms/applicationconfiguration.
-        ApplicationConfiguration.Initialize();
-        //Mutexの初期所有権が付与されたかを渡して起動
-        Application.Run(new HashCalculator(!createdNew));
+        App app = new App();
+        app.InitializeComponent();
+        app.Run(new MainWindow(!createdNew));
         mutex.ReleaseMutex();
     }
 

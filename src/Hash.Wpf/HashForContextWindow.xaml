@@ -1,0 +1,96 @@
+<!--
+    Copyright © 2021-2024 Hibi_10000
+
+    This file is part of HashCalculator program.
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<Window x:Class="Hash.Wpf.HashForContextWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:Hash.Wpf"
+        mc:Ignorable="d"
+        Title="Hash for ContextMenu" Icon="./Resources/Hash.ico"
+        Loaded="HashForContextWindow_OnLoaded"
+        MinHeight="237" MinWidth="530" Height="268" Width="560">
+    <Grid Background="#FFF0F0F0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="5,5,5,10">
+            <Label x:Name="hashAndVer" Content="Hash for ContextMenu" FontSize="27" BorderThickness="1" Padding="10,0" HorizontalAlignment="Left" BorderBrush="Black" Background="White" Foreground="Lime" FontWeight="Bold"/>
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
+                <Label Content="CreatedBy : Hibi__10000" Padding="0"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Content="DL : " Padding="0"/>
+                    <Label Padding="0">
+                        <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/releases"
+                                   RequestNavigate="DLGitHub_OnRequestNavigate">
+                            <TextBlock Text="GitHub"/>
+                        </Hyperlink>
+                    </Label>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Height="40">
+                <TextBox x:Name="HashFileURL" Text="ファイルのパス(※これが表示されている場合は起動方法が間違っています)" FontSize="14" TextWrapping="Wrap" Cursor="No" IsReadOnly="True" AllowDrop="False" AcceptsReturn="True"/>
+            </Grid>
+            <Grid Grid.Row="1" Margin="0,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <ComboBox Grid.Column="0" x:Name="HashSelector" SelectedIndex="0" Width="100" IsEditable="True" TextBoxBase.TextChanged="HashSelector_OnTextChanged">
+                    <ComboBoxItem Content="Hashを選択"/>
+                </ComboBox>
+                <CheckBox x:Name="checkUpper" Grid.Column="1" Margin="5,4,10,0" Content="大文字" Click="CheckUpper_OnClick"/>
+                <CheckBox x:Name="checkHyphen" Grid.Column="2" Margin="0,4,10,0" Content="ハイフン" Click="CheckHyphen_OnClick"/>
+                <Button Grid.Column="4" Padding="30,0" Margin="0,0,4,0" Content="Hashをコピー" Click="HashCopy_OnClick"/>
+                <Button Grid.Column="5" Padding="30,0" Foreground="Red" Content="Hashをリセット" Click="HashReset_OnClick"/>
+            </Grid>
+            <Grid Grid.Row="2">
+                <TextBox x:Name="HashOutputBox" Text="ここにHash値が表示されます" FontSize="14" TextWrapping="Wrap" IsReadOnly="True"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2" Margin="5">
+           <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="Auto"/>
+               <ColumnDefinition Width="*"/>
+               <ColumnDefinition Width="9*" MaxWidth="68"/>
+               <ColumnDefinition Width="Auto"/>
+               <ColumnDefinition Width="Auto"/>
+           </Grid.ColumnDefinitions>
+           <!-- TODO: StackPanelを使う? -->
+           <Label x:Name="CopyRight" Grid.Column="0" Padding="5,0" VerticalAlignment="Bottom" Content="Copyright © 2021-2024 Hibi__10000"/>
+           <Button x:Name="Debug" Grid.Column="2" Margin="0,0,2,0" Padding="10,5" FontSize="15" Visibility="Collapsed" Content="Debug" Click="Debug_OnClick"/>
+           <Button Grid.Column="3" Margin="2,0,2,0" Padding="10,5" FontSize="15" Content="HashCalculatorを起動" Click="StartHash_OnClick"/>
+           <Button Grid.Column="4" Margin="2,0,0,0" Padding="35,5" FontSize="15" Content="OK" Click="OK_OnClick"/>
+        </Grid>
+    </Grid>
+</Window>

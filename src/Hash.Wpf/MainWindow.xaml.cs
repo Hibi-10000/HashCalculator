@@ -15,31 +15,36 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-using Hash.Core;
-using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Windows.Forms;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Navigation;
+using Hash.Core;
+using Microsoft.Win32;
 
-namespace Hash.App;
+namespace Hash.Wpf;
 
-internal partial class HashCalculator : Form
+/// <summary>
+/// Interaction logic for MainWindow.xaml
+/// </summary>
+public partial class MainWindow : Window
 {
     //[DllImport("UXTheme.dll", SetLastError = true, EntryPoint = "#138")]
     //public static extern bool ShouldSystemUseDarkMode();
 
-    public HashCalculator(bool multiInstance)
+    public MainWindow(bool multiInstance)
     {
         InitializeComponent();
         if (multiInstance)
         {
-            HashForContextEnable.Enabled = false;
-            HashForContextEnable.Text += " (最初のインスタンスでのみ変更できます)";
+            HashForContextEnable.IsEnabled = false;
+            HashForContextEnableText.Text += " (最初のインスタンスでのみ変更できます)";
         }
     }
 
-    private void Hash_Load(object sender, EventArgs e)
+    private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
     {
         string[] args = Environment.GetCommandLineArgs();
         for (int i = 0; i < args.Length; i++)
@@ -68,167 +73,184 @@ internal partial class HashCalculator : Form
         const string regPath = @"*\shell\HashForContext";
         try {
             using RegistryKey? regKey = Registry.ClassesRoot.OpenSubKey(regPath);
-            HashForContextEnable.Checked = regKey != null;
+            HashForContextEnable.IsChecked = regKey != null;
         } catch (Exception) {
-            HashForContextEnable.Checked = false;
+            HashForContextEnable.IsChecked = false;
         }
 
-        Text = $"HashCalculator v{Program.SemVer}{Program.Ch}";
-        hashAndVer.Text = $"HashCalculator v{Program.SemVer}";
-        HashVer.Text = $"HashCalculator v{Program.SemVer}{Program.Ch}";
-        CopyRight.Text = $"Copyright © 2021-{DateTime.Now.Year} Hibi_10000";
+        Title = $"HashCalculator v{App.SemVer}{App.Ch}";
+        hashAndVer.Content = $"HashCalculator v{App.SemVer}";
+        HashVer.Content = $"HashCalculator v{App.SemVer}{App.Ch}";
+        CopyRight.Content = $"Copyright © 2021-{DateTime.Now.Year} Hibi__10000";
+        foreach (string hashTypeName in HashCalculate.GetHashTypeNames())
+        {
+            HashSelector.Items.Add(new ComboBoxItem { Content = hashTypeName });
+            compare1hashType.Items.Add(new ComboBoxItem { Content = hashTypeName });
+            compare2hashType.Items.Add(new ComboBoxItem { Content = hashTypeName });
+        }
     }
 
-    private void DLLink1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    private void DLLink1_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
     {
-        Program.OpenLink("https://github.com/Hibi-10000/HashCalculator/releases/");
+        App.OpenLink("https://github.com/Hibi-10000/HashCalculator/releases/");
     }
 
-    private void DropPanel_DragDrop(object sender, DragEventArgs e)
+    private void DropPanel_OnDrop(object sender, DragEventArgs e)
     {
-        HashFileURL.Text = null;
+        HashFileURL.Text = "";
         string[]? files = (string[]?)e.Data?.GetData(DataFormats.FileDrop, false);
         foreach (string file in files ?? []) {
             HashFileURL.Text += file;
         }
     }
 
-    private void DropPanel_DragEnter(object sender, DragEventArgs e)
+    private void DropPanel_OnDragEnter(object sender, DragEventArgs e)
     {
         if (e.Data?.GetDataPresent(DataFormats.FileDrop) ?? false)
         {
-            e.Effect = DragDropEffects.All;
+            e.Effects = DragDropEffects.All;
         }
         else
         {
-            e.Effect = DragDropEffects.None;
+            e.Effects = DragDropEffects.None;
         }
     }
 
-    private void SelectFileButton_Click(object sender, EventArgs e)
+    private void SelectFileButton_OnClick(object sender, RoutedEventArgs e)
     {
-        DialogResult dr = SelectFileDialog.ShowDialog();
-        if (dr == DialogResult.OK)
+        OpenFileDialog ofd = new OpenFileDialog();
+        if (ofd.ShowDialog() ?? false)
         {
-            HashFileURL.Text = null;
-            HashFileURL.Text = SelectFileDialog.FileName;
+            HashFileURL.Text = "";
+            HashFileURL.Text = ofd.FileName;
         }
-        HashSelector_Set(sender, e);
+        HashSelector_OnTextChanged(null, null);
     }
 
     /*
-    private void SelectFolderButton_Click(object sender, EventArgs e)
+    private void SelectFolderButton_OnClick(object sender, EventArgs e)
     {
-        FileFolderURLBox.Text = null;
-        using CommonOpenFileDialog cofd = new CommonOpenFileDialog()
+        FileFolderURLBox.Text = "";
+        OpenFolderDialog ofd = new OpenFolderDialog()
         {
             Title = "フォルダを選択してください",
             InitialDirectory = @"C:\",
             RestoreDirectory = true,
-            IsFolderPicker = true,
         };
-        if (cofd.ShowDialog() != CommonFileDialogResult.Ok)
+        if (ofd.ShowDialog() ?? false)
         {
-            return;
+            FileFolderURLBox.Text = $"{ofd.FolderName}";
         }
-        FileFolderURLBox.Text = $"{cofd.FileName}";
     }
     */
 
-    private void AllReset_Click(object sender, EventArgs e)
+    private void AllReset_OnClick(object sender, RoutedEventArgs e)
     {
         HashOutputBox.Text = "ここにHash値が表示されます";
         HashFileURL.Text = "ファイルのパス";
-        HashSelector.Text = "②Hashを選択";
+        HashSelector.Text = "Hashを選択";
     }
 
-    private void HashCopy_Click(object sender, EventArgs e)
+    private void HashCopy_OnClick(object sender, RoutedEventArgs e)
     {
         Clipboard.SetText(HashOutputBox.Text);
         HashOutputBox.Focus();
         HashOutputBox.SelectAll();
     }
 
-    private void HashSelector_Set(object sender, EventArgs e)
+    private void HashSelector_OnTextChanged(object? sender, TextChangedEventArgs? e)
     {
         if (HashFileURL.Text == "ファイルのパス" || HashFileURL.Text == "") {
             HashOutputBox.Text = "ここにHash値が表示されます";
         } else {
             string hashType = HashSelector.Text;
             string filePath = HashFileURL.Text;
-            bool upper = checkUpper.Checked;
-            bool hyphen = checkHyphen.Checked;
+            bool upper = checkUpper.IsChecked ?? false;
+            bool hyphen = checkHyphen.IsChecked ?? false;
             string hash = HashCalculate.GetHash(hashType, filePath, upper, hyphen) ?? "ここにHash値が表示されます";
             HashOutputBox.Text = hash;
         }
     }
 
-    private void compare1copy_Click(object sender, EventArgs e)
+    private void CheckUpper_OnClick(object sender, RoutedEventArgs e)
+    {
+        HashSelector_OnTextChanged(null, null);
+    }
+
+    private void CheckHyphen_OnClick(object sender, RoutedEventArgs e)
+    {
+        HashSelector_OnTextChanged(null, null);
+    }
+
+    private void compare1copy_OnClick(object sender, RoutedEventArgs e)
     {
         compare1hash.Text = HashOutputBox.Text;
         compare1hashType.Text = HashSelector.Text;
     }
 
-    private void compare2copy_Click(object sender, EventArgs e)
+    private void compare2copy_OnClick(object sender, RoutedEventArgs e)
     {
         compare2hash.Text = HashOutputBox.Text;
         compare2hashType.Text = HashSelector.Text;
     }
 
-    private void compareExecButton_Click(object sender, EventArgs e)
+    private void compareExecButton_OnClick(object sender, RoutedEventArgs e)
     {
         if (compare1hash.Text == compare2hash.Text)
         {
-            compareResult.Text = "比較 : 真";
+            compareResult.Content = "真";
         }
         else
         {
-            compareResult.Text = "比較 : 偽";
+            compareResult.Content = "偽";
         }
     }
 
-    private void compareReset_Click(object sender, EventArgs e)
+    private void compareReset_OnClick(object sender, RoutedEventArgs e)
     {
-        compareResult.Text = "比較 : 結果";
+        compareResult.Content = "結果";
         compare1hashType.Text = "比較①";
         compare1hash.Text = "";
         compare2hashType.Text = "比較②";
         compare2hash.Text = "";
     }
 
-    private void paste1cb_Click(object sender, EventArgs e)
+    private void paste1cb_OnClick(object sender, RoutedEventArgs e)
     {
         compare1hash.Text = Clipboard.GetText();
     }
 
-    private void paste2cb_Click(object sender, EventArgs e)
+    private void paste2cb_OnClick(object sender, RoutedEventArgs e)
     {
         compare2hash.Text = Clipboard.GetText();
     }
 
-    private void menuFIleExit_Click(object sender, EventArgs e)
+    private void menuFileExit_OnClick(object sender, RoutedEventArgs e)
     {
-        Environment.ExitCode = 0;
-        Application.Exit();
+        Close();
     }
 
-    private void menuHelpVer_Click(object sender, EventArgs e)
+    private void menuHelpVer_OnClick(object sender, RoutedEventArgs e)
     {
-        AboutBox aboutBox = new AboutBox();
+        AboutWindow aboutBox = new AboutWindow
+        {
+            Owner = this,
+            ShowInTaskbar = false
+        };
         aboutBox.ShowDialog();
     }
 
-    private void menuHelpReadme_Click(object sender, EventArgs e)
+    private void menuHelpReadme_OnClick(object sender, RoutedEventArgs e)
     {
         Tab.SelectedIndex = 2;
     }
 
-    private void menuFileSettings_Click(object sender, EventArgs e)
+    private void menuFileSettings_OnClick(object sender, RoutedEventArgs e)
     {
         Tab.SelectedIndex = 3;
     }
 
-    private void HashForContextEnable_CheckedChanged(object sender, EventArgs e)
+    private void HashForContextEnable_OnClick(object sender, RoutedEventArgs e)
     {
         if (Tab.SelectedIndex == 3)
         {
@@ -238,17 +260,17 @@ internal partial class HashCalculator : Form
                 {
                     UseShellExecute = true,
                     Verb = "runas",
-                    Arguments = HashForContextEnable.Checked ? "/rc" : "/rd"
+                    Arguments = HashForContextEnable.IsChecked ?? false ? "/rc" : "/rd"
                 };
                 Process? process = Process.Start(startInfo);
                 process?.WaitForExit();
                 if (process?.ExitCode is not 0) {
-                    HashForContextEnable.Checked = HashForContextEnable.Checked is false;
+                    HashForContextEnable.IsChecked = HashForContextEnable.IsChecked is not true;
                 }
             }
             else
             {
-                HashForContextEnable.Checked = HashForContextEnable.Checked is false;
+                HashForContextEnable.IsChecked = HashForContextEnable.IsChecked is not true;
             }
         }
     }

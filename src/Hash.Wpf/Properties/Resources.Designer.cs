@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Hash.App.Properties;
+namespace Hash.Wpf.Properties;
 
 /// <summary>
 ///   ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。
@@ -37,7 +37,7 @@ internal class Resources {
     internal static global::System.Resources.ResourceManager ResourceManager {
         get {
             if (object.ReferenceEquals(resourceMan, null)) {
-                global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hash.App.Properties.Resources", typeof(Resources).Assembly);
+                global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hash.Wpf.Properties.Resources", typeof(Resources).Assembly);
                 resourceMan = temp;
             }
             return resourceMan;
@@ -59,29 +59,9 @@ internal class Resources {
     }
         
     /// <summary>
-    ///   (アイコン) に類似した型 System.Drawing.Icon のローカライズされたリソースを検索します。
-    /// </summary>
-    internal static System.Drawing.Icon Icon {
-        get {
-            object obj = ResourceManager.GetObject("Icon", resourceCulture);
-            return ((System.Drawing.Icon)(obj));
-        }
-    }
-        
-    /// <summary>
-    ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
-    /// </summary>
-    internal static System.Drawing.Bitmap UAC {
-        get {
-            object obj = ResourceManager.GetObject("UAC", resourceCulture);
-            return ((System.Drawing.Bitmap)(obj));
-        }
-    }
-        
-    /// <summary>
     ///   (Readme.md) に類似しているローカライズされた文字列を検索します。
     /// </summary>
-    internal static string Readme {
+    public static string Readme {
         get {
             return ResourceManager.GetString("Readme", resourceCulture);
         }

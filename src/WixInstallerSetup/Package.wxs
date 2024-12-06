@@ -12,7 +12,7 @@
         </StandardDirectory>
         <Feature Id="DefaultFeature" Title="HashCalculator" Level="1" AllowAbsent="no" AllowAdvertise="no">
             <Component Directory="INSTALLFOLDER" Guid="B0B89934-3D7F-49CC-A8BE-DB6CEDF489CC">
-                <File Name="HashCalculator.exe" Source="..\Hash.App\publish\win-$(var.Platform)\HashCalculator.exe" KeyPath="yes" ReadOnly="yes" />
+                <File Name="HashCalculator.exe" Source="..\Hash.Wpf\publish\win-$(var.Platform)\HashCalculator.exe" KeyPath="yes" ReadOnly="yes" />
                 <RemoveRegistryKey Action="removeOnUninstall" Root="HKCR" Key="*\shell\HashForContext" />
             </Component>
             <Component Directory="ProgramMenuFolder" Guid="DCC6F1D4-B1E8-4C47-AC9F-B5F7362614FD">
