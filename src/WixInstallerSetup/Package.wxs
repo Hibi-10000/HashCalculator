@@ -25,15 +25,15 @@
                 <RegistryKey Root="HKCR" Key="*\shell\HashForContext" />
                 <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext" Name="MUIVerb" Value="Hash for ContextMenu(&amp;F)" />
                 <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext" Name="SubCommands" Value="" />
-                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\*\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot;" />
-                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\MD5\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h MD5" />
-                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\SHA1\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h SHA1" />
-                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\SHA256\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h SHA256" />
-                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\SHA384\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h SHA384" />
-                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\SHA512\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h SHA512" />
-                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\CRC16-CCITT\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h CRC16-CCITT" />
-                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\CRC32\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h CRC32" />
-                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\CRC64-ECMA\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; /ctm /f &quot;%1&quot; /h CRC64-ECMA" />
+                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\*\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; -ctm -f &quot;%1&quot;" />
+                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\MD5\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; -ctm -f &quot;%1&quot; -h MD5" />
+                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\SHA1\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; -ctm -f &quot;%1&quot; -h SHA1" />
+                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\SHA256\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; -ctm -f &quot;%1&quot; -h SHA256" />
+                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\SHA384\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; -ctm -f &quot;%1&quot; -h SHA384" />
+                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\SHA512\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; -ctm -f &quot;%1&quot; -h SHA512" />
+                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\CRC16-CCITT\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; -ctm -f &quot;%1&quot; -h CRC16-CCITT" />
+                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\CRC32\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; -ctm -f &quot;%1&quot; -h CRC32" />
+                <RegistryValue Root="HKCR" Type="string" Key="*\shell\HashForContext\shell\CRC64-ECMA\command" Value="&quot;[INSTALLFOLDER]HashCalculator.exe&quot; -ctm -f &quot;%1&quot; -h CRC64-ECMA" />
             </Component>
         </Feature>
         <Feature Id="DesktopShortcut" Title="DesktopShortcut" Level="1" AllowAdvertise="no">

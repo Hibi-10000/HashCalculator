@@ -46,18 +46,18 @@ public partial class HashForContextWindow : Window
         {
             switch (args[i])
             {
-                case "/f":
-                    //File (/f "{FileURL}")
+                case "-f":
+                    //File (-f "{FileURL}")
                     int urlNum = i + 1;
                     HashFileURL.Text = args[urlNum];
                     break;
-                case "/h":
-                    //HashType (/h MD5)
+                case "-h":
+                    //HashType (-h MD5)
                     int hashTypeNum = i + 1;
                     HashSelector.Text = args[hashTypeNum];
                     break;
-                case "/d":
-                    //Debug (/d)
+                case "-d":
+                    //Debug (-d)
                     Debug.Visibility = Visibility.Visible;
                     HashFileURL.IsReadOnly = false;
                     break;
@@ -120,9 +120,9 @@ public partial class HashForContextWindow : Window
     private void StartHash_OnClick(object sender, RoutedEventArgs e)
     {
         string option = "";
-        if (HashFileURL.Text != "ファイルのパス(※これが表示されている場合は起動方法が間違っています)") option += "/f \"" + HashFileURL.Text + "\" ";
-        if (HashSelector.Text != "Hashを選択") option += "/h " + HashSelector.Text + " ";
-        if (Debug.Visibility == Visibility.Visible) option += "/d";
+        if (HashFileURL.Text != "ファイルのパス(※これが表示されている場合は起動方法が間違っています)") option += "-f \"" + HashFileURL.Text + "\" ";
+        if (HashSelector.Text != "Hashを選択") option += "-h " + HashSelector.Text + " ";
+        if (Debug.Visibility == Visibility.Visible) option += "-d";
         if (!File.Exists(Environment.ProcessPath)) return;
         ProcessStartInfo startInfo = new ProcessStartInfo(Environment.ProcessPath)
         {

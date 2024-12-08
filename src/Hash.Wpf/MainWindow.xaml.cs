@@ -51,18 +51,18 @@ public partial class MainWindow : Window
         {
             switch (args[i])
             {
-                case "/f":
-                    //File (/f "{FileURL}")
+                case "-f":
+                    //File (-f "{FileURL}")
                     int urlNum = i + 1;
                     HashFileURL.Text = args[urlNum];
                     break;
-                case "/h":
-                    //HashType (/h MD5)
+                case "-h":
+                    //HashType (-h MD5)
                     int hashTypeNum = i + 1;
                     HashSelector.Text = args[hashTypeNum];
                     break;
-                case "/d":
-                    //Debug (/d)
+                case "-d":
+                    //Debug (-d)
                     //HashFileURL.ReadOnly = false;
                     break;
             }
@@ -260,7 +260,7 @@ public partial class MainWindow : Window
                 {
                     UseShellExecute = true,
                     Verb = "runas",
-                    Arguments = HashForContextEnable.IsChecked ?? false ? "/rc" : "/rd"
+                    Arguments = HashForContextEnable.IsChecked ?? false ? "-rc" : "-rd"
                 };
                 Process? process = Process.Start(startInfo);
                 process?.WaitForExit();

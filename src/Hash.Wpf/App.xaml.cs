@@ -48,7 +48,7 @@ public partial class App : Application
         {
             switch (arg)
             {
-                case "/rc" when Environment.IsPrivilegedProcess:
+                case "-rc" when Environment.IsPrivilegedProcess:
                     if (!File.Exists(Environment.ProcessPath))
                     {
                         MessageBox.Show("予期せぬ原因によりファイルパスを取得できませんでした。", "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -61,23 +61,23 @@ public partial class App : Application
                         regKey.SetValue("SubCommands", "", RegistryValueKind.String);
                     }
                     using (RegistryKey regKey = Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\*\command")) {
-                        regKey.SetValue("", @$"""{Environment.ProcessPath}"" /ctm /f ""%1""", RegistryValueKind.String);
+                        regKey.SetValue("", @$"""{Environment.ProcessPath}"" -ctm -f ""%1""", RegistryValueKind.String);
                     }
 
                     foreach (string hash in HashCalculate.GetHashTypeNames())
                     {
                         using RegistryKey regKey = Registry.ClassesRoot.CreateSubKey(@$"*\shell\HashForContext\shell\{hash}\command");
-                        regKey.SetValue("", @$"""{Environment.ProcessPath}"" /ctm /f ""%1"" /h {hash}", RegistryValueKind.String);
+                        regKey.SetValue("", @$"""{Environment.ProcessPath}"" -ctm -f ""%1"" -h {hash}", RegistryValueKind.String);
                     }
                     return;
-                case "/rd" when Environment.IsPrivilegedProcess:
+                case "-rd" when Environment.IsPrivilegedProcess:
                     Registry.ClassesRoot.DeleteSubKeyTree(@"*\shell\HashForContext");
                     return;
-                case "/rd" or "/rc":
+                case "-rd" or "-rc":
                     MessageBox.Show("UACをキャンセルしたか、起動方法が間違っています。", "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
                     Environment.ExitCode = 1;
                     return;
-                case "/ctm":
+                case "-ctm":
                     App appContext = new App();
                     appContext.InitializeComponent();
                     appContext.Run(new HashForContextWindow());
