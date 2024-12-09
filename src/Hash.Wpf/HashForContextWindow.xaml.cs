@@ -87,9 +87,9 @@ public partial class HashForContextWindow : Window
         HashOutputBox.SelectAll();
     }
 
-    private void DLGitHub_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
+    private void HyperLink_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
     {
-        App.OpenLink("https://github.com/Hibi-10000/HashCalculator/releases/");
+        App.OpenLink(e.Uri.AbsoluteUri);
     }
 
     private void HashSelector_OnTextChanged(object? sender, TextChangedEventArgs? e)

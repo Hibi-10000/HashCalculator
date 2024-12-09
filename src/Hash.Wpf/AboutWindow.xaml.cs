@@ -33,19 +33,9 @@ public partial class AboutWindow : Window
         Close();
     }
 
-    private void dlFromGitHub_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
+    private void HyperLink_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
     {
-        App.OpenLink("https://github.com/Hibi-10000/HashCalculator/releases/");
-    }
-
-    private void licenseLink_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
-    {
-        App.OpenLink($"https://github.com/Hibi-10000/HashCalculator/blob/v{App.SemVer}/LICENSE.md");
-    }
-
-    private void noticeLink_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
-    {
-        App.OpenLink($"https://github.com/Hibi-10000/HashCalculator/blob/v{App.SemVer}/NOTICE.md");
+        App.OpenLink(e.Uri.AbsoluteUri.Replace("/blob/main/", $"/blob/v{App.SemVer}/"));
     }
 
     private void AboutWindow_OnLoaded(object sender, RoutedEventArgs e)

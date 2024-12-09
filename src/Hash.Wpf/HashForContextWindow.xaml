@@ -41,7 +41,7 @@
                     <Label Content="DL : " Padding="0"/>
                     <Label Padding="0">
                         <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/releases"
-                                   RequestNavigate="DLGitHub_OnRequestNavigate">
+                                   RequestNavigate="HyperLink_OnRequestNavigate">
                             <TextBlock Text="GitHub"/>
                         </Hyperlink>
                     </Label>

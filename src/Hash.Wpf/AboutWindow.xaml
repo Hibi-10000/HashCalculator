@@ -36,7 +36,7 @@
                 <Label Padding="0" Content="DL : "/>
                 <Label Padding="0">
                     <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/releases/"
-                               RequestNavigate="dlFromGitHub_OnRequestNavigate">
+                               RequestNavigate="HyperLink_OnRequestNavigate">
                         <TextBlock Text="GitHub"/>
                     </Hyperlink>
                 </Label>
@@ -44,13 +44,13 @@
             <StackPanel Orientation="Horizontal" Margin="5">
                 <Label Padding="0" Margin="0,0,20,0">
                     <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/blob/main/LICENSE.md"
-                               RequestNavigate="licenseLink_OnRequestNavigate">
+                               RequestNavigate="HyperLink_OnRequestNavigate">
                         <TextBlock Text="ライセンス"/>
                     </Hyperlink>
                 </Label>
                 <Label Padding="0">
                     <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/blob/main/NOTICE.md"
-                               RequestNavigate="noticeLink_OnRequestNavigate">
+                               RequestNavigate="HyperLink_OnRequestNavigate">
                         <TextBlock Text="サードパーティーライセンス"/>
                     </Hyperlink>
                 </Label>
