@@ -35,13 +35,13 @@ public partial class AboutWindow : Window
 
     private void HyperLink_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
     {
-        App.OpenLink(e.Uri.AbsoluteUri.Replace("/blob/main/", $"/blob/v{App.SemVer}/"));
+        App.OpenLink(e.Uri.AbsoluteUri.Replace("/blob/main/", $"/blob/{App.SemVer}/"));
     }
 
     private void AboutWindow_OnLoaded(object sender, RoutedEventArgs e)
     {
-        hashAndVer.Content = $"HashCalculator v{App.SemVer}";
-        version.Content = $"Version : v{App.SemVer}{App.Ch}";
+        hashAndVer.Content = $"HashCalculator {App.SemVer}";
+        version.Content = $"Version : {App.SemVer}";
         copyright.Content = $"Copyright © 2021-{DateTime.Now.Year} Hibi__10000";
     }
 }

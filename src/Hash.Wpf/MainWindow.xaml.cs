@@ -78,9 +78,9 @@ public partial class MainWindow : Window
             HashForContextEnable.IsChecked = false;
         }
 
-        Title = $"HashCalculator v{App.SemVer}{App.Ch}";
-        hashAndVer.Content = $"HashCalculator v{App.SemVer}";
-        HashVer.Content = $"HashCalculator v{App.SemVer}{App.Ch}";
+        Title = $"HashCalculator {App.SemVer}";
+        hashAndVer.Content = $"HashCalculator {App.SemVer}";
+        HashVer.Content = $"HashCalculator {App.SemVer}";
         CopyRight.Content = $"Copyright © 2021-{DateTime.Now.Year} Hibi__10000";
         foreach (string hashTypeName in HashCalculate.GetHashTypeNames())
         {

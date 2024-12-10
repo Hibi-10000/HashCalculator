@@ -64,8 +64,8 @@ public partial class HashForContextWindow : Window
             }
         }
 
-        Title = $"Hash for ContextMenu v{App.SemVer}{App.Ch}";
-        hashAndVer.Content = $"Hash for ContextMenu v{App.SemVer}";
+        Title = $"Hash for ContextMenu {App.SemVer}";
+        hashAndVer.Content = $"Hash for ContextMenu {App.SemVer}";
         CopyRight.Content = $"Copyright © 2021-{DateTime.Now.Year} Hibi__10000";
         foreach (string hashTypeName in HashCalculate.GetHashTypeNames())
         {

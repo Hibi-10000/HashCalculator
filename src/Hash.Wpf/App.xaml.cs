@@ -33,9 +33,8 @@ public partial class App : Application
     internal const string Major = "0";
     internal const string Minor = "6";
     internal const string Build = "2";
-    internal const string Ch = "";
 
-    internal const string SemVer = $"{Major}.{Minor}.{Build}";
+    internal const string SemVer = $"v{Major}.{Minor}.{Build}";
 
     /// <summary>
     /// Application Entry Point.
