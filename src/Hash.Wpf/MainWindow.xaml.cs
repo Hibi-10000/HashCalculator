@@ -123,8 +123,8 @@ public partial class MainWindow : Window
         {
             HashFileURL.Text = "";
             HashFileURL.Text = ofd.FileName;
+            UpdateHash();
         }
-        HashSelector_OnTextChanged(null, null);
     }
 
     /*
@@ -158,7 +158,12 @@ public partial class MainWindow : Window
         HashOutputBox.SelectAll();
     }
 
-    private void HashSelector_OnTextChanged(object? sender, TextChangedEventArgs? e)
+    private void HashSelector_OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+        UpdateHash();
+    }
+
+    private void UpdateHash()
     {
         if (HashFileURL.Text == "ファイルのパス" || HashFileURL.Text == "") {
             HashOutputBox.Text = "ここにHash値が表示されます";
@@ -174,12 +179,12 @@ public partial class MainWindow : Window
 
     private void CheckUpper_OnClick(object sender, RoutedEventArgs e)
     {
-        HashSelector_OnTextChanged(null, null);
+        UpdateHash();
     }
 
     private void CheckHyphen_OnClick(object sender, RoutedEventArgs e)
     {
-        HashSelector_OnTextChanged(null, null);
+        UpdateHash();
     }
 
     private void compare1copy_OnClick(object sender, RoutedEventArgs e)

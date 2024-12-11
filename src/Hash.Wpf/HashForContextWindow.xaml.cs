@@ -92,7 +92,12 @@ public partial class HashForContextWindow : Window
         App.OpenLink(e.Uri.AbsoluteUri);
     }
 
-    private void HashSelector_OnTextChanged(object? sender, TextChangedEventArgs? e)
+    private void HashSelector_OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+        UpdateHash();
+    }
+
+    private void UpdateHash()
     {
         if (HashFileURL.Text != "ファイルのパス(※これが表示されている場合は起動方法が間違っています)" && HashFileURL.Text != "")
         {
@@ -109,12 +114,12 @@ public partial class HashForContextWindow : Window
 
     private void CheckUpper_OnClick(object sender, RoutedEventArgs e)
     {
-        HashSelector_OnTextChanged(null, null);
+        UpdateHash();
     }
 
     private void CheckHyphen_OnClick(object sender, RoutedEventArgs e)
     {
-        HashSelector_OnTextChanged(null, null);
+        UpdateHash();
     }
 
     private void StartHash_OnClick(object sender, RoutedEventArgs e)
@@ -139,7 +144,7 @@ public partial class HashForContextWindow : Window
         {
             HashFileURL.Text = "";
             HashFileURL.Text = ofd.FileName;
-            HashSelector_OnTextChanged(null, null);
+            UpdateHash();
         }
     }
 }
