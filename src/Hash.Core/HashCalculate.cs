@@ -119,9 +119,10 @@ public static class HashCalculate
         return null;
     }
 
-    private static string GetHash(HashType hashType, string filePath, bool upper, bool hyphen)
+    private static string? GetHash(HashType hashType, string filePath, bool upper, bool hyphen)
     {
-        using FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+        if (!File.Exists(filePath)) return null;
+        using FileStream fs = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
         //using MemoryStream fs = new MemoryStream(System.Text.Encoding.ASCII.GetBytes("123456789"));
         byte[] bs = hashType.Provider.ComputeHash(fs);
 

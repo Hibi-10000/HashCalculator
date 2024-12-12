@@ -55,7 +55,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" Height="40">
-                <TextBox x:Name="HashFileURL" Text="ファイルのパス(※これが表示されている場合は起動方法が間違っています)" FontSize="14" TextWrapping="Wrap" Cursor="No" IsReadOnly="True" AllowDrop="False" AcceptsReturn="True"/>
+                <TextBox x:Name="HashFileURL" Text="ファイルのパス (※これが表示されている場合は起動方法が間違っています)" FontSize="14" TextWrapping="Wrap" Cursor="No" IsReadOnly="True" AllowDrop="False" AcceptsReturn="True"/>
             </Grid>
             <Grid Grid.Row="1" Margin="0,5">
                 <Grid.ColumnDefinitions>

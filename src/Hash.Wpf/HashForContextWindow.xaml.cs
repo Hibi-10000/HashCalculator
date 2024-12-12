@@ -99,7 +99,7 @@ public partial class HashForContextWindow : Window
 
     private void UpdateHash()
     {
-        if (HashFileURL.Text != "ファイルのパス(※これが表示されている場合は起動方法が間違っています)" && HashFileURL.Text != "")
+        if (HashFileURL.Text != "ファイルのパス (※これが表示されている場合は起動方法が間違っています)" && HashFileURL.Text != "")
         {
             string hashType = HashSelector.Text;
             string filePath = HashFileURL.Text;
@@ -125,8 +125,8 @@ public partial class HashForContextWindow : Window
     private void StartHash_OnClick(object sender, RoutedEventArgs e)
     {
         string option = "";
-        if (HashFileURL.Text != "ファイルのパス(※これが表示されている場合は起動方法が間違っています)") option += "-f \"" + HashFileURL.Text + "\" ";
-        if (HashSelector.Text != "Hashを選択") option += "-h " + HashSelector.Text + " ";
+        if (HashFileURL.Text != "ファイルのパス (※これが表示されている場合は起動方法が間違っています)") option += $"-f \"{HashFileURL.Text}\" ";
+        if (HashSelector.Text != "Hashを選択") option += $"-h {HashSelector.Text} ";
         if (Debug.Visibility == Visibility.Visible) option += "-d";
         if (!File.Exists(Environment.ProcessPath)) return;
         ProcessStartInfo startInfo = new ProcessStartInfo(Environment.ProcessPath)
@@ -140,12 +140,10 @@ public partial class HashForContextWindow : Window
     private void Debug_OnClick(object sender, RoutedEventArgs e)
     {
         OpenFileDialog ofd = new OpenFileDialog();
-        if (ofd.ShowDialog() ?? false)
-        {
-            HashFileURL.Text = "";
-            HashFileURL.Text = ofd.FileName;
-            UpdateHash();
-        }
+        if (!(ofd.ShowDialog() ?? false)) return;
+        HashFileURL.Text = "";
+        HashFileURL.Text = ofd.FileName;
+        UpdateHash();
     }
 }
 

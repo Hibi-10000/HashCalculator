@@ -119,12 +119,10 @@ public partial class MainWindow : Window
     private void SelectFileButton_OnClick(object sender, RoutedEventArgs e)
     {
         OpenFileDialog ofd = new OpenFileDialog();
-        if (ofd.ShowDialog() ?? false)
-        {
-            HashFileURL.Text = "";
-            HashFileURL.Text = ofd.FileName;
-            UpdateHash();
-        }
+        if (!(ofd.ShowDialog() ?? false)) return;
+        HashFileURL.Text = "";
+        HashFileURL.Text = ofd.FileName;
+        UpdateHash();
     }
 
     /*
@@ -165,7 +163,7 @@ public partial class MainWindow : Window
 
     private void UpdateHash()
     {
-        if (HashFileURL.Text == "ファイルのパス" || HashFileURL.Text == "") {
+        if (HashFileURL.Text is "ファイルのパス" or "") {
             HashOutputBox.Text = "ここにHash値が表示されます";
         } else {
             string hashType = HashSelector.Text;
@@ -201,14 +199,7 @@ public partial class MainWindow : Window
 
     private void compareExecButton_OnClick(object sender, RoutedEventArgs e)
     {
-        if (compare1hash.Text == compare2hash.Text)
-        {
-            compareResult.Content = "真";
-        }
-        else
-        {
-            compareResult.Content = "偽";
-        }
+        compareResult.Content = compare1hash.Text == compare2hash.Text ? "真" : "偽";
     }
 
     private void compareReset_OnClick(object sender, RoutedEventArgs e)
@@ -257,26 +248,24 @@ public partial class MainWindow : Window
 
     private void HashForContextEnable_OnClick(object sender, RoutedEventArgs e)
     {
-        if (Tab.SelectedIndex == 3)
+        if (Tab.SelectedIndex != 3) return;
+        if (File.Exists(Environment.ProcessPath))
         {
-            if (File.Exists(Environment.ProcessPath))
+            ProcessStartInfo startInfo = new ProcessStartInfo(Environment.ProcessPath)
             {
-                ProcessStartInfo startInfo = new ProcessStartInfo(Environment.ProcessPath)
-                {
-                    UseShellExecute = true,
-                    Verb = "runas",
-                    Arguments = HashForContextEnable.IsChecked ?? false ? "-rc" : "-rd"
-                };
-                Process? process = Process.Start(startInfo);
-                process?.WaitForExit();
-                if (process?.ExitCode is not 0) {
-                    HashForContextEnable.IsChecked = HashForContextEnable.IsChecked is not true;
-                }
-            }
-            else
-            {
+                UseShellExecute = true,
+                Verb = "runas",
+                Arguments = HashForContextEnable.IsChecked ?? false ? "-rc" : "-rd"
+            };
+            Process? process = Process.Start(startInfo);
+            process?.WaitForExit();
+            if (process?.ExitCode is not 0) {
                 HashForContextEnable.IsChecked = HashForContextEnable.IsChecked is not true;
             }
+        }
+        else
+        {
+            HashForContextEnable.IsChecked = HashForContextEnable.IsChecked is not true;
         }
     }
 

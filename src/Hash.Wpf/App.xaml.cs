@@ -60,13 +60,13 @@ public partial class App : Application
                         regKey.SetValue("SubCommands", "", RegistryValueKind.String);
                     }
                     using (RegistryKey regKey = Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\*\command")) {
-                        regKey.SetValue("", @$"""{Environment.ProcessPath}"" -ctm -f ""%1""", RegistryValueKind.String);
+                        regKey.SetValue("", $"\"{Environment.ProcessPath}\" -ctm -f \"%1\"", RegistryValueKind.String);
                     }
 
                     foreach (string hash in HashCalculate.GetHashTypeNames())
                     {
                         using RegistryKey regKey = Registry.ClassesRoot.CreateSubKey(@$"*\shell\HashForContext\shell\{hash}\command");
-                        regKey.SetValue("", @$"""{Environment.ProcessPath}"" -ctm -f ""%1"" -h {hash}", RegistryValueKind.String);
+                        regKey.SetValue("", $"\"{Environment.ProcessPath}\" -ctm -f \"%1\" -h {hash}", RegistryValueKind.String);
                     }
                     return;
                 case "-rd" when Environment.IsPrivilegedProcess:
