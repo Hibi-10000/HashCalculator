@@ -12,23 +12,29 @@ Hashを選択または*をクリックするとそのファイルのHashを計�
 ・SHA384  
 ・SHA512  
   
-・CRC8*  
+・SHA3-256 \*2  
+・SHA3-384 \*2  
+・SHA3-512 \*2  
+  
+・CRC8 \*1  
 ・CRC16-CCITT  
-・CRC16-IBM*  
+・CRC16-IBM \*1  
 ・CRC32  
-・CRC32C*  
+・CRC32C \*1  
 ・CRC64-ECMA  
-・CRC64-ISO*  
-・CRC64-XZ  
+・CRC64-ISO \*1  
+・CRC64-XZ \*3  
   
-・RIPEMD160*  
+・RIPEMD160 \*1  
   
-・xxHash32*  
-・xxHash64*  
+・xxHash32 \*1  
+・xxHash64 \*1  
 ・xxHash3  
-・xxHash128*  
+・xxHash128 \*1  
   
-*がついているものは選択ボックスに直接入力してください。  
+*1 選択ボックスに直接入力  
+*2 Windows11 24H2以降のみ  
+*3 XZ Utilsの実装(7-Zip等が使用)と同じ  
   
 動作確認  
 Windows11 Pro 23H2 x86_64  
