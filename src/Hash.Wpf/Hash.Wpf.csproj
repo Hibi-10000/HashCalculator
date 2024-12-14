@@ -10,7 +10,7 @@
     <AssemblyName>HashCalculator</AssemblyName>
     <Authors>Hibi_10000</Authors>
     <Copyright>Copyright © Hibi_10000</Copyright>
-    <VersionPrefix>0.6.2</VersionPrefix>
+    <VersionPrefix>0.7.0</VersionPrefix>
     <AssemblyVersion>$(VersionPrefix).0</AssemblyVersion>
     <FileVersion>$(AssemblyVersion)</FileVersion>
     <ApplicationIcon>Resources\Hash.ico</ApplicationIcon>

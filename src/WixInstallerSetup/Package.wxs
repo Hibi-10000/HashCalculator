@@ -4,7 +4,7 @@
         MajorUpdate(Uninstall -> Install): Package.Version Package.ProductCode
         MinorUpdate(Upgrade)             : Package.Version
     -->
-    <Package Name="HashCalculator" Manufacturer="Hibi_10000" Version="0.6.2" ProductCode="79E1F529-817D-432A-B8DF-2B4BED8E22B0" UpgradeCode="B0C53B72-7CDE-4EF9-A3F8-0838292E7197" Language="1033" Codepage="932" InstallerVersion="500">
+    <Package Name="HashCalculator" Manufacturer="Hibi_10000" Version="0.7.0" ProductCode="E55E55D7-5164-4F10-812F-9BF9AAD61B55" UpgradeCode="B0C53B72-7CDE-4EF9-A3F8-0838292E7197" Language="1033" Codepage="932">
         <Media Id="1" Cabinet="simple.cab" EmbedCab="yes" />
         <MajorUpgrade DowngradeErrorMessage="A new version of [ProductName] is already installed." />
         <StandardDirectory Id="ProgramFiles6432Folder">
