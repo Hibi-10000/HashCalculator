@@ -22,18 +22,20 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Install .NET Core
+    - name: Install .NET SDK
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
 
     - name: Build Hash
-      run: dotnet publish src\Hash.Wpf /p:PublishProfile=win-${{ matrix.arch }}
+      run: dotnet publish src\Hash.Wpf -p:PublishProfile=win-${{ matrix.arch }}
 
     - name: Build MSI
-      run: dotnet build src\WixInstallerSetup --arch ${{ matrix.arch }} --output src\WixInstallerSetup\bin\${{ matrix.arch }}\Release --no-dependencies /p:Platform=${{ matrix.arch }}
+      run: dotnet build src\WixInstallerSetup --arch ${{ matrix.arch }} --no-dependencies #--output src\WixInstallerSetup\bin\${{ matrix.arch }}\Release -p:Platform=${{ matrix.arch }}
       env:
         Configuration: Release
+        Platform: ${{ matrix.arch }}
+        OutputPath: bin\${{ matrix.arch }}\Release
 
     - run: tree /F
 
@@ -49,4 +51,38 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: win-${{ matrix.arch }}
+        path: artifact\
+
+  build-portable:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Install .NET SDK
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Build Hash
+      run: dotnet build src\Hash.Wpf #-v diag -c Release -p:Platform="Any CPU" -o src\Hash.Wpf\bin\Release
+      env:
+        Configuration: Release
+        Platform: Any CPU
+        OutputPath: bin\Release
+
+    - run: tree /F
+
+    - name: Copy build artifacts
+      run: |
+        mkdir artifact
+        xcopy src\Hash.Wpf\bin\Release\ artifact\ /e
+        del artifact\*.pdb
+
+    - run: tree /F
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: win-anycpu-portable
         path: artifact\

@@ -1,4 +1,5 @@
 name: release
+
 run-name: Release ${{ github.ref_name }}
 
 on: workflow_dispatch
@@ -15,18 +16,19 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Download arm64 Artifact
+      - name: Download Artifacts
         uses: actions/download-artifact@v4
         with:
           pattern: win-*
 
       - run: tree
 
-      - name: copy and rename
+      - name: Copy and Rename, Compress
         run: |
           cp -v ./win-arm64/HashCalculator-Setup.msi HashCalculator-${{ github.ref_name }}-arm64-Setup.msi
           cp -v ./win-x64/HashCalculator-Setup.msi HashCalculator-${{ github.ref_name }}-x64-Setup.msi
           cp -v ./win-x86/HashCalculator-Setup.msi HashCalculator-${{ github.ref_name }}-x86-Setup.msi
+          pwsh compress-archive .\win-anycpu-portable\* HashCalculator-Portable-${{ github.ref_name }}-AnyCPU.zip
 
       - run: tree
 
@@ -39,4 +41,5 @@ jobs:
             HashCalculator-*-arm64-Setup.msi
             HashCalculator-*-x64-Setup.msi
             HashCalculator-*-x86-Setup.msi
+            HashCalculator-Portable-*-AnyCPU.zip
           draft: true
