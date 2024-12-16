@@ -18,6 +18,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -97,16 +98,16 @@ public partial class MainWindow : Window
 
     private void DropPanel_OnDrop(object sender, DragEventArgs e)
     {
-        HashFileURL.Text = "";
+        if (!e.Data.GetFormats().Contains(DataFormats.FileDrop)) return;
         string[]? files = (string[]?)e.Data?.GetData(DataFormats.FileDrop, false);
-        foreach (string file in files ?? []) {
-            HashFileURL.Text += file;
-        }
+        if (files == null) return;
+        HashFileURL.Text = files[0];
+        UpdateHash();
     }
 
     private void DropPanel_OnDragEnter(object sender, DragEventArgs e)
     {
-        if (e.Data?.GetDataPresent(DataFormats.FileDrop) ?? false)
+        if (e.Data?.GetDataPresent(DataFormats.FileDrop, false) ?? false)
         {
             e.Effects = DragDropEffects.All;
         }
