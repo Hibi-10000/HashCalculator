@@ -20,6 +20,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Windows;
+using Dark.Net;
 using Hash.Core;
 using Microsoft.Win32;
 
@@ -91,6 +92,11 @@ public partial class App : Application
         app.InitializeComponent();
         app.Run(new MainWindow(!createdNew));
         mutex.ReleaseMutex();
+    }
+
+    protected override void OnStartup(StartupEventArgs e) {
+        base.OnStartup(e);
+        DarkNet.Instance.SetCurrentProcessTheme(Theme.Auto);
     }
 
     internal static void OpenLink(string link)
