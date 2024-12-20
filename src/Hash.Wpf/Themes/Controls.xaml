@@ -1,4 +1,14 @@
-﻿<ResourceDictionary x:Class="Theme.WPF.Themes.Controls"
+<!-- MIT License
+   - https://github.com/AngryCarrot789/WPFDarkTheme/blob/5993251fed1780ead1a01630d2f0d792e71c8eab/LICENSE
+   -
+   - See NOTICE.md for the full license text.
+   -->
+
+<!-- Controls.xaml
+   - https://github.com/AngryCarrot789/WPFDarkTheme/blob/5993251fed1780ead1a01630d2f0d792e71c8eab/Theme.WPF/Themes/Controls.xaml
+   -->
+
+<ResourceDictionary x:Class="Theme.WPF.Themes.Controls"
                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"

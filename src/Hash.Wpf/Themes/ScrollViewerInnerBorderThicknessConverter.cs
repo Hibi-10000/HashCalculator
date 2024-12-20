@@ -1,4 +1,13 @@
-﻿using System;
+// MIT License
+// https://github.com/AngryCarrot789/WPFDarkTheme/blob/5993251fed1780ead1a01630d2f0d792e71c8eab/LICENSE
+//
+// See NOTICE.md for the full license text.
+
+// ScrollViewerInnerBorderThicknessConverter.cs
+// https://github.com/AngryCarrot789/WPFDarkTheme/blob/5993251fed1780ead1a01630d2f0d792e71c8eab/Theme.WPF/Themes/ScrollViewerInnerBorderThicknessConverter.cs
+//
+
+using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
