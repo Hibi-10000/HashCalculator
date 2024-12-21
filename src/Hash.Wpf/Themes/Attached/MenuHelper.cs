@@ -9,7 +9,7 @@
 
 using System.Windows;
 
-namespace Theme.WPF.Themes.Attached
+namespace Hash.Wpf.Themes.Attached
 {
     public static class MenuHelper
     {

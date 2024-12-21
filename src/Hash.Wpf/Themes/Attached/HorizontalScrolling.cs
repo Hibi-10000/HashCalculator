@@ -17,7 +17,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
 
-namespace Theme.WPF.Themes.Attached
+#nullable disable
+namespace Hash.Wpf.Themes.Attached
 {
     public static class HorizontalScrolling
     {

@@ -9,7 +9,7 @@
 
 using System;
 
-namespace Theme.WPF.Themes
+namespace Hash.Wpf.Themes
 {
     public enum ThemeType
     {

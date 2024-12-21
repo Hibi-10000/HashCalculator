@@ -11,7 +11,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Theme.WPF.Themes.Attached
+namespace Hash.Wpf.Themes.Attached
 {
     public class PasswordBoxHelper
     {

@@ -11,7 +11,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 
-namespace Theme.WPF.Themes.Attached
+namespace Hash.Wpf.Themes.Attached
 {
     public static class TextBoxAutoSelect
     {

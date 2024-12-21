@@ -12,7 +12,7 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Media;
 
-namespace Theme.WPF.Themes
+namespace Hash.Wpf.Themes
 {
     public static class ThemesController
     {

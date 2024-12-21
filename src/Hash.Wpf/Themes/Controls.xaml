@@ -8,12 +8,12 @@
    - https://github.com/AngryCarrot789/WPFDarkTheme/blob/5993251fed1780ead1a01630d2f0d792e71c8eab/Theme.WPF/Themes/Controls.xaml
    -->
 
-<ResourceDictionary x:Class="Theme.WPF.Themes.Controls"
+<ResourceDictionary x:Class="Hash.Wpf.Themes.Controls"
                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
-                    xmlns:a="clr-namespace:Theme.WPF.Themes.Attached"
-                    xmlns:local="clr-namespace:Theme.WPF.Themes">
+                    xmlns:a="clr-namespace:Hash.Wpf.Themes.Attached"
+                    xmlns:local="clr-namespace:Hash.Wpf.Themes">
     <PopupAnimation x:Key="{x:Static SystemParameters.MenuPopupAnimationKey}">Fade</PopupAnimation>
     <BorderGapMaskConverter x:Key="BorderGapMaskConverter"/>
     <Style x:Key="FocusVisual">

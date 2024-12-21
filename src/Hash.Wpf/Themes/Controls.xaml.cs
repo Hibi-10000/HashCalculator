@@ -9,7 +9,7 @@
 
 using System.Windows;
 
-namespace Theme.WPF.Themes
+namespace Hash.Wpf.Themes
 {
     public partial class Controls
     {
