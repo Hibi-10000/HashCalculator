@@ -26,26 +26,36 @@
         mc:Ignorable="d"
         Title="HashCalculator" Icon="./Resources/Hash.ico"
         Loaded="MainWindow_OnLoaded"
+        Background="{DynamicResource Window.Static.Background}"
+        BorderBrush="{DynamicResource Window.Static.BorderBrush}"
+        Foreground="{DynamicResource Window.Static.Foreground}"
         MinHeight="387" MinWidth="520" Height="400" Width="520">
-    <Grid Background="#FFF0F0F0">
+    <Grid Background="{DynamicResource ABrush.Tone2.Background.Static}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Menu Grid.Row="0" Background="#FFE3E3E3">
+        <Menu Grid.Row="0" Background="{DynamicResource ABrush.Tone4.Background.Static}">
             <MenuItem Header="ファイル(_F)" FontSize="13">
-                <MenuItem Header="設定(_S)" Background="#FFF0F0F0" BorderBrush="#FFF0F0F0" Click="menuFileSettings_OnClick"/>
-                <MenuItem Header="終了(_X)" Background="#FFF0F0F0" BorderBrush="#FFF0F0F0" Click="menuFileExit_OnClick"/>
+                <MenuItem Header="設定(_S)" Background="{DynamicResource ABrush.Tone2.Background.Static}" BorderBrush="{DynamicResource ABrush.Tone2.Background.Static}" Click="menuFileSettings_OnClick"/>
+                <MenuItem Header="終了(_X)" Background="{DynamicResource ABrush.Tone2.Background.Static}" BorderBrush="{DynamicResource ABrush.Tone2.Background.Static}" Click="menuFileExit_OnClick"/>
             </MenuItem>
             <MenuItem Header="ヘルプ(_H)" FontSize="13">
-                <MenuItem Header="Readme(_R)" Background="#FFF0F0F0" BorderBrush="#FFF0F0F0" Click="menuHelpReadme_OnClick"/>
-                <MenuItem Header="バージョン情報(_V)" Background="#FFF0F0F0" BorderBrush="#FFF0F0F0" Click="menuHelpVer_OnClick"/>
+                <MenuItem Header="Readme(_R)" Background="{DynamicResource ABrush.Tone2.Background.Static}" BorderBrush="{DynamicResource ABrush.Tone2.Background.Static}" Click="menuHelpReadme_OnClick"/>
+                <MenuItem Header="バージョン情報(_V)" Background="{DynamicResource ABrush.Tone2.Background.Static}" BorderBrush="{DynamicResource ABrush.Tone2.Background.Static}" Click="menuHelpVer_OnClick"/>
             </MenuItem>
         </Menu>
         <Grid Grid.Row="1" Margin="5">
-            <Label x:Name="hashAndVer" Content="HashCalculator" FontSize="35" BorderThickness="1" Padding="10,0" HorizontalAlignment="Left" BorderBrush="Black" Background="White" Foreground="Lime" FontWeight="Bold"/>
+            <Label x:Name="hashAndVer" Content="HashCalculator" FontSize="35" BorderThickness="1" Padding="10,0" HorizontalAlignment="Left"
+                BorderBrush="{DynamicResource ABrush.Foreground.Deeper}" Background="{DynamicResource ABrush.Tone2.Background.Static}" FontWeight="Bold">
+                <Label.ContentTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" Foreground="Lime" />
+                    </DataTemplate>
+                </Label.ContentTemplate>
+            </Label>
             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
                 <Label Content="CreatedBy : Hibi__10000" Padding="0"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
@@ -59,7 +69,7 @@
                 </StackPanel>
             </StackPanel>
         </Grid>
-        <TabControl Grid.Row="2" Margin="3" x:Name="Tab">
+        <TabControl Grid.Row="2" Margin="3" x:Name="Tab" Padding="2" Background="{DynamicResource PanelBackground2}">
             <TabItem Header="Hash計算機">
                 <Grid Margin="5">
                     <Grid.RowDefinitions>
@@ -73,7 +83,7 @@
                         <TextBox x:Name="HashFileURL" Text="ファイルのパス" FontSize="14" TextWrapping="Wrap" Cursor="No" IsReadOnly="True" AllowDrop="False" AcceptsReturn="True"/>
                     </Grid>
                     <Grid Grid.Row="1" Margin="0,5" AllowDrop="True" Drop="DropPanel_OnDrop" DragEnter="DropPanel_OnDragEnter">
-                        <Rectangle Stroke="Black"/>
+                        <Rectangle Stroke="{DynamicResource ABrush.Foreground.Deeper}"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Label Content="ここにファイルをドロップ" FontSize="30" Padding="5"/>
                             <Button Content="ファイルを選択" FontSize="25" Margin="10,5" Padding="10,0" Click="SelectFileButton_OnClick"/>
@@ -124,7 +134,7 @@
                         <Button Padding="10,0" Foreground="Red" Content="リセット" Click="compareReset_OnClick"/>
                     </Grid>
                     <Grid Grid.Row="1" Margin="0,0,0,1" HorizontalAlignment="Left">
-                        <Rectangle Stroke="#FFACACAC"/>
+                        <Rectangle Stroke="{DynamicResource TextBox.Static.Border}"/>
                         <Label Content="比較①" Padding="2,0"/>
                     </Grid>
                     <StackPanel Grid.Row="2" Orientation="Horizontal">
@@ -141,7 +151,7 @@
                         <TextBox x:Name="compare1hash" Text="" FontSize="14"/>
                     </Grid>
                     <Grid Grid.Row="4" Margin="0,0,0,1" HorizontalAlignment="Left">
-                        <Rectangle Stroke="#FFACACAC"/>
+                        <Rectangle Stroke="{DynamicResource TextBox.Static.Border}"/>
                         <Label Content="比較②" Padding="2,0"/>
                     </Grid>
                     <StackPanel Grid.Row="5" Orientation="Horizontal">
@@ -187,7 +197,7 @@
             <TabItem Header="設定">
                 <Grid>
                     <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <Rectangle Stroke="Black"/>
+                        <Rectangle Stroke="{DynamicResource ABrush.Foreground.Static}"/>
                         <Label Content="設定" FontSize="24" Padding="5,0"/>
                     </Grid>
                     <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,50,0,0">
