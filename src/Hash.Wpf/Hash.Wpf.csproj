@@ -24,4 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Hash.Core\Hash.Core.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DarkNet" Version="2.3.0" />
+  </ItemGroup>
 </Project>

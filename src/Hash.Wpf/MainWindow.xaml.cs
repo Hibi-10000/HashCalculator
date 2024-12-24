@@ -22,6 +22,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using Dark.Net;
 using Hash.Core;
 using Microsoft.Win32;
 
@@ -38,6 +39,11 @@ public partial class MainWindow : Window
     public MainWindow(bool multiInstance)
     {
         InitializeComponent();
+        DarkNet.Instance.SetWindowThemeWpf(this, Theme.Auto);
+        new Dark.Net.Wpf.SkinManager().RegisterSkins(
+            lightThemeResources: new Uri("Themes/ColourDictionaries/LightTheme.xaml", UriKind.Relative),
+            darkThemeResources:  new Uri("Themes/ColourDictionaries/SoftDark.xaml", UriKind.Relative)
+        );
         if (multiInstance)
         {
             HashForContextEnable.IsEnabled = false;

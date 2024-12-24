@@ -18,6 +18,7 @@
 using System;
 using System.Windows;
 using System.Windows.Navigation;
+using Dark.Net;
 
 namespace Hash.Wpf;
 
@@ -26,6 +27,7 @@ public partial class AboutWindow : Window
     public AboutWindow()
     {
         InitializeComponent();
+        DarkNet.Instance.SetWindowThemeWpf(this, Theme.Auto);
     }
 
     private void OK_OnClick(object sender, RoutedEventArgs e)

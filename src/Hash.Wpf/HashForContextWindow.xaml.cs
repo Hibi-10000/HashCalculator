@@ -21,6 +21,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using Dark.Net;
 using Hash.Core;
 using Microsoft.Win32;
 
@@ -31,6 +32,7 @@ public partial class HashForContextWindow : Window
     public HashForContextWindow()
     {
         InitializeComponent();
+        DarkNet.Instance.SetWindowThemeWpf(this, Theme.Auto);
     }
 
     private void OK_OnClick(object sender, RoutedEventArgs e)
