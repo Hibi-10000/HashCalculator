@@ -20,19 +20,19 @@
     <Color x:Key="AColour.Glyph.MouseDown" R="20" G="20" B="20" A="255"/>
     <Color x:Key="AColour.Glyph.Selected" R="27" G="27" B="27" A="255"/>
     <Color x:Key="AColour.Glyph.Selected.Inactive" R="37" G="37" B="37" A="255"/>
-    <Color x:Key="AColour.ColourfulGlyph.Static" R="203" G="107" B="30" A="255"/>
-    <Color x:Key="AColour.ColourfulGlyph.Disabled" R="170" G="120" B="80" A="255"/>
-    <Color x:Key="AColour.ColourfulGlyph.MouseOver" R="210" G="130" B="40" A="255"/>
-    <Color x:Key="AColour.ColourfulGlyph.MouseDown" R="205" G="120" B="55" A="255"/>
-    <Color x:Key="AColour.ColourfulGlyph.Selected" R="205" G="140" B="70" A="255"/>
-    <Color x:Key="AColour.ColourfulGlyph.Selected.Inactive" R="200" G="135" B="55" A="255"/>
+    <Color x:Key="AColour.ColourfulGlyph.Static" R="52" G="148" B="225" A="255"/>
+    <Color x:Key="AColour.ColourfulGlyph.Disabled" R="85" G="135" B="175" A="255"/>
+    <Color x:Key="AColour.ColourfulGlyph.MouseOver" R="45" G="125" B="215" A="255"/>
+    <Color x:Key="AColour.ColourfulGlyph.MouseDown" R="50" G="135" B="200" A="255"/>
+    <Color x:Key="AColour.ColourfulGlyph.Selected" R="50" G="115" B="185" A="255"/>
+    <Color x:Key="AColour.ColourfulGlyph.Selected.Inactive" R="55" G="120" B="200" A="255"/>
 
-    <Color x:Key="AColour.AccentTone1.Background.Static" R="170" G="120" B="80" A="255"/>
-    <Color x:Key="AColour.AccentTone1.Border.Static" R="190" G="125" B="50" A="255"/>
-    <Color x:Key="AColour.AccentTone2.Background.Static" R="203" G="107" B="30" A="255"/>
-    <Color x:Key="AColour.AccentTone2.Border.Static" R="208" G="125" B="55" A="255"/>
-    <Color x:Key="AColour.AccentTone3.Background.Static" R="210" G="130" B="40" A="255"/>
-    <Color x:Key="AColour.AccentTone3.Border.Static" R="205" G="120" B="55" A="255"/>
+    <Color x:Key="AColour.AccentTone1.Background.Static" R="85" G="135" B="175" A="255"/>
+    <Color x:Key="AColour.AccentTone1.Border.Static" R="65" G="130" B="205" A="255"/>
+    <Color x:Key="AColour.AccentTone2.Background.Static" R="52" G="148" B="225" A="255"/>
+    <Color x:Key="AColour.AccentTone2.Border.Static" R="47" G="130" B="200" A="255"/>
+    <Color x:Key="AColour.AccentTone3.Background.Static" R="45" G="125" B="215" A="255"/>
+    <Color x:Key="AColour.AccentTone3.Border.Static" R="50" G="135" B="200" A="255"/>
 
     <Color x:Key="AColour.Tone0.Background.Static" R="255" G="255" B="255" A="255"/>
     <Color x:Key="AColour.Tone0.Border.Static" R="205" G="205" B="205" A="255"/>
