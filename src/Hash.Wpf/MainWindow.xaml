@@ -191,6 +191,9 @@
                         <Paragraph>
                             <Run Text="{x:Static local:Properties.Resources.Readme}"/>
                         </Paragraph>
+                        <Paragraph>
+                            <Run Text="{x:Static local:Properties.Resources.Changelog}"/>
+                        </Paragraph>
                     </FlowDocument>
                 </RichTextBox>
             </TabItem>

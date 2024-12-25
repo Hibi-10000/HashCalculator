@@ -66,4 +66,13 @@ internal class Resources {
             return ResourceManager.GetString("Readme", resourceCulture);
         }
     }
+        
+    /// <summary>
+    ///   (Changelog.md) に類似しているローカライズされた文字列を検索します。
+    /// </summary>
+    public static string Changelog {
+        get {
+            return ResourceManager.GetString("Changelog", resourceCulture);
+        }
+    }
 }

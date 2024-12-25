@@ -20,6 +20,7 @@
     <Resource Include="Resources\Hash.ico" />
     <Resource Include="Resources\UAC.ico" />
     <None Include="..\..\README.md" />
+    <None Include="..\..\CHANGELOG.md" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hash.Core\Hash.Core.csproj" />
