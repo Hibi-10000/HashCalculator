@@ -52,12 +52,24 @@ WinUI3(Windows App SDK)への移行
 - バグ修正
 
 ## Ver.β0.3.0 (2022-02-08)
-- .NET Framework 4.7.2 -> 4.8
+- 名称を`Hash計算機`から`HashCalculator`に変更
+- .NET Framework 4.7.2 から 4.8 に更新
 - メンテナンス
 
 ## Ver.β0.2.0 (2021-10-01)
+- 初公開? (もしくはβ0.3.0か)
 - HashForContextを追加
 - Installerを新しく
 
 ## Ver.β0.1.1 (2021-09-23)
-初版
+- バージョン表記を変更
+- .NET Framework 4.7.2に変更
+- Hashの比較機能を追加
+- 無意味なフォルダ選択機能を削除
+- ツールバーを追加
+- Readmeを表示できるように
+- バージョン情報のダイアログを追加
+
+## Beta Ver.0.1 (2021-09-20)
+- 初版
+- .NET Core 3.1を使用
