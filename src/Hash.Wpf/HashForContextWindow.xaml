@@ -26,15 +26,25 @@
         mc:Ignorable="d"
         Title="Hash for ContextMenu" Icon="./Resources/Hash.ico"
         Loaded="HashForContextWindow_OnLoaded"
+        Background="{DynamicResource Window.Static.Background}"
+        BorderBrush="{DynamicResource Window.Static.BorderBrush}"
+        Foreground="{DynamicResource Window.Static.Foreground}"
         MinHeight="237" MinWidth="530" Height="268" Width="560">
-    <Grid Background="#FFF0F0F0">
+    <Grid Background="{DynamicResource ABrush.Tone2.Background.Static}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Margin="5,5,5,10">
-            <Label x:Name="hashAndVer" Content="Hash for ContextMenu" FontSize="27" BorderThickness="1" Padding="10,0" HorizontalAlignment="Left" BorderBrush="Black" Background="White" Foreground="Lime" FontWeight="Bold"/>
+            <Label x:Name="hashAndVer" Content="Hash for ContextMenu" FontSize="27" BorderThickness="1" Padding="10,0" HorizontalAlignment="Left"
+                BorderBrush="{DynamicResource ABrush.Foreground.Deeper}" Background="{DynamicResource ABrush.Tone2.Background.Static}" FontWeight="Bold">
+                <Label.ContentTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" Foreground="Lime" />
+                    </DataTemplate>
+                </Label.ContentTemplate>
+            </Label>
             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
                 <Label Content="CreatedBy : Hibi__10000" Padding="0"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">

@@ -26,10 +26,20 @@
         mc:Ignorable="d"
         Title="HashCalculatorについて" Icon="./Resources/Hash.ico"
         Loaded="AboutWindow_OnLoaded"
+        Background="{DynamicResource Window.Static.Background}"
+        BorderBrush="{DynamicResource Window.Static.BorderBrush}"
+        Foreground="{DynamicResource Window.Static.Foreground}"
         ResizeMode="CanMinimize" Height="220" Width="450">
-    <Grid Background="#FFF0F0F0">
+    <Grid Background="{DynamicResource ABrush.Tone2.Background.Static}">
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0">
-            <Label x:Name="hashAndVer" Padding="10,0" Content="HashCalculator" FontSize="35" BorderThickness="1" BorderBrush="Black" Background="White" Foreground="Lime"/>
+            <Label x:Name="hashAndVer" Padding="10,0" Content="HashCalculator" FontSize="35" BorderThickness="1"
+                BorderBrush="{DynamicResource ABrush.Foreground.Deeper}" Background="{DynamicResource ABrush.Tone2.Background.Static}">
+                <Label.ContentTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" Foreground="Lime" />
+                    </DataTemplate>
+                </Label.ContentTemplate>
+            </Label>
             <Label Padding="0" Margin="5,10,5,0" Content="CreatedBy : Hibi__10000"/>
             <Label x:Name="version" Content="Version : "/>
             <StackPanel Orientation="Horizontal" Margin="5,0">
