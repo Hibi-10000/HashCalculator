@@ -48,14 +48,8 @@
             </MenuItem>
         </Menu>
         <Grid Grid.Row="1" Margin="5">
-            <Label x:Name="hashAndVer" Content="HashCalculator" FontSize="35" BorderThickness="1" Padding="10,0" HorizontalAlignment="Left"
-                BorderBrush="{DynamicResource ABrush.Foreground.Deeper}" Background="{DynamicResource ABrush.Tone2.Background.Static}" FontWeight="Bold">
-                <Label.ContentTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding}" Foreground="Lime" />
-                    </DataTemplate>
-                </Label.ContentTemplate>
-            </Label>
+            <Label x:Name="hashAndVer" Content="HashCalculator" FontSize="35" BorderThickness="1" Padding="10,0" HorizontalAlignment="Left" FontWeight="Bold"
+                Foreground="Lime" BorderBrush="{DynamicResource ABrush.Foreground.Deeper}" Background="{DynamicResource ABrush.Tone2.Background.Static}"/>
             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
                 <Label Content="CreatedBy : Hibi__10000" Padding="0"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">

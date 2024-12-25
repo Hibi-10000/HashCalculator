@@ -1498,7 +1498,7 @@
 
     <Style TargetType="{x:Type TextBlock}">
         <Setter Property="TextAlignment" Value="Left"/>
-        <Setter Property="Foreground" Value="{DynamicResource ABrush.Foreground.Static}"/>
+        <!--<Setter Property="Foreground" Value="{DynamicResource ABrush.Foreground.Static}"/>-->
         <Setter Property="RenderOptions.EdgeMode" Value="Unspecified"/>
         <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal"/>
