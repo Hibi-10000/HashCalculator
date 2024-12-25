@@ -46,7 +46,8 @@
                 <Label Padding="0" Content="DL : "/>
                 <Label Padding="0">
                     <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/releases/"
-                               RequestNavigate="HyperLink_OnRequestNavigate">
+                        RequestNavigate="HyperLink_OnRequestNavigate"
+                        ToolTip="{Binding Path=NavigateUri, RelativeSource={RelativeSource Mode=Self}}">
                         <TextBlock Text="GitHub"/>
                     </Hyperlink>
                 </Label>
@@ -54,13 +55,15 @@
             <StackPanel Orientation="Horizontal" Margin="5">
                 <Label Padding="0" Margin="0,0,20,0">
                     <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/blob/main/LICENSE.md"
-                               RequestNavigate="HyperLink_OnRequestNavigate">
+                        RequestNavigate="HyperLink_OnRequestNavigate" x:Name="LinkLicense"
+                        ToolTip="{Binding Path=NavigateUri, RelativeSource={RelativeSource Mode=Self}}">
                         <TextBlock Text="ライセンス"/>
                     </Hyperlink>
                 </Label>
                 <Label Padding="0">
                     <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/blob/main/NOTICE.md"
-                               RequestNavigate="HyperLink_OnRequestNavigate">
+                        RequestNavigate="HyperLink_OnRequestNavigate" x:Name="LinkNotice"
+                        ToolTip="{Binding Path=NavigateUri, RelativeSource={RelativeSource Mode=Self}}">
                         <TextBlock Text="サードパーティーライセンス"/>
                     </Hyperlink>
                 </Label>

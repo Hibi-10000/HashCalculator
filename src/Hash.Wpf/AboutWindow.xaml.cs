@@ -41,7 +41,7 @@ public partial class AboutWindow : Window
 
     private void HyperLink_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
     {
-        App.OpenLink(e.Uri.AbsoluteUri.Replace("/blob/main/", $"/blob/{App.SemVer}/"));
+        App.OpenLink(e.Uri.AbsoluteUri);
     }
 
     private void AboutWindow_OnLoaded(object sender, RoutedEventArgs e)
@@ -49,6 +49,8 @@ public partial class AboutWindow : Window
         hashAndVer.Content = $"HashCalculator {App.SemVer}";
         version.Content = $"Version : {App.SemVer}";
         copyright.Content = $"Copyright © 2021-{DateTime.Now.Year} Hibi__10000";
+        LinkLicense.NavigateUri = new Uri(LinkLicense.NavigateUri.AbsoluteUri.Replace("/blob/main/", $"/blob/{App.SemVer}/"), UriKind.Absolute);
+        LinkNotice .NavigateUri = new Uri(LinkNotice .NavigateUri.AbsoluteUri.Replace("/blob/main/", $"/blob/{App.SemVer}/"), UriKind.Absolute);
     }
 }
 
