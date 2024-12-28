@@ -40,9 +40,9 @@
             <Label x:Name="hashAndVer" Content="Hash for ContextMenu" FontSize="27" BorderThickness="1" Padding="10,0" HorizontalAlignment="Left" FontWeight="Bold"
                 Foreground="Lime" BorderBrush="{DynamicResource ABrush.Foreground.Deeper}" Background="{DynamicResource ABrush.Tone2.Background.Static}"/>
             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
-                <Label Content="CreatedBy : Hibi__10000" Padding="0"/>
+                <TextBlock Text="CreatedBy : Hibi_10000"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Label Content="DL : " Padding="0"/>
+                    <TextBlock Text="DL : "/>
                     <Label Padding="0">
                         <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/releases"
                             RequestNavigate="HyperLink_OnRequestNavigate"
@@ -90,7 +90,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0" VerticalAlignment="Bottom">
-                <Label x:Name="CopyRight" Padding="5,0" Content="Copyright © 2021-2024 Hibi__10000"/>
+                <TextBlock x:Name="CopyRight" Padding="5,0" Text="Copyright © 2021-2024 Hibi_10000"/>
             </Grid>
             <Grid Grid.Column="1" HorizontalAlignment="Right" MaxWidth="68" x:Name="Debug" Visibility="Collapsed">
                 <Button Margin="0,0,2,0" Padding="10,5" FontSize="15" Content="Debug" Click="Debug_OnClick"/>
