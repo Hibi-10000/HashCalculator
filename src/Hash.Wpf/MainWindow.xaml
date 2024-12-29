@@ -48,7 +48,7 @@
             </MenuItem>
         </Menu>
         <Grid Grid.Row="1" Margin="5">
-            <Label x:Name="hashAndVer" Content="HashCalculator" FontSize="35" BorderThickness="1" Padding="10,0" HorizontalAlignment="Left" FontWeight="Bold"
+            <Label x:Name="hashAndVer" Content="{StaticResource Title}" FontSize="35" BorderThickness="1" Padding="10,0" HorizontalAlignment="Left" FontWeight="Bold"
                 Foreground="Lime" BorderBrush="{DynamicResource ABrush.Foreground.Deeper}" Background="{DynamicResource ABrush.Tone2.Background.Static}"/>
             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
                 <TextBlock Text="CreatedBy : Hibi_10000"/>
