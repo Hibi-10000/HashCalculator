@@ -38,6 +38,7 @@ public class StringsExtension : MarkupExtension
         set => _strings = value;
     }
     
+    [DefaultValue(null)]
     [StringSyntax("CompositeFormat")]
     public string? Format
     {

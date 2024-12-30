@@ -20,11 +20,12 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-                    xmlns:str="clr-namespace:Hash.Wpf.Strings">
+                    xmlns:str="clr-namespace:Hash.Wpf.Strings"
+                    xmlns:local="clr-namespace:Hash.Wpf">
     <sys:String x:Key="AppName">HashCalculator</sys:String>
-    <str:String x:Key="Version" Text="v0.7.0"/>
+    <str:String x:Key="Version" Text="{x:Static local:App.SemVer}"/>
     <str:Strings x:Key="Title" Format="{}{0} {1}">
-        <str:StringResource ResourceKey="AppName"/>
+        <StaticResource ResourceKey="AppName"/>
         <str:StringResource ResourceKey="Version"/>
     </str:Strings>
 </ResourceDictionary>
