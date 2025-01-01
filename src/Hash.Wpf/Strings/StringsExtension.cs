@@ -40,13 +40,13 @@ public class StringsExtension : MarkupExtension
     
     [DefaultValue(null)]
     [StringSyntax("CompositeFormat")]
-    public string? Format
+    public string? StringFormat
     {
         get => _formatString;
         set => _formatString = value;
     }
 
-    public override object? ProvideValue(IServiceProvider serviceProvider)
+    public override string ProvideValue(IServiceProvider serviceProvider)
     {
         if (_formatString is not null)
         {

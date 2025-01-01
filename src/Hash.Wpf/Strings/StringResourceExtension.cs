@@ -22,18 +22,4 @@ namespace Hash.Wpf.Strings;
 
 [MarkupExtensionReturnType(typeof(object))]
 [Localizability(LocalizationCategory.NeverLocalize)]
-public class StringResourceExtension : StaticResourceExtension
-{
-    //public StringResourceExtension() {}
-    //public StringResourceExtension(object resourceKey) : base(resourceKey) {}
-    
-    //public override object? ProvideValue(IServiceProvider serviceProvider)
-    //{
-    //    object? value = base.ProvideValue(serviceProvider);
-    //    if (value is MarkupExtension me)
-    //    {
-    //        return me.ProvideValue(serviceProvider);
-    //    }
-    //    return value;
-    //}
-}
+public class StringResourceExtension : StaticResourceExtension;

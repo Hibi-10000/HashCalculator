@@ -23,9 +23,9 @@
                     xmlns:str="clr-namespace:Hash.Wpf.Strings"
                     xmlns:local="clr-namespace:Hash.Wpf">
     <sys:String x:Key="AppName">HashCalculator</sys:String>
-    <str:String x:Key="Version" Text="{x:Static local:App.SemVer}"/>
-    <str:Strings x:Key="Title" Format="{}{0} {1}">
+    <x:Static x:Key="Version" Member="local:App.SemVer"/>
+    <str:Strings x:Key="Title" StringFormat="{}{0} {1}">
         <StaticResource ResourceKey="AppName"/>
-        <str:StringResource ResourceKey="Version"/>
+        <StaticResource ResourceKey="Version"/>
     </str:Strings>
 </ResourceDictionary>
