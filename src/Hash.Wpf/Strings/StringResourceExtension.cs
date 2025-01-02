@@ -22,4 +22,8 @@ namespace Hash.Wpf.Strings;
 
 [MarkupExtensionReturnType(typeof(object))]
 [Localizability(LocalizationCategory.NeverLocalize)]
-public class StringResourceExtension : StaticResourceExtension;
+public class StringResourceExtension : StaticResourceExtension
+{
+    public StringResourceExtension() {}
+    public StringResourceExtension(object resourceKey) : base(resourceKey) {}
+}

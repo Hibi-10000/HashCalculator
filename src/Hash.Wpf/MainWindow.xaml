@@ -23,8 +23,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hash.Wpf"
+        xmlns:str="clr-namespace:Hash.Wpf.Strings"
         mc:Ignorable="d"
-        Title="HashCalculator" Icon="./Resources/Hash.ico"
+        Title="{str:StringResource Title}" Icon="./Resources/Hash.ico"
         Loaded="MainWindow_OnLoaded"
         Background="{DynamicResource Window.Static.Background}"
         BorderBrush="{DynamicResource Window.Static.BorderBrush}"
@@ -48,7 +49,7 @@
             </MenuItem>
         </Menu>
         <Grid Grid.Row="1" Margin="5">
-            <Label x:Name="hashAndVer" Content="{StaticResource Title}" FontSize="35" BorderThickness="1" Padding="10,0" HorizontalAlignment="Left" FontWeight="Bold"
+            <Label Content="{StaticResource Title}" FontSize="35" BorderThickness="1" Padding="10,0" HorizontalAlignment="Left" FontWeight="Bold"
                 Foreground="Lime" BorderBrush="{DynamicResource ABrush.Foreground.Deeper}" Background="{DynamicResource ABrush.Tone2.Background.Static}"/>
             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
                 <TextBlock Text="CreatedBy : Hibi_10000"/>
@@ -210,7 +211,7 @@
             </TabItem>
         </TabControl>
         <Grid Grid.Row="3">
-            <Label x:Name="HashVer" Content="HashCalculator" Padding="5,0"/>
+            <Label Content="{StaticResource Title}" Padding="5,0"/>
             <TextBlock x:Name="CopyRight" Text="Copyright © 2021-2024 Hibi_10000" Padding="5,0" HorizontalAlignment="Right"/>
         </Grid>
     </Grid>
