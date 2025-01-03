@@ -1,0 +1,37 @@
+﻿<!--
+    Copyright © 2021-2024 Hibi_10000
+
+    This file is part of HashCalculator program.
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:str="clr-namespace:Hash.Wpf.Strings"
+                    xmlns:local="clr-namespace:Hash.Wpf">
+    <sys:String x:Key="AppName">HashCalculator</sys:String>
+    <x:Static x:Key="Version" Member="local:App.SemVer"/>
+    <sys:String x:Key="TitleBase">{0} {1}</sys:String>
+    <str:Strings x:Key="Title" StringFormat="{StaticResource TitleBase}">
+        <StaticResource ResourceKey="AppName"/>
+        <StaticResource ResourceKey="Version"/>
+    </str:Strings>
+    <x:Static x:Key="NowYear" Member="local:App.NowYear"/>
+    <sys:String x:Key="CopyRightBase">Copyright © 2021-{0} Hibi_10000</sys:String>
+    <str:Strings x:Key="CopyRight" StringFormat="{StaticResource CopyRightBase}">
+        <StaticResource ResourceKey="NowYear"/>
+    </str:Strings>
+</ResourceDictionary>

@@ -85,10 +85,6 @@ public partial class MainWindow : Window
             HashForContextEnable.IsChecked = false;
         }
 
-        Title = $"HashCalculator {App.SemVer}";
-        hashAndVer.Content = $"HashCalculator {App.SemVer}";
-        HashVer.Content = $"HashCalculator {App.SemVer}";
-        CopyRight.Text = $"Copyright © 2021-{DateTime.Now.Year} Hibi_10000";
         foreach (string hashTypeName in HashCalculate.GetHashTypeNames())
         {
             HashSelector.Items.Add(new ComboBoxItem { Content = hashTypeName });

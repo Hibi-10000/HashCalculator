@@ -35,7 +35,9 @@ public partial class App : Application
     internal const string Minor = "7";
     internal const string Build = "0";
 
-    internal const string SemVer = $"v{Major}.{Minor}.{Build}";
+    public const string SemVer = $"v{Major}.{Minor}.{Build}";
+
+    public static string NowYear => DateTime.Now.Year.ToString();
 
     /// <summary>
     /// Application Entry Point.
