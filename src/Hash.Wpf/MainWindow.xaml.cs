@@ -85,7 +85,6 @@ public partial class MainWindow : Window
             HashForContextEnable.IsChecked = false;
         }
 
-        CopyRight.Text = $"Copyright © 2021-{DateTime.Now.Year} Hibi_10000";
         foreach (string hashTypeName in HashCalculate.GetHashTypeNames())
         {
             HashSelector.Items.Add(new ComboBoxItem { Content = hashTypeName });

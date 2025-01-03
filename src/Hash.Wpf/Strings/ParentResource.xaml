@@ -24,8 +24,14 @@
                     xmlns:local="clr-namespace:Hash.Wpf">
     <sys:String x:Key="AppName">HashCalculator</sys:String>
     <x:Static x:Key="Version" Member="local:App.SemVer"/>
-    <str:Strings x:Key="Title" StringFormat="{}{0} {1}">
+    <sys:String x:Key="TitleBase">{0} {1}</sys:String>
+    <str:Strings x:Key="Title" StringFormat="{StaticResource TitleBase}">
         <StaticResource ResourceKey="AppName"/>
         <StaticResource ResourceKey="Version"/>
+    </str:Strings>
+    <x:Static x:Key="NowYear" Member="local:App.NowYear"/>
+    <sys:String x:Key="CopyRightBase">Copyright © 2021-{0} Hibi_10000</sys:String>
+    <str:Strings x:Key="CopyRight" StringFormat="{StaticResource CopyRightBase}">
+        <StaticResource ResourceKey="NowYear"/>
     </str:Strings>
 </ResourceDictionary>

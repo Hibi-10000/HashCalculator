@@ -212,7 +212,7 @@
         </TabControl>
         <Grid Grid.Row="3">
             <Label Content="{StaticResource Title}" Padding="5,0"/>
-            <TextBlock x:Name="CopyRight" Text="Copyright © 2021-2024 Hibi_10000" Padding="5,0" HorizontalAlignment="Right"/>
+            <TextBlock Text="{str:StringResource CopyRight}" Padding="5,0" HorizontalAlignment="Right"/>
         </Grid>
     </Grid>
 </Window>
