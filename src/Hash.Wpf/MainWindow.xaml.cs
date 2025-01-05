@@ -33,9 +33,6 @@ namespace Hash.Wpf;
 /// </summary>
 public partial class MainWindow : Window
 {
-    //[DllImport("UXTheme.dll", SetLastError = true, EntryPoint = "#138")]
-    //public static extern bool ShouldSystemUseDarkMode();
-
     public MainWindow(bool multiInstance)
     {
         InitializeComponent();
@@ -74,8 +71,6 @@ public partial class MainWindow : Window
                     break;
             }
         }
-
-        //(ShouldSystemUseDarkMode() ? (Action)setDarkMode : setLightMode)();
 
         const string regPath = @"*\shell\HashForContext";
         try {
@@ -271,35 +266,4 @@ public partial class MainWindow : Window
             HashForContextEnable.IsChecked = HashForContextEnable.IsChecked is not true;
         }
     }
-
-    /*
-    private void setLightMode()
-    {
-        this.BackColor = SystemColors.Control;
-        this.ForeColor = SystemColors.ControlText;
-        this.richTextBox1.BackColor = SystemColors.Control;
-        this.hashAndVer.ForeColor = Color.Lime;
-        this.hashAndVer.BackColor = SystemColors.Window;
-        this.TabHash.BackColor = SystemColors.Window;
-        this.TabHash.ForeColor = SystemColors.ControlText;
-        this.HashFileURL.BackColor = SystemColors.Control;
-        this.HashFileURL.ForeColor = SystemColors.WindowText;
-        this.DropPanel.BackColor = SystemColors.Window;
-        this.DropPanel.ForeColor = SystemColors.ControlText;
-    }
-
-    private void setDarkMode()
-    {
-        this.BackColor = SystemColors.ControlDark;
-        this.ForeColor = SystemColors.ControlLightLight;
-        this.richTextBox1.BackColor = SystemColors.ControlDark;
-        this.hashAndVer.ForeColor = Color.Lime;
-        this.hashAndVer.BackColor = SystemColors.ControlDarkDark;
-        this.TabHash.BackColor = SystemColors.ControlDarkDark;
-        this.TabHash.ForeColor = SystemColors.ControlLightLight;
-        this.HashFileURL.BackColor = SystemColors.ControlDark;
-        this.HashFileURL.ForeColor = SystemColors.Window;
-        this.DropPanel.BackColor = SystemColors.ControlDark;
-        this.DropPanel.ForeColor = SystemColors.Window;
-    }*/
 }
