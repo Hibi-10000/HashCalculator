@@ -49,17 +49,17 @@
             </MenuItem>
         </Menu>
         <Grid Grid.Row="1" Margin="5">
-            <Label Content="{StaticResource Title}" FontSize="35" BorderThickness="1" Padding="10,0" HorizontalAlignment="Left" FontWeight="Bold"
+            <Label Content="{str:StringResource Title}" FontSize="35" BorderThickness="1" Padding="10,0" HorizontalAlignment="Left" FontWeight="Bold"
                 Foreground="Lime" BorderBrush="{DynamicResource ABrush.Foreground.Deeper}" Background="{DynamicResource ABrush.Tone2.Background.Static}"/>
             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
-                <TextBlock Text="CreatedBy : Hibi_10000"/>
+                <TextBlock Text="{str:StringResource CreatedBy}"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Text="DL : "/>
+                    <TextBlock Text="{StaticResource Dl}"/>
                     <Label Padding="0">
                         <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/releases/"
                             RequestNavigate="HyperLink_OnRequestNavigate"
                             ToolTip="{Binding Path=NavigateUri, RelativeSource={RelativeSource Mode=Self}}">
-                            <TextBlock Text="GitHub"/>
+                            <TextBlock Text="{StaticResource GitHub}"/>
                         </Hyperlink>
                     </Label>
                 </StackPanel>
@@ -211,7 +211,7 @@
             </TabItem>
         </TabControl>
         <Grid Grid.Row="3">
-            <Label Content="{StaticResource Title}" Padding="5,0"/>
+            <Label Content="{str:StringResource Title}" Padding="5,0"/>
             <TextBlock Text="{str:StringResource CopyRight}" Padding="5,0" HorizontalAlignment="Right"/>
         </Grid>
     </Grid>

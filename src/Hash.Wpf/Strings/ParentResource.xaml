@@ -34,4 +34,10 @@
     <str:Strings x:Key="CopyRight" StringFormat="{StaticResource CopyRightBase}">
         <StaticResource ResourceKey="NowYear"/>
     </str:Strings>
+    <sys:String x:Key="Creator">Hibi_10000</sys:String>
+    <str:Strings x:Key="CreatedBy" StringFormat="CreatedBy : {0}">
+        <StaticResource ResourceKey="Creator"/>
+    </str:Strings>
+    <sys:String x:Key="Dl">DL : </sys:String>
+    <sys:String x:Key="GitHub">GitHub</sys:String>
 </ResourceDictionary>
