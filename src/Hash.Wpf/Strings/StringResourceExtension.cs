@@ -15,15 +15,25 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
+using System;
 using System.Windows;
 using System.Windows.Markup;
 
 namespace Hash.Wpf.Strings;
 
-[MarkupExtensionReturnType(typeof(object))]
+[MarkupExtensionReturnType(typeof(string))]
 [Localizability(LocalizationCategory.NeverLocalize)]
 public class StringResourceExtension : StaticResourceExtension
 {
     public StringResourceExtension() {}
     public StringResourceExtension(object resourceKey) : base(resourceKey) {}
+    
+    public override string ProvideValue(IServiceProvider serviceProvider)
+    {
+        if (base.ProvideValue(serviceProvider) is string baseValue)
+        {
+            return baseValue;
+        }
+        return string.Empty;
+    }
 }
