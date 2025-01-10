@@ -70,9 +70,6 @@ public partial class HashForContextWindow : Window
             }
         }
 
-        Title = $"Hash for ContextMenu {App.SemVer}";
-        hashAndVer.Content = $"Hash for ContextMenu {App.SemVer}";
-        CopyRight.Text = $"Copyright © 2021-{DateTime.Now.Year} Hibi_10000";
         foreach (string hashTypeName in HashCalculate.GetHashTypeNames())
         {
             HashSelector.Items.Add(new ComboBoxItem { Content = hashTypeName });

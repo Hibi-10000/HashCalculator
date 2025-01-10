@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Copyright © 2021-2024 Hibi_10000
 
     This file is part of HashCalculator program.
@@ -27,6 +27,11 @@
     <sys:String x:Key="TitleBase">{0} {1}</sys:String>
     <str:Strings x:Key="Title" StringFormat="{StaticResource TitleBase}">
         <StaticResource ResourceKey="AppName"/>
+        <StaticResource ResourceKey="Version"/>
+    </str:Strings>
+    <sys:String x:Key="AppContextName">Hash for ContextMenu</sys:String>
+    <str:Strings x:Key="TitleContext" StringFormat="{StaticResource TitleBase}">
+        <StaticResource ResourceKey="AppContextName"/>
         <StaticResource ResourceKey="Version"/>
     </str:Strings>
     <x:Static x:Key="NowYear" Member="local:App.NowYear"/>
