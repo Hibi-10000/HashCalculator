@@ -34,6 +34,10 @@
         <StaticResource ResourceKey="AppContextName"/>
         <StaticResource ResourceKey="Version"/>
     </str:Strings>
+    <sys:String x:Key="VersionTextBase">Version : {0}</sys:String>
+    <str:Strings x:Key="VersionText" StringFormat="{StaticResource VersionTextBase}">
+        <StaticResource ResourceKey="Version"/>
+    </str:Strings>
     <x:Static x:Key="NowYear" Member="local:App.NowYear"/>
     <sys:String x:Key="CopyRightBase">Copyright © 2021-{0} Hibi_10000</sys:String>
     <str:Strings x:Key="CopyRight" StringFormat="{StaticResource CopyRightBase}">
