@@ -21,7 +21,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
                     xmlns:str="clr-namespace:Hash.Wpf.Strings"
-                    xmlns:local="clr-namespace:Hash.Wpf">
+                    xmlns:local="clr-namespace:Hash.Wpf"
+                    xml:space="preserve">
     <sys:String x:Key="AppName">HashCalculator</sys:String>
     <x:Static x:Key="Version" Member="local:App.SemVer"/>
     <sys:String x:Key="TitleBase">{0} {1}</sys:String>
