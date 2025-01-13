@@ -46,9 +46,6 @@ public partial class AboutWindow : Window
 
     private void AboutWindow_OnLoaded(object sender, RoutedEventArgs e)
     {
-        hashAndVer.Content = $"HashCalculator {App.SemVer}";
-        version.Content = $"Version : {App.SemVer}";
-        copyright.Text = $"Copyright © 2021-{DateTime.Now.Year} Hibi_10000";
         LinkLicense.NavigateUri = new Uri(LinkLicense.NavigateUri.AbsoluteUri.Replace("/blob/main/", $"/blob/{App.SemVer}/"), UriKind.Absolute);
         LinkNotice .NavigateUri = new Uri(LinkNotice .NavigateUri.AbsoluteUri.Replace("/blob/main/", $"/blob/{App.SemVer}/"), UriKind.Absolute);
     }
