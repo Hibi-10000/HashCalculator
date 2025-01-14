@@ -43,11 +43,5 @@ public partial class AboutWindow : Window
     {
         App.OpenLink(e.Uri.AbsoluteUri);
     }
-
-    private void AboutWindow_OnLoaded(object sender, RoutedEventArgs e)
-    {
-        LinkLicense.NavigateUri = new Uri(LinkLicense.NavigateUri.AbsoluteUri.Replace("/blob/main/", $"/blob/{App.SemVer}/"), UriKind.Absolute);
-        LinkNotice .NavigateUri = new Uri(LinkNotice .NavigateUri.AbsoluteUri.Replace("/blob/main/", $"/blob/{App.SemVer}/"), UriKind.Absolute);
-    }
 }
 

@@ -45,7 +45,7 @@
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Text="{StaticResource Dl}"/>
                     <Label Padding="0">
-                        <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/releases"
+                        <Hyperlink NavigateUri="{str:StringResource Uri.GitHubRelease}"
                             RequestNavigate="HyperLink_OnRequestNavigate"
                             ToolTip="{Binding Path=NavigateUri, RelativeSource={RelativeSource Mode=Self}}">
                             <TextBlock Text="{StaticResource GitHub}"/>

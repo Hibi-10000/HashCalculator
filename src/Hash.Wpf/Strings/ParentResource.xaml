@@ -50,4 +50,15 @@
     </str:Strings>
     <sys:String x:Key="Dl">DL : </sys:String>
     <sys:String x:Key="GitHub">GitHub</sys:String>
+    <str:Uri x:Key="Uri.GitHubRelease" UriString="https://github.com/Hibi-10000/HashCalculator/releases/"/>
+    <str:Uri x:Key="Uri.GitHub.License"
+        ><str:Strings StringFormat="https://github.com/Hibi-10000/HashCalculator/blob/{0}/LICENSE.md">
+            <StaticResource ResourceKey="Version"/>
+        </str:Strings
+    ></str:Uri>
+    <str:Uri x:Key="Uri.GitHub.Notice"
+        ><str:Strings StringFormat="https://github.com/Hibi-10000/HashCalculator/blob/{0}/NOTICE.md">
+            <StaticResource ResourceKey="Version"/>
+        </str:Strings
+    ></str:Uri>
 </ResourceDictionary>

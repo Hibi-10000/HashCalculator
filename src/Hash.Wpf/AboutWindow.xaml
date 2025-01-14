@@ -26,7 +26,6 @@
         xmlns:str="clr-namespace:Hash.Wpf.Strings"
         mc:Ignorable="d"
         Title="HashCalculatorについて" Icon="./Resources/Hash.ico"
-        Loaded="AboutWindow_OnLoaded"
         Background="{DynamicResource Window.Static.Background}"
         BorderBrush="{DynamicResource Window.Static.BorderBrush}"
         Foreground="{DynamicResource Window.Static.Foreground}"
@@ -40,7 +39,7 @@
             <StackPanel Orientation="Horizontal" Margin="5,0">
                 <TextBlock Text="{StaticResource Dl}"/>
                 <Label Padding="0">
-                    <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/releases/"
+                    <Hyperlink NavigateUri="{str:StringResource Uri.GitHubRelease}"
                         RequestNavigate="HyperLink_OnRequestNavigate"
                         ToolTip="{Binding Path=NavigateUri, RelativeSource={RelativeSource Mode=Self}}">
                         <TextBlock Text="{StaticResource GitHub}"/>
@@ -49,15 +48,15 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5">
                 <Label Padding="0" Margin="0,0,20,0">
-                    <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/blob/main/LICENSE.md"
-                        RequestNavigate="HyperLink_OnRequestNavigate" x:Name="LinkLicense"
+                    <Hyperlink NavigateUri="{str:StringResource Uri.GitHub.License}"
+                        RequestNavigate="HyperLink_OnRequestNavigate"
                         ToolTip="{Binding Path=NavigateUri, RelativeSource={RelativeSource Mode=Self}}">
                         <TextBlock Text="ライセンス"/>
                     </Hyperlink>
                 </Label>
                 <Label Padding="0">
-                    <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/blob/main/NOTICE.md"
-                        RequestNavigate="HyperLink_OnRequestNavigate" x:Name="LinkNotice"
+                    <Hyperlink NavigateUri="{str:StringResource Uri.GitHub.Notice}"
+                        RequestNavigate="HyperLink_OnRequestNavigate"
                         ToolTip="{Binding Path=NavigateUri, RelativeSource={RelativeSource Mode=Self}}">
                         <TextBlock Text="サードパーティーライセンス"/>
                     </Hyperlink>

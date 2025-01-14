@@ -1,4 +1,4 @@
-﻿// Copyright © 2021-2024 Hibi_10000
+﻿// Copyright © 2021-2025 Hibi_10000
 // 
 // This file is part of HashCalculator program.
 // 
@@ -16,25 +16,30 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 using System;
-using System.Windows;
+using System.ComponentModel;
 using System.Windows.Markup;
 
 namespace Hash.Wpf.Strings;
 
-[MarkupExtensionReturnType(typeof(object))]
-[Localizability(LocalizationCategory.NeverLocalize)]
-public class StringResourceExtension : StaticResourceExtension
+[ContentProperty("UriString")]
+[MarkupExtensionReturnType(typeof(Uri))]
+public class UriExtension : MarkupExtension
 {
-    public StringResourceExtension() {}
-    public StringResourceExtension(object resourceKey) : base(resourceKey) {}
-    
+    private string? _uriString;
+
+    [DefaultValue(null)]
+    public string? UriString
+    {
+        get => _uriString;
+        set => _uriString = value;
+    }
+
     public override object? ProvideValue(IServiceProvider serviceProvider)
     {
-        return base.ProvideValue(serviceProvider) switch
+        if (_uriString is not null)
         {
-            string baseValue => baseValue,
-            Uri baseValue => baseValue,
-            _ => null
-        };
+            return new Uri(_uriString);
+        }
+        return null;
     }
 }
