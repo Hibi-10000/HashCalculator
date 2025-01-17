@@ -39,7 +39,7 @@
             <StackPanel Orientation="Horizontal" Margin="5,0">
                 <TextBlock Text="{StaticResource Dl}"/>
                 <Label Padding="0">
-                    <Hyperlink NavigateUri="{str:StringResource Uri.GitHubRelease}"
+                    <Hyperlink NavigateUri="{str:Uri {StaticResource Uri.GitHubRelease}}"
                         RequestNavigate="HyperLink_OnRequestNavigate"
                         ToolTip="{Binding Path=NavigateUri, RelativeSource={RelativeSource Mode=Self}}">
                         <TextBlock Text="{StaticResource GitHub}"/>
@@ -48,14 +48,14 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5">
                 <Label Padding="0" Margin="0,0,20,0">
-                    <Hyperlink NavigateUri="{str:StringResource Uri.GitHub.License}"
+                    <Hyperlink NavigateUri="{str:Uri {str:StringResource Uri.GitHub.License}}"
                         RequestNavigate="HyperLink_OnRequestNavigate"
                         ToolTip="{Binding Path=NavigateUri, RelativeSource={RelativeSource Mode=Self}}">
                         <TextBlock Text="ライセンス"/>
                     </Hyperlink>
                 </Label>
                 <Label Padding="0">
-                    <Hyperlink NavigateUri="{str:StringResource Uri.GitHub.Notice}"
+                    <Hyperlink NavigateUri="{str:Uri {str:StringResource Uri.GitHub.Notice}}"
                         RequestNavigate="HyperLink_OnRequestNavigate"
                         ToolTip="{Binding Path=NavigateUri, RelativeSource={RelativeSource Mode=Self}}">
                         <TextBlock Text="サードパーティーライセンス"/>

@@ -21,19 +21,18 @@ using System.Windows.Markup;
 
 namespace Hash.Wpf.Strings;
 
-[MarkupExtensionReturnType(typeof(object))]
+[MarkupExtensionReturnType(typeof(string))]
 [Localizability(LocalizationCategory.NeverLocalize)]
 public class StringResourceExtension : StaticResourceExtension
 {
     public StringResourceExtension() {}
     public StringResourceExtension(object resourceKey) : base(resourceKey) {}
     
-    public override object? ProvideValue(IServiceProvider serviceProvider)
+    public override string? ProvideValue(IServiceProvider serviceProvider)
     {
         return base.ProvideValue(serviceProvider) switch
         {
             string baseValue => baseValue,
-            Uri baseValue => baseValue,
             _ => null
         };
     }

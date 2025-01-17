@@ -56,7 +56,7 @@
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Text="{StaticResource Dl}"/>
                     <Label Padding="0">
-                        <Hyperlink NavigateUri="{str:StringResource Uri.GitHubRelease}"
+                        <Hyperlink NavigateUri="{str:Uri {StaticResource Uri.GitHubRelease}}"
                             RequestNavigate="HyperLink_OnRequestNavigate"
                             ToolTip="{Binding Path=NavigateUri, RelativeSource={RelativeSource Mode=Self}}">
                             <TextBlock Text="{StaticResource GitHub}"/>

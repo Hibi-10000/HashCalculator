@@ -27,6 +27,10 @@ public class UriExtension : MarkupExtension
 {
     private string? _uriString;
 
+    public UriExtension() {}
+    public UriExtension(string uriString) => _uriString = uriString;
+
+    [ConstructorArgument("uriString")]
     [DefaultValue(null)]
     public string? UriString
     {
