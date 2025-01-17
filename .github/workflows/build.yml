@@ -3,12 +3,13 @@ name: build
 on:
   workflow_dispatch:
   workflow_call:
-  pull_request:
   push:
+    branches: [ "main" ]
+  pull_request:
 
-concurrency: 
-  group: ${{ github.workflow }}-${{ github.event.pull_request.head.sha || github.sha }}
-  cancel-in-progress: true
+#concurrency: 
+#  group: ${{ github.workflow }}-${{ github.event.pull_request.head.sha || github.sha }}
+#  cancel-in-progress: true
 
 jobs:
 
