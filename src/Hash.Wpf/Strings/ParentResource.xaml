@@ -23,33 +23,46 @@
                     xmlns:str="clr-namespace:Hash.Wpf.Strings"
                     xmlns:local="clr-namespace:Hash.Wpf"
                     xml:space="preserve">
+
+    <!-- Common -->
     <sys:String x:Key="AppName">HashCalculator</sys:String>
     <x:Static x:Key="Version" Member="local:App.SemVer"/>
+
     <sys:String x:Key="TitleBase">{0} {1}</sys:String>
     <str:Strings x:Key="Title" StringFormat="{StaticResource TitleBase}">
         <StaticResource ResourceKey="AppName"/>
         <StaticResource ResourceKey="Version"/>
     </str:Strings>
-    <sys:String x:Key="AppContextName">Hash for ContextMenu</sys:String>
-    <str:Strings x:Key="TitleContext" StringFormat="{StaticResource TitleBase}">
-        <StaticResource ResourceKey="AppContextName"/>
-        <StaticResource ResourceKey="Version"/>
-    </str:Strings>
-    <sys:String x:Key="VersionTextBase">Version : {0}</sys:String>
-    <str:Strings x:Key="VersionText" StringFormat="{StaticResource VersionTextBase}">
-        <StaticResource ResourceKey="Version"/>
-    </str:Strings>
+
     <x:Static x:Key="NowYear" Member="local:App.NowYear"/>
     <sys:String x:Key="CopyRightBase">Copyright © 2021-{0} Hibi_10000</sys:String>
     <str:Strings x:Key="CopyRight" StringFormat="{StaticResource CopyRightBase}">
         <StaticResource ResourceKey="NowYear"/>
     </str:Strings>
+
     <sys:String x:Key="Creator">Hibi_10000</sys:String>
-    <str:Strings x:Key="CreatedBy" StringFormat="CreatedBy : {0}">
+    <sys:String x:Key="CreatedByBase">CreatedBy : {0}</sys:String>
+    <str:Strings x:Key="CreatedBy" StringFormat="{StaticResource CreatedByBase}">
         <StaticResource ResourceKey="Creator"/>
     </str:Strings>
+
     <sys:String x:Key="Dl">DL : </sys:String>
     <sys:String x:Key="GitHub">GitHub</sys:String>
+
+    <!-- HashForContextWindow -->
+    <sys:String x:Key="AppContextName">Hash for ContextMenu</sys:String>
+    <str:Strings x:Key="TitleContext" StringFormat="{StaticResource TitleBase}">
+        <StaticResource ResourceKey="AppContextName"/>
+        <StaticResource ResourceKey="Version"/>
+    </str:Strings>
+
+    <!-- AboutWindow -->
+    <sys:String x:Key="VersionTextBase">Version : {0}</sys:String>
+    <str:Strings x:Key="VersionText" StringFormat="{StaticResource VersionTextBase}">
+        <StaticResource ResourceKey="Version"/>
+    </str:Strings>
+
+    <!-- Uri -->
     <sys:String x:Key="Uri.GitHubRelease">https://github.com/Hibi-10000/HashCalculator/releases/</sys:String>
     <str:Strings x:Key="Uri.GitHub.License" StringFormat="https://github.com/Hibi-10000/HashCalculator/blob/{0}/LICENSE.md">
         <StaticResource ResourceKey="Version"/>
@@ -57,4 +70,5 @@
     <str:Strings x:Key="Uri.GitHub.Notice" StringFormat="https://github.com/Hibi-10000/HashCalculator/blob/{0}/NOTICE.md">
         <StaticResource ResourceKey="Version"/>
     </str:Strings>
+
 </ResourceDictionary>
