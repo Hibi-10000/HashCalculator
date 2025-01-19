@@ -28,21 +28,21 @@
     <sys:String x:Key="AppName">HashCalculator</sys:String>
     <x:Static x:Key="Version" Member="local:App.SemVer"/>
 
-    <sys:String x:Key="TitleBase">{0} {1}</sys:String>
-    <str:Strings x:Key="Title" StringFormat="{StaticResource TitleBase}">
+    <sys:String x:Key="Title.Base">{0} {1}</sys:String>
+    <str:Strings x:Key="Title" StringFormat="{StaticResource Title.Base}">
         <StaticResource ResourceKey="AppName"/>
         <StaticResource ResourceKey="Version"/>
     </str:Strings>
 
     <x:Static x:Key="NowYear" Member="local:App.NowYear"/>
-    <sys:String x:Key="CopyRightBase">Copyright © 2021-{0} Hibi_10000</sys:String>
-    <str:Strings x:Key="CopyRight" StringFormat="{StaticResource CopyRightBase}">
+    <sys:String x:Key="CopyRight.Base">Copyright © 2021-{0} Hibi_10000</sys:String>
+    <str:Strings x:Key="CopyRight" StringFormat="{StaticResource CopyRight.Base}">
         <StaticResource ResourceKey="NowYear"/>
     </str:Strings>
 
     <sys:String x:Key="Creator">Hibi_10000</sys:String>
-    <sys:String x:Key="CreatedByBase">CreatedBy : {0}</sys:String>
-    <str:Strings x:Key="CreatedBy" StringFormat="{StaticResource CreatedByBase}">
+    <sys:String x:Key="CreatedBy.Base">CreatedBy : {0}</sys:String>
+    <str:Strings x:Key="CreatedBy" StringFormat="{StaticResource CreatedBy.Base}">
         <StaticResource ResourceKey="Creator"/>
     </str:Strings>
 
@@ -51,19 +51,19 @@
 
     <!-- HashForContextWindow -->
     <sys:String x:Key="AppContextName">Hash for ContextMenu</sys:String>
-    <str:Strings x:Key="TitleContext" StringFormat="{StaticResource TitleBase}">
+    <str:Strings x:Key="TitleContext" StringFormat="{StaticResource Title.Base}">
         <StaticResource ResourceKey="AppContextName"/>
         <StaticResource ResourceKey="Version"/>
     </str:Strings>
 
     <!-- AboutWindow -->
-    <sys:String x:Key="VersionTextBase">Version : {0}</sys:String>
-    <str:Strings x:Key="VersionText" StringFormat="{StaticResource VersionTextBase}">
+    <sys:String x:Key="VersionText.Base">Version : {0}</sys:String>
+    <str:Strings x:Key="VersionText" StringFormat="{StaticResource VersionText.Base}">
         <StaticResource ResourceKey="Version"/>
     </str:Strings>
 
     <!-- Uri -->
-    <sys:String x:Key="Uri.GitHubRelease">https://github.com/Hibi-10000/HashCalculator/releases/</sys:String>
+    <sys:String x:Key="Uri.GitHub.Release">https://github.com/Hibi-10000/HashCalculator/releases/</sys:String>
     <str:Strings x:Key="Uri.GitHub.License" StringFormat="https://github.com/Hibi-10000/HashCalculator/blob/{0}/LICENSE.md">
         <StaticResource ResourceKey="Version"/>
     </str:Strings>
