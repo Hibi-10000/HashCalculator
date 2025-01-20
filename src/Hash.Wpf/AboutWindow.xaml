@@ -32,37 +32,37 @@
         ResizeMode="CanMinimize" Height="220" Width="450">
     <Grid Background="{DynamicResource ABrush.Tone2.Background.Static}">
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0">
-            <Label Padding="10,0" Content="{str:StringResource Title}" FontSize="35" BorderThickness="1" Foreground="Lime"
+            <Label Padding="10,0" Content="{str:StringResource String.Title}" FontSize="35" BorderThickness="1" Foreground="Lime"
                 BorderBrush="{DynamicResource ABrush.Foreground.Deeper}" Background="{DynamicResource ABrush.Tone2.Background.Static}"/>
-            <TextBlock Margin="5,10,5,0" Text="{str:StringResource CreatedBy}"/>
-            <Label Content="{str:StringResource VersionText}"/>
+            <TextBlock Margin="5,10,5,0" Text="{str:StringResource String.CreatedBy}"/>
+            <Label Content="{str:StringResource String.VersionText}"/>
             <StackPanel Orientation="Horizontal" Margin="5,0">
-                <TextBlock Text="{StaticResource Dl}"/>
+                <TextBlock Text="{StaticResource String.Dl}"/>
                 <Label Padding="0">
-                    <Hyperlink NavigateUri="{str:Uri {StaticResource Uri.GitHub.Release}}"
+                    <Hyperlink NavigateUri="{str:Uri {StaticResource String.Uri.GitHub.Release}}"
                         RequestNavigate="HyperLink_OnRequestNavigate"
                         ToolTip="{Binding Path=NavigateUri, RelativeSource={RelativeSource Mode=Self}}">
-                        <TextBlock Text="{StaticResource GitHub}"/>
+                        <TextBlock Text="{StaticResource String.GitHub}"/>
                     </Hyperlink>
                 </Label>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5">
                 <Label Padding="0" Margin="0,0,20,0">
-                    <Hyperlink NavigateUri="{str:Uri {str:StringResource Uri.GitHub.License}}"
+                    <Hyperlink NavigateUri="{str:Uri {str:StringResource String.Uri.GitHub.License}}"
                         RequestNavigate="HyperLink_OnRequestNavigate"
                         ToolTip="{Binding Path=NavigateUri, RelativeSource={RelativeSource Mode=Self}}">
                         <TextBlock Text="ライセンス"/>
                     </Hyperlink>
                 </Label>
                 <Label Padding="0">
-                    <Hyperlink NavigateUri="{str:Uri {str:StringResource Uri.GitHub.Notice}}"
+                    <Hyperlink NavigateUri="{str:Uri {str:StringResource String.Uri.GitHub.Notice}}"
                         RequestNavigate="HyperLink_OnRequestNavigate"
                         ToolTip="{Binding Path=NavigateUri, RelativeSource={RelativeSource Mode=Self}}">
                         <TextBlock Text="サードパーティーライセンス"/>
                     </Hyperlink>
                 </Label>
             </StackPanel>
-            <TextBlock Padding="0" Margin="5,2" Text="{str:StringResource CopyRight}"/>
+            <TextBlock Padding="0" Margin="5,2" Text="{str:StringResource String.CopyRight}"/>
         </StackPanel>
         <Grid HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,15,10">
             <Button Padding="30,1" IsDefault="True" Content="OK" Click="OK_OnClick"/>

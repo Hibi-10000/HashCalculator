@@ -25,50 +25,50 @@
                     xml:space="preserve">
 
     <!-- Common -->
-    <sys:String x:Key="AppName">HashCalculator</sys:String>
-    <x:Static x:Key="Version" Member="local:App.SemVer"/>
+    <sys:String x:Key="String.AppName">HashCalculator</sys:String>
+    <x:Static x:Key="String.Version" Member="local:App.SemVer"/>
 
-    <sys:String x:Key="Title.Base">{0} {1}</sys:String>
-    <str:Strings x:Key="Title" StringFormat="{StaticResource Title.Base}">
-        <StaticResource ResourceKey="AppName"/>
-        <StaticResource ResourceKey="Version"/>
+    <sys:String x:Key="String.Title.Base">{0} {1}</sys:String>
+    <str:Strings x:Key="String.Title" StringFormat="{StaticResource String.Title.Base}">
+        <StaticResource ResourceKey="String.AppName"/>
+        <StaticResource ResourceKey="String.Version"/>
     </str:Strings>
 
-    <x:Static x:Key="NowYear" Member="local:App.NowYear"/>
-    <sys:String x:Key="CopyRight.Base">Copyright © 2021-{0} Hibi_10000</sys:String>
-    <str:Strings x:Key="CopyRight" StringFormat="{StaticResource CopyRight.Base}">
-        <StaticResource ResourceKey="NowYear"/>
+    <x:Static x:Key="String.NowYear" Member="local:App.NowYear"/>
+    <sys:String x:Key="String.CopyRight.Base">Copyright © 2021-{0} Hibi_10000</sys:String>
+    <str:Strings x:Key="String.CopyRight" StringFormat="{StaticResource String.CopyRight.Base}">
+        <StaticResource ResourceKey="String.NowYear"/>
     </str:Strings>
 
-    <sys:String x:Key="Creator">Hibi_10000</sys:String>
-    <sys:String x:Key="CreatedBy.Base">CreatedBy : {0}</sys:String>
-    <str:Strings x:Key="CreatedBy" StringFormat="{StaticResource CreatedBy.Base}">
-        <StaticResource ResourceKey="Creator"/>
+    <sys:String x:Key="String.Creator">Hibi_10000</sys:String>
+    <sys:String x:Key="String.CreatedBy.Base">CreatedBy : {0}</sys:String>
+    <str:Strings x:Key="String.CreatedBy" StringFormat="{StaticResource String.CreatedBy.Base}">
+        <StaticResource ResourceKey="String.Creator"/>
     </str:Strings>
 
-    <sys:String x:Key="Dl">DL : </sys:String>
-    <sys:String x:Key="GitHub">GitHub</sys:String>
+    <sys:String x:Key="String.Dl">DL : </sys:String>
+    <sys:String x:Key="String.GitHub">GitHub</sys:String>
 
     <!-- HashForContextWindow -->
-    <sys:String x:Key="AppContextName">Hash for ContextMenu</sys:String>
-    <str:Strings x:Key="TitleContext" StringFormat="{StaticResource Title.Base}">
-        <StaticResource ResourceKey="AppContextName"/>
-        <StaticResource ResourceKey="Version"/>
+    <sys:String x:Key="String.AppName.Context">Hash for ContextMenu</sys:String>
+    <str:Strings x:Key="String.Title.Context" StringFormat="{StaticResource String.Title.Base}">
+        <StaticResource ResourceKey="String.AppName.Context"/>
+        <StaticResource ResourceKey="String.Version"/>
     </str:Strings>
 
     <!-- AboutWindow -->
-    <sys:String x:Key="VersionText.Base">Version : {0}</sys:String>
-    <str:Strings x:Key="VersionText" StringFormat="{StaticResource VersionText.Base}">
-        <StaticResource ResourceKey="Version"/>
+    <sys:String x:Key="String.VersionText.Base">Version : {0}</sys:String>
+    <str:Strings x:Key="String.VersionText" StringFormat="{StaticResource String.VersionText.Base}">
+        <StaticResource ResourceKey="String.Version"/>
     </str:Strings>
 
     <!-- Uri -->
-    <sys:String x:Key="Uri.GitHub.Release">https://github.com/Hibi-10000/HashCalculator/releases/</sys:String>
-    <str:Strings x:Key="Uri.GitHub.License" StringFormat="https://github.com/Hibi-10000/HashCalculator/blob/{0}/LICENSE.md">
-        <StaticResource ResourceKey="Version"/>
+    <sys:String x:Key="String.Uri.GitHub.Release">https://github.com/Hibi-10000/HashCalculator/releases/</sys:String>
+    <str:Strings x:Key="String.Uri.GitHub.License" StringFormat="https://github.com/Hibi-10000/HashCalculator/blob/{0}/LICENSE.md">
+        <StaticResource ResourceKey="String.Version"/>
     </str:Strings>
-    <str:Strings x:Key="Uri.GitHub.Notice" StringFormat="https://github.com/Hibi-10000/HashCalculator/blob/{0}/NOTICE.md">
-        <StaticResource ResourceKey="Version"/>
+    <str:Strings x:Key="String.Uri.GitHub.Notice" StringFormat="https://github.com/Hibi-10000/HashCalculator/blob/{0}/NOTICE.md">
+        <StaticResource ResourceKey="String.Version"/>
     </str:Strings>
 
 </ResourceDictionary>

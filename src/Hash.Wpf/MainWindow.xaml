@@ -25,7 +25,7 @@
         xmlns:local="clr-namespace:Hash.Wpf"
         xmlns:str="clr-namespace:Hash.Wpf.Strings"
         mc:Ignorable="d"
-        Title="{str:StringResource Title}" Icon="./Resources/Hash.ico"
+        Title="{str:StringResource String.Title}" Icon="./Resources/Hash.ico"
         Loaded="MainWindow_OnLoaded"
         Background="{DynamicResource Window.Static.Background}"
         BorderBrush="{DynamicResource Window.Static.BorderBrush}"
@@ -49,17 +49,17 @@
             </MenuItem>
         </Menu>
         <Grid Grid.Row="1" Margin="5">
-            <Label Content="{str:StringResource Title}" FontSize="35" BorderThickness="1" Padding="10,0" HorizontalAlignment="Left" FontWeight="Bold"
+            <Label Content="{str:StringResource String.Title}" FontSize="35" BorderThickness="1" Padding="10,0" HorizontalAlignment="Left" FontWeight="Bold"
                 Foreground="Lime" BorderBrush="{DynamicResource ABrush.Foreground.Deeper}" Background="{DynamicResource ABrush.Tone2.Background.Static}"/>
             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
-                <TextBlock Text="{str:StringResource CreatedBy}"/>
+                <TextBlock Text="{str:StringResource String.CreatedBy}"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Text="{StaticResource Dl}"/>
+                    <TextBlock Text="{StaticResource String.Dl}"/>
                     <Label Padding="0">
-                        <Hyperlink NavigateUri="{str:Uri {StaticResource Uri.GitHub.Release}}"
+                        <Hyperlink NavigateUri="{str:Uri {StaticResource String.Uri.GitHub.Release}}"
                             RequestNavigate="HyperLink_OnRequestNavigate"
                             ToolTip="{Binding Path=NavigateUri, RelativeSource={RelativeSource Mode=Self}}">
-                            <TextBlock Text="{StaticResource GitHub}"/>
+                            <TextBlock Text="{StaticResource String.GitHub}"/>
                         </Hyperlink>
                     </Label>
                 </StackPanel>
@@ -211,8 +211,8 @@
             </TabItem>
         </TabControl>
         <Grid Grid.Row="3">
-            <Label Content="{str:StringResource Title}" Padding="5,0"/>
-            <TextBlock Text="{str:StringResource CopyRight}" Padding="5,0" HorizontalAlignment="Right"/>
+            <Label Content="{str:StringResource String.Title}" Padding="5,0"/>
+            <TextBlock Text="{str:StringResource String.CopyRight}" Padding="5,0" HorizontalAlignment="Right"/>
         </Grid>
     </Grid>
 </Window>

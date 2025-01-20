@@ -25,7 +25,7 @@
         xmlns:local="clr-namespace:Hash.Wpf"
         xmlns:str="clr-namespace:Hash.Wpf.Strings"
         mc:Ignorable="d"
-        Title="{str:StringResource TitleContext}" Icon="./Resources/Hash.ico"
+        Title="{str:StringResource String.Title.Context}" Icon="./Resources/Hash.ico"
         Loaded="HashForContextWindow_OnLoaded"
         Background="{DynamicResource Window.Static.Background}"
         BorderBrush="{DynamicResource Window.Static.BorderBrush}"
@@ -38,17 +38,17 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Margin="5,5,5,10">
-            <Label Content="{str:StringResource TitleContext}" FontSize="27" BorderThickness="1" Padding="10,0" HorizontalAlignment="Left" FontWeight="Bold"
+            <Label Content="{str:StringResource String.Title.Context}" FontSize="27" BorderThickness="1" Padding="10,0" HorizontalAlignment="Left" FontWeight="Bold"
                 Foreground="Lime" BorderBrush="{DynamicResource ABrush.Foreground.Deeper}" Background="{DynamicResource ABrush.Tone2.Background.Static}"/>
             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
-                <TextBlock Text="{str:StringResource CreatedBy}"/>
+                <TextBlock Text="{str:StringResource String.CreatedBy}"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Text="{StaticResource Dl}"/>
+                    <TextBlock Text="{StaticResource String.Dl}"/>
                     <Label Padding="0">
-                        <Hyperlink NavigateUri="{str:Uri {StaticResource Uri.GitHub.Release}}"
+                        <Hyperlink NavigateUri="{str:Uri {StaticResource String.Uri.GitHub.Release}}"
                             RequestNavigate="HyperLink_OnRequestNavigate"
                             ToolTip="{Binding Path=NavigateUri, RelativeSource={RelativeSource Mode=Self}}">
-                            <TextBlock Text="{StaticResource GitHub}"/>
+                            <TextBlock Text="{StaticResource String.GitHub}"/>
                         </Hyperlink>
                     </Label>
                 </StackPanel>
@@ -91,7 +91,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0" VerticalAlignment="Bottom">
-                <TextBlock Padding="5,0" Text="{str:StringResource CopyRight}"/>
+                <TextBlock Padding="5,0" Text="{str:StringResource String.CopyRight}"/>
             </Grid>
             <Grid Grid.Column="1" HorizontalAlignment="Right" MaxWidth="68" x:Name="Debug" Visibility="Collapsed">
                 <Button Margin="0,0,2,0" Padding="10,5" FontSize="15" Content="Debug" Click="Debug_OnClick"/>
