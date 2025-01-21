@@ -24,6 +24,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Strings/Resource.ja.xaml"/>
                 <ResourceDictionary Source="/Strings/ParentResource.xaml"/>
                 
                 <!-- Contains all of the colours and brushes for a theme -->
