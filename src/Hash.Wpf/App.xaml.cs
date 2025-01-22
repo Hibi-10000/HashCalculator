@@ -22,6 +22,7 @@ using System.Threading;
 using System.Windows;
 using Dark.Net;
 using Hash.Core;
+using Hash.Wpf.Strings;
 using Microsoft.Win32;
 
 namespace Hash.Wpf;
@@ -99,6 +100,7 @@ public partial class App : Application
     protected override void OnStartup(StartupEventArgs e) {
         base.OnStartup(e);
         DarkNet.Instance.SetCurrentProcessTheme(Theme.Auto);
+        LangManager.Init();
     }
 
     internal static void OpenLink(string link)
