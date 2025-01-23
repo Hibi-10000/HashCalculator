@@ -20,6 +20,9 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Resource.ja.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
 
     <!-- MainWindow -->
     <sys:String x:Key="Lang.Menu.File">File(_F)</sys:String>

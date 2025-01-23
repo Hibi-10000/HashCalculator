@@ -17,6 +17,7 @@
 
 using System;
 using System.Globalization;
+using System.Linq;
 using System.Windows;
 
 namespace Hash.Wpf.Strings;
@@ -28,60 +29,37 @@ public class LangManager
     public static void Init() => _instance ??= new LangManager();
 
     private readonly ResourceDictionary _langResource;
-    private readonly ResourceDictionary _langEnglishResource = GetLangResourceDictionary("en");
-    private string _currentCultureCode = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+    private string _currentCultureCode;
 
     private LangManager()
     {
         //SystemEvents.UserPreferenceChanged += OnCulturePreferenceChanged;
-        UpdateCurrentCulture();
-        _langResource = GetLangResourceDictionary(_currentCultureCode);
-        if (_currentCultureCode is not "ja") SwitchNonJapanese();
+        _currentCultureCode = GetCurrentCulture();
+        var appResources = Application.Current.Resources.MergedDictionaries;
+        _langResource = appResources.First(rd => rd.Source.Equals(GetLangResourceUri("ja")));
+        if (_currentCultureCode is not "ja") _langResource.Source = GetLangResourceUri(_currentCultureCode);
     }
 
     //private void OnCulturePreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
     //{
     //    if (e.Category != UserPreferenceCategory.Locale) return;
-    //    var newCultureCode = UpdateCurrentCulture(false);
+    //    var newCultureCode = GetCurrentCulture();
     //    if (newCultureCode == _currentCultureCode) return;
     //    UpdateCulture(newCultureCode);
     //}
 
     //private void UpdateCulture(string newCultureCode)
     //{
-    //    if (newCultureCode is "ja" && _currentCultureCode is not "ja") SwitchJapanese();
-    //    else if (newCultureCode is not "ja" && _currentCultureCode is "ja") SwitchNonJapanese();
     //    _langResource.Source = GetLangResourceUri(newCultureCode);
     //    _currentCultureCode = newCultureCode;
     //}
-    //
-    //private void SwitchJapanese()
-    //{
-    //    var appResources = Application.Current.Resources.MergedDictionaries;
-    //    appResources.Remove(_langEnglishResource);
-    //    appResources.Remove(_langResource);
-    //}
 
-    private void SwitchNonJapanese()
-    {
-        var appResources = Application.Current.Resources.MergedDictionaries;
-        appResources.Insert(0, _langEnglishResource);
-        appResources.Insert(0, _langResource);
-    }
-
-    private string UpdateCurrentCulture(bool updateCurrent = true)
+    private static string GetCurrentCulture()
     {
         CultureInfo.CurrentUICulture.ClearCachedData();
-        var newCultureCode = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
-        if (updateCurrent) _currentCultureCode = newCultureCode;
-        return newCultureCode;
+        return CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
     }
 
-    private static ResourceDictionary GetLangResourceDictionary(string langCode)
-    {
-        return new ResourceDictionary { Source = GetLangResourceUri(langCode) };
-    }
-    
     private static Uri GetLangResourceUri(string langCode)
     {
         return new Uri($"/Strings/Lang/Resource.{langCode}.xaml", UriKind.Relative);

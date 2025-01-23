@@ -39,13 +39,13 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Menu Grid.Row="0" Background="{DynamicResource ABrush.Tone4.Background.Static}">
-            <MenuItem Header="{StaticResource Lang.Menu.File}" FontSize="13">
-                <MenuItem Header="{StaticResource Lang.Menu.File.Settings}" Background="{DynamicResource ABrush.Tone2.Background.Static}" BorderBrush="{DynamicResource ABrush.Tone2.Background.Static}" Click="menuFileSettings_OnClick"/>
-                <MenuItem Header="{StaticResource Lang.Menu.File.Exit}" Background="{DynamicResource ABrush.Tone2.Background.Static}" BorderBrush="{DynamicResource ABrush.Tone2.Background.Static}" Click="menuFileExit_OnClick"/>
+            <MenuItem Header="{DynamicResource Lang.Menu.File}" FontSize="13">
+                <MenuItem Header="{DynamicResource Lang.Menu.File.Settings}" Background="{DynamicResource ABrush.Tone2.Background.Static}" BorderBrush="{DynamicResource ABrush.Tone2.Background.Static}" Click="menuFileSettings_OnClick"/>
+                <MenuItem Header="{DynamicResource Lang.Menu.File.Exit}" Background="{DynamicResource ABrush.Tone2.Background.Static}" BorderBrush="{DynamicResource ABrush.Tone2.Background.Static}" Click="menuFileExit_OnClick"/>
             </MenuItem>
-            <MenuItem Header="{StaticResource Lang.Menu.Help}" FontSize="13">
-                <MenuItem Header="{StaticResource Lang.Menu.Help.Readme}" Background="{DynamicResource ABrush.Tone2.Background.Static}" BorderBrush="{DynamicResource ABrush.Tone2.Background.Static}" Click="menuHelpReadme_OnClick"/>
-                <MenuItem Header="{StaticResource Lang.Menu.Help.About}" Background="{DynamicResource ABrush.Tone2.Background.Static}" BorderBrush="{DynamicResource ABrush.Tone2.Background.Static}" Click="menuHelpAbout_OnClick"/>
+            <MenuItem Header="{DynamicResource Lang.Menu.Help}" FontSize="13">
+                <MenuItem Header="{DynamicResource Lang.Menu.Help.Readme}" Background="{DynamicResource ABrush.Tone2.Background.Static}" BorderBrush="{DynamicResource ABrush.Tone2.Background.Static}" Click="menuHelpReadme_OnClick"/>
+                <MenuItem Header="{DynamicResource Lang.Menu.Help.About}" Background="{DynamicResource ABrush.Tone2.Background.Static}" BorderBrush="{DynamicResource ABrush.Tone2.Background.Static}" Click="menuHelpAbout_OnClick"/>
             </MenuItem>
         </Menu>
         <Grid Grid.Row="1" Margin="5">
