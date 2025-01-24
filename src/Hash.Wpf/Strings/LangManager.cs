@@ -62,6 +62,9 @@ public class LangManager
 
     private static Uri GetLangResourceUri(string langCode)
     {
+        if (!ResourceExistLangs.Contains(langCode)) langCode = "en";
         return new Uri($"/Strings/Lang/Resource.{langCode}.xaml", UriKind.Relative);
     }
+
+    private static ReadOnlySpan<string> ResourceExistLangs => new[] { "ja", "en" };
 }
