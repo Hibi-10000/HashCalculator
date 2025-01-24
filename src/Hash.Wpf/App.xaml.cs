@@ -22,6 +22,7 @@ using System.Threading;
 using System.Windows;
 using Dark.Net;
 using Hash.Core;
+using Hash.Wpf.Strings;
 using Microsoft.Win32;
 
 namespace Hash.Wpf;
@@ -35,7 +36,9 @@ public partial class App : Application
     internal const string Minor = "7";
     internal const string Build = "0";
 
-    internal const string SemVer = $"v{Major}.{Minor}.{Build}";
+    public const string SemVer = $"v{Major}.{Minor}.{Build}";
+
+    public static string NowYear => DateTime.Now.Year.ToString();
 
     /// <summary>
     /// Application Entry Point.
@@ -97,6 +100,7 @@ public partial class App : Application
     protected override void OnStartup(StartupEventArgs e) {
         base.OnStartup(e);
         DarkNet.Instance.SetCurrentProcessTheme(Theme.Auto);
+        LangManager.Init();
     }
 
     internal static void OpenLink(string link)
