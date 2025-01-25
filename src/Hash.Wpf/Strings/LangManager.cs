@@ -1,4 +1,4 @@
-﻿// Copyright © 2021-2025 Hibi_10000
+// Copyright © 2021-2025 Hibi_10000
 // 
 // This file is part of HashCalculator program.
 // 
@@ -16,6 +16,7 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using System.Collections.Immutable;
 using System.Globalization;
 using System.Linq;
 using System.Windows;
@@ -27,6 +28,8 @@ public class LangManager
     private static LangManager? _instance;
     //public static LangManager Instance { get { return _instance ??= new LangManager(); } }
     public static void Init() => _instance ??= new LangManager();
+
+    private static readonly ImmutableList<string> ResourceExistLangs = ImmutableList.Create("ja", "en");
 
     private readonly ResourceDictionary _langResource;
     private string _currentCultureCode;
@@ -65,6 +68,4 @@ public class LangManager
         if (!ResourceExistLangs.Contains(langCode)) langCode = "en";
         return new Uri($"/Strings/Lang/Resource.{langCode}.xaml", UriKind.Relative);
     }
-
-    private static ReadOnlySpan<string> ResourceExistLangs => new[] { "ja", "en" };
 }

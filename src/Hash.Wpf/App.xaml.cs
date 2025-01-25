@@ -20,6 +20,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Windows;
+using System.Windows.Markup;
 using Dark.Net;
 using Hash.Core;
 using Hash.Wpf.Strings;
@@ -30,7 +31,7 @@ namespace Hash.Wpf;
 /// <summary>
 /// Interaction logic for App.xaml
 /// </summary>
-public partial class App : Application
+public partial class App : Application, IComponentConnector
 {
     internal const string Major = "0";
     internal const string Minor = "7";
@@ -82,7 +83,7 @@ public partial class App : Application
                     return;
                 case "-ctm":
                     App appContext = new App();
-                    appContext.InitializeComponent();
+                    appContext.Init();
                     appContext.Run(new HashForContextWindow());
                     return;
             }
@@ -92,13 +93,14 @@ public partial class App : Application
         using Mutex mutex = new Mutex(true, mutexName, out bool createdNew);
 
         App app = new App();
-        app.InitializeComponent();
+        app.Init();
         app.Run(new MainWindow(!createdNew));
         mutex.ReleaseMutex();
     }
 
-    protected override void OnStartup(StartupEventArgs e) {
-        base.OnStartup(e);
+    private void Init()
+    {
+        InitializeComponent();
         DarkNet.Instance.SetCurrentProcessTheme(Theme.Auto);
         LangManager.Init();
     }
