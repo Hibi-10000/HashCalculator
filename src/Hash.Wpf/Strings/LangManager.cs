@@ -1,4 +1,4 @@
-// Copyright © 2021-2025 Hibi_10000
+﻿// Copyright © 2021-2025 Hibi_10000
 // 
 // This file is part of HashCalculator program.
 // 
@@ -31,15 +31,15 @@ public class LangManager
 
     private static readonly ImmutableList<string> ResourceExistLangs = ImmutableList.Create("ja", "en");
 
-    private readonly ResourceDictionary _langResource;
-    private string _currentCultureCode;
+    //private readonly ResourceDictionary _langResource;
+    //private string _currentCultureCode;
 
     private LangManager()
     {
         //SystemEvents.UserPreferenceChanged += OnCulturePreferenceChanged;
-        _currentCultureCode = GetCurrentCulture();
+        var _currentCultureCode = GetCurrentCulture();
         var appResources = Application.Current.Resources.MergedDictionaries;
-        _langResource = appResources.First(rd => rd.Source.Equals(GetLangResourceUri("ja")));
+        var _langResource = appResources.First(rd => rd.Source.Equals(GetLangResourceUri("ja")));
         if (_currentCultureCode is not "ja") _langResource.Source = GetLangResourceUri(_currentCultureCode);
     }
 

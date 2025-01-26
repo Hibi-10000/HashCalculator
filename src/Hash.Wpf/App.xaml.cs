@@ -83,7 +83,6 @@ public partial class App : Application, IComponentConnector
                     return;
                 case "-ctm":
                     App appContext = new App();
-                    appContext.Init();
                     appContext.Run(new HashForContextWindow());
                     return;
             }
@@ -93,12 +92,11 @@ public partial class App : Application, IComponentConnector
         using Mutex mutex = new Mutex(true, mutexName, out bool createdNew);
 
         App app = new App();
-        app.Init();
         app.Run(new MainWindow(!createdNew));
         mutex.ReleaseMutex();
     }
 
-    private void Init()
+    private App()
     {
         InitializeComponent();
         DarkNet.Instance.SetCurrentProcessTheme(Theme.Auto);
