@@ -31,4 +31,9 @@
     <sys:String x:Key="Lang.Menu.Help">Help(_H)</sys:String>
     <sys:String x:Key="Lang.Menu.Help.Readme">Readme(_R)</sys:String>
     <sys:String x:Key="Lang.Menu.Help.About">About(_V)</sys:String>
+
+    <sys:String x:Key="Lang.Tab.HashCalculator">HashCalculator</sys:String>
+    <sys:String x:Key="Lang.Tab.HashCompare">HashCompare</sys:String>
+    <sys:String x:Key="Lang.Tab.Readme">Readme</sys:String>
+    <sys:String x:Key="Lang.Tab.Settings">Settings</sys:String>
 </ResourceDictionary>
