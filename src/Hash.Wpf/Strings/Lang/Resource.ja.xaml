@@ -33,4 +33,9 @@
     <sys:String x:Key="Lang.Tab.HashCompare">Hash比較</sys:String>
     <sys:String x:Key="Lang.Tab.Readme">Readme</sys:String>
     <sys:String x:Key="Lang.Tab.Settings">設定</sys:String>
+
+    <sys:String x:Key="Lang.Calculator.FilePath">ファイルのパス</sys:String>
+    <sys:String x:Key="Lang.Calculator.DropFileHere">ここにファイルをドロップ</sys:String>
+    <sys:String x:Key="Lang.Calculator.SelectFile">ファイルを選択</sys:String>
+    <sys:String x:Key="Lang.Calculator.SelectHash">Hashを選択</sys:String>
 </ResourceDictionary>

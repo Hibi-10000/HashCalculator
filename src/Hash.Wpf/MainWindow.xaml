@@ -76,13 +76,13 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" Height="40">
-                        <TextBox x:Name="HashFileURL" Text="ファイルのパス" FontSize="14" TextWrapping="Wrap" Cursor="No" IsReadOnly="True" AllowDrop="False" AcceptsReturn="True"/>
+                        <TextBox x:Name="HashFileURL" Text="{StaticResource Lang.Calculator.FilePath}" FontSize="14" TextWrapping="Wrap" Cursor="No" IsReadOnly="True" AllowDrop="False" AcceptsReturn="True"/>
                     </Grid>
                     <Grid Grid.Row="1" Margin="0,5" AllowDrop="True" Drop="DropPanel_OnDrop" DragEnter="DropPanel_OnDragEnter">
                         <Rectangle Stroke="{DynamicResource ABrush.Foreground.Deeper}"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Label Content="ここにファイルをドロップ" FontSize="30" Padding="5"/>
-                            <Button Content="ファイルを選択" FontSize="25" Margin="10,5" Padding="10,0" Click="SelectFileButton_OnClick"/>
+                            <Label Content="{StaticResource Lang.Calculator.DropFileHere}" FontSize="30" Padding="5"/>
+                            <Button Content="{StaticResource Lang.Calculator.SelectFile}" FontSize="25" Margin="10,5" Padding="10,0" Click="SelectFileButton_OnClick"/>
                         </StackPanel>
                     </Grid>
                     <Grid Grid.Row="2">
@@ -93,7 +93,7 @@
                             <ColumnDefinition Width="4*"/>
                         </Grid.ColumnDefinitions>
                         <ComboBox x:Name="HashSelector" Grid.Column="0" SelectedIndex="0" IsEditable="True" TextBoxBase.TextChanged="HashSelector_OnTextChanged">
-                            <ComboBoxItem Content="Hashを選択"/>
+                            <ComboBoxItem Content="{StaticResource Lang.Calculator.SelectHash}"/>
                         </ComboBox>
                         <CheckBox x:Name="checkUpper" Grid.Column="1" Margin="5,3,0,0" Content="大文字" Click="CheckUpper_OnClick"/>
                         <CheckBox x:Name="checkHyphen" Grid.Column="2" Margin="0,3,0,0" Content="ハイフン" Click="CheckHyphen_OnClick"/>
