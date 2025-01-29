@@ -38,4 +38,8 @@
     <sys:String x:Key="Lang.Calculator.DropFileHere">ここにファイルをドロップ</sys:String>
     <sys:String x:Key="Lang.Calculator.SelectFile">ファイルを選択</sys:String>
     <sys:String x:Key="Lang.Calculator.SelectHash">Hashを選択</sys:String>
+    <sys:String x:Key="Lang.Calculator.UpperCase">大文字</sys:String>
+    <sys:String x:Key="Lang.Calculator.Hyphen">ハイフン</sys:String>
+    <sys:String x:Key="Lang.Calculator.Reset">値をリセット</sys:String>
+    <sys:String x:Key="Lang.Calculator.OutputHash">ここにHash値が表示されます</sys:String>
 </ResourceDictionary>

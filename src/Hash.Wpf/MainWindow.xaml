@@ -95,12 +95,12 @@
                         <ComboBox x:Name="HashSelector" Grid.Column="0" SelectedIndex="0" IsEditable="True" TextBoxBase.TextChanged="HashSelector_OnTextChanged">
                             <ComboBoxItem Content="{StaticResource Lang.Calculator.SelectHash}"/>
                         </ComboBox>
-                        <CheckBox x:Name="checkUpper" Grid.Column="1" Margin="5,3,0,0" Content="大文字" Click="CheckUpper_OnClick"/>
-                        <CheckBox x:Name="checkHyphen" Grid.Column="2" Margin="0,3,0,0" Content="ハイフン" Click="CheckHyphen_OnClick"/>
-                        <Button Grid.Column="3" Margin="0" Foreground="#E00000" FontWeight="Bold" Content="値をリセット" Click="AllReset_OnClick"/>
+                        <CheckBox x:Name="checkUpperCase" Grid.Column="1" Margin="5,3,0,0" Content="{StaticResource Lang.Calculator.UpperCase}" Click="CheckUpperCase_OnClick"/>
+                        <CheckBox x:Name="checkHyphen" Grid.Column="2" Margin="0,3,0,0" Content="{StaticResource Lang.Calculator.Hyphen}" Click="CheckHyphen_OnClick"/>
+                        <Button Grid.Column="3" Margin="0" Foreground="#E00000" FontWeight="Bold" Content="{StaticResource Lang.Calculator.Reset}" Click="AllReset_OnClick"/>
                     </Grid>
                     <Grid Grid.Row="3" Margin="0,5" Height="60">
-                        <TextBox x:Name="HashOutputBox" Text="ここにHash値が表示されます" FontSize="14" TextWrapping="Wrap" IsReadOnly="True"/>
+                        <TextBox x:Name="HashOutputBox" Text="{StaticResource Lang.Calculator.OutputHash}" FontSize="14" TextWrapping="Wrap" IsReadOnly="True"/>
                     </Grid>
                     <Grid Grid.Row="4">
                         <Grid.ColumnDefinitions>
