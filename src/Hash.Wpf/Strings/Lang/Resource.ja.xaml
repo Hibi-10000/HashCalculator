@@ -42,4 +42,7 @@
     <sys:String x:Key="Lang.Calculator.Hyphen">ハイフン</sys:String>
     <sys:String x:Key="Lang.Calculator.Reset">値をリセット</sys:String>
     <sys:String x:Key="Lang.Calculator.OutputHash">ここにHash値が表示されます</sys:String>
+    <sys:String x:Key="Lang.Calculator.Copy">Hash値をコピー</sys:String>
+    <sys:String x:Key="Lang.Calculator.CopyToCompare1">比較①にコピー</sys:String>
+    <sys:String x:Key="Lang.Calculator.CopyToCompare2">比較②にコピー</sys:String>
 </ResourceDictionary>
