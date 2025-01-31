@@ -127,20 +127,20 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" HorizontalAlignment="Right">
-                        <Button Padding="10,0" Foreground="Red" Content="リセット" Click="compareReset_OnClick"/>
+                        <Button Padding="10,0" Foreground="Red" Content="{StaticResource Lang.Compare.Reset}" Click="compareReset_OnClick"/>
                     </Grid>
                     <Grid Grid.Row="1" Margin="0,0,0,1" HorizontalAlignment="Left">
                         <Rectangle Stroke="{DynamicResource TextBox.Static.Border}"/>
-                        <Label Content="比較①" Padding="2,0"/>
+                        <Label Content="{StaticResource Lang.Compare.One}" Padding="2,0"/>
                     </Grid>
                     <StackPanel Grid.Row="2" Orientation="Horizontal">
                         <Grid Width="100">
                             <ComboBox x:Name="compare1hashType" SelectedIndex="0" IsEditable="True">
-                                <ComboBoxItem Content="比較①"/>
+                                <ComboBoxItem Content="{StaticResource Lang.Compare.One}"/>
                             </ComboBox>
                         </Grid>
                         <Grid Margin="5,0" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <Button Padding="15,0" Content="クリップボードから①へ貼り付け" Click="paste1cb_OnClick"/>
+                            <Button Padding="15,0" Content="{StaticResource Lang.Compare.One.Paste}" Click="paste1cb_OnClick"/>
                         </Grid>
                     </StackPanel>
                     <Grid Grid.Row="3" Margin="0,3">
@@ -148,16 +148,16 @@
                     </Grid>
                     <Grid Grid.Row="4" Margin="0,0,0,1" HorizontalAlignment="Left">
                         <Rectangle Stroke="{DynamicResource TextBox.Static.Border}"/>
-                        <Label Content="比較②" Padding="2,0"/>
+                        <Label Content="{StaticResource Lang.Compare.Two}" Padding="2,0"/>
                     </Grid>
                     <StackPanel Grid.Row="5" Orientation="Horizontal">
                         <Grid Width="100">
                             <ComboBox x:Name="compare2hashType" SelectedIndex="0" IsEditable="True">
-                                <ComboBoxItem Content="比較②"/>
+                                <ComboBoxItem Content="{StaticResource Lang.Compare.Two}"/>
                             </ComboBox>
                         </Grid>
                         <Grid Margin="5,0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Button Padding="15,0" Content="クリップボードから②へ貼り付け" Click="paste2cb_OnClick"/>
+                            <Button Padding="15,0" Content="{StaticResource Lang.Compare.Two.Paste}" Click="paste2cb_OnClick"/>
                         </Grid>
                     </StackPanel>
                     <Grid Grid.Row="6" Margin="0,3">
