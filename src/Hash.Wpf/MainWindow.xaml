@@ -170,14 +170,14 @@
                             <ColumnDefinition Width="6*"/>
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">
-                            <Label Content="比較 :" FontSize="24"/>
+                            <Label Content="{StaticResource Lang.Compare.ResultBefore}" FontSize="24"/>
                         </Grid>
                         <Grid Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
-                            <Label x:Name="compareResult" Content="結果" FontSize="24" Visibility="Visible"/>
-                            <Label Content="真" FontSize="24" Visibility="Hidden"/>
-                            <Label Content="偽" FontSize="24" Visibility="Hidden"/>
+                            <Label x:Name="compareResult" Content="{StaticResource Lang.Compare.Result}" FontSize="24" Visibility="Visible"/>
+                            <Label Content="{StaticResource Lang.Compare.Result.True}" FontSize="24" Visibility="Hidden"/>
+                            <Label Content="{StaticResource Lang.Compare.Result.False}" FontSize="24" Visibility="Hidden"/>
                         </Grid>
-                        <Button Grid.Column="2" Margin="2,0,0,0" Content="比較" FontSize="36" Click="compareExecButton_OnClick"/>
+                        <Button Grid.Column="2" Margin="2,0,0,0" Content="{StaticResource Lang.Compare.Execute}" FontSize="36" Click="compareExecButton_OnClick"/>
                     </Grid>
                 </Grid>
             </TabItem>
@@ -203,7 +203,7 @@
                         <CheckBox x:Name="HashForContextEnable" Click="HashForContextEnable_OnClick">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="./Resources/UAC.ico" Height="16" Width="16" Margin="-2,0,2,0"/>
-                                <TextBlock x:Name="HashForContextEnableText" Text="Hash for Contextを有効にする"/>
+                                <TextBlock x:Name="HashForContextEnableText" Text="{StaticResource Lang.Settings.HashForContext}"/>
                             </StackPanel>
                         </CheckBox>
                     </Grid>

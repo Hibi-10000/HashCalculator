@@ -51,4 +51,11 @@
     <sys:String x:Key="Lang.Compare.One.Paste">クリップボードから①へ貼り付け</sys:String>
     <sys:String x:Key="Lang.Compare.Two">比較②</sys:String>
     <sys:String x:Key="Lang.Compare.Two.Paste">クリップボードから②へ貼り付け</sys:String>
+    <sys:String x:Key="Lang.Compare.ResultBefore">比較 :</sys:String>
+    <sys:String x:Key="Lang.Compare.Result">結果</sys:String>
+    <sys:String x:Key="Lang.Compare.Result.True">真</sys:String>
+    <sys:String x:Key="Lang.Compare.Result.False">偽</sys:String>
+    <sys:String x:Key="Lang.Compare.Execute">比較</sys:String>
+
+    <sys:String x:Key="Lang.Settings.HashForContext">Hash for Contextを有効にする</sys:String>
 </ResourceDictionary>
