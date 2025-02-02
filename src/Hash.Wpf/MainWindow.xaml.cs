@@ -142,9 +142,9 @@ public partial class MainWindow : Window
 
     private void AllReset_OnClick(object sender, RoutedEventArgs e)
     {
-        HashOutputBox.Text = "ここにHash値が表示されます";
-        HashFileURL.Text = "ファイルのパス";
-        HashSelector.Text = "Hashを選択";
+        HashOutputBox.Text = App.GetString("Lang.Calculator.OutputHash");
+        HashFileURL.Text = App.GetString("Lang.Calculator.FilePath");
+        HashSelector.Text = App.GetString("Lang.Calculator.SelectHash");
     }
 
     private void HashCopy_OnClick(object sender, RoutedEventArgs e)
@@ -161,14 +161,14 @@ public partial class MainWindow : Window
 
     private void UpdateHash()
     {
-        if (HashFileURL.Text is "ファイルのパス" or "") {
-            HashOutputBox.Text = "ここにHash値が表示されます";
+        if (HashFileURL.Text == App.GetString("Lang.Calculator.FilePath") || HashSelector.Text == "") {
+            HashOutputBox.Text = App.GetString("Lang.Calculator.OutputHash");
         } else {
             string hashType = HashSelector.Text;
             string filePath = HashFileURL.Text;
             bool upper = checkUpperCase.IsChecked ?? false;
             bool hyphen = checkHyphen.IsChecked ?? false;
-            string hash = HashCalculate.GetHash(hashType, filePath, upper, hyphen) ?? "ここにHash値が表示されます";
+            string hash = HashCalculate.GetHash(hashType, filePath, upper, hyphen) ?? App.GetString("Lang.Calculator.OutputHash");
             HashOutputBox.Text = hash;
         }
     }
@@ -197,15 +197,16 @@ public partial class MainWindow : Window
 
     private void compareExecButton_OnClick(object sender, RoutedEventArgs e)
     {
-        compareResult.Content = compare1hash.Text == compare2hash.Text ? "真" : "偽";
+        string result = compare1hash.Text == compare2hash.Text ? "True" : "False";
+        compareResult.Content = App.GetString($"Lang.Compare.Result.{result}");
     }
 
     private void compareReset_OnClick(object sender, RoutedEventArgs e)
     {
-        compareResult.Content = "結果";
-        compare1hashType.Text = "比較①";
+        compareResult.Content = App.GetString("Lang.Compare.Result");
+        compare1hashType.Text = App.GetString("Lang.Compare.One");
         compare1hash.Text = "";
-        compare2hashType.Text = "比較②";
+        compare2hashType.Text = App.GetString("Lang.Compare.Two");
         compare2hash.Text = "";
     }
 

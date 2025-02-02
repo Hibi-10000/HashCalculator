@@ -111,4 +111,6 @@ public partial class App : Application, IComponentConnector
         };
         Process.Start(startInfo);
     }
+
+    internal static string GetString(string key) => Current.Resources[key] as string ?? string.Empty;
 }
