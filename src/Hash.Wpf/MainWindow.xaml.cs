@@ -44,7 +44,7 @@ public partial class MainWindow : Window
         if (multiInstance)
         {
             HashForContextEnable.IsEnabled = false;
-            HashForContextEnableText.Text += " (最初のインスタンスでのみ変更できます)";
+            HashForContextEnableText.Text += App.GetString("Lang.Settings.HashForContext.MultiInstance");
         }
     }
 

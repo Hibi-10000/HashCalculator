@@ -58,4 +58,5 @@
     <sys:String x:Key="Lang.Compare.Execute">比較</sys:String>
 
     <sys:String x:Key="Lang.Settings.HashForContext">Hash for Contextを有効にする</sys:String>
+    <sys:String x:Key="Lang.Settings.HashForContext.MultiInstance"> (最初のインスタンスでのみ変更できます)</sys:String>
 </ResourceDictionary>
