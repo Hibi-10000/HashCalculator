@@ -106,7 +106,7 @@ public partial class HashForContextWindow : Window
         {
             string hashType = HashSelector.Text;
             string filePath = HashFileURL.Text;
-            bool upper = checkUpper.IsChecked ?? false;
+            bool upper = checkUpperCase.IsChecked ?? false;
             bool hyphen = checkHyphen.IsChecked ?? false;
             string hash = HashCalculate.GetHash(hashType, filePath, upper, hyphen) ?? "ここにHash値が表示されます";
             HashOutputBox.Text = hash;
@@ -115,7 +115,7 @@ public partial class HashForContextWindow : Window
         }
     }
 
-    private void CheckUpper_OnClick(object sender, RoutedEventArgs e)
+    private void CheckUpperCase_OnClick(object sender, RoutedEventArgs e)
     {
         UpdateHash();
     }

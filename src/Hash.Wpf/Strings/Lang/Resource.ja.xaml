@@ -19,7 +19,8 @@
 
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xml:space="preserve">
 
     <!-- MainWindow -->
     <sys:String x:Key="Lang.Menu.File">ファイル(_F)</sys:String>
@@ -59,4 +60,7 @@
 
     <sys:String x:Key="Lang.Settings.HashForContext">Hash for Contextを有効にする</sys:String>
     <sys:String x:Key="Lang.Settings.HashForContext.MultiInstance"> (最初のインスタンスでのみ変更できます)</sys:String>
+
+    <sys:String x:Key="Lang.HashForContext.FilePath">ファイルのパス (※これが表示されている場合は起動方法が間違っています)</sys:String>
+    <sys:String x:Key="Lang.HashForContext.StartHash">HashCalculatorを起動</sys:String>
 </ResourceDictionary>
