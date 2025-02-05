@@ -25,7 +25,7 @@
         xmlns:local="clr-namespace:Hash.Wpf"
         xmlns:str="clr-namespace:Hash.Wpf.Strings"
         mc:Ignorable="d"
-        Title="HashCalculatorについて" Icon="./Resources/Hash.ico"
+        Title="{StaticResource Lang.About.Title}" Icon="./Resources/Hash.ico"
         Background="{DynamicResource Window.Static.Background}"
         BorderBrush="{DynamicResource Window.Static.BorderBrush}"
         Foreground="{DynamicResource Window.Static.Foreground}"
@@ -51,14 +51,14 @@
                     <Hyperlink NavigateUri="{str:Uri {str:StringResource String.Uri.GitHub.License}}"
                         RequestNavigate="HyperLink_OnRequestNavigate"
                         ToolTip="{Binding Path=NavigateUri, RelativeSource={RelativeSource Mode=Self}}">
-                        <TextBlock Text="ライセンス"/>
+                        <TextBlock Text="{StaticResource Lang.About.License}"/>
                     </Hyperlink>
                 </Label>
                 <Label Padding="0">
                     <Hyperlink NavigateUri="{str:Uri {str:StringResource String.Uri.GitHub.Notice}}"
                         RequestNavigate="HyperLink_OnRequestNavigate"
                         ToolTip="{Binding Path=NavigateUri, RelativeSource={RelativeSource Mode=Self}}">
-                        <TextBlock Text="サードパーティーライセンス"/>
+                        <TextBlock Text="{StaticResource Lang.About.Notice}"/>
                     </Hyperlink>
                 </Label>
             </StackPanel>

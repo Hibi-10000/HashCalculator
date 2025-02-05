@@ -63,4 +63,8 @@
 
     <sys:String x:Key="Lang.HashForContext.FilePath">ファイルのパス (※これが表示されている場合は起動方法が間違っています)</sys:String>
     <sys:String x:Key="Lang.HashForContext.StartHash">HashCalculatorを起動</sys:String>
+
+    <sys:String x:Key="Lang.About.Title">HashCalculatorについて</sys:String>
+    <sys:String x:Key="Lang.About.License">ライセンス</sys:String>
+    <sys:String x:Key="Lang.About.Notice">サードパーティーライセンス</sys:String>
 </ResourceDictionary>
