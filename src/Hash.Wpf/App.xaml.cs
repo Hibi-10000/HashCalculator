@@ -55,7 +55,7 @@ public partial class App : Application, IComponentConnector
                 case "-rc" when Environment.IsPrivilegedProcess:
                     if (!File.Exists(Environment.ProcessPath))
                     {
-                        MessageBox.Show("予期せぬ原因によりファイルパスを取得できませんでした。", "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show(GetString("Lang.Error.Unexpected.GetFilePath"), GetString("Lang.Error"), MessageBoxButton.OK, MessageBoxImage.Error);
                         Environment.ExitCode = 1;
                         return;
                     }
@@ -78,7 +78,7 @@ public partial class App : Application, IComponentConnector
                     Registry.ClassesRoot.DeleteSubKeyTree(@"*\shell\HashForContext");
                     return;
                 case "-rd" or "-rc":
-                    MessageBox.Show("UACをキャンセルしたか、起動方法が間違っています。", "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(GetString("Lang.Error.NotAdmin"), GetString("Lang.Error"), MessageBoxButton.OK, MessageBoxImage.Error);
                     Environment.ExitCode = 1;
                     return;
                 case "-ctm":

@@ -67,4 +67,8 @@
     <sys:String x:Key="Lang.About.Title">HashCalculatorについて</sys:String>
     <sys:String x:Key="Lang.About.License">ライセンス</sys:String>
     <sys:String x:Key="Lang.About.Notice">サードパーティーライセンス</sys:String>
+
+    <sys:String x:Key="Lang.Error">エラー</sys:String>
+    <sys:String x:Key="Lang.Error.Unexpected.GetFilePath">予期せぬ原因によりファイルパスを取得できませんでした。</sys:String>
+    <sys:String x:Key="Lang.Error.NotAdmin">UACをキャンセルしたか、起動方法が間違っています。</sys:String>
 </ResourceDictionary>
