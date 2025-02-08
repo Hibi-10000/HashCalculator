@@ -23,7 +23,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:Hash.Wpf"
-        xmlns:str="clr-namespace:Hash.Wpf.Strings"
+        xmlns:str="clr-namespace:Hash.Wpf.Strings.Extensions"
         mc:Ignorable="d"
         Title="{StaticResource Lang.About.Title}" Icon="./Resources/Hash.ico"
         Background="{DynamicResource Window.Static.Background}"

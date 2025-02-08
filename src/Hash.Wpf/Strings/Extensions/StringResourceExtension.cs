@@ -19,7 +19,7 @@ using System;
 using System.Windows;
 using System.Windows.Markup;
 
-namespace Hash.Wpf.Strings;
+namespace Hash.Wpf.Strings.Extensions;
 
 [MarkupExtensionReturnType(typeof(string))]
 [Localizability(LocalizationCategory.NeverLocalize)]

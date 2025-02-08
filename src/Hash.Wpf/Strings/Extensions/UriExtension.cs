@@ -19,7 +19,7 @@ using System;
 using System.ComponentModel;
 using System.Windows.Markup;
 
-namespace Hash.Wpf.Strings;
+namespace Hash.Wpf.Strings.Extensions;
 
 [ContentProperty("UriString")]
 [MarkupExtensionReturnType(typeof(Uri))]

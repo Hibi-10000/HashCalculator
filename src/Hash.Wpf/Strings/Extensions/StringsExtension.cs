@@ -22,7 +22,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Windows.Markup;
 
-namespace Hash.Wpf.Strings;
+namespace Hash.Wpf.Strings.Extensions;
 
 [ContentProperty("Strings")]
 [MarkupExtensionReturnType(typeof(string))]

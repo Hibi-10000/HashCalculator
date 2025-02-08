@@ -20,7 +20,7 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-                    xmlns:str="clr-namespace:Hash.Wpf.Strings"
+                    xmlns:str="clr-namespace:Hash.Wpf.Strings.Extensions"
                     xmlns:local="clr-namespace:Hash.Wpf"
                     xml:space="preserve">
 
