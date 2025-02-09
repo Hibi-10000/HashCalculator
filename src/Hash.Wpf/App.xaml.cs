@@ -20,8 +20,10 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Windows;
+using System.Windows.Markup;
 using Dark.Net;
 using Hash.Core;
+using Hash.Wpf.Strings;
 using Microsoft.Win32;
 
 namespace Hash.Wpf;
@@ -29,13 +31,15 @@ namespace Hash.Wpf;
 /// <summary>
 /// Interaction logic for App.xaml
 /// </summary>
-public partial class App : Application
+public partial class App : Application, IComponentConnector
 {
     internal const string Major = "0";
     internal const string Minor = "7";
     internal const string Build = "0";
 
-    internal const string SemVer = $"v{Major}.{Minor}.{Build}";
+    public const string SemVer = $"v{Major}.{Minor}.{Build}";
+
+    public static string NowYear => DateTime.Now.Year.ToString();
 
     /// <summary>
     /// Application Entry Point.
@@ -51,7 +55,7 @@ public partial class App : Application
                 case "-rc" when Environment.IsPrivilegedProcess:
                     if (!File.Exists(Environment.ProcessPath))
                     {
-                        MessageBox.Show("予期せぬ原因によりファイルパスを取得できませんでした。", "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show(GetString("Lang.Error.Unexpected.GetFilePath"), GetString("Lang.Error"), MessageBoxButton.OK, MessageBoxImage.Error);
                         Environment.ExitCode = 1;
                         return;
                     }
@@ -74,12 +78,11 @@ public partial class App : Application
                     Registry.ClassesRoot.DeleteSubKeyTree(@"*\shell\HashForContext");
                     return;
                 case "-rd" or "-rc":
-                    MessageBox.Show("UACをキャンセルしたか、起動方法が間違っています。", "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(GetString("Lang.Error.NotAdmin"), GetString("Lang.Error"), MessageBoxButton.OK, MessageBoxImage.Error);
                     Environment.ExitCode = 1;
                     return;
                 case "-ctm":
                     App appContext = new App();
-                    appContext.InitializeComponent();
                     appContext.Run(new HashForContextWindow());
                     return;
             }
@@ -89,14 +92,15 @@ public partial class App : Application
         using Mutex mutex = new Mutex(true, mutexName, out bool createdNew);
 
         App app = new App();
-        app.InitializeComponent();
         app.Run(new MainWindow(!createdNew));
         mutex.ReleaseMutex();
     }
 
-    protected override void OnStartup(StartupEventArgs e) {
-        base.OnStartup(e);
+    private App()
+    {
+        InitializeComponent();
         DarkNet.Instance.SetCurrentProcessTheme(Theme.Auto);
+        LangManager.Init();
     }
 
     internal static void OpenLink(string link)
@@ -107,4 +111,6 @@ public partial class App : Application
         };
         Process.Start(startInfo);
     }
+
+    internal static string GetString(string key) => Current.Resources[key] as string ?? string.Empty;
 }

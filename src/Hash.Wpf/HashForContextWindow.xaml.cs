@@ -70,9 +70,6 @@ public partial class HashForContextWindow : Window
             }
         }
 
-        Title = $"Hash for ContextMenu {App.SemVer}";
-        hashAndVer.Content = $"Hash for ContextMenu {App.SemVer}";
-        CopyRight.Text = $"Copyright © 2021-{DateTime.Now.Year} Hibi_10000";
         foreach (string hashTypeName in HashCalculate.GetHashTypeNames())
         {
             HashSelector.Items.Add(new ComboBoxItem { Content = hashTypeName });
@@ -81,8 +78,8 @@ public partial class HashForContextWindow : Window
 
     private void HashReset_OnClick(object sender, RoutedEventArgs e)
     {
-        HashOutputBox.Text = "ここにHash値が表示されます";
-        HashSelector.Text = "Hashを選択";
+        HashOutputBox.Text = App.GetString("Lang.Calculator.OutputHash");
+        HashSelector.Text = App.GetString("Lang.Calculator.SelectHash");
     }
 
     private void HashCopy_OnClick(object sender, RoutedEventArgs e)
@@ -105,20 +102,20 @@ public partial class HashForContextWindow : Window
 
     private void UpdateHash()
     {
-        if (HashFileURL.Text != "ファイルのパス (※これが表示されている場合は起動方法が間違っています)" && HashFileURL.Text != "")
+        if (HashFileURL.Text != App.GetString("Lang.HashForContext.FilePath") && HashFileURL.Text != "")
         {
             string hashType = HashSelector.Text;
             string filePath = HashFileURL.Text;
-            bool upper = checkUpper.IsChecked ?? false;
+            bool upper = checkUpperCase.IsChecked ?? false;
             bool hyphen = checkHyphen.IsChecked ?? false;
-            string hash = HashCalculate.GetHash(hashType, filePath, upper, hyphen) ?? "ここにHash値が表示されます";
+            string hash = HashCalculate.GetHash(hashType, filePath, upper, hyphen) ?? App.GetString("Lang.Calculator.OutputHash");
             HashOutputBox.Text = hash;
         } else {
-            HashOutputBox.Text = "ここにHash値が表示されます";
+            HashOutputBox.Text = App.GetString("Lang.Calculator.OutputHash");
         }
     }
 
-    private void CheckUpper_OnClick(object sender, RoutedEventArgs e)
+    private void CheckUpperCase_OnClick(object sender, RoutedEventArgs e)
     {
         UpdateHash();
     }
@@ -131,8 +128,8 @@ public partial class HashForContextWindow : Window
     private void StartHash_OnClick(object sender, RoutedEventArgs e)
     {
         string option = "";
-        if (HashFileURL.Text != "ファイルのパス (※これが表示されている場合は起動方法が間違っています)") option += $"-f \"{HashFileURL.Text}\" ";
-        if (HashSelector.Text != "Hashを選択") option += $"-h {HashSelector.Text} ";
+        if (HashFileURL.Text != App.GetString("Lang.HashForContext.FilePath")) option += $"-f \"{HashFileURL.Text}\" ";
+        if (HashSelector.Text != App.GetString("Lang.Calculator.SelectHash")) option += $"-h {HashSelector.Text} ";
         if (Debug.Visibility == Visibility.Visible) option += "-d";
         if (!File.Exists(Environment.ProcessPath)) return;
         ProcessStartInfo startInfo = new ProcessStartInfo(Environment.ProcessPath)

@@ -23,8 +23,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hash.Wpf"
+        xmlns:str="clr-namespace:Hash.Wpf.Strings.Extensions"
         mc:Ignorable="d"
-        Title="HashCalculator" Icon="./Resources/Hash.ico"
+        Title="{str:StringResource String.Title}" Icon="./Resources/Hash.ico"
         Loaded="MainWindow_OnLoaded"
         Background="{DynamicResource Window.Static.Background}"
         BorderBrush="{DynamicResource Window.Static.BorderBrush}"
@@ -38,34 +39,34 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Menu Grid.Row="0" Background="{DynamicResource ABrush.Tone4.Background.Static}">
-            <MenuItem Header="ファイル(_F)" FontSize="13">
-                <MenuItem Header="設定(_S)" Background="{DynamicResource ABrush.Tone2.Background.Static}" BorderBrush="{DynamicResource ABrush.Tone2.Background.Static}" Click="menuFileSettings_OnClick"/>
-                <MenuItem Header="終了(_X)" Background="{DynamicResource ABrush.Tone2.Background.Static}" BorderBrush="{DynamicResource ABrush.Tone2.Background.Static}" Click="menuFileExit_OnClick"/>
+            <MenuItem Header="{StaticResource Lang.Menu.File}" FontSize="13">
+                <MenuItem Header="{StaticResource Lang.Menu.File.Settings}" Background="{DynamicResource ABrush.Tone2.Background.Static}" BorderBrush="{DynamicResource ABrush.Tone2.Background.Static}" Click="menuFileSettings_OnClick"/>
+                <MenuItem Header="{StaticResource Lang.Menu.File.Exit}" Background="{DynamicResource ABrush.Tone2.Background.Static}" BorderBrush="{DynamicResource ABrush.Tone2.Background.Static}" Click="menuFileExit_OnClick"/>
             </MenuItem>
-            <MenuItem Header="ヘルプ(_H)" FontSize="13">
-                <MenuItem Header="Readme(_R)" Background="{DynamicResource ABrush.Tone2.Background.Static}" BorderBrush="{DynamicResource ABrush.Tone2.Background.Static}" Click="menuHelpReadme_OnClick"/>
-                <MenuItem Header="バージョン情報(_V)" Background="{DynamicResource ABrush.Tone2.Background.Static}" BorderBrush="{DynamicResource ABrush.Tone2.Background.Static}" Click="menuHelpVer_OnClick"/>
+            <MenuItem Header="{StaticResource Lang.Menu.Help}" FontSize="13">
+                <MenuItem Header="{StaticResource Lang.Menu.Help.Readme}" Background="{DynamicResource ABrush.Tone2.Background.Static}" BorderBrush="{DynamicResource ABrush.Tone2.Background.Static}" Click="menuHelpReadme_OnClick"/>
+                <MenuItem Header="{StaticResource Lang.Menu.Help.About}" Background="{DynamicResource ABrush.Tone2.Background.Static}" BorderBrush="{DynamicResource ABrush.Tone2.Background.Static}" Click="menuHelpAbout_OnClick"/>
             </MenuItem>
         </Menu>
         <Grid Grid.Row="1" Margin="5">
-            <Label x:Name="hashAndVer" Content="HashCalculator" FontSize="35" BorderThickness="1" Padding="10,0" HorizontalAlignment="Left" FontWeight="Bold"
+            <Label Content="{str:StringResource String.Title}" FontSize="35" BorderThickness="1" Padding="10,0" HorizontalAlignment="Left" FontWeight="Bold"
                 Foreground="Lime" BorderBrush="{DynamicResource ABrush.Foreground.Deeper}" Background="{DynamicResource ABrush.Tone2.Background.Static}"/>
             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
-                <TextBlock Text="CreatedBy : Hibi_10000"/>
+                <TextBlock Text="{str:StringResource String.CreatedBy}"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Text="DL : "/>
+                    <TextBlock Text="{StaticResource String.Dl}"/>
                     <Label Padding="0">
-                        <Hyperlink NavigateUri="https://github.com/Hibi-10000/HashCalculator/releases/"
+                        <Hyperlink NavigateUri="{str:Uri {StaticResource String.Uri.GitHub.Release}}"
                             RequestNavigate="HyperLink_OnRequestNavigate"
                             ToolTip="{Binding Path=NavigateUri, RelativeSource={RelativeSource Mode=Self}}">
-                            <TextBlock Text="GitHub"/>
+                            <TextBlock Text="{StaticResource String.GitHub}"/>
                         </Hyperlink>
                     </Label>
                 </StackPanel>
             </StackPanel>
         </Grid>
         <TabControl Grid.Row="2" Margin="3" x:Name="Tab" Padding="2" Background="{DynamicResource PanelBackground2}">
-            <TabItem Header="Hash計算機">
+            <TabItem Header="{StaticResource Lang.Tab.HashCalculator}">
                 <Grid Margin="5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -75,13 +76,13 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" Height="40">
-                        <TextBox x:Name="HashFileURL" Text="ファイルのパス" FontSize="14" TextWrapping="Wrap" Cursor="No" IsReadOnly="True" AllowDrop="False" AcceptsReturn="True"/>
+                        <TextBox x:Name="HashFileURL" Text="{StaticResource Lang.Calculator.FilePath}" FontSize="14" TextWrapping="Wrap" Cursor="No" IsReadOnly="True" AllowDrop="False" AcceptsReturn="True"/>
                     </Grid>
                     <Grid Grid.Row="1" Margin="0,5" AllowDrop="True" Drop="DropPanel_OnDrop" DragEnter="DropPanel_OnDragEnter">
                         <Rectangle Stroke="{DynamicResource ABrush.Foreground.Deeper}"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Label Content="ここにファイルをドロップ" FontSize="30" Padding="5"/>
-                            <Button Content="ファイルを選択" FontSize="25" Margin="10,5" Padding="10,0" Click="SelectFileButton_OnClick"/>
+                            <Label Content="{StaticResource Lang.Calculator.DropFileHere}" FontSize="30" Padding="5"/>
+                            <Button Content="{StaticResource Lang.Calculator.SelectFile}" FontSize="25" Margin="10,5" Padding="10,0" Click="SelectFileButton_OnClick"/>
                         </StackPanel>
                     </Grid>
                     <Grid Grid.Row="2">
@@ -92,14 +93,14 @@
                             <ColumnDefinition Width="4*"/>
                         </Grid.ColumnDefinitions>
                         <ComboBox x:Name="HashSelector" Grid.Column="0" SelectedIndex="0" IsEditable="True" TextBoxBase.TextChanged="HashSelector_OnTextChanged">
-                            <ComboBoxItem Content="Hashを選択"/>
+                            <ComboBoxItem Content="{StaticResource Lang.Calculator.SelectHash}"/>
                         </ComboBox>
-                        <CheckBox x:Name="checkUpper" Grid.Column="1" Margin="5,3,0,0" Content="大文字" Click="CheckUpper_OnClick"/>
-                        <CheckBox x:Name="checkHyphen" Grid.Column="2" Margin="0,3,0,0" Content="ハイフン" Click="CheckHyphen_OnClick"/>
-                        <Button Grid.Column="3" Margin="0" Foreground="#E00000" FontWeight="Bold" Content="値をリセット" Click="AllReset_OnClick"/>
+                        <CheckBox x:Name="checkUpperCase" Grid.Column="1" Margin="5,3,0,0" Content="{StaticResource Lang.Calculator.UpperCase}" Click="CheckUpperCase_OnClick"/>
+                        <CheckBox x:Name="checkHyphen" Grid.Column="2" Margin="0,3,0,0" Content="{StaticResource Lang.Calculator.Hyphen}" Click="CheckHyphen_OnClick"/>
+                        <Button Grid.Column="3" Margin="0" Foreground="#E00000" FontWeight="Bold" Content="{StaticResource Lang.Calculator.Reset}" Click="AllReset_OnClick"/>
                     </Grid>
                     <Grid Grid.Row="3" Margin="0,5" Height="60">
-                        <TextBox x:Name="HashOutputBox" Text="ここにHash値が表示されます" FontSize="14" TextWrapping="Wrap" IsReadOnly="True"/>
+                        <TextBox x:Name="HashOutputBox" Text="{StaticResource Lang.Calculator.OutputHash}" FontSize="14" TextWrapping="Wrap" IsReadOnly="True"/>
                     </Grid>
                     <Grid Grid.Row="4">
                         <Grid.ColumnDefinitions>
@@ -107,13 +108,13 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Margin="0,0,2,0" Content="Hash値をコピー" Click="HashCopy_OnClick"/>
-                        <Button Grid.Column="1" Margin="2,0,2,0" Content="比較①にコピー" Click="compare1copy_OnClick"/>
-                        <Button Grid.Column="2" Margin="2,0,0,0" Content="比較②にコピー" Click="compare2copy_OnClick"/>
+                        <Button Grid.Column="0" Margin="0,0,2,0" Content="{StaticResource Lang.Calculator.Copy}" Click="HashCopy_OnClick"/>
+                        <Button Grid.Column="1" Margin="2,0,2,0" Content="{StaticResource Lang.Calculator.CopyToCompare1}" Click="compare1copy_OnClick"/>
+                        <Button Grid.Column="2" Margin="2,0,0,0" Content="{StaticResource Lang.Calculator.CopyToCompare2}" Click="compare2copy_OnClick"/>
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Hash比較">
+            <TabItem Header="{StaticResource Lang.Tab.HashCompare}">
                 <Grid Margin="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -126,20 +127,20 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" HorizontalAlignment="Right">
-                        <Button Padding="10,0" Foreground="Red" Content="リセット" Click="compareReset_OnClick"/>
+                        <Button Padding="10,0" Foreground="Red" Content="{StaticResource Lang.Compare.Reset}" Click="compareReset_OnClick"/>
                     </Grid>
                     <Grid Grid.Row="1" Margin="0,0,0,1" HorizontalAlignment="Left">
                         <Rectangle Stroke="{DynamicResource TextBox.Static.Border}"/>
-                        <Label Content="比較①" Padding="2,0"/>
+                        <Label Content="{StaticResource Lang.Compare.One}" Padding="2,0"/>
                     </Grid>
                     <StackPanel Grid.Row="2" Orientation="Horizontal">
                         <Grid Width="100">
                             <ComboBox x:Name="compare1hashType" SelectedIndex="0" IsEditable="True">
-                                <ComboBoxItem Content="比較①"/>
+                                <ComboBoxItem Content="{StaticResource Lang.Compare.One}"/>
                             </ComboBox>
                         </Grid>
                         <Grid Margin="5,0" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <Button Padding="15,0" Content="クリップボードから①へ貼り付け" Click="paste1cb_OnClick"/>
+                            <Button Padding="15,0" Content="{StaticResource Lang.Compare.One.Paste}" Click="paste1cb_OnClick"/>
                         </Grid>
                     </StackPanel>
                     <Grid Grid.Row="3" Margin="0,3">
@@ -147,16 +148,16 @@
                     </Grid>
                     <Grid Grid.Row="4" Margin="0,0,0,1" HorizontalAlignment="Left">
                         <Rectangle Stroke="{DynamicResource TextBox.Static.Border}"/>
-                        <Label Content="比較②" Padding="2,0"/>
+                        <Label Content="{StaticResource Lang.Compare.Two}" Padding="2,0"/>
                     </Grid>
                     <StackPanel Grid.Row="5" Orientation="Horizontal">
                         <Grid Width="100">
                             <ComboBox x:Name="compare2hashType" SelectedIndex="0" IsEditable="True">
-                                <ComboBoxItem Content="比較②"/>
+                                <ComboBoxItem Content="{StaticResource Lang.Compare.Two}"/>
                             </ComboBox>
                         </Grid>
                         <Grid Margin="5,0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Button Padding="15,0" Content="クリップボードから②へ貼り付け" Click="paste2cb_OnClick"/>
+                            <Button Padding="15,0" Content="{StaticResource Lang.Compare.Two.Paste}" Click="paste2cb_OnClick"/>
                         </Grid>
                     </StackPanel>
                     <Grid Grid.Row="6" Margin="0,3">
@@ -169,18 +170,18 @@
                             <ColumnDefinition Width="6*"/>
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">
-                            <Label Content="比較 :" FontSize="24"/>
+                            <Label Content="{StaticResource Lang.Compare.ResultBefore}" FontSize="24"/>
                         </Grid>
                         <Grid Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
-                            <Label x:Name="compareResult" Content="結果" FontSize="24" Visibility="Visible"/>
-                            <Label Content="真" FontSize="24" Visibility="Hidden"/>
-                            <Label Content="偽" FontSize="24" Visibility="Hidden"/>
+                            <Label x:Name="compareResult" Content="{StaticResource Lang.Compare.Result}" FontSize="24"/>
+                            <!--<Label Content="{StaticResource Lang.Compare.Result.True}" FontSize="24" Visibility="Hidden"/>
+                            <Label Content="{StaticResource Lang.Compare.Result.False}" FontSize="24" Visibility="Hidden"/>-->
                         </Grid>
-                        <Button Grid.Column="2" Margin="2,0,0,0" Content="比較" FontSize="36" Click="compareExecButton_OnClick"/>
+                        <Button Grid.Column="2" Margin="2,0,0,0" Content="{StaticResource Lang.Compare.Execute}" FontSize="36" Click="compareExecButton_OnClick"/>
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Readme">
+            <TabItem Header="{StaticResource Lang.Tab.Readme}">
                 <RichTextBox IsReadOnly="True" VerticalScrollBarVisibility="Visible">
                     <FlowDocument>
                         <Paragraph>
@@ -192,17 +193,17 @@
                     </FlowDocument>
                 </RichTextBox>
             </TabItem>
-            <TabItem Header="設定">
+            <TabItem Header="{StaticResource Lang.Tab.Settings}">
                 <Grid>
                     <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
                         <Rectangle Stroke="{DynamicResource ABrush.Foreground.Static}"/>
-                        <Label Content="設定" FontSize="24" Padding="5,0"/>
+                        <Label Content="{StaticResource Lang.Tab.Settings}" FontSize="24" Padding="5,0"/>
                     </Grid>
                     <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,50,0,0">
                         <CheckBox x:Name="HashForContextEnable" Click="HashForContextEnable_OnClick">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="./Resources/UAC.ico" Height="16" Width="16" Margin="-2,0,2,0"/>
-                                <TextBlock x:Name="HashForContextEnableText" Text="Hash for Contextを有効にする"/>
+                                <TextBlock x:Name="HashForContextEnableText" Text="{StaticResource Lang.Settings.HashForContext}"/>
                             </StackPanel>
                         </CheckBox>
                     </Grid>
@@ -210,8 +211,8 @@
             </TabItem>
         </TabControl>
         <Grid Grid.Row="3">
-            <Label x:Name="HashVer" Content="HashCalculator" Padding="5,0"/>
-            <TextBlock x:Name="CopyRight" Text="Copyright © 2021-2024 Hibi_10000" Padding="5,0" HorizontalAlignment="Right"/>
+            <Label Content="{str:StringResource String.Title}" Padding="5,0"/>
+            <TextBlock Text="{str:StringResource String.CopyRight}" Padding="5,0" HorizontalAlignment="Right"/>
         </Grid>
     </Grid>
 </Window>

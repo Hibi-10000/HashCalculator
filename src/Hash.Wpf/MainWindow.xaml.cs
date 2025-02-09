@@ -33,9 +33,6 @@ namespace Hash.Wpf;
 /// </summary>
 public partial class MainWindow : Window
 {
-    //[DllImport("UXTheme.dll", SetLastError = true, EntryPoint = "#138")]
-    //public static extern bool ShouldSystemUseDarkMode();
-
     public MainWindow(bool multiInstance)
     {
         InitializeComponent();
@@ -47,7 +44,7 @@ public partial class MainWindow : Window
         if (multiInstance)
         {
             HashForContextEnable.IsEnabled = false;
-            HashForContextEnableText.Text += " (最初のインスタンスでのみ変更できます)";
+            HashForContextEnableText.Text += App.GetString("Lang.Settings.HashForContext.MultiInstance");
         }
     }
 
@@ -75,8 +72,6 @@ public partial class MainWindow : Window
             }
         }
 
-        //(ShouldSystemUseDarkMode() ? (Action)setDarkMode : setLightMode)();
-
         const string regPath = @"*\shell\HashForContext";
         try {
             using RegistryKey? regKey = Registry.ClassesRoot.OpenSubKey(regPath);
@@ -85,10 +80,6 @@ public partial class MainWindow : Window
             HashForContextEnable.IsChecked = false;
         }
 
-        Title = $"HashCalculator {App.SemVer}";
-        hashAndVer.Content = $"HashCalculator {App.SemVer}";
-        HashVer.Content = $"HashCalculator {App.SemVer}";
-        CopyRight.Text = $"Copyright © 2021-{DateTime.Now.Year} Hibi_10000";
         foreach (string hashTypeName in HashCalculate.GetHashTypeNames())
         {
             HashSelector.Items.Add(new ComboBoxItem { Content = hashTypeName });
@@ -151,9 +142,9 @@ public partial class MainWindow : Window
 
     private void AllReset_OnClick(object sender, RoutedEventArgs e)
     {
-        HashOutputBox.Text = "ここにHash値が表示されます";
-        HashFileURL.Text = "ファイルのパス";
-        HashSelector.Text = "Hashを選択";
+        HashOutputBox.Text = App.GetString("Lang.Calculator.OutputHash");
+        HashFileURL.Text = App.GetString("Lang.Calculator.FilePath");
+        HashSelector.Text = App.GetString("Lang.Calculator.SelectHash");
     }
 
     private void HashCopy_OnClick(object sender, RoutedEventArgs e)
@@ -170,19 +161,19 @@ public partial class MainWindow : Window
 
     private void UpdateHash()
     {
-        if (HashFileURL.Text is "ファイルのパス" or "") {
-            HashOutputBox.Text = "ここにHash値が表示されます";
+        if (HashFileURL.Text == App.GetString("Lang.Calculator.FilePath") || HashSelector.Text == "") {
+            HashOutputBox.Text = App.GetString("Lang.Calculator.OutputHash");
         } else {
             string hashType = HashSelector.Text;
             string filePath = HashFileURL.Text;
-            bool upper = checkUpper.IsChecked ?? false;
+            bool upper = checkUpperCase.IsChecked ?? false;
             bool hyphen = checkHyphen.IsChecked ?? false;
-            string hash = HashCalculate.GetHash(hashType, filePath, upper, hyphen) ?? "ここにHash値が表示されます";
+            string hash = HashCalculate.GetHash(hashType, filePath, upper, hyphen) ?? App.GetString("Lang.Calculator.OutputHash");
             HashOutputBox.Text = hash;
         }
     }
 
-    private void CheckUpper_OnClick(object sender, RoutedEventArgs e)
+    private void CheckUpperCase_OnClick(object sender, RoutedEventArgs e)
     {
         UpdateHash();
     }
@@ -206,15 +197,16 @@ public partial class MainWindow : Window
 
     private void compareExecButton_OnClick(object sender, RoutedEventArgs e)
     {
-        compareResult.Content = compare1hash.Text == compare2hash.Text ? "真" : "偽";
+        string result = compare1hash.Text == compare2hash.Text ? "True" : "False";
+        compareResult.Content = App.GetString($"Lang.Compare.Result.{result}");
     }
 
     private void compareReset_OnClick(object sender, RoutedEventArgs e)
     {
-        compareResult.Content = "結果";
-        compare1hashType.Text = "比較①";
+        compareResult.Content = App.GetString("Lang.Compare.Result");
+        compare1hashType.Text = App.GetString("Lang.Compare.One");
         compare1hash.Text = "";
-        compare2hashType.Text = "比較②";
+        compare2hashType.Text = App.GetString("Lang.Compare.Two");
         compare2hash.Text = "";
     }
 
@@ -233,7 +225,7 @@ public partial class MainWindow : Window
         Close();
     }
 
-    private void menuHelpVer_OnClick(object sender, RoutedEventArgs e)
+    private void menuHelpAbout_OnClick(object sender, RoutedEventArgs e)
     {
         AboutWindow aboutBox = new AboutWindow
         {
@@ -275,35 +267,4 @@ public partial class MainWindow : Window
             HashForContextEnable.IsChecked = HashForContextEnable.IsChecked is not true;
         }
     }
-
-    /*
-    private void setLightMode()
-    {
-        this.BackColor = SystemColors.Control;
-        this.ForeColor = SystemColors.ControlText;
-        this.richTextBox1.BackColor = SystemColors.Control;
-        this.hashAndVer.ForeColor = Color.Lime;
-        this.hashAndVer.BackColor = SystemColors.Window;
-        this.TabHash.BackColor = SystemColors.Window;
-        this.TabHash.ForeColor = SystemColors.ControlText;
-        this.HashFileURL.BackColor = SystemColors.Control;
-        this.HashFileURL.ForeColor = SystemColors.WindowText;
-        this.DropPanel.BackColor = SystemColors.Window;
-        this.DropPanel.ForeColor = SystemColors.ControlText;
-    }
-
-    private void setDarkMode()
-    {
-        this.BackColor = SystemColors.ControlDark;
-        this.ForeColor = SystemColors.ControlLightLight;
-        this.richTextBox1.BackColor = SystemColors.ControlDark;
-        this.hashAndVer.ForeColor = Color.Lime;
-        this.hashAndVer.BackColor = SystemColors.ControlDarkDark;
-        this.TabHash.BackColor = SystemColors.ControlDarkDark;
-        this.TabHash.ForeColor = SystemColors.ControlLightLight;
-        this.HashFileURL.BackColor = SystemColors.ControlDark;
-        this.HashFileURL.ForeColor = SystemColors.Window;
-        this.DropPanel.BackColor = SystemColors.ControlDark;
-        this.DropPanel.ForeColor = SystemColors.Window;
-    }*/
 }
