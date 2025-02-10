@@ -96,8 +96,7 @@ public partial class MainWindow : Window
     private void DropPanel_OnDrop(object sender, DragEventArgs e)
     {
         if (!e.Data.GetFormats().Contains(DataFormats.FileDrop)) return;
-        string[]? files = (string[]?)e.Data?.GetData(DataFormats.FileDrop, false);
-        if (files == null) return;
+        if (e.Data?.GetData(DataFormats.FileDrop, false) is not string[] files) return;
         HashFileURL.Text = files[0];
         UpdateHash();
     }
