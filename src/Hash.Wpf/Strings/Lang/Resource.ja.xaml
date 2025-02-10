@@ -28,7 +28,7 @@
     <sys:String x:Key="Lang.Menu.File.Exit">終了(_X)</sys:String>
     <sys:String x:Key="Lang.Menu.Help">ヘルプ(_H)</sys:String>
     <sys:String x:Key="Lang.Menu.Help.Readme">Readme(_R)</sys:String>
-    <sys:String x:Key="Lang.Menu.Help.About">バージョン情報(_V)</sys:String>
+    <sys:String x:Key="Lang.Menu.Help.About">バージョン情報(_A)</sys:String>
 
     <sys:String x:Key="Lang.Tab.HashCalculator">Hash計算機</sys:String>
     <sys:String x:Key="Lang.Tab.HashCompare">Hash比較</sys:String>
