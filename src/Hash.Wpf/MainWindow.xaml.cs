@@ -144,7 +144,7 @@ public partial class MainWindow : Window
     {
         HashOutputBox.Text = App.GetString("Lang.Calculator.OutputHash");
         HashFileURL.Text = App.GetString("Lang.Calculator.FilePath");
-        HashSelector.Text = App.GetString("Lang.Calculator.SelectHash");
+        HashSelector.SelectedIndex = 0;
     }
 
     private void HashCopy_OnClick(object sender, RoutedEventArgs e)
@@ -204,9 +204,9 @@ public partial class MainWindow : Window
     private void compareReset_OnClick(object sender, RoutedEventArgs e)
     {
         compareResult.Content = App.GetString("Lang.Compare.Result");
-        compare1hashType.Text = App.GetString("Lang.Compare.One");
+        compare1hashType.SelectedIndex = 0;
         compare1hash.Text = "";
-        compare2hashType.Text = App.GetString("Lang.Compare.Two");
+        compare2hashType.SelectedIndex = 0;
         compare2hash.Text = "";
     }
 

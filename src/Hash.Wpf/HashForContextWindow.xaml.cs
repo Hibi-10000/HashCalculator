@@ -79,7 +79,7 @@ public partial class HashForContextWindow : Window
     private void HashReset_OnClick(object sender, RoutedEventArgs e)
     {
         HashOutputBox.Text = App.GetString("Lang.Calculator.OutputHash");
-        HashSelector.Text = App.GetString("Lang.Calculator.SelectHash");
+        HashSelector.SelectedIndex = 0;
     }
 
     private void HashCopy_OnClick(object sender, RoutedEventArgs e)
