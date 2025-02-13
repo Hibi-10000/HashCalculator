@@ -26,7 +26,7 @@ jobs:
     - name: Install .NET SDK
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0.x
+        global-json-file: global.json
 
     - name: Build Hash
       run: dotnet publish src\Hash.Wpf -p:PublishProfile=win-${{ matrix.arch }}
