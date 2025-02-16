@@ -7,6 +7,10 @@ on: workflow_dispatch
 permissions:
   contents: write
 
+defaults:
+  run:
+    shell: pwsh
+
 jobs:
   build:
     if: github.ref_type == 'tag'
@@ -25,10 +29,10 @@ jobs:
 
       - name: Copy and Rename, Compress
         run: |
-          cp -v ./win-arm64/HashCalculator-Setup.msi HashCalculator-${{ github.ref_name }}-arm64-Setup.msi
-          cp -v ./win-x64/HashCalculator-Setup.msi HashCalculator-${{ github.ref_name }}-x64-Setup.msi
-          cp -v ./win-x86/HashCalculator-Setup.msi HashCalculator-${{ github.ref_name }}-x86-Setup.msi
-          pwsh compress-archive .\win-anycpu-portable\* HashCalculator-Portable-${{ github.ref_name }}-AnyCPU.zip
+          Copy-Item -PassThru ./win-arm64/HashCalculator-Setup.msi HashCalculator-${{ github.ref_name }}-arm64-Setup.msi
+          Copy-Item -PassThru ./win-x64/HashCalculator-Setup.msi HashCalculator-${{ github.ref_name }}-x64-Setup.msi
+          Copy-Item -PassThru ./win-x86/HashCalculator-Setup.msi HashCalculator-${{ github.ref_name }}-x86-Setup.msi
+          Compress-Archive -PassThru ./win-anycpu-portable/* HashCalculator-Portable-${{ github.ref_name }}-AnyCPU.zip
 
       - run: tree
 
