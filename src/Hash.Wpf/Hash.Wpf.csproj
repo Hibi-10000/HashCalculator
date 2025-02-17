@@ -7,6 +7,8 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <EnableDefaultApplicationDefinition>false</EnableDefaultApplicationDefinition>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <AssemblyName>HashCalculator</AssemblyName>
     <Authors>Hibi_10000</Authors>
     <Copyright>Copyright © Hibi_10000</Copyright>

@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <Authors>Hibi_10000</Authors>
     <Copyright>Copyright © Hibi_10000</Copyright>
     <VersionPrefix>0.7.0</VersionPrefix>

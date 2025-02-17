@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net8.0": {
+      "System.IO.Hashing": {
+        "type": "Direct",
+        "requested": "[9.0.1, )",
+        "resolved": "9.0.1",
+        "contentHash": "jY+E/PElNWQiazN0YHqZGvcSedcZ4Wt0Os1nnJ2SzR3gWZlhNRDkSXOhuHJcLuImD8SrJQQ8TfU0W4mVcit2hg=="
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net8.0-windows7.0": {
+      "DarkNet": {
+        "type": "Direct",
+        "requested": "[2.3.0, )",
+        "resolved": "2.3.0",
+        "contentHash": "yvITcWhHUAEoKet8mv7S442MbjtjhpXO/mMCXcwLAqEQrDZwSSOdWbTG2fqv7DvIEUOyZtzjmy5J4ZBiZN5gOA=="
+      },
+      "System.IO.Hashing": {
+        "type": "Transitive",
+        "resolved": "9.0.1",
+        "contentHash": "jY+E/PElNWQiazN0YHqZGvcSedcZ4Wt0Os1nnJ2SzR3gWZlhNRDkSXOhuHJcLuImD8SrJQQ8TfU0W4mVcit2hg=="
+      },
+      "hash.core": {
+        "type": "Project",
+        "dependencies": {
+          "System.IO.Hashing": "[9.0.1, )"
+        }
+      }
+    }
+  }
+}

@@ -30,6 +30,8 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         global-json-file: global.json
+        cache: true
+        cache-dependency-path: '**/packages.lock.json'
 
     - name: Build Hash
       run: dotnet publish src/Hash.Wpf -p:PublishProfile=win-${{ matrix.arch }}
@@ -67,6 +69,8 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         global-json-file: global.json
+        cache: true
+        cache-dependency-path: '**/packages.lock.json'
 
     - name: Build Hash
       run: dotnet build src/Hash.Wpf #-v diag -c Release -p:Platform="Any CPU" -o src/Hash.Wpf/bin/Release

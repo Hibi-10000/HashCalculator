@@ -4,6 +4,7 @@
     <OutputName>HashCalculator-Setup</OutputName>
     <Platforms>arm64;x64;x86</Platforms>
     <InstallerPlatform>$(Platform)</InstallerPlatform>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="WixToolset.UI.wixext" Version="5.0.2" />

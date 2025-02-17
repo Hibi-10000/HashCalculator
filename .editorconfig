@@ -10,5 +10,5 @@ insert_final_newline = true
 [*.sln]
 end_of_line = crlf
 
-[*.{{*proj,pubxml,resx,settings}{,.user},yml}]
+[*.{{*proj,pubxml,resx,settings}{,.user},lock.json,yml}]
 indent_size = 2
