@@ -116,11 +116,11 @@ public class HashTest
     private const string TestFilePath = "testFile.txt";
 
     [TestMethod]
-    [DataRow("MD5"      , TestFilePath, "54302b01b82db587f8f9fa59a943d342")]
-    [DataRow("SHA512"   , TestFilePath, "eb4b008a214f070debe0d764c79fc06c7d2347d6fadb7c074da1331bae22558f687aaea43431e4b443a72273424c6e3f548aa7c431b9dc48c01a91dab9e7d5c0")]
-    [DataRow("CRC32C"   , TestFilePath, "8ca2a28d")]
-    [DataRow("RIPEMD160", TestFilePath, "cb50bbda2b6c08c8d47320996cde6693b25cb34d")]
-    [DataRow("xxHash64" , TestFilePath, "d8027ca16d208be3")]
+    [DataRow("MD5"      , TestFilePath, "25f9e794323b453885f5181f1b624d0b")]
+    [DataRow("SHA512"   , TestFilePath, "d9e6762dd1c8eaf6d61b3c6192fc408d4d6d5f1176d0c29169bc24e71c3f274ad27fcd5811b313d681f7e55ec02d73d499c95455b6b5bb503acf574fba8ffe85")]
+    [DataRow("CRC32C"   , TestFilePath, "e3069283")]
+    [DataRow("RIPEMD160", TestFilePath, "d3d0379126c1e5e0ba70ad6e5e53ff6aeab9f4fa")]
+    [DataRow("xxHash64" , TestFilePath, "8cb841db40e6ae83")]
     [DataRow("xxHash128", "", null)]
     public void VerifyGetHash_File(string hashType, string filePath, string? actual)
     {
