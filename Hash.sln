@@ -77,15 +77,6 @@ Global
 		{805FF0BD-D3D4-4F9A-8422-6B6225D1EBBC}.Debug|x86.Build.0 = Debug|Any CPU
 		{805FF0BD-D3D4-4F9A-8422-6B6225D1EBBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{805FF0BD-D3D4-4F9A-8422-6B6225D1EBBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{805FF0BD-D3D4-4F9A-8422-6B6225D1EBBC}.Release|arm64.ActiveCfg = Release|Any CPU
-		{805FF0BD-D3D4-4F9A-8422-6B6225D1EBBC}.Release|arm64.Build.0 = Release|Any CPU
-		{805FF0BD-D3D4-4F9A-8422-6B6225D1EBBC}.Release|x64.ActiveCfg = Release|Any CPU
-		{805FF0BD-D3D4-4F9A-8422-6B6225D1EBBC}.Release|x64.Build.0 = Release|Any CPU
-		{805FF0BD-D3D4-4F9A-8422-6B6225D1EBBC}.Release|x86.ActiveCfg = Release|Any CPU
-		{805FF0BD-D3D4-4F9A-8422-6B6225D1EBBC}.Release|x86.Build.0 = Release|Any CPU
-		{805FF0BD-D3D4-4F9A-8422-6B6225D1EBBC}.Release|x64.Deploy.0 = Release|Any CPU
-		{805FF0BD-D3D4-4F9A-8422-6B6225D1EBBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{805FF0BD-D3D4-4F9A-8422-6B6225D1EBBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
