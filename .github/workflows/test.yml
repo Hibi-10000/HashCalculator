@@ -22,7 +22,13 @@ jobs:
 
       - name: Test Hash
         run: |
-          dotnet test ./tests/Hash.Core.Tests/
+          dotnet test ./tests/Hash.Core.Tests/ -- --coverage --coverage-output-format cobertura --coverage-output $GITHUB_WORKSPACE/coverage.cobertura.xml
+
+      - name: Upload codecov
+        uses: codecov/codecov-action@v5
+        with:
+          files: ${{ github.workspace }}/coverage.cobertura.xml
+          fail_ci_if_error: true
 
       # # Retry integration tests if first attempt fails
       # - name: Run interaction tests
