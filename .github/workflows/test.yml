@@ -24,17 +24,15 @@ jobs:
         run: |
           dotnet test ./tests/Hash.Core.Tests/ -- --coverage --coverage-output-format cobertura --coverage-output $GITHUB_WORKSPACE/coverage.cobertura.xml
 
-      - name: Upload codecov
+      - name: Upload Coverage to Codecov
         uses: codecov/codecov-action@v5
         with:
           files: ${{ github.workspace }}/coverage.cobertura.xml
           fail_ci_if_error: true
 
-      # # Retry integration tests if first attempt fails
-      # - name: Run interaction tests
-      #   uses: nick-fields/retry@v3
-      #   with:
-      #     timeout_minutes: 15
-      #     max_attempts: 2
-      #     shell: pwsh
-      #     command: |
+      - name: Add Link to Step Summary
+        run: |
+          echo "### Codecov" >> $GITHUB_STEP_SUMMARY
+          echo "https://codecov.io/gh/${{ github.repository }}" >> $GITHUB_STEP_SUMMARY
+          echo "##### Default Branch" >> $GITHUB_STEP_SUMMARY
+          echo "![codecov](https://codecov.io/gh/${{ github.repository }}/graph/badge.svg?token=${{ vars.CODECOV_GRAPH_TOKEN }})" >> $GITHUB_STEP_SUMMARY
