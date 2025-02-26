@@ -16,6 +16,8 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.IO;
 using System.IO.Hashing;
 using System.Linq;
@@ -27,38 +29,37 @@ public static class HashCalculate
 {
     internal class HashType
     {
-        internal static readonly HashType[] Types = [
-            new("MD5"        , GetProvider(          MD5     .Create   ), true                      ),
-            new("SHA1"       , GetProvider(          SHA1    .Create   ), true                      ),
-            new("SHA256"     , GetProvider(          SHA256  .Create   ), true                      ),
-            new("SHA384"     , GetProvider(          SHA384  .Create   ), true                      ),
-            new("SHA512"     , GetProvider(          SHA512  .Create   ), true                      ),
-            new("SHA3-256"   , GetProvider(          SHA3_256.Create   ), true, SHA3_256.IsSupported),
-            new("SHA3-384"   , GetProvider(          SHA3_384.Create   ), true, SHA3_384.IsSupported),
-            new("SHA3-512"   , GetProvider(          SHA3_512.Create   ), true, SHA3_512.IsSupported),
-            new("CRC8"       , GetProvider(() => new CRC8_CCITT()      )                            ),
-            new("CRC16-CCITT", GetProvider(() => new CRC16_CCITT()     ), true                      ),
-            new("CRC16-IBM"  , GetProvider(() => new CRC16_IBM()       )                            ),
-            new("CRC32"      , GetProvider(() => new CRC32()           ), true                      ),
-            new("CRC32C"     , GetProvider(() => new CRC32C()          )                            ),
-            new("CRC64-ECMA" , GetProvider(() => new CRC64_ECMA()      ), true                      ),
-            new("CRC64-ISO"  , GetProvider(() => new CRC64_ISO()       )                            ),
-            new("CRC64-XZ"   , GetProvider(() => new CRC64_XZ()        ), true                      ),
-            new("RIPEMD160"  , GetProvider(() => new RIPEMD160Managed())                            ),
-            new("xxHash32"   , GetProvider(() => new XxHash32()        )                            ),
-            new("xxHash64"   , GetProvider(() => new XxHash64()        )                            ),
-            new("xxHash3"    , GetProvider(() => new XxHash3()         ), true                      ),
-            new("xxHash128"  , GetProvider(() => new XxHash128()       )                            ),
-        ];
+        internal static readonly ImmutableDictionary<string, HashType> Types = new Dictionary<string, HashType>
+        {
+            ["MD5"        ] = new(GetProvider(          MD5     .Create   ), true                      ),
+            ["SHA1"       ] = new(GetProvider(          SHA1    .Create   ), true                      ),
+            ["SHA256"     ] = new(GetProvider(          SHA256  .Create   ), true                      ),
+            ["SHA384"     ] = new(GetProvider(          SHA384  .Create   ), true                      ),
+            ["SHA512"     ] = new(GetProvider(          SHA512  .Create   ), true                      ),
+            ["SHA3-256"   ] = new(GetProvider(          SHA3_256.Create   ), true, SHA3_256.IsSupported),
+            ["SHA3-384"   ] = new(GetProvider(          SHA3_384.Create   ), true, SHA3_384.IsSupported),
+            ["SHA3-512"   ] = new(GetProvider(          SHA3_512.Create   ), true, SHA3_512.IsSupported),
+            ["CRC8"       ] = new(GetProvider(() => new CRC8_CCITT()      )                            ),
+            ["CRC16-CCITT"] = new(GetProvider(() => new CRC16_CCITT()     ), true                      ),
+            ["CRC16-IBM"  ] = new(GetProvider(() => new CRC16_IBM()       )                            ),
+            ["CRC32"      ] = new(GetProvider(() => new CRC32()           ), true                      ),
+            ["CRC32C"     ] = new(GetProvider(() => new CRC32C()          )                            ),
+            ["CRC64-ECMA" ] = new(GetProvider(() => new CRC64_ECMA()      ), true                      ),
+            ["CRC64-ISO"  ] = new(GetProvider(() => new CRC64_ISO()       )                            ),
+            ["CRC64-XZ"   ] = new(GetProvider(() => new CRC64_XZ()        ), true                      ),
+            ["RIPEMD160"  ] = new(GetProvider(() => new RIPEMD160Managed())                            ),
+            ["xxHash32"   ] = new(GetProvider(() => new XxHash32()        )                            ),
+            ["xxHash64"   ] = new(GetProvider(() => new XxHash64()        )                            ),
+            ["xxHash3"    ] = new(GetProvider(() => new XxHash3()         ), true                      ),
+            ["xxHash128"  ] = new(GetProvider(() => new XxHash128()       )                            ),
+        }.ToImmutableDictionary();
 
-        internal readonly string Name;
         internal readonly IHashProvider Provider;
         internal readonly bool Visible;
         internal readonly bool Supported;
 
-        private HashType(string name, IHashProvider provider, bool visible = false, bool supported = true)
+        private HashType(IHashProvider provider, bool visible = false, bool supported = true)
         {
-            Name = name;
             Provider = provider;
             Visible = visible;
             Supported = supported;
@@ -102,30 +103,21 @@ public static class HashCalculate
     {
         return (
             from type in HashType.Types
-            where type.Supported && (includeHidden || type.Visible)
-            select type.Name
+            where type.Value.Supported && (includeHidden || type.Value.Visible)
+            select type.Key
         ).ToArray();
     }
 
     public static string? GetHash(string hashType, string filePath, bool upper, bool hyphen)
     {
-        foreach (HashType type in HashType.Types)
-        {
-            if (type.Supported && hashType == type.Name)
-            {
-                return GetHash(type, filePath, upper, hyphen);
-            }
-        }
-        return null;
-    }
-
-    private static string? GetHash(HashType hashType, string filePath, bool upper, bool hyphen)
-    {
         if (!File.Exists(filePath)) return null;
         using FileStream fs = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-        //using MemoryStream fs = new MemoryStream(System.Text.Encoding.ASCII.GetBytes("123456789"));
-        byte[] bs = hashType.Provider.ComputeHash(fs);
+        return GetHash(hashType, fs, upper, hyphen);
+    }
 
+    internal static string GetHash(string hashType, Stream stream, bool upper, bool hyphen)
+    {
+        byte[] bs = HashType.Types[hashType].Provider.ComputeHash(stream);
         string returnStr = BitConverter.ToString(bs);
         returnStr = upper ? returnStr.ToUpper() : returnStr.ToLower();
         return hyphen ? returnStr : returnStr.Replace("-", "");

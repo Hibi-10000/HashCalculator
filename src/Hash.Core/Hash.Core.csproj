@@ -13,4 +13,7 @@
   <ItemGroup>
     <PackageReference Include="System.IO.Hashing" Version="9.0.1" />
   </ItemGroup>
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+    <InternalsVisibleTo Include="$(MSBuildProjectname).Tests" />
+  </ItemGroup>
 </Project>

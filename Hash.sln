@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hash.Wpf", "src\Hash.Wpf\Ha
 EndProject
 Project("{B7DD6F7E-DEF8-4E67-B5B7-07EF123DB6F0}") = "WixInstallerSetup", "src\WixInstallerSetup\WixInstallerSetup.wixproj", "{D5755B47-DB4D-4180-A109-269062572C9D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hash.Core.Tests", "tests\Hash.Core.Tests\Hash.Core.Tests.csproj", "{805FF0BD-D3D4-4F9A-8422-6B6225D1EBBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|arm64 = Debug|arm64
@@ -67,6 +69,14 @@ Global
 		{D5755B47-DB4D-4180-A109-269062572C9D}.Release|x64.Build.0 = Release|x64
 		{D5755B47-DB4D-4180-A109-269062572C9D}.Release|x86.ActiveCfg = Release|x86
 		{D5755B47-DB4D-4180-A109-269062572C9D}.Release|x86.Build.0 = Release|x86
+		{805FF0BD-D3D4-4F9A-8422-6B6225D1EBBC}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{805FF0BD-D3D4-4F9A-8422-6B6225D1EBBC}.Debug|arm64.Build.0 = Debug|Any CPU
+		{805FF0BD-D3D4-4F9A-8422-6B6225D1EBBC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{805FF0BD-D3D4-4F9A-8422-6B6225D1EBBC}.Debug|x64.Build.0 = Debug|Any CPU
+		{805FF0BD-D3D4-4F9A-8422-6B6225D1EBBC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{805FF0BD-D3D4-4F9A-8422-6B6225D1EBBC}.Debug|x86.Build.0 = Debug|Any CPU
+		{805FF0BD-D3D4-4F9A-8422-6B6225D1EBBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{805FF0BD-D3D4-4F9A-8422-6B6225D1EBBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,3 +12,6 @@ end_of_line = crlf
 
 [*.{{*proj,pubxml,resx,settings}{,.user},lock.json,yml}]
 indent_size = 2
+
+[testFile.txt]
+insert_final_newline = false

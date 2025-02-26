@@ -83,7 +83,7 @@ jobs:
 
     - name: Copy build artifacts
       run: |
-        Copy-Item -PassThru src/Hash.Wpf/bin/Release/ artifact/ -Recurse
+        Copy-Item -PassThru src/Hash.Wpf/bin/Release/*/ artifact/ -Recurse
         Remove-Item artifact/*.pdb
 
     - run: tree /F
