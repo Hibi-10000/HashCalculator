@@ -110,7 +110,9 @@ public partial class HashForContextWindow : Window
             bool hyphen = checkHyphen.IsChecked ?? false;
             string hash = HashCalculate.GetHash(hashType, filePath, upper, hyphen) ?? App.GetString("Lang.Calculator.OutputHash");
             HashOutputBox.Text = hash;
-        } else {
+        }
+        else
+        {
             HashOutputBox.Text = App.GetString("Lang.Calculator.OutputHash");
         }
     }

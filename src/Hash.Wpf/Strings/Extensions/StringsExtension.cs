@@ -1,4 +1,4 @@
-﻿// Copyright © 2021-2024 Hibi_10000
+// Copyright © 2021-2024 Hibi_10000
 // 
 // This file is part of HashCalculator program.
 // 
@@ -37,7 +37,7 @@ public class StringsExtension : MarkupExtension
         get => _strings;
         set => _strings = value;
     }
-    
+
     [DefaultValue(null)]
     [StringSyntax("CompositeFormat")]
     public string? StringFormat

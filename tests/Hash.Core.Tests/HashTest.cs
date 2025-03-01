@@ -57,9 +57,12 @@ public class HashTest
         using MemoryStream ms = new MemoryStream(TestStringBytes);
         if (!hashType.Supported)
         {
-            try {
+            try
+            {
                 hashType.Provider.ComputeHash(ms);
-            } catch (PlatformNotSupportedException) {
+            }
+            catch (PlatformNotSupportedException)
+            {
                 Assert.Inconclusive();
                 return;
             }
@@ -70,7 +73,7 @@ public class HashTest
         string returnStr = BitConverter.ToString(bs).ToLower().Replace("-", "");
         Assert.AreEqual(expectStr, returnStr);
     }
-    
+
     [TestMethod]
     [DataRow(true)]
     [DataRow(false)]
@@ -112,7 +115,7 @@ public class HashTest
         string[] actual = HashCalculate.GetHashTypeNames(includeHidden);
         CollectionAssert.AreEquivalent(expect.ToArray(), actual);
     }
-    
+
     private const string TestFilePath = "testFile.txt";
 
     [TestMethod]

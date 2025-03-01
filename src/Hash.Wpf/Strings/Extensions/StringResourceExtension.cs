@@ -1,4 +1,4 @@
-﻿// Copyright © 2021-2024 Hibi_10000
+// Copyright © 2021-2024 Hibi_10000
 // 
 // This file is part of HashCalculator program.
 // 
@@ -27,7 +27,7 @@ public class StringResourceExtension : StaticResourceExtension
 {
     public StringResourceExtension() {}
     public StringResourceExtension(object resourceKey) : base(resourceKey) {}
-    
+
     public override string? ProvideValue(IServiceProvider serviceProvider)
     {
         return base.ProvideValue(serviceProvider) switch

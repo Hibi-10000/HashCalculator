@@ -45,7 +45,8 @@ public partial class App : Application, IComponentConnector
     /// Application Entry Point.
     /// </summary>
     [STAThread]
-    public static void Main() {
+    public static void Main()
+    {
         string[] args = Environment.GetCommandLineArgs();
 
         foreach (string arg in args)
@@ -64,7 +65,8 @@ public partial class App : Application, IComponentConnector
                         regKey.SetValue("MUIVerb", "Hash for ContextMenu(&F)", RegistryValueKind.String);
                         regKey.SetValue("SubCommands", "", RegistryValueKind.String);
                     }
-                    using (RegistryKey regKey = Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\*\command")) {
+                    using (RegistryKey regKey = Registry.ClassesRoot.CreateSubKey(@"*\shell\HashForContext\shell\*\command"))
+                    {
                         regKey.SetValue("", $"\"{Environment.ProcessPath}\" -ctm -f \"%1\"", RegistryValueKind.String);
                     }
 

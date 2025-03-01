@@ -39,7 +39,7 @@ public class CRC : NonCryptographicHashAlgorithm
     private readonly ulong _xorOut;
     private readonly int _size;
 
-    protected CRC(int size, ulong poly, ulong init, bool refInOut): base(size)
+    protected CRC(int size, ulong poly, ulong init, bool refInOut) : base(size)
     {
         _table = InitializeTable(size, poly, refInOut);
         _seed = init;
@@ -95,9 +95,11 @@ public class CRC : NonCryptographicHashAlgorithm
         return table;
     }
 
-    private static ulong ReverseBits(ulong source, int size) {
+    private static ulong ReverseBits(ulong source, int size)
+    {
         ulong reverse = 0;
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++)
+        {
             reverse = (reverse << 1) | ((source >> i) & 1);
         }
         return reverse;

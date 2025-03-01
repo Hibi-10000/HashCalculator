@@ -73,10 +73,13 @@ public partial class MainWindow : Window
         }
 
         const string regPath = @"*\shell\HashForContext";
-        try {
+        try
+        {
             using RegistryKey? regKey = Registry.ClassesRoot.OpenSubKey(regPath);
             HashForContextEnable.IsChecked = regKey != null;
-        } catch (Exception) {
+        }
+        catch (Exception)
+        {
             HashForContextEnable.IsChecked = false;
         }
 
@@ -160,9 +163,12 @@ public partial class MainWindow : Window
 
     private void UpdateHash()
     {
-        if (HashFileURL.Text == App.GetString("Lang.Calculator.FilePath") || HashSelector.Text == "") {
+        if (HashFileURL.Text == App.GetString("Lang.Calculator.FilePath") || HashSelector.Text == "")
+        {
             HashOutputBox.Text = App.GetString("Lang.Calculator.OutputHash");
-        } else {
+        }
+        else
+        {
             string hashType = HashSelector.Text;
             string filePath = HashFileURL.Text;
             bool upper = checkUpperCase.IsChecked ?? false;
@@ -257,7 +263,8 @@ public partial class MainWindow : Window
             };
             Process? process = Process.Start(startInfo);
             process?.WaitForExit();
-            if (process?.ExitCode is not 0) {
+            if (process?.ExitCode is not 0)
+            {
                 HashForContextEnable.IsChecked = HashForContextEnable.IsChecked is not true;
             }
         }

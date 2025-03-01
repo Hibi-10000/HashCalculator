@@ -74,12 +74,12 @@ public static class HashCalculate
         {
             return new NonCryptoHashProvider(providerFunc);
         }
-        
+
         internal interface IHashProvider
         {
             internal byte[] ComputeHash(Stream stream);
         }
-        
+
         private class HashProvider(Func<HashAlgorithm> providerFunc) : IHashProvider
         {
             public byte[] ComputeHash(Stream stream)
