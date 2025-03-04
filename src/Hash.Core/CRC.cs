@@ -39,7 +39,7 @@ public class CRC : NonCryptographicHashAlgorithm
     private readonly ulong _xorOut;
     private readonly int _size;
 
-    protected CRC(int size, ulong poly, ulong init, bool refInOut) : base(size)
+    protected internal CRC(int size, ulong poly, ulong init, bool refInOut) : base(size)
     {
         _table = InitializeTable(size, poly, refInOut);
         _seed = init;
