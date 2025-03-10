@@ -28,10 +28,6 @@ public partial class AboutWindow : Window
     {
         InitializeComponent();
         DarkNet.Instance.SetWindowThemeWpf(this, Theme.Auto);
-        new Dark.Net.Wpf.SkinManager().RegisterSkins(
-            lightThemeResources: new Uri("Themes/ColourDictionaries/LightTheme.xaml", UriKind.Relative),
-            darkThemeResources:  new Uri("Themes/ColourDictionaries/SoftDark.xaml", UriKind.Relative)
-        );
     }
 
     private void OK_OnClick(object sender, RoutedEventArgs e)

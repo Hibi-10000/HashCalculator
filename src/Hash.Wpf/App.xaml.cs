@@ -102,6 +102,10 @@ public partial class App : Application, IComponentConnector
     {
         InitializeComponent();
         DarkNet.Instance.SetCurrentProcessTheme(Theme.Auto);
+        new Dark.Net.Wpf.SkinManager().RegisterSkins(
+            lightThemeResources: new Uri("Themes/ColourDictionaries/LightTheme.xaml", UriKind.Relative),
+            darkThemeResources:  new Uri("Themes/ColourDictionaries/SoftDark.xaml", UriKind.Relative)
+        );
         LangManager.Init();
     }
 

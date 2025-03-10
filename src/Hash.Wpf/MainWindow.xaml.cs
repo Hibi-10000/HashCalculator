@@ -37,10 +37,6 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         DarkNet.Instance.SetWindowThemeWpf(this, Theme.Auto);
-        new Dark.Net.Wpf.SkinManager().RegisterSkins(
-            lightThemeResources: new Uri("Themes/ColourDictionaries/LightTheme.xaml", UriKind.Relative),
-            darkThemeResources:  new Uri("Themes/ColourDictionaries/SoftDark.xaml", UriKind.Relative)
-        );
         if (multiInstance)
         {
             HashForContextEnable.IsEnabled = false;
