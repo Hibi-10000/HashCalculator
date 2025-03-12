@@ -39,7 +39,7 @@ public partial class App : Application, IComponentConnector
 
     public const string SemVer = $"v{Major}.{Minor}.{Build}";
 
-    public static string NowYear => DateTime.Now.Year.ToString();
+    public static readonly string NowYear = DateTime.Now.Year.ToString();
 
     /// <summary>
     /// Application Entry Point.
