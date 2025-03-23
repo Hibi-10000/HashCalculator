@@ -1,4 +1,4 @@
-// Copyright © 2021-2024 Hibi_10000
+// Copyright © 2021-2025 Hibi_10000
 // 
 // This file is part of HashCalculator program.
 // 
