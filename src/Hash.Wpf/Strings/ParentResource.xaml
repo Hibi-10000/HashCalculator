@@ -34,17 +34,8 @@
         <StaticResource ResourceKey="String.Version"/>
     </str:Strings>
 
-    <x:Static x:Key="String.NowYear" Member="local:App.NowYear"/>
-    <sys:String x:Key="String.CopyRight.Base">Copyright © 2021-{0} Hibi_10000</sys:String>
-    <str:Strings x:Key="String.CopyRight" StringFormat="{StaticResource String.CopyRight.Base}">
-        <StaticResource ResourceKey="String.NowYear"/>
-    </str:Strings>
-
-    <sys:String x:Key="String.Creator">Hibi_10000</sys:String>
-    <sys:String x:Key="String.CreatedBy.Base">CreatedBy : {0}</sys:String>
-    <str:Strings x:Key="String.CreatedBy" StringFormat="{StaticResource String.CreatedBy.Base}">
-        <StaticResource ResourceKey="String.Creator"/>
-    </str:Strings>
+    <sys:String x:Key="String.CopyRight">Copyright © 2021-present Hibi_10000</sys:String>
+    <sys:String x:Key="String.CreatedBy">CreatedBy : Hibi_10000</sys:String>
 
     <sys:String x:Key="String.Dl">DL : </sys:String>
     <sys:String x:Key="String.GitHub">GitHub</sys:String>
