@@ -20,7 +20,7 @@
 //
 
 using System;
-using System.Diagnostics.Contracts;
+//using System.Diagnostics.Contracts;
 using System.Security.Cryptography;
 
 namespace Hash.Core;
@@ -46,7 +46,7 @@ public class RIPEMD160Managed : HashAlgorithm
                 "This implementation is not part of the Windows Platform FIPS validated cryptographic algorithms."
             );
         }
-        Contract.EndContractBlock();
+        //Contract.EndContractBlock();
 
         _stateMD160 = new uint[5];
         _blockDWords = new uint[16];
