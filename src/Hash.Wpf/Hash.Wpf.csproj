@@ -17,6 +17,7 @@
     <FileVersion>$(AssemblyVersion)</FileVersion>
     <ApplicationIcon>Resources\Hash.ico</ApplicationIcon>
     <IsPackable>false</IsPackable>
+    <AnalysisMode>Recommended</AnalysisMode>
   </PropertyGroup>
   <ItemGroup>
     <Resource Include="Resources\Hash.ico" />
