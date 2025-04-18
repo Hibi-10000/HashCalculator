@@ -70,7 +70,7 @@ public class HashTest
             return;
         }
         byte[] bs = hashType.Provider.ComputeHash(ms);
-        string returnStr = BitConverter.ToString(bs).ToLower().Replace("-", "");
+        string returnStr = BitConverter.ToString(bs).ToLowerInvariant().Replace("-", "");
         Assert.AreEqual(expectStr, returnStr);
     }
 

@@ -119,7 +119,7 @@ public static class HashCalculate
     {
         byte[] bs = HashType.Types[hashType].Provider.ComputeHash(stream);
         string returnStr = BitConverter.ToString(bs);
-        returnStr = upper ? returnStr.ToUpper() : returnStr.ToLower();
+        returnStr = upper ? returnStr.ToUpperInvariant() : returnStr.ToLowerInvariant();
         return hyphen ? returnStr : returnStr.Replace("-", "");
     }
 }

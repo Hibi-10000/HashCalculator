@@ -28,7 +28,7 @@ public class CRCTest
     private static string CalcHash(NonCryptographicHashAlgorithm provider)
     {
         byte[] bs = provider.GetCurrentHash();
-        return BitConverter.ToString(bs).ToLower().Replace("-", "");
+        return BitConverter.ToString(bs).ToLowerInvariant().Replace("-", "");
     }
 
     public static IEnumerable<object[]> DataSet =>
