@@ -10,7 +10,7 @@ insert_final_newline = true
 [*.sln]
 end_of_line = crlf
 
-[*.{{*proj,pubxml,resx,settings}{,.user},lock.json,yml}]
+[*.{{*proj,pubxml,resx,settings}{,.user},lock.json,Build.props,yml}]
 indent_size = 2
 
 [testFile.txt]

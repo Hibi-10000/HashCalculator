@@ -4,11 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
     <Platforms>arm64;x64;x86;AnyCPU</Platforms>
-    <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <EnableDefaultApplicationDefinition>false</EnableDefaultApplicationDefinition>
-    <EnableWindowsTargeting>true</EnableWindowsTargeting>
-    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <AssemblyName>HashCalculator</AssemblyName>
     <Authors>Hibi_10000</Authors>
     <Copyright>Copyright © Hibi_10000</Copyright>
@@ -17,7 +14,6 @@
     <FileVersion>$(AssemblyVersion)</FileVersion>
     <ApplicationIcon>Resources\Hash.ico</ApplicationIcon>
     <IsPackable>false</IsPackable>
-    <AnalysisMode>Recommended</AnalysisMode>
   </PropertyGroup>
   <ItemGroup>
     <Resource Include="Resources\Hash.ico" />
