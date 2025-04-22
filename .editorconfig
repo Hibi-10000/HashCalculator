@@ -1,6 +1,6 @@
 root = true
 
-[**/*.*]
+[*.*]
 charset = utf-8
 end_of_line = lf
 indent_style = space
@@ -13,5 +13,5 @@ end_of_line = crlf
 [*.{{*proj,pubxml,resx,settings}{,.user},lock.json,Build.props,yml}]
 indent_size = 2
 
-[testFile.txt]
+[{packages.lock.json,testFile.txt}]
 insert_final_newline = false
