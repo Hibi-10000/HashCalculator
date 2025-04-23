@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Markup;
 
@@ -50,7 +51,7 @@ public class StringsExtension : MarkupExtension
     {
         if (_formatString is not null)
         {
-            return string.Format(_formatString, _strings.ToArray<object>());
+            return string.Format(CultureInfo.InvariantCulture, _formatString, _strings.ToArray<object>());
         }
         return string.Concat(_strings);
     }
