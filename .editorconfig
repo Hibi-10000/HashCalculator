@@ -9,6 +9,10 @@ insert_final_newline = true
 
 [*.cs]
 dotnet_diagnostic.CA1707.severity = none
+dotnet_diagnostic.CA1852.severity = none
+
+[RIPEMD160Managed.cs]
+dotnet_diagnostic.CA1725.severity = none
 
 [*.sln]
 end_of_line = crlf
