@@ -98,7 +98,7 @@ public partial class HashForContextWindow : Window
 
     private void UpdateHash()
     {
-        if (HashFileURL.Text != App.GetString("Lang.HashForContext.FilePath") && HashFileURL.Text != "")
+        if (HashFileURL.Text != App.GetString("Lang.HashForContext.FilePath") && HashFileURL.Text != "" && HashSelector.SelectedIndex != 0)
         {
             string hashType = HashSelector.Text;
             string filePath = HashFileURL.Text;

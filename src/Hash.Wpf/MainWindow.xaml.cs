@@ -159,7 +159,7 @@ public partial class MainWindow : Window
 
     private void UpdateHash()
     {
-        if (HashFileURL.Text == App.GetString("Lang.Calculator.FilePath") || HashSelector.Text == "")
+        if (HashFileURL.Text == App.GetString("Lang.Calculator.FilePath") || HashSelector.Text == "" || HashSelector.SelectedIndex == 0)
         {
             HashOutputBox.Text = App.GetString("Lang.Calculator.OutputHash");
         }

@@ -110,6 +110,7 @@ public static class HashCalculate
 
     public static string? GetHash(string hashType, string filePath, bool upper, bool hyphen)
     {
+        if (!HashType.Types.ContainsKey(hashType)) return null;
         if (!File.Exists(filePath)) return null;
         using FileStream fs = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
         return GetHash(hashType, fs, upper, hyphen);
