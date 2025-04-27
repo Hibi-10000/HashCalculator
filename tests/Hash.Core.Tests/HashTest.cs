@@ -125,6 +125,7 @@ public class HashTest
     [DataRow("RIPEMD160", TestFilePath, "d3d0379126c1e5e0ba70ad6e5e53ff6aeab9f4fa")]
     [DataRow("xxHash64" , TestFilePath, "8cb841db40e6ae83")]
     [DataRow("xxHash128", "", null)]
+    [DataRow("Select Hash", TestFilePath, null)]
     public void VerifyGetHash_File(string hashType, string filePath, string? actual)
     {
         string? expect = HashCalculate.GetHash(hashType, filePath, false, false);
