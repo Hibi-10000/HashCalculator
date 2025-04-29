@@ -13,6 +13,7 @@
     <AssemblyVersion>$(VersionPrefix).0</AssemblyVersion>
     <FileVersion>$(AssemblyVersion)</FileVersion>
     <ApplicationIcon>Resources\Hash.ico</ApplicationIcon>
+    <NeutralLanguage>ja</NeutralLanguage>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>
