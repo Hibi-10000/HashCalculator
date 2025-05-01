@@ -147,6 +147,7 @@ public partial class MainWindow : Window
 
     private void HashCopy_OnClick(object sender, RoutedEventArgs e)
     {
+        if (HashOutputBox.Text == App.GetString("Lang.Calculator.OutputHash")) return;
         Clipboard.SetText(HashOutputBox.Text);
         HashOutputBox.Focus();
         HashOutputBox.SelectAll();
@@ -186,12 +187,14 @@ public partial class MainWindow : Window
 
     private void compare1copy_OnClick(object sender, RoutedEventArgs e)
     {
+        if (HashOutputBox.Text == App.GetString("Lang.Calculator.OutputHash")) return;
         compare1hash.Text = HashOutputBox.Text;
         compare1hashType.Text = HashSelector.Text;
     }
 
     private void compare2copy_OnClick(object sender, RoutedEventArgs e)
     {
+        if (HashOutputBox.Text == App.GetString("Lang.Calculator.OutputHash")) return;
         compare2hash.Text = HashOutputBox.Text;
         compare2hashType.Text = HashSelector.Text;
     }
