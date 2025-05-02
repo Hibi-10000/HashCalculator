@@ -148,6 +148,7 @@ public partial class MainWindow : Window
     private void HashCopy_OnClick(object sender, RoutedEventArgs e)
     {
         if (HashOutputBox.Text == App.GetString("Lang.Calculator.OutputHash")) return;
+        Clipboard.SetText(HashSelector.Text);
         Clipboard.SetText(HashOutputBox.Text);
         HashOutputBox.Focus();
         HashOutputBox.SelectAll();
